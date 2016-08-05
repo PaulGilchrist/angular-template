@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base href="/">
+        <title>Unit Tests</title>
+        <link rel="stylesheet" href="css/jasmine.css">
+        <script src="js/jasmine.js"></script>
+        <script src="js/jasmine-html.js"></script>
+        <script src="js/boot.js"></script>
+    </head>
+    <body>
+        <!-- 1. Load libraries -->
+        <!-- Polyfill(s) for older browsers -->
+        <script src="js/es6-shim.min.js"></script>
+        <script src="js/zone.min.js"></script>
+        <script src="js/Reflect.js"></script>
+        <script src="js/system.src.js"></script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery-confirm.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/underscore-min.js"></script>
+        <script src="js/toastr.min.js"></script>
+        <script src="js/d3.min.js"></script>
+        <script src="js/dragula.min.js"></script>
+        <script src="js/pdfmake.min.js"></script>
+        <script src="js/vfs_fonts.js"></script>
+        <!-- 2. Configure SystemJS -->
+        <script src="systemjs.config.js"></script>
+        <script>
+            System.config({
+                packages: {
+                    app: { defaultExtension: 'js' }
+                }
+            });
+            //Load test scripts re-execute `window.onload` which triggers the Jasmine test-runner start or explain what went wrong
+            Promise.all([
+                System.import('app/pipes/filter-objects.pipe.spec'),
+                System.import('app/pipes/sort-objects.pipe.spec'),
+                System.import('app/services/identity.service.spec'),
+                System.import('app/services/user.service.spec')
+            ]).then(window.onload) //wait for all imports to load then re-execute `window.onload` which triggers the Jasmine test-runner start or explain what went wrong
+             .catch(console.error.bind(console));
+        </script>
+    </body>
+</html>
+

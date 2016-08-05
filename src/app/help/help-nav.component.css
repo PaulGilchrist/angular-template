@@ -1,0 +1,11 @@
+.nav a {
+    -webkit-transition: 500ms all;
+    transition: 500ms all;
+}
+.nav a:hover {
+    font-weight: bold;
+    letter-spacing: 0.075em;
+    margin-left: -20px;
+    -webkit-transition: 500ms all;
+    transition: 500ms all;
+}

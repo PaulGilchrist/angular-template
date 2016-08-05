@@ -1,0 +1,155 @@
+﻿<div class="panel panel-primary">
+    <div class="panel-heading">
+        <div class="panel-title">Angular 2.0, TypeScript, Bootstrap, and Visual Studio 2015</div>
+    </div>
+    <div class="panel-body">
+        <!--[if lt IE 10]>
+            <script>window.browserUnsupported = true;</script>
+            <h3><font color="red">This application is not supported on IE9 or older browsers</font></h3>
+            <p><a style="text-decoration: underline;" href="https://www.google.com/chrome/">Download Chrome</a></p><br>
+        <![endif]-->
+        <div class="sub-section">
+            <p>This site was put together to demonstrate code examples for Angular 2.0, Typescript, and Bootstrap developed in a Visual Studio 2015 hosted IDE.  This combination of tools allows for a browser and device agnostic highly responsive application.  Open standard tools such as NPM (node package manager), Gulp (task runner), Jasmine (unit testing), Karma (test runner), and Git (version control) are also leveraged.  This project runs equally well using .Net Core or Node for hosting and supports not just Visual Studio 2015, but also Visual Studio Code, Sublime, Atom, and more.  Tools like BrowserSync detect code changes, automaticly re-compile, unit testing, and refresh all connected browsers improving development and debugging time efficiency.</p>
+            <p>Angular 2.0’s powerful client side JavaScript library is the key to this applications architecture.  Although developed as a lightweight template or starting point for new projects, examples exist throughout the code demonstrating Angular, Typescript, and Bootstrap capabilities and best practices.  Make sure to check out the “Features” section below for a list of Angular 2.0 features demonstrated in this project.</p>
+            <p>As Angular, Typescript, Bootstrap, or Visual Studio changes or best practices evolve, this template will be updates to ensure it always remains a good starting point for any new project.</p>
+            <br />
+            <input (click)="_router.navigate(['help']);" type="button" class="btn btn-primary animated flash" value="Getting Started"><br />
+            <br />
+            <div class="row">
+                <div class="col-lg-8">
+                    <h4>Module Architecture</h4>
+                    <img class="img-responsive img-rounded animated slideInLeft" src="../img/architecture-diagram.png" />
+                    <br />
+                </div>
+                <div class="col-lg-4">
+                    <h4>Module Scope: Page Example</h4>
+                    <img class="img-responsive img-rounded animated slideInRight" src="../img/module-scope.png" />
+                    <br />
+                </div>
+            </div>
+            <div>
+                <div class="clearfix">
+                    <div class="pull-left"><a href="https://angular.io/">Learn more about Angular 2.0 development</a></div>
+                    <div class="pull-right">
+                        Learn more about <a href="http://www.typescriptlang.org/">Typescript</a>, <a href="http://getbootstrap.com/">Bootstrap</a>, or <a href="https://www.visualstudio.com/en-us/visual-studio-homepage-vs.aspx">Visual Studio</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sub-section">
+            <h4>Angular's Value Proposition</h4>
+            <ul>
+                <li>Better supports stateless server design and its associated horizontal scalability</li>
+                <li>Better supports scalability through offloading server processing</li>
+                <li>Better supports SQL scalability as changes can remain on the client between pages, and only sent to the server when needing to persist beyond the session</li>
+                <li>Built in validation and dirty checking ensure data is not passed back to the server that did not change or that did not meet quality requirements</li>
+                <li>Better supports a more rapidly responding and interactive client experience</li>
+                <li>Better supports separation of concerns where front-end is for presentation, and backend is for data access</li>
+                <li>Extremely readable HTML, and complete separation of model, view and controller functionality</li>
+                <li>Allows natural syntax for building a page from components, and even nesting components inside other components</li>
+                <li>Built in support for client side unit testing</li>
+                <li>Components isolation model lends itself nicely to unit testing</li>
+                <li>CSS scoping at the component level and not just the page level</li>
+                <li>Best client framework when wanting to extend JavaScript with TypeScript</li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-sm-5">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title"><h4>Template Features - Angular</h4></div>
+                    </div>
+                    <div class="panel-body">
+                        <ul>
+                            <li>One way binding {{'\{\{\}\}'}}</li>
+                            <li>Event binding ()</li>
+                            <li>Target property binding [] </li>
+                            <li>Two way binding [()] </li>
+                            <li>Structural directives *</li>
+                            <li>Local template variables #</li>
+                            <li>Components</li>
+                            <li>Component scoped CSS</li>
+                            <li>Injectors</li>
+                            <li>Lifecycle hooks</li>
+                            <li>Routers (parent and child)</li>
+                            <li>Services</li>
+                            <li>Custom pipes</li>
+                            <li>Form validation</li>
+                            <li>AJAX calls</li>
+                            <li>Async observables</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title"><h4>Recently Added </h4></div>
+                    </div>
+                    <div class="panel-body">
+                        <ul>
+                            <li>Help page discussing all usage details</li>
+                            <li>Form dirty checking</li>
+                            <li>JavaScript minification</li>
+                            <li>Progress bar component</li>
+                            <li>Catch leaving page containing changed data, prompting for bulk save</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-5 col-sm-offset-2">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title"><h4>Template Features - Other</h4></div>
+                    </div>
+                    <div class="panel-body">
+                        <ul>
+                            <li>Animations and Transitions</li>
+                            <li>Auto re-compile, re-test, browser refresh on change</li>
+                            <li>Azure/Git continuous deployment (dev\master)</li>
+                            <li>Bootstrap grids, forms, nav, panels, tables, etc.</li>
+                            <li>Drag and Drop</li>
+                            <li>Graphs, charts, and dashboards (using D3)</li>
+                            <li>Gulp post build automation</li>
+                            <li>Header scroll awareness</li>
+                            <li>Mock data support</li>
+                            <li>OAuth bearer tokens</li>
+                            <li>PDF Printing</li>
+                            <li>RegEx form validation</li>
+                            <li>Responsive sidebar</li>
+                            <li>SVG manipulation via CSS</li>
+                            <li>Table caching, sorting, and search filtering</li>
+                            <li>TypeScript</li>
+                            <li>Unit testing (using Jasmine)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        <div class="panel-title"><h4>To Do List</h4></div>
+                    </div>
+                    <div class="panel-body">
+                        <ul>
+                            <li>API conversion to .Net core leveraging direct injection</li>
+                            <li>API endpoint to receive client errors.  Abstract all logging through client service.</li>
+                            <li>API feedback endpoint and client side UI</li>
+                            <li>Document Git process</li>
+                            <li>Document key files and their purpose (ex: gulpfile.js, karma.conf.js, package.json, tsconfig.json, etc.)</li>
+                            <li>HTML minification (when supported)</li>
+                            <li>Minify Angular2 libraries (when supported)</li>
+                            <li>Modal component</li>
+                            <li>Service interface definitions to ensure mock data interface matches production interface</li>
+                        </ul>
+                    </div>
+                    <div id="closableMessage">
+                        <div class="panel-footer">
+                            <a href="#closableMessage" data-dismiss="alert" class="close">&times;</a>
+                            <h5>This site is still in development and experience may change</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        Begin your development effort with this template.
+    </div>
+</div>

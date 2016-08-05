@@ -1,0 +1,29 @@
+import { Component } from '@angular/core';
+import { Router, ROUTER_DIRECTIVES } from '@angular/router';
+import { Location } from '@angular/common' ;
+
+declare var $: any;
+
+@Component({
+    directives: [ROUTER_DIRECTIVES],
+    selector: 'help-nav',
+    styleUrls: ['app/help/help-nav.component.css'],
+    templateUrl: 'app/help/help-nav.component.html'
+})
+export class HelpNavComponent {
+    constructor(private _location: Location, private _router: Router) {}
+
+    currentPage(path: string): boolean {
+        var result: boolean = false;
+        var locationPath = this._location.path();
+        if (path.length == 0) {
+            //Root
+            result = (locationPath.length == 0);
+        } else {
+           //Does the current path start with "path"?
+           result = (locationPath == path);
+        }
+        return result;
+    }
+
+}

@@ -1,0 +1,59 @@
+<div *ngIf="isActive" id="user-form" class="animated slideInLeft">
+    <h2>User</h2>
+    <form (ngSubmit)="save()" #userForm="ngForm">
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <div class="input-group margin-bottom-sm">
+                <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+                <input type="text" name="firstName" [(ngModel)]="firstName" #firstNameControl="ngModel" class="form-control" placeholder="First Name" pattern="[A-Za-z ,.'-]+" required autofocus minlength="2" maxlength="20">
+            </div>
+            <div [hidden]="firstNameControl.valid || firstNameControl.pristine" class="alert alert-danger">
+                First name must be between 2 and 20 characters
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <div class="input-group margin-bottom-sm">
+                <span class="input-group-addon"><i class="fa fa-users fa-fw"></i></span>
+                <input type="text" name="lastName" [(ngModel)]="lastName" #lastNameControl="ngModel" class="form-control" placeholder="Last Name" pattern="[A-Za-z ,.'-]+" required minlength="2" maxlength="20">
+            </div>
+            <div [hidden]="lastNameControl.valid || lastNameControl.pristine" class="alert alert-danger">
+                Last name must be between 2 and 20 characters
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <div class="input-group margin-bottom-sm">
+                <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+                <input type="email" name="email" required [(ngModel)]="email" #emailControl="ngModel" class="form-control" placeholder="Email address" pattern="[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}">
+            </div>
+            <div [hidden]="emailControl.valid || emailControl.pristine" class="alert alert-danger">
+                Not a valid email address
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <div class="input-group margin-bottom-sm">
+                <span class="input-group-addon"><i class="fa fa-phone fa-fw"></i></span>
+                <input type="tel" name="phone" [(ngModel)]="phone" #phoneControl="ngModel" class="form-control" placeholder="(###) ###-####" pattern='[\(]\d{3}[\)][\s]\d{3}[\-]\d{4}' required>
+            </div>
+            <div [hidden]="phoneControl.valid || phoneControl.pristine" class="alert alert-danger">
+                Phone is not in the required format (###) ###-####
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <div class="input-group margin-bottom-sm">
+                <span class="input-group-addon"><i class="fa fa-calendar fa-fw"></i></span>
+                <input type="date" name="dob" [(ngModel)]="dob" #dobControl="ngModel" class="form-control" placeholder="MM/DD/YYYY">
+            </div>
+            <div [hidden]="dobControl.valid" class="alert alert-danger">
+                Date of birth is invalid
+            </div>
+        </div>
+        <div style="height:10px;"></div>
+        <button type="submit" class="btn btn-success" [disabled]="userForm.pristine || !userForm.form.valid"><i class="fa fa-check"></i> Save</button>
+        <button type="submit" class="btn btn-success" [disabled]="userForm.pristine" (click)="cancel()"><i class="fa fa-check"></i> Cancel</button>
+        <div class="hidden-md-up" style="height:20px;"></div><!--Only show when user and address forms are stacked vertically-->
+    </form>
+</div>

@@ -1,0 +1,10 @@
+<i class="affix fa hidden-xs hidden-sm" (click)='toggleNav()' [class.fa-chevron-left]='showNav' [class.fa-chevron-right]='!showNav'></i><br/>
+<div class='row'>
+    <!--Hide sidebar nav when screen size gets small-->
+    <div *ngIf='showNav' class='col-md-2 hidden-xs hidden-sm'>
+        <help-nav></help-nav>
+    </div>
+    <div class='col-xs-12' [class.col-md-10]='showNav'>
+        <router-outlet></router-outlet>
+    </div>
+</div>

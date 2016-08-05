@@ -1,0 +1,12 @@
+<nav class="affix animated slideInLeft">
+    <ul class="nav nav-pills nav-stacked">
+        <li [class.active]="currentPage('/help') || currentPage('/help?id=gettingStarted')"><a [routerLink]="['', {}]" [queryParams]="{id:'gettingStarted'}">Getting Started</a></li>
+        <li [class.active]="currentPage('/help?id=clientLibraries')"><a [routerLink]="['', {}]" [queryParams]="{id:'clientLibraries'}">Client Libraries</a></li>
+        <li [class.active]="currentPage('/help?id=serverLibraries')"><a [routerLink]="['', {}]" [queryParams]="{id:'serverLibraries'}">Server Libraries</a></li>
+        <li [class.active]="currentPage('/help?id=gulpCommands')"><a [routerLink]="['', {}]" [queryParams]="{id:'gulpCommands'}">Gulp Commands</a></li>
+        <li [class.active]="currentPage('/help?id=npmCommands')"><a [routerLink]="['', {}]" [queryParams]="{id:'npmCommands'}">NPM Commands</a></li>
+        <li [class.active]="currentPage('/help?id=karmaCommands')"><a [routerLink]="['', {}]" [queryParams]="{id:'karmaCommands'}">Karma Commands</a></li>
+        <li [class.active]="currentPage('/help?id=vsCodeCommands')"><a [routerLink]="['', {}]" [queryParams]="{id:'vsCodeCommands'}">VS Code Commands</a></li>
+        <li [class.active]="currentPage('/help?id=gitBranching')"><a [routerLink]="['', {}]" [queryParams]="{id:'gitBranching'}">Git Branching</a></li>
+    </ul>
+</nav>

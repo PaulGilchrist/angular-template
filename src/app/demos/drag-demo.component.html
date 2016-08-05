@@ -1,0 +1,12 @@
+<div>
+    <div class='wrapper row'>
+        <div id='list1' class='dragContainer col-md-5' [dragula]='"dragContainer"' [dragulaModel]='list1'>
+            <div *ngFor='let item of list1' [id]='item.id' [innerHtml]='item.text' class='well'></div>
+        </div>
+        <div id='list2' class='dragContainer col-md-5 col-md-offset-2' [dragula]='"dragContainer"' [dragulaModel]='list2'>
+            <div *ngFor='let item of list2' [id]='item.id' [innerHtml]='item.text' class='well'></div>
+        </div>
+    </div>
+    <br/>
+    {{list1.length}} + {{list2.length}} = {{list1.length + list2.length}}
+</div>

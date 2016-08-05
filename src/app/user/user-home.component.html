@@ -1,0 +1,14 @@
+<div class='row'>
+    <div class='col-sm-5'>
+        <user-form [user]="user"></user-form>
+    </div>
+    <div class='col-sm-5 col-sm-offset-2'>
+        <address-form [user]="user"></address-form>
+    </div>
+</div>
+<br/>
+<div class='row'>
+    <div style='padding:10px 20px;'>
+        <user-list (onSelect)="onSelect($event)"></user-list>
+    </div>
+</div>

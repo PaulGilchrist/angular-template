@@ -1,0 +1,30 @@
+.s25_1 { opacity: 0; } /* laundry room */
+.t84 { opacity: 0; } /* basement text */
+.form-label { margin-bottom: 0px; }
+.btn-group { margin-bottom: 10px; }
+.btn-group-xs { margin-bottom: 0; }
+.dimzone { opacity: 0; } /* Blue room overlay */
+.NoOptionsBoundingBox { opacity: 0; }
+.wood {
+    color: red;
+    fill: red;
+}
+.tile {
+    color: green;
+    fill: green;
+}
+.carpet {
+    color: blue;
+    fill: blue;
+}
+.table-zones {
+    font-size: 80%;
+    margin-bottom: 10px;
+}
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    /* IE11 does not support percentages */
+    #floorplan {
+        width: 744px;
+        height: 934px;
+    }
+}
