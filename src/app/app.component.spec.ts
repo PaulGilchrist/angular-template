@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import { TestBed } from '@angular/core/testing';
+import { async, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -12,20 +12,32 @@ describe('Smoke test', () => {
     });
 });
 
-describe('AppComponent with TCB', function () {
+describe('AppComponent', () => {
     beforeEach(() => {
-        TestBed.configureTestingModule({declarations: [AppComponent]});
+        TestBed.configureTestingModule({
+            declarations: [AppComponent],
+        });
+        TestBed.overrideComponent(AppComponent, {
+            set: {
+                template: '<div>Overridden template here</div>'
+                // ...
+            }
+        });
     });
-    it('should instantiate component', () => {
-        let fixture = TestBed.createComponent(AppComponent);
-        expect(fixture.componentInstance instanceof AppComponent).toBe(true, 'should create AppComponent');
-    });
-    it('should have expected <h1> text', () => {
-        let fixture = TestBed.createComponent(AppComponent);
-        fixture.detectChanges();
-        let h1 = fixture.debugElement.query(el => el.name === 'h1').nativeElement;  // it works
-        h1 = fixture.debugElement.query(By.css('h1')).nativeElement;            // preferred
-        expect(h1.innerText).toMatch(/angular 2 app/i, '<h1> should say something about "Angular 2 App"');
-    });
+    it('Should instantiate component', async(() => {
+        TestBed.compileComponents().then(() => {
+            let fixture = TestBed.createComponent(AppComponent);
+            expect(fixture.componentInstance instanceof AppComponent).toBe(true, 'should create AppComponent');
+        });
+    }));
+    it('Should have expected <div> text', async(() => {
+        TestBed.compileComponents().then(() => {
+            let fixture = TestBed.createComponent(AppComponent);
+            fixture.detectChanges();
+            let div = fixture.debugElement.query(el => el.name === 'div').nativeElement;  // it works
+            div = fixture.debugElement.query(By.css('div')).nativeElement;            // preferred
+            expect(div.innerText).toMatch(/Overridden template/i, '<div> should say something about "Overridden template"');
+        });
+    }));
 });
 

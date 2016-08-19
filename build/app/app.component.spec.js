@@ -10,21 +10,32 @@ describe('Smoke test', function () {
         expect(true).toEqual(true, 'should pass');
     });
 });
-describe('AppComponent with TCB', function () {
+describe('AppComponent', function () {
     beforeEach(function () {
-        testing_1.TestBed.configureTestingModule({ declarations: [app_component_1.AppComponent] });
+        testing_1.TestBed.configureTestingModule({
+            declarations: [app_component_1.AppComponent],
+        });
+        testing_1.TestBed.overrideComponent(app_component_1.AppComponent, {
+            set: {
+                template: '<div>Overridden template here</div>'
+            }
+        });
     });
-    it('should instantiate component', function () {
-        var fixture = testing_1.TestBed.createComponent(app_component_1.AppComponent);
-        expect(fixture.componentInstance instanceof app_component_1.AppComponent).toBe(true, 'should create AppComponent');
-    });
-    it('should have expected <h1> text', function () {
-        var fixture = testing_1.TestBed.createComponent(app_component_1.AppComponent);
-        fixture.detectChanges();
-        var h1 = fixture.debugElement.query(function (el) { return el.name === 'h1'; }).nativeElement; // it works
-        h1 = fixture.debugElement.query(platform_browser_1.By.css('h1')).nativeElement; // preferred
-        expect(h1.innerText).toMatch(/angular 2 app/i, '<h1> should say something about "Angular 2 App"');
-    });
+    it('Should instantiate component', testing_1.async(function () {
+        testing_1.TestBed.compileComponents().then(function () {
+            var fixture = testing_1.TestBed.createComponent(app_component_1.AppComponent);
+            expect(fixture.componentInstance instanceof app_component_1.AppComponent).toBe(true, 'should create AppComponent');
+        });
+    }));
+    it('Should have expected <div> text', testing_1.async(function () {
+        testing_1.TestBed.compileComponents().then(function () {
+            var fixture = testing_1.TestBed.createComponent(app_component_1.AppComponent);
+            fixture.detectChanges();
+            var div = fixture.debugElement.query(function (el) { return el.name === 'div'; }).nativeElement; // it works
+            div = fixture.debugElement.query(platform_browser_1.By.css('div')).nativeElement; // preferred
+            expect(div.innerText).toMatch(/Overridden template/i, '<div> should say something about "Overridden template"');
+        });
+    }));
 });
 
 //# sourceMappingURL=app.component.spec.js.map

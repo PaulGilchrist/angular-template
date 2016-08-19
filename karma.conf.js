@@ -1,10 +1,10 @@
 module.exports = function(config) {
 
-  var appBase   = 'build/app/'; // transpiled app JS files
+  var appBase   = 'app/'; // transpiled app JS files
   var appAssets ='/base/app/'; // component assets fetched by Angular's compiler
 
   config.set({
-    basePath: '',
+    basePath: 'build',
     frameworks: ['jasmine'],
     plugins: [
       require('karma-jasmine'),
@@ -22,39 +22,39 @@ module.exports = function(config) {
     },
     files: [
       // System.js for module loading
-      'node_modules/systemjs/dist/system.src.js',
+      'js/system.src.js',
 
       // Polyfills
-      'node_modules/core-js/client/shim.js',
+      'js/shim.min.js',
 
       // Reflect and Zone.js
-      'node_modules/reflect-metadata/Reflect.js',
-      'node_modules/zone.js/dist/zone.js',
-      'node_modules/zone.js/dist/async-test.js',
-      'node_modules/zone.js/dist/fake-async-test.js',
-      'node_modules/zone.js/dist/sync-test.js',
-      'node_modules/zone.js/dist/proxy-zone.js',
+      'js/Reflect.js',
+      'js/zone.min.js',
+      'js/async-test.js',
+      'js/fake-async-test.js',
+      'js/sync-test.js',
+      'js/proxy-zone.js',
 
       //App specific patterns
-        {pattern: 'build/js/jquery.min.js', included: true, watched: false},
-        {pattern: 'build/js/jquery-confirm.min.js', included: true, watched: false},
-        {pattern: 'build/js/bootstrap.min.js', included: true, watched: false},
-        {pattern: 'build/js/underscore-min.js', included: true, watched: false},
-        {pattern: 'build/js/toastr.min.js', included: true, watched: false},
-        {pattern: 'build/js/d3.min.js', included: true, watched: false},
-        {pattern: 'build/js/dragula.min.js', included: true, watched: false},
-        {pattern: 'build/js/pdfmake.min.js', included: true, watched: false},
-        {pattern: 'build/js/vfs_fonts.js', included: true, watched: false},
+        {pattern: 'js/jquery.min.js', included: true, watched: false},
+        {pattern: 'js/jquery-confirm.min.js', included: true, watched: false},
+        {pattern: 'js/bootstrap.min.js', included: true, watched: false},
+        {pattern: 'js/underscore-min.js', included: true, watched: false},
+        {pattern: 'js/toastr.min.js', included: true, watched: false},
+        {pattern: 'js/d3.min.js', included: true, watched: false},
+        {pattern: 'js/dragula.min.js', included: true, watched: false},
+        {pattern: 'js/pdfmake.min.js', included: true, watched: false},
+        {pattern: 'js/vfs_fonts.js', included: true, watched: false},
 
       // RxJs.
-      {pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false},
-      {pattern: 'node_modules/rxjs/**/*.js.map', included: false, watched: false},
+      {pattern: 'js/rxjs/**/*.js', included: false, watched: false},
+      {pattern: 'js/rxjs/**/*.js.map', included: false, watched: false},
 
       // Angular 2 itself and the testing library
-      {pattern: 'node_modules/@angular/**/*.js', included: false, watched: false},
-      {pattern: 'node_modules/@angular/**/*.js.map', included: false, watched: false},
+      {pattern: 'js/@angular/**/*.js', included: false, watched: false},
+      {pattern: 'js/@angular/**/*.js.map', included: false, watched: false},
 
-      {pattern: 'build/systemjs.config.js', included: false, watched: false},
+      {pattern: 'systemjs.config.js', included: false, watched: false},
       'karma-test-shim.js',
 
       // transpiled application & spec code paths loaded via module imports
