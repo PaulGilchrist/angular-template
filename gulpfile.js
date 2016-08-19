@@ -68,6 +68,8 @@ var paths = {
 gulp.task('build', function () {
     util.log('Compiling and minifying TypeScript files.  Also building source maps, declarations.');
     return merge(
+        gulp.src(paths.source + '*').pipe(gulp.dest(paths.target)),
+        gulp.src(paths.source + 'css/**/*').pipe(gulp.dest(paths.target + 'css')),
         gulp.src(paths.source + '**/*.css'),
         gulp.src(paths.source + 'app/**/*.html', { base: paths.source }),
         gulp.src(paths.source + 'app/**/*.ts', { base: paths.source })
@@ -80,6 +82,8 @@ gulp.task('build', function () {
 gulp.task('buildProd', function () {
     //Minify and mangle
     return merge(
+        gulp.src(paths.source + '*').pipe(gulp.dest(paths.target)),
+        gulp.src(paths.source + 'css/**/*').pipe(gulp.dest(paths.target + 'css')),
         gulp.src(paths.source + '**/*.css')
             .pipe(minifyCss()),
         gulp.src(paths.source + 'app/**/*.html', { base: paths.source }),
@@ -91,15 +95,13 @@ gulp.task('buildProd', function () {
 });
 
 gulp.task('clean', function () {
-    return del.sync([paths.target + '**']);
+    return del.sync([paths.target + '**', '!' + paths.target + 'node_modules/**']);
 });
 
 gulp.task('copyFiles', ['clean'], function () {
-    gulp.src(paths.source + '*').pipe(gulp.dest(paths.target));
-    gulp.src(paths.source + 'css/**/*').pipe(gulp.dest(paths.target + 'css'));
+    gulp.src(paths.source + 'img/**/*').pipe(gulp.dest(paths.target + 'img'));
     gulp.src(paths.css).pipe(gulp.dest(paths.target + 'css'));
     gulp.src(paths.fonts).pipe(gulp.dest(paths.target + 'fonts'));
-    gulp.src(paths.source + 'img/**/*').pipe(gulp.dest(paths.target + 'img'));
     gulp.src(paths.js).pipe(gulp.dest(paths.target + 'js'));
     //Packages
     for (var i = 0; i < paths.packages.length; i++) {

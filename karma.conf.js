@@ -1,70 +1,100 @@
 module.exports = function(config) {
-    config.set({
-        basePath: './wwwroot',
-        frameworks: ['jasmine'],
-        files: [
-            // paths loaded by Karma
-            {pattern: 'js/es6-shim.min.js', included: true, watched: false},
-            {pattern: 'js/zone.min.js', included: true, watched: false},
-            {pattern: 'js/Reflect.js', included: true, watched: false},
-            {pattern: 'js/system.src.js', included: true, watched: false},
-            {pattern: 'systemjs.config.js', included: true, watched: false},
-            {pattern: '../karma-test-shim.js', included: true, watched: false},
-            {pattern: 'js/jquery.min.js', included: true, watched: false},
-            {pattern: 'js/jquery-confirm.min.js', included: true, watched: false},
-            {pattern: 'js/bootstrap.min.js', included: true, watched: false},
-            {pattern: 'js/underscore-min.js', included: true, watched: false},
-            {pattern: 'js/toastr.min.js', included: true, watched: false},
-            {pattern: 'js/d3.min.js', included: true, watched: false},
-            {pattern: 'js/dragula.min.js', included: true, watched: false},
-            {pattern: 'js/pdfmake.min.js', included: true, watched: false},
-            {pattern: 'js/vfs_fonts.js', included: true, watched: false},
-            // paths loaded via module imports
-            {pattern: 'app/**/*.js', included: false, watched: true},
-            // paths to support debugging with source maps in dev tools
-            {pattern: 'app/**/*.ts', included: false, watched: false},
-            {pattern: 'app/**/*.js.map', included: false, watched: false}
-        ],
-        // list of files to exclude
-        exclude: [
-        ],
-        // proxied base paths
-        proxies: {
-            // required for component assests fetched by Angular's compiler
-            '/app/': '/base/app/'
-        },
-        // web server port
-        port: 9876,
-        // level of logging
-        // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-        logLevel: config.LOG_INFO,
-        // enable / disable colors in the output (reporters and logs)
-        colors: true,
-        // enable / disable watching file and executing tests whenever any file changes
-        autoWatch: true,
-        // start these browsers
-        // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-        //browsers: ['Chrome', 'Firefox'],
-        browsers: ['Chrome'],
 
-        // Karma plugins loaded
-        plugins: [
-            'karma-jasmine',
-            'karma-chrome-launcher',
-            'karma-firefox-launcher',
-        ],
-        // test results reporter to use
-        // possible values: 'dots', 'progress'
-        // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-        reporters: ['progress'],
-        // preprocess matching files before serving them to the browser
-        // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-        preprocessors: {
-            //'dist/**/!(*spec).js': ['coverage']
-        },
-        singleRun: true,
-        // Concurrency level
-        // how many browser should be started simultaneous
-        concurrency: Infinity
-    })
-};
+  var appBase   = 'build/app/'; // transpiled app JS files
+  var appAssets ='/base/app/'; // component assets fetched by Angular's compiler
+
+  config.set({
+    basePath: '',
+    frameworks: ['jasmine'],
+    plugins: [
+      require('karma-jasmine'),
+      require('karma-chrome-launcher'),
+      require('karma-htmlfile-reporter')
+    ],
+
+    customLaunchers: {
+      // From the CLI. Not used here but interesting
+      // chrome setup for travis CI using chromium
+      Chrome_travis_ci: {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
+      }
+    },
+    files: [
+      // System.js for module loading
+      'node_modules/systemjs/dist/system.src.js',
+
+      // Polyfills
+      'node_modules/core-js/client/shim.js',
+
+      // Reflect and Zone.js
+      'node_modules/reflect-metadata/Reflect.js',
+      'node_modules/zone.js/dist/zone.js',
+      'node_modules/zone.js/dist/async-test.js',
+      'node_modules/zone.js/dist/fake-async-test.js',
+      'node_modules/zone.js/dist/sync-test.js',
+      'node_modules/zone.js/dist/proxy-zone.js',
+
+      //App specific patterns
+        {pattern: 'build/js/jquery.min.js', included: true, watched: false},
+        {pattern: 'build/js/jquery-confirm.min.js', included: true, watched: false},
+        {pattern: 'build/js/bootstrap.min.js', included: true, watched: false},
+        {pattern: 'build/js/underscore-min.js', included: true, watched: false},
+        {pattern: 'build/js/toastr.min.js', included: true, watched: false},
+        {pattern: 'build/js/d3.min.js', included: true, watched: false},
+        {pattern: 'build/js/dragula.min.js', included: true, watched: false},
+        {pattern: 'build/js/pdfmake.min.js', included: true, watched: false},
+        {pattern: 'build/js/vfs_fonts.js', included: true, watched: false},
+
+      // RxJs.
+      {pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false},
+      {pattern: 'node_modules/rxjs/**/*.js.map', included: false, watched: false},
+
+      // Angular 2 itself and the testing library
+      {pattern: 'node_modules/@angular/**/*.js', included: false, watched: false},
+      {pattern: 'node_modules/@angular/**/*.js.map', included: false, watched: false},
+
+      {pattern: 'build/systemjs.config.js', included: false, watched: false},
+      'karma-test-shim.js',
+
+      // transpiled application & spec code paths loaded via module imports
+      {pattern: appBase + '**/*.js', included: false, watched: true},
+
+      // asset (HTML & CSS) paths loaded via Angular's component compiler
+      // (these paths need to be rewritten, see proxies section)
+      {pattern: appBase + '**/*.html', included: false, watched: true},
+      {pattern: appBase + '**/*.css', included: false, watched: true},
+
+      // paths for debugging with source maps in dev tools
+      {pattern: appBase + '**/*.ts', included: false, watched: false},
+      {pattern: appBase + '**/*.js.map', included: false, watched: false}
+    ],
+
+    // proxied base paths for loading assets
+    proxies: {
+      // required for component assets fetched by Angular's compiler
+      "/app/": appAssets
+    },
+
+    exclude: [],
+    preprocessors: {},
+    reporters: ['progress', 'html'],
+
+    // HtmlReporter configuration
+    htmlReporter: {
+      // Open this file to see results in browser
+      outputFile: '_test-output/tests.html',
+
+      // Optional
+      pageTitle: 'Unit Tests',
+      subPageTitle: __dirname
+    },
+
+    port: 9876,
+    colors: true,
+    logLevel: config.LOG_INFO,
+    autoWatch: true,
+    browsers: ['Chrome'],
+    singleRun: false
+  })
+}

@@ -1,12 +1,8 @@
-/// <reference path="../../typings/index.d.ts" />
+// JIT compile long form
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { enableProdMode }    from '@angular/core'
 
-import { bootstrap }    from '@angular/platform-browser-dynamic'
-import { AppComponent } from './app.component'
-import { appRouterProviders  } from './app.routes'
-import { provide, enableProdMode }    from '@angular/core'
-import { LocationStrategy, Location, HashLocationStrategy } from '@angular/common';
-import { disableDeprecatedForms, provideForms } from '@angular/forms';
+import { AppModule } from './app.module';
 
 enableProdMode();
-bootstrap(AppComponent, [appRouterProviders, provide(LocationStrategy, { useClass: HashLocationStrategy }), provideForms(), disableDeprecatedForms()])
-    .catch(err => console.error(err));
+platformBrowserDynamic().bootstrapModule(AppModule);

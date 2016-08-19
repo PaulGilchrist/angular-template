@@ -1,8 +1,7 @@
 "use strict";
-var testing_1 = require('@angular/core/testing');
 var filter_objects_pipe_1 = require('./filter-objects.pipe');
-testing_1.describe('FilterObjectsPipe', function () {
-    testing_1.it('Object array filtered down to a single object', function () {
+describe('FilterObjectsPipe', function () {
+    it('Object array filtered down to a single object', function () {
         var filterObjectsPipe = new filter_objects_pipe_1.FilterObjectsPipe();
         var inputObjectArray = [
             { name: 'Brent', job: 'Solutions' },
@@ -13,9 +12,9 @@ testing_1.describe('FilterObjectsPipe', function () {
             { name: 'Rick', job: 'Network' }
         ];
         var outputObjectArray = filterObjectsPipe.transform(inputObjectArray, 'Paul');
-        testing_1.expect(outputObjectArray.length).toEqual(1);
+        expect(outputObjectArray.length).toEqual(1);
     });
-    testing_1.it('Object array filtered down to 2 objects', function () {
+    it('Object array filtered down to 2 objects', function () {
         var filterObjectsPipe = new filter_objects_pipe_1.FilterObjectsPipe();
         var inputObjectArray = [
             { name: 'Brent', job: 'Business' },
@@ -26,7 +25,7 @@ testing_1.describe('FilterObjectsPipe', function () {
             { name: 'Rick', job: 'Operations' }
         ];
         var outputObjectArray = filterObjectsPipe.transform(inputObjectArray, 'Operations');
-        testing_1.expect(outputObjectArray.length).toEqual(2);
+        expect(outputObjectArray.length).toEqual(2);
     });
 });
 

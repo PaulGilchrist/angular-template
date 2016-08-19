@@ -1,53 +1,52 @@
-// Tun on full stack traces in errors to help debugging
+// /*global jasmine, __karma__, window*/
 Error.stackTraceLimit = Infinity;
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 1000;
 
-jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
+__karma__.loaded = function () {
+};
 
-// // Cancel Karma's synchronous start,
-// // we will call `__karma__.start()` later, once all the specs are loaded.
-__karma__.loaded = function() {};
+function isJsFile(path) {
+  return path.slice(-3) == '.js';
+}
+
+function isSpecFile(path) {
+  return /\.spec\.js$/.test(path);
+}
+
+function isBuiltFile(path) {
+  var builtPath = '/base/app/';
+  return isJsFile(path) && (path.substr(0, builtPath.length) == builtPath);
+}
+
+var allSpecFiles = Object.keys(window.__karma__.files)
+  .filter(isSpecFile)
+  .filter(isBuiltFile);
 
 System.config({
-    packages: {
-        'base/app': {
-            defaultExtension: 'js',
-            format: 'cjs',
-            map: Object.keys(window.__karma__.files).filter(onlyAppFiles).reduce(createPathRecords, {})
-        }
-    }
+  baseURL: '/base',
+  packageWithIndex: true // sadly, we can't use umd packages (yet?)
 });
 
-System.import('angular2/src/platform/browser/browser_adapter')
-    .then(function(browser_adapter) { browser_adapter.BrowserDomAdapter.makeCurrent(); })
-    .then(function() { return Promise.all(resolveTestFiles()); })
-    .then(function() { __karma__.start(); }, function(error) { __karma__.error(error.stack || error); });
+System.import('systemjs.config.js')
+  .then(() => Promise.all([
+      System.import('@angular/core/testing'),
+      System.import('@angular/platform-browser-dynamic/testing')
+    ]))
+  .then((providers) => {
+    var coreTesting = providers[0];
+    var browserTesting = providers[1];
+    coreTesting.TestBed.initTestEnvironment(
+            browserTesting.BrowserDynamicTestingModule,
+            browserTesting.platformBrowserDynamicTesting());
 
-function createPathRecords(pathsMapping, appPath) {
-    // creates local module name mapping to global path with karma's fingerprint in path, e.g.:
-    // './app/app.controller':
-    // '/wwwroot/app/app.controller.js?f4523daf879cfb7310ef6242682ccf10b2041b3e'
-    var pathParts = appPath.split('/');
-    var moduleName = './' + pathParts.slice(Math.max(pathParts.length - 2, 1)).join('/');
-    moduleName = moduleName.replace(/\.js$/, '');
-    pathsMapping[moduleName] = appPath + '?' + window.__karma__.files[appPath];
-    return pathsMapping;
-}
+  })
+  .then(function () {
+  // Finally, load all spec files.
+  // This will run the tests directly.
+  return Promise.all(
+    allSpecFiles.map(function (moduleName) {
+      return System.import(moduleName);
+    }));
+  })
+  .then(__karma__.start, __karma__.error);
 
-function onlyAppFiles(path) {
-    //return /\/wwwroot\/app\/(?!.*\.spec\.js$).*\.js$/.test(path);
-    return /app\/(?!.*\.spec\.js$).*\.js$/.test(path);
-}
-
-function onlySpecFiles(path) {
-    return /\.spec\.js$/.test(path);
-}
-
-function resolveTestFiles() {
-    return Object.keys(window.__karma__.files)  // All files served by Karma.
-        .filter(onlySpecFiles)
-        .map(function (moduleName) {
-            // loads all spec files via their global module names (e.g.
-            // 'wwwroot/app/app.controller.spec')
-            return System.import(moduleName);
-        });
-}

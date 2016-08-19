@@ -1,4 +1,4 @@
-﻿import { describe, expect, beforeEach, it, inject, beforeEachProviders } from '@angular/core/testing';
+﻿import { addProviders, inject } from '@angular/core/testing';
 import {SortObjectsPipe} from './sort-objects.pipe';
 
 describe('SortObjectsPipe', () => {

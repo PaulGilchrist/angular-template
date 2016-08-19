@@ -3,6 +3,19 @@
     <head>
         <base href="/">
         <title>Unit Tests</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
+        <link href="css/bootstrap.min.css" rel="stylesheet" />
+        <link href="css/font-awesome.min.css" rel="stylesheet" />
+        <link href="css/jquery-confirm.min.css" rel="stylesheet" />
+        <link href="css/toastr.min.css" rel="stylesheet" />
+        <link href="css/animate.min.css" rel="stylesheet" />
+        <link href="css/dragula.min.css" rel="stylesheet" />
+        <link href="css/app.css" rel="stylesheet" />
         <link rel="stylesheet" href="css/jasmine.css">
         <script src="js/jasmine.js"></script>
         <script src="js/jasmine-html.js"></script>
@@ -11,7 +24,7 @@
     <body>
         <!-- 1. Load libraries -->
         <!-- Polyfill(s) for older browsers -->
-        <script src="js/es6-shim.min.js"></script>
+        <script src="js/shim.min.js"></script>
         <script src="js/zone.min.js"></script>
         <script src="js/Reflect.js"></script>
         <script src="js/system.src.js"></script>
@@ -27,19 +40,46 @@
         <!-- 2. Configure SystemJS -->
         <script src="systemjs.config.js"></script>
         <script>
-            System.config({
-                packages: {
-                    app: { defaultExtension: 'js' }
-                }
-            });
-            //Load test scripts re-execute `window.onload` which triggers the Jasmine test-runner start or explain what went wrong
+            // System.config({
+            //     packages: {
+            //         app: { defaultExtension: 'js' }
+            //     }
+            // });
             Promise.all([
-                System.import('app/pipes/filter-objects.pipe.spec'),
-                System.import('app/pipes/sort-objects.pipe.spec'),
-                System.import('app/services/identity.service.spec'),
-                System.import('app/services/user.service.spec')
-            ]).then(window.onload) //wait for all imports to load then re-execute `window.onload` which triggers the Jasmine test-runner start or explain what went wrong
-             .catch(console.error.bind(console));
+                System.import('@angular/core/testing'),
+                System.import('@angular/platform-browser-dynamic/testing')
+                ]))
+            .then((providers) => {
+                var coreTesting = providers[0];
+                var browserTesting = providers[1];
+                coreTesting.TestBed.initTestEnvironment(
+                        browserTesting.BrowserDynamicTestingModule,
+                        browserTesting.platformBrowserDynamicTesting());
+
+            })
+            .then(function () {
+                // Finally, load all spec files.
+                // This will run the tests directly.
+                return Promise.all(
+                        System.import('app/app.component.spec'),
+                        System.import('app/pipes/filter-objects.pipe.spec'),
+                        System.import('app/pipes/sort-objects.pipe.spec'),
+                        System.import('app/services/identity.service.spec'),
+                        System.import('app/services/user.service.spec')
+            })
+            .then(window.onload)
+            .catch(console.error.bind(console));
+            // //Load test scripts re-execute `window.onload` which triggers the Jasmine test-runner start or explain what went wrong
+            // Promise.all([
+            //     System.import('app/app.component.spec'),
+            //     System.import('app/pipes/filter-objects.pipe.spec'),
+            //     System.import('app/pipes/sort-objects.pipe.spec'),
+            //     System.import('app/services/identity.service.spec'),
+            //     System.import('app/services/user.service.spec')
+            // ]).then(window.onload)
+            //  .catch(console.error.bind(console));
+            // System.import('systemjs.config.js')
+            // .then(() =>
         </script>
     </body>
 </html>

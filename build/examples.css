@@ -1,0 +1,80 @@
+/*
+ These styles may be used in the project later, so save them here for now so as not to load them on the client
+ */
+.background-angular {
+    background-color: #0143A3;
+    background: -webkit-linear-gradient(#0143A3,#0273D4);
+    background: linear-gradient(#0143A3,#0273D4);
+}
+background-bootstrap {
+    background-color: #6f5499;
+    background: -webkit-linear-gradient(top,#563d7c,#6f5499);
+    background: linear-gradient(#563d7c,#6f5499);
+}
+.background-title {
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(0,0,0,.1);
+    text-transform: uppercase;
+    opacity: .87;
+}
+.center{ text-align: center; }
+.code {
+    font: 16px Consolas, 'Courier New', monospace;
+    line-height: 18px;
+    color: #717171;
+}
+.code .kw { color: blue; }
+.code .mod { color: teal; }
+.code .str { color: maroon; }
+.gradient {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ccc));
+    background-image: -webkit-linear-gradient(top, #fff, #ccc);
+    background-image: -moz-linear-gradient(top, #fff, #ccc);
+    background-image: linear-gradient(to bottom, #fff, #ccc);
+}
+.img-centered {
+    position: absolute;
+    padding: 20px;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+/* Add the min and max values to the left and right of the range slider */
+input[type=range]:before { content: attr(min); padding-right: 5px; }
+input[type=range]:after { content: attr(max); padding-left: 5px; }
+/* quote has triangle at botton */
+.quote {
+    border-radius: 10px;
+    position:relative;
+    padding: 20px;
+    background-color: red;
+    color: white;
+}
+.quote:after {
+    position:absolute;
+    content: '';
+    width: 0; height: 0;
+    border: 20px solid transparent;
+    border-top-color: red;
+    bottom:-39px; left:20px;
+}
+/* thought bubble has two circles at bottom */
+.thought, .thought:before, .thought:after {
+    border-radius: 50%;
+    border: 5px solid blue;
+    background-color: white;
+    position:relative;
+}
+.thought:before, .thought:after {
+    content: '';
+    position: absolute;
+    left: 20%; bottom: -30px;
+    height: 40px; width: 40px;
+}
+.thought:after {
+    left: 12%; bottom: -50px;
+    height: 20px; width: 20px;
+}
