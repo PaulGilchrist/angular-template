@@ -140,5 +140,5 @@ gulp.task('test', ['build'], function (done) {
 });
 
 gulp.task('watch', function () {
-    gulp.watch(paths.source + 'app/**/*', ['test']);
+    gulp.watch(paths.source + '**/*', ['test']);
 });

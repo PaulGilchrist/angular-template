@@ -16,9 +16,10 @@
     "lint": "tslint ./src/app/**/*.ts -t verbose",
     "lite": "lite-server",
     "postinstall": "npm run typings install",
+    "show-test-results": "live-server --open=build\\_test-output\\tests.html --port=4000",
     "start": "gulp build && concurrently \"gulp watch\" \"lite-server\"",
-    "test": "gulp build && concurrently \"gulp watch\" \"karma start karma.conf.js\"",
-    "test-once": "gulp build && karma start karma.conf.js --single-run",
+    "test": "npm run test-once && npm run show-test-results",
+    "test-once": "karma start karma.conf.js --single-run",
     "typings": "typings"
   },
   "dependencies": {
