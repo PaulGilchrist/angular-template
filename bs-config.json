@@ -1,5 +1,7 @@
 ﻿{
 	"port": "3000",
+    "files": "./build/app/main.js",
+    "reloadDelay": 3000,
 	"server": {
 		"baseDir": "./build/"
 	}

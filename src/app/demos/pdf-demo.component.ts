@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PDF_OVERVIEW } from './../data/pdf-overview.data';
+import { ModalDemoComponent } from './modal-demo.component';
 
 declare var pdfMake: any;
 declare var _:any;
@@ -10,11 +11,17 @@ export interface DocImage {
 }
 
 @Component({
+    directives: [ModalDemoComponent],
     selector: 'pdf-demo',
     templateUrl: 'app/demos/pdf-demo.component.html'
 })
 export class PdfDemoComponent {
     overviewPdf: any = PDF_OVERVIEW; //Full docuemnt
+    _modalActive: Boolean = false;
+
+    viewModal(): void {
+        this._modalActive = true;
+    }
 
     getImages(doc: any): DocImage[] {
         var images: DocImage[] = [];

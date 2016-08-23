@@ -10,10 +10,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var pdf_overview_data_1 = require('./../data/pdf-overview.data');
+var modal_demo_component_1 = require('./modal-demo.component');
 var PdfDemoComponent = (function () {
     function PdfDemoComponent() {
         this.overviewPdf = pdf_overview_data_1.PDF_OVERVIEW; //Full docuemnt
+        this._modalActive = false;
     }
+    PdfDemoComponent.prototype.viewModal = function () {
+        this._modalActive = true;
+    };
     PdfDemoComponent.prototype.getImages = function (doc) {
         var images = [];
         if (doc.images) {
@@ -82,6 +87,7 @@ var PdfDemoComponent = (function () {
     };
     PdfDemoComponent = __decorate([
         core_1.Component({
+            directives: [modal_demo_component_1.ModalDemoComponent],
             selector: 'pdf-demo',
             templateUrl: 'app/demos/pdf-demo.component.html'
         }), 
