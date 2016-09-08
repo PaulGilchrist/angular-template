@@ -70,7 +70,6 @@ var TopNavComponent = (function () {
     };
     TopNavComponent = __decorate([
         core_1.Component({
-            directives: [router_1.ROUTER_DIRECTIVES],
             selector: 'nav-top',
             styleUrls: ['app/nav/nav-top.component.css'],
             templateUrl: 'app/nav/nav-top.component.html'

@@ -9,11 +9,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
-var router_1 = require('@angular/router');
 var identity_service_1 = require('./services/identity.service');
 var user_service_1 = require('./services/user.service');
-var nav_top_component_1 = require('./nav/nav-top.component');
 var AppComponent = (function () {
     function AppComponent() {
     }
@@ -33,9 +30,8 @@ var AppComponent = (function () {
     };
     AppComponent = __decorate([
         core_1.Component({
-            directives: [router_1.ROUTER_DIRECTIVES, nav_top_component_1.TopNavComponent],
             //Even if we nav away from the user page, we want the UserService data to remain so provide at this higher level
-            providers: [http_1.HTTP_PROVIDERS, identity_service_1.IdentityService, user_service_1.UserService],
+            providers: [identity_service_1.IdentityService, user_service_1.UserService],
             selector: 'my-app',
             templateUrl: 'app/app.component.html'
         }), 

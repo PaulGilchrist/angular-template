@@ -9,7 +9,6 @@ export interface FloorZone { name: string, type: string, layers: string[], activ
 export interface Option { level: number, name: string, standardName: string, optionName: string, standardLayers: string[], optionLayers: string[], active: boolean }
 
 @Component({
-    directives: [FloorDemoComponent],
     selector: 'floor-demo',
     styleUrls: ['app/demos/floor-demo.component.css'],
     templateUrl: 'app/demos/floor-demo.component.html'

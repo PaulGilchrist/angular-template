@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { Router, ROUTER_DIRECTIVES } from '@angular/router';
+import { Router } from '@angular/router';
 import { Location } from '@angular/common' ;
 
 declare var $: any;
 
 @Component({
-    directives: [ROUTER_DIRECTIVES],
     selector: 'help-nav',
     styleUrls: ['app/help/help-nav.component.css'],
     templateUrl: 'app/help/help-nav.component.html'

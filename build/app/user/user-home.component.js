@@ -9,9 +9,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var address_form_component_1 = require('./address-form.component');
-var user_form_component_1 = require('./user-form.component');
-var user_list_component_1 = require('./user-list.component');
 var UserHomeComponent = (function () {
     function UserHomeComponent() {
     }
@@ -22,7 +19,6 @@ var UserHomeComponent = (function () {
     };
     UserHomeComponent = __decorate([
         core_1.Component({
-            directives: [address_form_component_1.AddressFormComponent, user_form_component_1.UserFormComponent, user_list_component_1.UserListComponent],
             selector: 'user-home',
             templateUrl: 'app/user/user-home.component.html'
         }), 

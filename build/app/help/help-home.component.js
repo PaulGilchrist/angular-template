@@ -21,7 +21,7 @@ var HelpHomeComponent = (function () {
         *       due to how the default child route is part of the parent route, so we will use standard queryString
         */
         //this.sub = this._route.params.subscribe(params => {
-        this.sub = this._router.routerState.queryParams.subscribe(function (params) {
+        this.sub = this._router.routerState.root.queryParams.subscribe(function (params) {
             var id = params['id'];
             if (id) {
                 //Bring the id seleted into view

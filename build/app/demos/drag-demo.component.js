@@ -9,7 +9,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var dragula_directive_1 = require('../directives/dragula.directive');
 var dragula_service_1 = require('../services/dragula.service');
 var DragDemoComponent = (function () {
     function DragDemoComponent(dragulaService) {
@@ -95,7 +94,6 @@ var DragDemoComponent = (function () {
     };
     DragDemoComponent = __decorate([
         core_1.Component({
-            directives: [dragula_directive_1.Dragula],
             selector: 'drag-demo',
             styleUrls: ['app/demos/drag-demo.component.css'],
             viewProviders: [dragula_service_1.DragulaService],

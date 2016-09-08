@@ -1,10 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute  } from '@angular/router';
 
-import { D3GraphComponent } from '../components/d3-graph.component';
-
 @Component({
-    directives: [D3GraphComponent],
     selector: 'graph-demo',
     styleUrls: ['app/demos/graph-demo.component.css'],
     templateUrl: 'app/demos/graph-demo.component.html'

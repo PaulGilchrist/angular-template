@@ -1,5 +1,5 @@
 import { TestBed, inject } from '@angular/core/testing';
-import { HTTP_PROVIDERS } from '@angular/http';
+import { HttpModule } from '@angular/http';
 import 'rxjs/Rx';
 import { IdentityService } from './identity.service';
 import { UserService } from './user.service';
@@ -10,7 +10,13 @@ describe('UserService', () => {
     let userService: any;
     let users: User[];
     beforeEach(() => {
-        TestBed.configureTestingModule({providers: [HTTP_PROVIDERS, IdentityService, UserService]});
+        TestBed.configureTestingModule({
+            imports: [HttpModule],
+            providers: [
+                IdentityService,
+                UserService
+            ]
+        });
     });
     it('Successfully pulled correct number of users from remote API', inject([UserService], (service: any) => {
         service.getUsers().subscribe((data: User[]) => {

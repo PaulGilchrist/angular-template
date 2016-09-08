@@ -9,9 +9,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var filter_objects_pipe_1 = require('../pipes/filter-objects.pipe');
-var progress_bar_component_1 = require('../nav/progress-bar.component');
-var sort_objects_pipe_1 = require('../pipes/sort-objects.pipe');
 var user_service_1 = require('../services/user.service');
 var UserListComponent = (function () {
     function UserListComponent(_userService) {
@@ -87,8 +84,6 @@ var UserListComponent = (function () {
     ], UserListComponent.prototype, "onSelect", void 0);
     UserListComponent = __decorate([
         core_1.Component({
-            directives: [progress_bar_component_1.ProgressBarComponent],
-            pipes: [filter_objects_pipe_1.FilterObjectsPipe, sort_objects_pipe_1.SortObjectsPipe],
             selector: 'user-list',
             styleUrls: ['app/user/user-list.component.css'],
             templateUrl: 'app/user/user-list.component.html'

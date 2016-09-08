@@ -1,8 +1,5 @@
 ﻿import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 
-import { FilterObjectsPipe } from '../pipes/filter-objects.pipe';
-import { ProgressBarComponent } from '../nav/progress-bar.component';
-import { SortObjectsPipe } from '../pipes/sort-objects.pipe';
 import { User } from '../models/user.model';
 import { UserService } from '../services/user.service';
 
@@ -10,8 +7,6 @@ declare var _: any;
 declare var $: any;
 
 @Component({
-    directives: [ProgressBarComponent],
-    pipes: [FilterObjectsPipe, SortObjectsPipe],
     selector: 'user-list',
     styleUrls: ['app/user/user-list.component.css'],
     templateUrl: 'app/user/user-list.component.html'

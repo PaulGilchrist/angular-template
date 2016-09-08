@@ -10,7 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var d3_graph_component_1 = require('../components/d3-graph.component');
 var GraphDemoComponent = (function () {
     function GraphDemoComponent(_route, _router) {
         this._route = _route;
@@ -66,7 +65,6 @@ var GraphDemoComponent = (function () {
     };
     GraphDemoComponent = __decorate([
         core_1.Component({
-            directives: [d3_graph_component_1.D3GraphComponent],
             selector: 'graph-demo',
             styleUrls: ['app/demos/graph-demo.component.css'],
             templateUrl: 'app/demos/graph-demo.component.html'

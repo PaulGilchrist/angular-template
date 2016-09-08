@@ -31,7 +31,6 @@ var HelpNavComponent = (function () {
     };
     HelpNavComponent = __decorate([
         core_1.Component({
-            directives: [router_1.ROUTER_DIRECTIVES],
             selector: 'help-nav',
             styleUrls: ['app/help/help-nav.component.css'],
             templateUrl: 'app/help/help-nav.component.html'

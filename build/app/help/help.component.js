@@ -9,8 +9,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var help_nav_component_1 = require('./help-nav.component');
 var HelpComponent = (function () {
     function HelpComponent() {
         this.showNav = true;
@@ -20,7 +18,6 @@ var HelpComponent = (function () {
     };
     HelpComponent = __decorate([
         core_1.Component({
-            directives: [router_1.ROUTER_DIRECTIVES, router_1.RouterOutlet, help_nav_component_1.HelpNavComponent],
             selector: 'my-help',
             styleUrls: ['app/help/help.component.css'],
             templateUrl: 'app/help/help.component.html'

@@ -3,7 +3,9 @@ import {IdentityService} from './identity.service';
 
 describe('IdentityService', () => {
     beforeEach(() => {
-         TestBed.configureTestingModule({providers: [IdentityService]});
+        TestBed.configureTestingModule({
+             providers: [IdentityService]
+        });
     });
 
     it('Successfully decrypted token and accessed Audience ID', inject([IdentityService], (service: any) => {

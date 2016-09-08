@@ -1,18 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { HTTP_PROVIDERS }    from '@angular/http';
-import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { IdentityService } from './services/identity.service';
 import { UserService } from './services/user.service';
-import { TopNavComponent } from './nav/nav-top.component';
 
 declare var $: any;
 declare var System: any;
-
 @Component({
-    directives: [ROUTER_DIRECTIVES, TopNavComponent],
     //Even if we nav away from the user page, we want the UserService data to remain so provide at this higher level
-    providers: [HTTP_PROVIDERS, IdentityService, UserService],
+    providers: [IdentityService, UserService],
     selector: 'my-app',
     templateUrl: 'app/app.component.html'
 })

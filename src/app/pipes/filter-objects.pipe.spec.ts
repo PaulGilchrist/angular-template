@@ -1,4 +1,4 @@
-﻿import { addProviders, inject } from '@angular/core/testing';
+﻿import { inject } from '@angular/core/testing';
 import {FilterObjectsPipe} from './filter-objects.pipe';
 
 describe('FilterObjectsPipe', () => {

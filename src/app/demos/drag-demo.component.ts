@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Dragula } from '../directives/dragula.directive';
 import { DragulaService } from '../services/dragula.service';
 
 declare var $:any;
@@ -9,7 +8,6 @@ declare var _:any;
 export interface DragObject { id: number, text: string, allowMove: boolean }
 
 @Component({
-    directives: [Dragula],
     selector: 'drag-demo',
     styleUrls: ['app/demos/drag-demo.component.css'],
     viewProviders: [DragulaService],

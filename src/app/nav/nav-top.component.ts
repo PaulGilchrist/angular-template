@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ROUTER_DIRECTIVES } from '@angular/router';
+import { Router } from '@angular/router';
 import { Location } from '@angular/common' ;
 
 import { IdentityService } from '../services/identity.service';
@@ -7,7 +7,6 @@ import { IdentityService } from '../services/identity.service';
 declare var toastr:any;
 
 @Component({
-    directives: [ROUTER_DIRECTIVES],
     selector: 'nav-top',
     styleUrls: ['app/nav/nav-top.component.css'],
     templateUrl: 'app/nav/nav-top.component.html'

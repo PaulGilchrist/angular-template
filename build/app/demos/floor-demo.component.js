@@ -124,7 +124,6 @@ var FloorDemoComponent = (function () {
     };
     FloorDemoComponent = __decorate([
         core_1.Component({
-            directives: [FloorDemoComponent],
             selector: 'floor-demo',
             styleUrls: ['app/demos/floor-demo.component.css'],
             templateUrl: 'app/demos/floor-demo.component.html'
