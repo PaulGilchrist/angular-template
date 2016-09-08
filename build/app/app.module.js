@@ -11,8 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 /// <reference path="../../typings/index.d.ts" />
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
-//import { FormsModule } from '@angular/forms';
-//import { HttpModule }    from '@angular/http';
 var router_1 = require('@angular/router');
 var common_1 = require('@angular/common');
 var app_routing_1 = require('./app.routing');
@@ -38,8 +36,6 @@ var AppModule = (function () {
             ],
             imports: [
                 platform_browser_1.BrowserModule,
-                //FormsModule,
-                //HttpModule,
                 router_1.RouterModule,
                 demos_module_1.DemosModule,
                 help_module_1.HelpModule,

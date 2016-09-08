@@ -1,9 +1,7 @@
 /// <reference path="../../typings/index.d.ts" />
 import { NgModule } from '@angular/core';
-import { BrowserModule }    from '@angular/platform-browser';
-//import { FormsModule } from '@angular/forms';
-//import { HttpModule }    from '@angular/http';
-import { RouterModule }    from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import { appRouting } from './app.routing';
@@ -27,8 +25,6 @@ import { UserModule } from './user/user.module';
     ], // directives, components, and pipes owned by this NgModule
     imports: [
         BrowserModule,
-        //FormsModule,
-        //HttpModule,
         RouterModule,
         DemosModule,
         HelpModule,
