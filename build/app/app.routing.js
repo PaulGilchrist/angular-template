@@ -20,6 +20,6 @@ var appRoutes = [
     { path: 'token', component: token_component_1.TokenComponent },
     { path: 'user', component: user_home_component_1.UserHomeComponent }
 ].concat(help_routing_1.helpRoutes);
-exports.routing = router_1.RouterModule.forRoot(appRoutes);
+exports.appRouting = router_1.RouterModule.forRoot(appRoutes);
 
 //# sourceMappingURL=app.routing.js.map

@@ -7,7 +7,7 @@ import { HttpModule }    from '@angular/http';
 import { RouterModule }    from '@angular/router';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
-import { routing } from './app.routing'
+import { appRouting } from './app.routing'
 
 import { AddressFormComponent } from './user/address-form.component'
 import { AppComponent } from './app.component';
@@ -59,7 +59,7 @@ import { UserHomeComponent } from './user/user-home.component';
         BrowserModule,
         FormsModule,
         HttpModule,
-        routing
+        appRouting
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },
