@@ -23,6 +23,8 @@ var app_component_1 = require('./app.component');
 var home_component_1 = require('./home.component');
 var token_component_1 = require('./login/token.component');
 var nav_top_component_1 = require('./nav/nav-top.component');
+/* Modules to pre-load.  Not needed if lazy loading */
+var demos_module_1 = require('./demos/demos.module');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -38,6 +40,7 @@ var AppModule = (function () {
             imports: [
                 platform_browser_1.BrowserModule,
                 router_1.RouterModule,
+                demos_module_1.DemosModule,
                 app_routing_1.routing
             ],
             providers: [

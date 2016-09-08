@@ -13,6 +13,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home.component';
 import { TokenComponent } from './login/token.component';
 import { TopNavComponent } from './nav/nav-top.component';
+/* Modules to pre-load.  Not needed if lazy loading */
+import { DemosModule } from './demos/demos.module';
 
 @NgModule({
     bootstrap: [AppComponent],
@@ -25,6 +27,7 @@ import { TopNavComponent } from './nav/nav-top.component';
     imports: [
         BrowserModule,
         RouterModule,
+        DemosModule,
         routing
     ],
     providers: [
