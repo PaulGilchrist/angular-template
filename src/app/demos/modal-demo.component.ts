@@ -6,21 +6,11 @@ import { Component, Input } from '@angular/core';
 })
 export class ModalDemoComponent {
 
-    _id: string = '';
-    _isActive: Boolean = false;
-
-    @Input()
-    set id(id: string) {
-        this._id = id;
-    }
-
-    @Input()
-    set active(active: Boolean) {
-        this._isActive = active;
-    }
+    @Input() id: string = '';
+    @Input() active: Boolean = false;
 
     close(): void {
-        this._isActive = false;
+        this.active = false;
     }
 
 }

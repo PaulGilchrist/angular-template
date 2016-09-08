@@ -1,13 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { IdentityService } from './services/identity.service';
-import { UserService } from './services/user.service';
-
 declare var $: any;
 declare var System: any;
 @Component({
-    //Even if we nav away from the user page, we want the UserService data to remain so provide at this higher level
-    providers: [IdentityService, UserService],
     selector: 'my-app',
     templateUrl: 'app/app.component.html'
 })

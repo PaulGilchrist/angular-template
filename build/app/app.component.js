@@ -9,8 +9,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var identity_service_1 = require('./services/identity.service');
-var user_service_1 = require('./services/user.service');
 var AppComponent = (function () {
     function AppComponent() {
     }
@@ -30,8 +28,6 @@ var AppComponent = (function () {
     };
     AppComponent = __decorate([
         core_1.Component({
-            //Even if we nav away from the user page, we want the UserService data to remain so provide at this higher level
-            providers: [identity_service_1.IdentityService, user_service_1.UserService],
             selector: 'my-app',
             templateUrl: 'app/app.component.html'
         }), 

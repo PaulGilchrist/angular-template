@@ -11,36 +11,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var ModalDemoComponent = (function () {
     function ModalDemoComponent() {
-        this._id = '';
-        this._isActive = false;
+        this.id = '';
+        this.active = false;
     }
-    Object.defineProperty(ModalDemoComponent.prototype, "id", {
-        set: function (id) {
-            this._id = id;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(ModalDemoComponent.prototype, "active", {
-        set: function (active) {
-            this._isActive = active;
-        },
-        enumerable: true,
-        configurable: true
-    });
     ModalDemoComponent.prototype.close = function () {
-        this._isActive = false;
+        this.active = false;
     };
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', String), 
-        __metadata('design:paramtypes', [String])
-    ], ModalDemoComponent.prototype, "id", null);
+        __metadata('design:type', String)
+    ], ModalDemoComponent.prototype, "id", void 0);
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', Boolean), 
-        __metadata('design:paramtypes', [Boolean])
-    ], ModalDemoComponent.prototype, "active", null);
+        __metadata('design:type', Boolean)
+    ], ModalDemoComponent.prototype, "active", void 0);
     ModalDemoComponent = __decorate([
         core_1.Component({
             selector: 'modal-demo',
