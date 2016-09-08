@@ -10,6 +10,7 @@ import { FloorDemoComponent } from './floor-demo.component';
 import { GraphDemoComponent } from './graph-demo.component';
 import { ModalDemoComponent } from './modal-demo.component';
 import { PdfDemoComponent } from './pdf-demo.component';
+import { routing } from './demos.routing';
 
 @NgModule({
     declarations: [
@@ -24,7 +25,8 @@ import { PdfDemoComponent } from './pdf-demo.component';
     imports: [
         CommonModule,
         FormsModule,
-        RouterModule
+        RouterModule,
+        routing
     ],
 })
 export class DemosModule {}

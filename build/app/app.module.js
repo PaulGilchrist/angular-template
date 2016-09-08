@@ -9,25 +9,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 /// <reference path="../../typings/index.d.ts" />
+//Angular modules and components
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var router_1 = require('@angular/router');
 var common_1 = require('@angular/common');
+/* App Routing */
 var app_routing_1 = require('./app.routing');
+/* App Services */
 var identity_service_1 = require('./services/identity.service');
+/* App Root */
 var app_component_1 = require('./app.component');
 var home_component_1 = require('./home.component');
 var token_component_1 = require('./login/token.component');
 var nav_top_component_1 = require('./nav/nav-top.component');
-//App modules
-var demos_module_1 = require('./demos/demos.module');
-var help_module_1 = require('./help/help.module');
-var user_module_1 = require('./user/user.module');
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
+            bootstrap: [app_component_1.AppComponent],
             declarations: [
                 app_component_1.AppComponent,
                 home_component_1.HomeComponent,
@@ -37,16 +38,12 @@ var AppModule = (function () {
             imports: [
                 platform_browser_1.BrowserModule,
                 router_1.RouterModule,
-                demos_module_1.DemosModule,
-                help_module_1.HelpModule,
-                user_module_1.UserModule,
-                app_routing_1.appRouting
+                app_routing_1.routing
             ],
             providers: [
                 { provide: common_1.LocationStrategy, useClass: common_1.HashLocationStrategy },
                 identity_service_1.IdentityService
-            ],
-            bootstrap: [app_component_1.AppComponent],
+            ]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

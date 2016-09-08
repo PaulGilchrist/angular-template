@@ -12,9 +12,11 @@ var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var router_1 = require('@angular/router');
 var common_2 = require('@angular/common');
+/* Module Declarations */
 var help_component_1 = require('./help.component');
 var help_home_component_1 = require('./help-home.component');
 var help_nav_component_1 = require('./help-nav.component');
+var help_routing_1 = require('./help.routing');
 var HelpModule = (function () {
     function HelpModule() {
     }
@@ -27,7 +29,8 @@ var HelpModule = (function () {
             ],
             imports: [
                 common_1.CommonModule,
-                router_1.RouterModule
+                router_1.RouterModule,
+                help_routing_1.routing
             ],
             providers: [
                 { provide: common_2.LocationStrategy, useClass: common_2.HashLocationStrategy }

@@ -19,6 +19,7 @@ var floor_demo_component_1 = require('./floor-demo.component');
 var graph_demo_component_1 = require('./graph-demo.component');
 var modal_demo_component_1 = require('./modal-demo.component');
 var pdf_demo_component_1 = require('./pdf-demo.component');
+var demos_routing_1 = require('./demos.routing');
 var DemosModule = (function () {
     function DemosModule() {
     }
@@ -36,7 +37,8 @@ var DemosModule = (function () {
             imports: [
                 common_1.CommonModule,
                 forms_1.FormsModule,
-                router_1.RouterModule
+                router_1.RouterModule,
+                demos_routing_1.routing
             ],
         }), 
         __metadata('design:paramtypes', [])

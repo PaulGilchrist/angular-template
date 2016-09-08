@@ -20,6 +20,7 @@ var user_form_component_1 = require('./user-form.component');
 var user_list_component_1 = require('./user-list.component');
 var user_home_component_1 = require('./user-home.component');
 var user_service_1 = require('./../services/user.service');
+var user_routing_1 = require('./user.routing');
 var UserModule = (function () {
     function UserModule() {
     }
@@ -37,7 +38,8 @@ var UserModule = (function () {
             imports: [
                 common_1.CommonModule,
                 forms_1.FormsModule,
-                http_1.HttpModule
+                http_1.HttpModule,
+                user_routing_1.routing
             ],
             providers: [user_service_1.UserService]
         }), 

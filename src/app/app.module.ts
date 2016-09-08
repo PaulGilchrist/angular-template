@@ -1,40 +1,35 @@
 /// <reference path="../../typings/index.d.ts" />
+//Angular modules and components
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-
-import { appRouting } from './app.routing';
+/* App Routing */
+import { routing } from './app.routing';
+/* App Services */
 import { IdentityService } from './services/identity.service';
-
+/* App Root */
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home.component';
 import { TokenComponent } from './login/token.component';
 import { TopNavComponent } from './nav/nav-top.component';
-//App modules
-import { DemosModule } from './demos/demos.module';
-import { HelpModule } from './help/help.module';
-import { UserModule } from './user/user.module';
 
 @NgModule({
+    bootstrap: [AppComponent],
     declarations: [
         AppComponent,
         HomeComponent,
         TokenComponent,
         TopNavComponent
-    ], // directives, components, and pipes owned by this NgModule
+    ],
     imports: [
         BrowserModule,
         RouterModule,
-        DemosModule,
-        HelpModule,
-        UserModule,
-        appRouting
+        routing
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },
         IdentityService
-    ],
-    bootstrap: [AppComponent],
+    ]
 })
 export class AppModule {}

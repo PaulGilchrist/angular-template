@@ -11,6 +11,7 @@ import { UserFormComponent } from './user-form.component';
 import { UserListComponent } from './user-list.component';
 import { UserHomeComponent } from './user-home.component';
 import { UserService } from './../services/user.service';
+import { routing } from './user.routing';
 
 @NgModule({
     declarations: [
@@ -25,7 +26,8 @@ import { UserService } from './../services/user.service';
     imports: [
         CommonModule,
         FormsModule,
-        HttpModule
+        HttpModule,
+        routing
     ],
     providers: [UserService]
 })
