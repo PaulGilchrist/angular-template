@@ -43,7 +43,7 @@ var paths = {
         'node_modules/zone.js/dist/jasmine-patch.js',
         'node_modules/zone.js/dist/async-test.js',
         'node_modules/zone.js/dist/fake-async-test.js',
-        'node_modules/systemjs/dist/system.src.js',
+        'node_modules/systemjs/dist/system.js',
 
         'node_modules/bootstrap/dist/js/bootstrap.min.js',
         'node_modules/jasmine-core/lib/jasmine-core/jasmine.js',
@@ -93,7 +93,7 @@ gulp.task('buildProd', function () {
         gulp.src(paths.source + '**/*.css')
             .pipe(minifyCss()),
         gulp.src(paths.source + 'app/**/*.html', { base: paths.source }),
-            //.pipe(minifyHtml({ caseSensitive : true })) //Not working with Angular2
+            //.pipe(minifyHtml({ caseSensitive : true })), //Not working with Angular2
         gulp.src(paths.source + 'app/**/*.ts', { base: paths.source })
             .pipe(typescript(tsProject)) //Compile TypeScript to JavaScript
             .pipe(uglify({ mangle: true })) //Angular2 used to require "mangle: false"

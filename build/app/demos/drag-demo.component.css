@@ -1,17 +1,1 @@
-.dragContainer {
-    background-color: #f5f6f7;
-    border: 1px solid #8BC34A;
-    border-radius: 4px;
-    padding: 10px;
-}
-.dragContainer > div {
-    cursor: grab;
-    cursor: -moz-grab;
-    cursor: -webkit-grab;
-}
-.drag-error {
-    background-color: #d9534f;
-}
-.drag-success {
-    background-color: #5cb85c;
-}
+.dragContainer{background-color:#f5f6f7;border:1px solid #8BC34A;border-radius:4px;padding:10px}.dragContainer>div{cursor:grab;cursor:-moz-grab;cursor:-webkit-grab}.drag-error{background-color:#d9534f}.drag-success{background-color:#5cb85c}
