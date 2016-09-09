@@ -1,8 +1,9 @@
 ﻿import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
+    moduleId: module.id,
     selector: 'progress-bar',
-    templateUrl: 'app/nav/progress-bar.component.html'
+    templateUrl: 'progress-bar.component.html'
 })
 export class ProgressBarComponent implements OnInit {
     public now: number = 0;

@@ -1,16 +1,16 @@
 ﻿/// <binding AfterBuild='rebuild' Clean='clean' />
-var gulp = require('gulp');
-var del = require('del');
-var karma = require('karma').Server;
-var merge = require('merge2');
-var minifyHtml = require('gulp-htmlmin');
-var minifyCss = require('gulp-clean-css');
-var runSequence = require('run-sequence');
-var sourcemaps = require('gulp-sourcemaps');
-var typescript = require('gulp-typescript');
-var uglify = require('gulp-uglify');
-var util = require('gulp-util');
-var tsProject = typescript.createProject('./tsconfig.json');
+const gulp = require('gulp');
+const del = require('del');
+const karma = require('karma').Server;
+const merge = require('merge2');
+const minifyHtml = require('gulp-htmlmin');
+const minifyCss = require('gulp-clean-css');
+const runSequence = require('run-sequence');
+const sourcemaps = require('gulp-sourcemaps');
+const typescript = require('gulp-typescript');
+const uglify = require('gulp-uglify');
+const util = require('gulp-util');
+const tsProject = typescript.createProject('./tsconfig.json');
 
 var paths = {
     source: "./src/",

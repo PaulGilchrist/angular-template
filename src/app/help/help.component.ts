@@ -4,9 +4,10 @@ import { Router, RouterOutlet } from '@angular/router';
 declare var System: any;
 
 @Component({
+    moduleId: module.id,
     selector: 'my-help',
-    styleUrls: ['app/help/help.component.css'],
-    templateUrl: 'app/help/help.component.html'
+    styleUrls: ['help.component.css'],
+    templateUrl: 'help.component.html'
 })
 export class HelpComponent {
     showNav: boolean = true;

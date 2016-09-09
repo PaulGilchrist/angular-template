@@ -8,10 +8,11 @@ declare var _:any;
 export interface DragObject { id: number, text: string, allowMove: boolean }
 
 @Component({
+    moduleId: module.id,
     selector: 'drag-demo',
-    styleUrls: ['app/demos/drag-demo.component.css'],
+    styleUrls: ['drag-demo.component.css'],
     viewProviders: [DragulaService],
-    templateUrl: 'app/demos/drag-demo.component.html'
+    templateUrl: 'drag-demo.component.html'
 })
 export class DragDemoComponent {
     public many: Array<string> = ['The', 'possibilities', 'are', 'endless!'];

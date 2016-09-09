@@ -10,9 +10,10 @@ declare var toastr: any;
 declare var _: any;
 
 @Component({
+    moduleId: module.id,
     selector: 'address-form',
-    styleUrls: ['app/user/address-form.component.css'],
-    templateUrl: 'app/user/address-form.component.html'
+    styleUrls: ['address-form.component.css'],
+    templateUrl: 'address-form.component.html'
 })
 export class AddressFormComponent {
     private _address: Address = null;

@@ -5,9 +5,10 @@ import { User } from '../models/user.model';
 declare var $: any;
 
 @Component({
+    moduleId: module.id,
     selector: 'user-form',
-    styleUrls: ['app/user/user-form.component.css'],
-    templateUrl: 'app/user/user-form.component.html'
+    styleUrls: ['user-form.component.css'],
+    templateUrl: 'user-form.component.html'
 })
 export class UserFormComponent {
     public isActive: boolean = false;

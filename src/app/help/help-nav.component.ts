@@ -5,9 +5,10 @@ import { Location } from '@angular/common' ;
 declare var $: any;
 
 @Component({
+    moduleId: module.id,
     selector: 'help-nav',
-    styleUrls: ['app/help/help-nav.component.css'],
-    templateUrl: 'app/help/help-nav.component.html'
+    styleUrls: ['help-nav.component.css'],
+    templateUrl: 'help-nav.component.html'
 })
 export class HelpNavComponent {
     constructor(private _location: Location, private _router: Router) {}

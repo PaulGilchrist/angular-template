@@ -2,9 +2,10 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute  } from '@angular/router';
 
 @Component({
+    moduleId: module.id,
     selector: 'graph-demo',
-    styleUrls: ['app/demos/graph-demo.component.css'],
-    templateUrl: 'app/demos/graph-demo.component.html'
+    styleUrls: ['graph-demo.component.css'],
+    templateUrl: 'graph-demo.component.html'
 })
 export class GraphDemoComponent implements OnInit {
     //object is not limited to just x and y columns

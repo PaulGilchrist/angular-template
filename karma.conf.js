@@ -21,7 +21,7 @@ module.exports = function(config) {
     },
     files: [
       // System.js for module loading
-      'js/system.src.js',
+      'js/system.js',
       // Polyfills
       'js/shim.min.js',
       // Reflect and Zone.js

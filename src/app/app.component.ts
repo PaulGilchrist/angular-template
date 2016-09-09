@@ -3,8 +3,9 @@ import { Component, OnInit } from '@angular/core';
 declare var $: any;
 declare var System: any;
 @Component({
+    moduleId: module.id,
     selector: 'my-app',
-    templateUrl: 'app/app.component.html'
+    templateUrl: 'app.component.html'
 })
 export class AppComponent implements OnInit {
     ngOnInit(): void {

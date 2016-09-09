@@ -7,8 +7,9 @@ import { IdentityService } from './../services/identity.service';
 declare var toastr:any;
 
 @Component({
+    moduleId: module.id,
     selector: 'my-token',
-    templateUrl: 'app/login/token.component.html'
+    templateUrl: 'token.component.html'
 })
 export class TokenComponent implements OnInit {
     token: any = null;

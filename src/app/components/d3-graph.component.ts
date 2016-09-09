@@ -6,8 +6,9 @@ declare var _:any;
 
 @Component({
     encapsulation: ViewEncapsulation.None,
+    moduleId: module.id,
     selector: 'd3-graph',
-    styleUrls: ['app/components/d3-graph.component.css'],
+    styleUrls: ['d3-graph.component.css'],
     template: ''
 })
 export class D3GraphComponent implements OnInit, OnChanges {

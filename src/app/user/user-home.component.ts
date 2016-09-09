@@ -3,8 +3,9 @@ import { Component, Input, Output } from '@angular/core';
 import { User } from '../models/user.model';
 
 @Component({
+    moduleId: module.id,
     selector: 'user-home',
-    templateUrl: 'app/user/user-home.component.html'
+    templateUrl: 'user-home.component.html'
 })
 export class UserHomeComponent {
     user: User;

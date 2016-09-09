@@ -2,9 +2,10 @@
 import { Router } from '@angular/router';
 
 @Component({
+    moduleId: module.id,
     selector: 'app-home',
-    styleUrls: ['app/home.component.css'],
-    templateUrl: 'app/home.component.html'
+    styleUrls: ['home.component.css'],
+    templateUrl: 'home.component.html'
 })
 export class HomeComponent {
     constructor(private _router: Router) {}

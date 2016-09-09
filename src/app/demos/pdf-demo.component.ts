@@ -10,8 +10,9 @@ export interface DocImage {
 }
 
 @Component({
+    moduleId: module.id,
     selector: 'pdf-demo',
-    templateUrl: 'app/demos/pdf-demo.component.html'
+    templateUrl: 'pdf-demo.component.html'
 })
 export class PdfDemoComponent {
     overviewPdf: any = PDF_OVERVIEW; //Full docuemnt

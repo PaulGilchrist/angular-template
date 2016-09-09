@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule }    from '@angular/common';
 import { RouterModule }    from '@angular/router';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { CommonModule, LocationStrategy, HashLocationStrategy } from '@angular/common';
 /* Module Declarations */
 import { HelpComponent } from './help.component';
 import { HelpHomeComponent } from './help-home.component';
