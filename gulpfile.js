@@ -112,7 +112,8 @@ gulp.task('copyFiles', ['clean'], function () {
     //Packages
     for (var i = 0; i < paths.packages.length; i++) {
         //gulp.src('node_modules/' + paths.packages[i] + '/*.js').pipe(gulp.dest(paths.target + 'js/' + paths.packages[i]));
-        gulp.src('node_modules/' + paths.packages[i] + '/bundles/**/*.js').pipe(gulp.dest(paths.target + 'js/' + paths.packages[i] + '/bundles/'));
+        gulp.src('node_modules/' + paths.packages[i] + '/bundles/**/*.umd.min.js').pipe(gulp.dest(paths.target + 'js/' + paths.packages[i] + '/bundles/'));
+        gulp.src('node_modules/' + paths.packages[i] + '/bundles/**/*-testing.umd.js').pipe(gulp.dest(paths.target + 'js/' + paths.packages[i] + '/bundles/'));
         //gulp.src('node_modules/' + paths.packages[i] + '/src/**/*.js').pipe(gulp.dest(paths.target + 'js/' + paths.packages[i] + '/src/'));
         //gulp.src('node_modules/' + paths.packages[i] + '/testing/**/*.js').pipe(gulp.dest(paths.target + 'js/' + paths.packages[i] + '/testing/'));
     }
