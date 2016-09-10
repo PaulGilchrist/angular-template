@@ -1,1 +1,0 @@
-"use strict";var router_1=require("@angular/router"),help_component_1=require("./help.component"),help_home_component_1=require("./help-home.component");exports.routing=router_1.RouterModule.forChild([{path:"",component:help_component_1.HelpComponent,children:[{path:"",component:help_home_component_1.HelpHomeComponent}]}]);

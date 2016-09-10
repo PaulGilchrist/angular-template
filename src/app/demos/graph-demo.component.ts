@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute  } from '@angular/router';
 
 @Component({
-    moduleId: module.id,
+    moduleId: module.id.toString(),
     selector: 'graph-demo',
     styleUrls: ['graph-demo.component.css'],
     templateUrl: 'graph-demo.component.html'

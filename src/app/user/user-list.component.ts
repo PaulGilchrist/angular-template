@@ -7,7 +7,7 @@ declare var _: any;
 declare var $: any;
 
 @Component({
-    moduleId: module.id,
+    moduleId: module.id.toString(),
     selector: 'user-list',
     styleUrls: ['user-list.component.css'],
     templateUrl: 'user-list.component.html'

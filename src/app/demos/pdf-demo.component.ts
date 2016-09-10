@@ -10,7 +10,7 @@ export interface DocImage {
 }
 
 @Component({
-    moduleId: module.id,
+    moduleId: module.id.toString(),
     selector: 'pdf-demo',
     templateUrl: 'pdf-demo.component.html'
 })

@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 declare var $: any;
 
 @Component({
-    moduleId: module.id,
+    moduleId: module.id.toString(),
     selector: 'help-home',
     templateUrl: 'help-home.component.html'
 })

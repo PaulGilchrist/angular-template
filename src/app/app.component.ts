@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 declare var $: any;
 declare var System: any;
 @Component({
-    moduleId: module.id,
+    moduleId: module.id.toString(),
     selector: 'my-app',
     templateUrl: 'app.component.html'
 })

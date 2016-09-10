@@ -9,7 +9,7 @@ export interface FloorZone { name: string, type: string, layers: string[], activ
 export interface Option { level: number, name: string, standardName: string, optionName: string, standardLayers: string[], optionLayers: string[], active: boolean }
 
 @Component({
-    moduleId: module.id,
+    moduleId: module.id.toString(),
     selector: 'floor-demo',
     styleUrls: ['floor-demo.component.css'],
     templateUrl: 'floor-demo.component.html'

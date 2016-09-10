@@ -4,7 +4,7 @@ import { Router, RouterOutlet } from '@angular/router';
 declare var System: any;
 
 @Component({
-    moduleId: module.id,
+    moduleId: module.id.toString(),
     selector: 'my-help',
     styleUrls: ['help.component.css'],
     templateUrl: 'help.component.html'

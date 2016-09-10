@@ -3,7 +3,7 @@ import { Component, Input, Output } from '@angular/core';
 import { User } from '../models/user.model';
 
 @Component({
-    moduleId: module.id,
+    moduleId: module.id.toString(),
     selector: 'user-home',
     templateUrl: 'user-home.component.html'
 })

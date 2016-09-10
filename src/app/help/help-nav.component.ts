@@ -5,7 +5,7 @@ import { Location } from '@angular/common' ;
 declare var $: any;
 
 @Component({
-    moduleId: module.id,
+    moduleId: module.id.toString(),
     selector: 'help-nav',
     styleUrls: ['help-nav.component.css'],
     templateUrl: 'help-nav.component.html'

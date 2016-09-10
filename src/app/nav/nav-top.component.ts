@@ -7,7 +7,7 @@ import { IdentityService } from '../services/identity.service';
 declare var toastr:any;
 
 @Component({
-    moduleId: module.id,
+    moduleId: module.id.toString(),
     selector: 'nav-top',
     styleUrls: ['nav-top.component.css'],
     templateUrl: 'nav-top.component.html'

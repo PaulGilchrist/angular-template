@@ -5,7 +5,7 @@ import { User } from '../models/user.model';
 declare var $: any;
 
 @Component({
-    moduleId: module.id,
+    moduleId: module.id.toString(),
     selector: 'user-form',
     styleUrls: ['user-form.component.css'],
     templateUrl: 'user-form.component.html'

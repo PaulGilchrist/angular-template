@@ -10,7 +10,7 @@ declare var toastr: any;
 declare var _: any;
 
 @Component({
-    moduleId: module.id,
+    moduleId: module.id.toString(),
     selector: 'address-form',
     styleUrls: ['address-form.component.css'],
     templateUrl: 'address-form.component.html'

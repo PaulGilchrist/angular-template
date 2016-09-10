@@ -8,7 +8,7 @@ declare var _:any;
 export interface DragObject { id: number, text: string, allowMove: boolean }
 
 @Component({
-    moduleId: module.id,
+    moduleId: module.id.toString(),
     selector: 'drag-demo',
     styleUrls: ['drag-demo.component.css'],
     viewProviders: [DragulaService],
