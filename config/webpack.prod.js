@@ -26,9 +26,19 @@ module.exports = webpackMerge(commonConfig, {
     new webpack.NoErrorsPlugin(),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({ // https://github.com/angular/angular/issues/10618
+      beautify: false,
+      compress: {
+        screw_ie8 : true,
+        warnings: true
+      },
       mangle: {
-        keep_fnames: true
-      }
+        keep_fnames: true,
+        screw_ie8 : true
+      },
+      output: {
+        comments: false
+      },
+      sourceMap: false
     }),
     //new ExtractTextPlugin('[name].css'),
     new ExtractTextPlugin('[name].[hash].css'),

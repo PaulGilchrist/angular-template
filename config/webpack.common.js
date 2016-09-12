@@ -5,14 +5,10 @@ var helpers = require('./helpers');
 
 module.exports = {
   entry: {
+    //Modules that are lazy loaded (require.ensure) will automatically be loaded into separate chunks
+    'app': './src/app/main.ts',
     'polyfills': './src/polyfills.ts',
-    'vendor': './src/vendor.ts',
-    'app': [
-        './src/app/main.ts',
-        './src/app/demos/demos.module.ts',
-        './src/app/help/help.module.ts',
-        './src/app/user/user.module.ts'
-    ]
+    'vendor': './src/vendor.ts'
   },
 
   module: {
@@ -44,7 +40,7 @@ module.exports = {
 
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
-      name: ['app', 'vendor', 'polyfills']
+      name: ['app', 'polyfills', 'vendor']
     }),
     new HtmlWebpackPlugin({
       template: 'src/index.html'

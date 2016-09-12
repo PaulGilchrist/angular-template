@@ -9,7 +9,7 @@ const routes: Routes = [
     { path: 'home', component: HomeComponent },
     {
         path: 'demos',
-        // loadChildren supports string also 'app/demos/demos.module#DemosModule'
+        // Lazy load module and pack into separate webpack chunk
         loadChildren: () => new Promise(resolve => {
             (require as any).ensure([], (require: any) => {
                 resolve(require('./demos/demos.module').DemosModule);
