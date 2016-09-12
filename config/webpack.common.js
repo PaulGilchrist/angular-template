@@ -7,15 +7,16 @@ module.exports = {
   entry: {
     //Modules that are lazy loaded (require.ensure) will automatically be loaded into separate chunks
     'app': './src/app/main.ts',
-    'polyfills': './src/polyfills.ts',
-    'vendor': './src/vendor.ts'
+    'vendor': './src/vendor.ts',
+    'polyfills': './src/polyfills.ts'
   },
 
   module: {
     loaders: [
       {
         test: /\.ts$/,
-        loaders: ['ts', 'angular2-template-loader']
+        loaders: ['ts', 'angular2-template-loader'],
+        exclude: [/\.(spec|e2e)\.ts$/]
       },
       {
         test: /\.html$/,
@@ -40,7 +41,7 @@ module.exports = {
 
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
-      name: ['app', 'polyfills', 'vendor']
+      name: ['app', 'vendor', 'polyfills']
     }),
     new HtmlWebpackPlugin({
       template: 'src/index.html'

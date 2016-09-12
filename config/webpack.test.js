@@ -1,4 +1,5 @@
 var helpers = require('./helpers');
+var webpack = require('webpack');
 
 module.exports = {
   devtool: 'inline-source-map',
@@ -33,5 +34,16 @@ module.exports = {
         loader: 'raw'
       }
     ]
-  }
+  },
+
+    plugins: [
+        new webpack.ProvidePlugin({
+            dragula: "dragula",
+            d3: "d3",
+            $: "jquery",
+            jQuery: "jquery",
+            toastr: "toastr",
+            _: "underscore"
+        })
+    ]
 }
