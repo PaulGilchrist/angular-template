@@ -16,7 +16,7 @@ export class UserFormComponent {
     public lastName: string;
     public email: string;
     public phone: string;
-    public dob: string;  //Date of Birth
+    public dob: string;  // Date of Birth
 
     private _user: User = null;
 
@@ -33,36 +33,36 @@ export class UserFormComponent {
         }
     }
 
-    //Bubble up that the form was saved
+    // Bubble up that the form was saved
     @Output() onSave = new EventEmitter<User>();
 
     save(): void {
-        //For the purpose of this demo, we are not going to save directly back to the API, but rather to the in memory list
+        // For the purpose of this demo, we are not going to save directly back to the API, but rather to the in memory list
         this._user.firstName = this.firstName;
         this._user.lastName = this.lastName;
         this._user.email = this.email;
         this._user.phone = this.phone;
-        //We will also set the user as isDirty so it can later update the API in bulk
+        // We will also set the user as isDirty so it can later update the API in bulk
         this._user.isDirty = true;
-        //Bubble up that this user has been saved in case the parent is interested
+        // Bubble up that this user has been saved in case the parent is interested
         this.onSave.emit(this._user);
-        //Remove the original animation before adding a different one
-        var userForm = $("#user-form");
-        userForm.removeClass("animated slideInLeft");
-        //Add the new animation that will remove itself once completed
-        userForm.animateCss("bounce");
+        // Remove the original animation before adding a different one
+        let userForm = $('#user-form');
+        userForm.removeClass('animated slideInLeft');
+        // Add the new animation that will remove itself once completed
+        userForm.animateCss('bounce');
     }
 
     cancel(): void {
-        //Reset the form back to the original user details
+        // Reset the form back to the original user details
         this.firstName = this._user.firstName;
         this.lastName = this._user.lastName;
         this.email = this._user.email;
         this.phone = this._user.phone;
-        var userForm = $("#user-form");
-        //Remove the original animation before adding a different one
-        userForm.removeClass("animated slideInLeft");
-        //Add the new animation that will remove itself once completed
-        userForm.animateCss("shake");
+        let userForm = $('#user-form');
+        // Remove the original animation before adding a different one
+        userForm.removeClass('animated slideInLeft');
+        // Add the new animation that will remove itself once completed
+        userForm.animateCss('shake');
     }
 }

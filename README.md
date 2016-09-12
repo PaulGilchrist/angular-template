@@ -58,7 +58,8 @@ Once you have the application running, make sure to check out the Help page for 
 * Component Scoped CSS
 * Injectors
 * Lifecycle Hooks
-* Routers
+* Modules
+* Routers (parent and child)
 * Services
 * Custom Pipes
 * Form Validation
@@ -67,39 +68,39 @@ Once you have the application running, make sure to check out the Help page for 
 
 #### Template Features - Other
 * Animations and Transitions
+* Auto re-compile, re-test, browser refresh on change
 * Azure/Git continuous deployment (dev\master)
 * Bootstrap grids, forms, nav, panels, tables, etc.
 * Drag and Drop
+* Graphs, charts, and dashboards (using D3)
 * Gulp post build automation
+* Header scroll awareness
+* Mock data support
 * OAuth bearer tokens
-* Node package manager
+* PDF Printing
+* RegEx form validation
 * Responsive sidebar
+* SVG manipulation via CSS
+* Table caching, sorting, and search filtering
 * TypeScript
 
 #### Recently Added
-* Change detection and auto re-compile, re-test, with browser update
-* Header scroll awareness
+* Webpack module loading with minification, mangling, bundling
+* Hot reload debugging
+* Module lazy loading
+* Karma/Jasmine unit testing
 * Help page discussing all usage details
 * Form dirty checking
-* Graphs, charts, and dashboards (using D3)
-* JavaScript minification
-* Mock data support
 * Progress bar component
-* RegEx validation
-* Table caching, sorting, and search filtering
-* Unit testing - Jasmine (unit testing) & Karma (test runner)
+* Modal component
 * Catch leaving page containing changed data, prompting for bulk save
 
 #### To Do List
-* PDF Printing
-* API conversion to .Net core leveraging direct injection
 * API endpoint to receive client errors.  Abstract all logging through client service.
 * API feedback endpoint and client side UI
-* Document Git process
 * Document key files and their purpose (ex: gulpfile.js, karma.conf.js, package.json, tsconfig.json, etc.)
 * HTML minification (when supported)
-* Minify Angular2 libraries (when supported)
-* Modal component
+* Ahead of Time compilation (when supported in webpack)
 * Service interface definitions to ensure mock data interface matches production interface
 
 #### Azure Hosting Requirements

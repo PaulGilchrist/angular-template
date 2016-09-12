@@ -1,10 +1,10 @@
 ﻿<div class="panel panel-primary">
     <div class="panel-heading">
-        <div class="panel-title">Angular 2.0 RC5, TypeScript, Bootstrap, and Visual Studio 2015</div>
+        <div class="panel-title">Angular 2.0 RC6, TypeScript, Bootstrap, and Visual Studio Code</div>
     </div>
     <div class="panel-body">
         <div class="sub-section">
-            <p>This site was put together to demonstrate code examples for Angular 2.0, Typescript, and Bootstrap developed in a Visual Studio 2015 hosted IDE.  This combination of tools allows for a browser and device agnostic highly responsive application.  Open standard tools such as NPM (node package manager), Gulp (task runner), Jasmine (unit testing), Karma (test runner), and Git (version control) are also leveraged.  This project runs equally well using .Net Core or Node for hosting and supports not just Visual Studio 2015, but also Visual Studio Code, Sublime, Atom, and more.  Tools like BrowserSync detect code changes, automaticly re-compile, unit testing, and refresh all connected browsers improving development and debugging time efficiency.</p>
+            <p>This site was put together to demonstrate code examples for Angular 2.0, Typescript, and Bootstrap developed in a Visual Studio Code hosted IDE.  This combination of tools allows for a browser and device agnostic highly responsive application.  Open standard tools such as NPM (node package manager), Gulp (task runner), Jasmine (unit testing), Karma (test runner), and Git (version control) are also leveraged.  This project runs very well using Node for hosting and Visual Studio Code, but can alos work equally well using .Net or .Net core and Visual Studio 2015, Sublime, Atom, and more.  This environment detects code changes, automaticly hot swapping changes and refresh all connected browsers improving development and debugging time efficiency.</p>
             <p>Angular 2.0’s powerful client side JavaScript library is the key to this applications architecture.  Although developed as a lightweight template or starting point for new projects, examples exist throughout the code demonstrating Angular, Typescript, and Bootstrap capabilities and best practices.  Make sure to check out the “Features” section below for a list of Angular 2.0 features demonstrated in this project.</p>
             <p>As Angular, Typescript, Bootstrap, or Visual Studio changes or best practices evolve, this template will be updates to ensure it always remains a good starting point for any new project.</p>
             <br />
@@ -66,6 +66,7 @@
                             <li>Component scoped CSS</li>
                             <li>Injectors</li>
                             <li>Lifecycle hooks</li>
+                            <li>Modules</li>
                             <li>Routers (parent and child)</li>
                             <li>Services</li>
                             <li>Custom pipes</li>
@@ -81,10 +82,14 @@
                     </div>
                     <div class="panel-body">
                         <ul>
+                            <li>Webpack module loading with minification, mangling, bundling</li>
+                            <li>Hot reload debugging</li>
+                            <li>Module lazy loading</li>
+                            <li>Karma/Jasmine unit testing</li>
                             <li>Help page discussing all usage details</li>
                             <li>Form dirty checking</li>
-                            <li>JavaScript minification</li>
                             <li>Progress bar component</li>
+                            <li>Modal component</li>
                             <li>Catch leaving page containing changed data, prompting for bulk save</li>
                         </ul>
                     </div>
@@ -113,7 +118,6 @@
                             <li>SVG manipulation via CSS</li>
                             <li>Table caching, sorting, and search filtering</li>
                             <li>TypeScript</li>
-                            <li>Unit testing (using Jasmine)</li>
                         </ul>
                     </div>
                 </div>
@@ -123,14 +127,11 @@
                     </div>
                     <div class="panel-body">
                         <ul>
-                            <li>API conversion to .Net core leveraging direct injection</li>
                             <li>API endpoint to receive client errors.  Abstract all logging through client service.</li>
                             <li>API feedback endpoint and client side UI</li>
-                            <li>Document Git process</li>
                             <li>Document key files and their purpose (ex: gulpfile.js, karma.conf.js, package.json, tsconfig.json, etc.)</li>
                             <li>HTML minification (when supported)</li>
-                            <li>Minify Angular2 libraries (when supported)</li>
-                            <li>Modal component</li>
+                            <li>Ahead of Time compilation (when supported in webpack)</li>
                             <li>Service interface definitions to ensure mock data interface matches production interface</li>
                         </ul>
                     </div>

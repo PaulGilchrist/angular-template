@@ -25,7 +25,7 @@ describe('UserService', () => {
         });
     }));
     it('Successfully pulled the correct first user from remote API', inject([UserService], (service: any) => {
-        //Assumes the API has already pulled user info
+        // Assumes the API has already pulled user info
         expect(users[0].firstName).toEqual('Aaron');
     }));
     it('Successfully pulled addresses for a given user from remote API', inject([UserService], (service: any) => {

@@ -1,7 +1,7 @@
-//https://github.com/bevacqua/dragula#readme
+// https://github.com/bevacqua/dragula#readme
 import {Injectable, EventEmitter} from '@angular/core';
 
-//Must be imported in main.ts;
+// Must be imported in main.ts;
 declare var dragula: any;
 
 @Injectable()
@@ -20,15 +20,15 @@ export class DragulaService {
   private events: Array<string> = [
     'cancel',
     'cloned',
-    'drag',         //[el, source]
+    'drag',         // [el, source]
     'dragend',
     'drop',
     'out',
     'over',
     'remove',
     'shadow',
-    'dropModel',    //[el, target, source]
-    'removeModel'   //[el, source]
+    'dropModel',    // [el, target, source]
+    'removeModel'   // [el, source]
   ];
   private bags: Array<any> = [];
 
@@ -42,7 +42,7 @@ export class DragulaService {
       drake: drake
     };
     this.bags.push(bag);
-    if (drake.models) { // models to sync with (must have same structure as containers)
+    if (drake.models) { // Models to sync with (must have same structure as containers)
       this.handleModels(name, drake);
     }
     if (!bag.initEvents) {
@@ -52,7 +52,7 @@ export class DragulaService {
   }
 
   public find(name: string): any {
-    for (var i = 0; i < this.bags.length; i++) {
+    for (let i = 0; i < this.bags.length; i++) {
       if (this.bags[i].name === name) {
         return this.bags[i];
       }
@@ -109,7 +109,7 @@ export class DragulaService {
           sourceModel.splice(dragIndex, 1);
         }
         targetModel.splice(dropIndex, 0, dropElmModel);
-        target.removeChild(dropElm); // element must be removed for ngFor to apply correctly
+        target.removeChild(dropElm); // Element must be removed for ngFor to apply correctly
       }
       this.dropModel.emit([name, dropElm, target, source]);
     });
@@ -132,4 +132,3 @@ export class DragulaService {
     return Array.prototype.indexOf.call(parent.children, child);
   }
 }
-

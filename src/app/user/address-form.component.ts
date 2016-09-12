@@ -21,14 +21,14 @@ export class AddressFormComponent {
 
     public errorMessage: string;
     public isActive: boolean = false;
-    public isBusy = false
+    public isBusy = false;
 
     public name: string;
     public streetNumber: number;
     public streetName: string;
     public city: string;
     public state: string;
-    public states: State[] = STATES; //Full list of states
+    public states: State[] = STATES; // Full list of states
     public zipCode: string;
 
     @Input()
@@ -38,46 +38,46 @@ export class AddressFormComponent {
             this._user = user;
             this._userService.getUserAddresses(user)
                 .subscribe(addresses => {
-                    this._address = addresses[0],
-                        this.name = addresses[0].name,
-                        this.streetNumber = addresses[0].streetNumber,
-                        this.streetName = addresses[0].streetName,
-                        this.city = addresses[0].city,
-                        this.state = addresses[0].state,
-                        this.zipCode = addresses[0].zipCode,
-                        this.isActive = true,
-                        this.isBusy = false
-                    }, error => this.errorMessage = <any>error);
+                    this._address = addresses[0];
+                    this.name = addresses[0].name;
+                    this.streetNumber = addresses[0].streetNumber;
+                    this.streetName = addresses[0].streetName;
+                    this.city = addresses[0].city;
+                    this.state = addresses[0].state;
+                    this.zipCode = addresses[0].zipCode;
+                    this.isActive = true;
+                    this.isBusy = false;
+                }, error => this.errorMessage = <any>error);
         }
     }
 
-    //Bubble up that the form was saved
+    // Bubble up that the form was saved
     @Output() onSave = new EventEmitter<Address>();
 
     constructor(public _userService: UserService) { }
 
     onUpdateState(event: any): void {
-        //Only the value roles up to the parent select.  To get the label you have to go to the selected option
+        // Only the value roles up to the parent select.  To get the label you have to go to the selected option
         toastr.info(event.target.selectedOptions[0].text);
     }
 
     save(): void {
-        //For the purpose of this demo, we are not going to save directly back to the API, but rather to the in memory list
+        // For the purpose of this demo, we are not going to save directly back to the API, but rather to the in memory list
         this._address.name = this.name;
         this._address.streetNumber = this.streetNumber;
         this._address.streetName = this.streetName;
         this._address.city = this.city;
-        //We need to convert from full state name to state abbreviation
+        // We need to convert from full state name to state abbreviation
         this._address.state = _.where(STATES, { name: this.state });
         this._address.zipCode = this.zipCode;
-        //We will also set the address as isDirty so it can later update the API in bulk
+        // We will also set the address as isDirty so it can later update the API in bulk
         this._address.isDirty = true;
-        //Bubble up that this user has been saved in case the parent is interested
+        // Bubble up that this user has been saved in case the parent is interested
         this.onSave.emit(this._address);
     }
 
     cancel(): void {
-        //Reset the form back to the original user details
+        // Reset the form back to the original user details
         this.name = this._address.name;
         this.streetNumber = this._address.streetNumber;
         this.streetName = this._address.streetName;

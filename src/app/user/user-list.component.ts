@@ -26,10 +26,10 @@ export class UserListComponent implements OnInit, OnDestroy  {
     constructor(public _userService: UserService) { }
 
     ngOnDestroy(): void {
-        //Make sure all the users are saved to the API before leaving this component
-        //Look for angular to release a better lifecycle hook than onDestroy for this
+        // Make sure all the users are saved to the API before leaving this component
+        // Look for angular to release a better lifecycle hook than onDestroy for this
         //     Doing this earlier in the lifecycle would allow for leaving the page to be canceled
-        var usersRequiringSave = _.where(this._userService.users, { isDirty: true });
+        let usersRequiringSave = _.where(this._userService.users, { isDirty: true });
         if (usersRequiringSave.length > 0) {
             $.confirm({
                 title: 'Confirm!',
@@ -40,7 +40,7 @@ export class UserListComponent implements OnInit, OnDestroy  {
                 icon: 'fa fa-warning',
                 confirm: function() {
                     _.each(usersRequiringSave, function (user: any) {
-                        //Simulate saving the user changes
+                        // Simulate saving the user changes
                         user.isDirty = false;
                     });
                     $.alert({
@@ -70,7 +70,7 @@ export class UserListComponent implements OnInit, OnDestroy  {
 
     public changeSort(newSortType: string) {
         if (newSortType === this.sortType) {
-            //clicking the same column twice toggles the sort order
+            // clicking the same column twice toggles the sort order
             this.sortReverse = !this.sortReverse;
         } else {
             this.sortType = newSortType;
@@ -80,13 +80,13 @@ export class UserListComponent implements OnInit, OnDestroy  {
     getUsers(): void {
         this.isBusy = true;
         this._userService.getUsers()
-            //We are not going to store the users in this component but rather leave them in the service itself
+            // We are not going to store the users in this component but rather leave them in the service itself
             //     This means we are subscribing not to get the data, but to know when the service has the data
             .subscribe(users => this.isBusy = false, error => this.errorMessage = <any>error);
     }
 
     public selectUser(user: User): void {
-        //Bubble up to the parent that a new user was selected
+        // Bubble up to the parent that a new user was selected
         this.onSelect.emit(user);
     }
 

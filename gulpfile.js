@@ -11,7 +11,9 @@ var paths = {
         'node_modules/bootstrap/fonts/*',
         'node_modules/font-awesome/fonts/*'
     ],
-    js: [],
+    js: [
+        'node_modules/jquery/dist/jquery.min.js',
+    ],
 };
 
 //TypeScript compile

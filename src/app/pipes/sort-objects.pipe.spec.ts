@@ -28,6 +28,6 @@ describe('SortObjectsPipe', () => {
         let outputObjectArray: any = sortObjectsPipe.transform(inputObjectArray, 'name', true);
         expect(outputObjectArray[0].name).toEqual('Rick');
     });
-    //Add test for number sorting
-    //Add test for date sorting
+    // Add test for number sorting
+    // Add test for date sorting
 });

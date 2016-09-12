@@ -15,8 +15,8 @@
     "label-position": true,
     "label-undefined": true,
     "max-line-length": [
-      true,
-      140
+      false,
+      300
     ],
     "member-access": false,
     "member-ordering": [
@@ -25,7 +25,7 @@
       "variables-before-functions"
     ],
     "no-arg": true,
-    "no-bitwise": true,
+    "no-bitwise": false,
     "no-console": [
       true,
       "debug",
@@ -46,7 +46,7 @@
     "no-switch-case-fall-through": true,
     "no-trailing-whitespace": true,
     "no-unused-expression": true,
-    "no-unused-variable": true,
+    "no-unused-variable": false,
     "no-unreachable": true,
     "no-use-before-declare": true,
     "no-var-keyword": true,
@@ -82,7 +82,7 @@
     ],
     "variable-name": false,
     "whitespace": [
-      true,
+      false,
       "check-branch",
       "check-decl",
       "check-operator",

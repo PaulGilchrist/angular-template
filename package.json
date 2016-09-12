@@ -15,10 +15,7 @@
   "scripts": {
     "lint": "tslint ./src/app/**/*.ts -t verbose",
     "postinstall": "npm run typings install",
-    "show-test-results": "live-server --open=build\\_test-output\\tests.html --port=4000",
     "test": "karma start",
-    "test2": "npm run test-once && npm run show-test-results",
-    "test-once": "karma start karma.conf.js --single-run",
     "typings": "typings",
     "start": "gulp copyFiles && webpack-dev-server --inline --progress --content-base build/ --port 3000",
     "build": "gulp copyFiles && webpack --config config/webpack.prod.js --progress --profile --bail && cd build && npm i && cd ../"
@@ -26,7 +23,6 @@
   "dependencies": {
     "@angular/common": "2.0.0-rc.6",
     "@angular/compiler": "2.0.0-rc.6",
-    "@angular/compiler-cli": "^0.6.0",
     "@angular/core": "2.0.0-rc.6",
     "@angular/forms": "2.0.0-rc.6",
     "@angular/http": "2.0.0-rc.6",

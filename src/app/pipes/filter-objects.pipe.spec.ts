@@ -16,8 +16,8 @@ describe('FilterObjectsPipe', () => {
         expect(outputObjectArray.length).toEqual(1);
     });
     it('Object array filtered down to 2 objects', function () {
-        var filterObjectsPipe = new FilterObjectsPipe();
-        var inputObjectArray = [
+        let filterObjectsPipe = new FilterObjectsPipe();
+        let inputObjectArray = [
             { name: 'Brent', job: 'Business' },
             { name: 'Gary', job: 'Solutions' },
             { name: 'Jamie', job: 'Solutions' },
@@ -25,7 +25,7 @@ describe('FilterObjectsPipe', () => {
             { name: 'Paul', job: 'Business' },
             { name: 'Rick', job: 'Operations' }
         ];
-        var outputObjectArray = filterObjectsPipe.transform(inputObjectArray, 'Operations');
+        let outputObjectArray = filterObjectsPipe.transform(inputObjectArray, 'Operations');
         expect(outputObjectArray.length).toEqual(2);
     });
 });

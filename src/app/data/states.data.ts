@@ -1,6 +1,6 @@
 import {State} from './../models/state.model';
 
-export var STATES: State[] = [
+export let STATES: State[] = [
     { name: 'ALABAMA', abbreviation: 'AL'},
     { name: 'ALASKA', abbreviation: 'AK'},
     { name: 'ARIZONA', abbreviation: 'AZ'},

@@ -1,7 +1,7 @@
 import {Directive,Input,ElementRef,OnInit,OnChanges,SimpleChange} from '@angular/core';
 import {DragulaService} from '../services/dragula.service';
 
-//Must be imported in main.ts;
+// Must be imported in main.ts;
 declare var dragula: any;
 
 @Directive({
@@ -57,4 +57,3 @@ export class Dragula implements OnInit, OnChanges {
     }
   }
 }
-

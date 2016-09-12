@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 
-declare var System: any;
+declare let System: any;
 
 @Component({
     moduleId: module.id.toString(),

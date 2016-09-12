@@ -1,5 +1,5 @@
 /// <reference path="../../typings/index.d.ts" />
-//Angular modules and components
+// Angular modules and components
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
