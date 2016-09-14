@@ -1,7 +1,7 @@
 ﻿import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 
-import { User } from '../models/user.model';
-import { UserService } from '../services/user.service';
+import { User } from './models/user.model';
+import { UserService } from './services/user.service';
 
 declare var _: any;
 declare var $: any;

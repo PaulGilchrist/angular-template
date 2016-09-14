@@ -6,8 +6,8 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 
 
-import { CONFIG } from '../data/config.data';
-import { IdentityService } from '../services/identity.service';
+import { CONFIG } from '../../data/config.data';
+import { IdentityService } from '../../services/identity.service';
 import { Address } from '../models/address.model';
 import { User } from '../models/user.model';
 

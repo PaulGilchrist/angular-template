@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { User } from '../models/user.model';
+import { User } from './models/user.model';
 
 declare var $: any;
 

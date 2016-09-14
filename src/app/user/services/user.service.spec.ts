@@ -1,7 +1,7 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { HttpModule } from '@angular/http';
 import 'rxjs/Rx';
-import { IdentityService } from './identity.service';
+import { IdentityService } from '../../services/identity.service';
 import { UserService } from './user.service';
 import { Address } from '../models/address.model';
 import { User } from '../models/user.model';

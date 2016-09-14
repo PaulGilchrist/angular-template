@@ -10,7 +10,7 @@ import { SortObjectsPipe } from './../pipes/sort-objects.pipe';
 import { UserFormComponent } from './user-form.component';
 import { UserListComponent } from './user-list.component';
 import { UserHomeComponent } from './user-home.component';
-import { UserService } from './../services/user.service';
+import { UserService } from './services/user.service';
 import { routing } from './user.routing';
 
 @NgModule({

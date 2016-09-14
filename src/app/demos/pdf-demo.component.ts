@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PDF_OVERVIEW } from './../data/pdf-overview.data';
+import { PDF_OVERVIEW } from './data/pdf-overview.data';
 
 declare let pdfMake: any;
 declare let _:any;

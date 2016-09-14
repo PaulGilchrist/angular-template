@@ -3,9 +3,9 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
 import { Address } from '../models/address.model';
-import { ADDRESSES } from './../data/addresses.data';
+import { ADDRESSES } from '../data/addresses.data';
 import { User } from '../models/user.model';
-import { USERS } from './../data/users.data';
+import { USERS } from '../data/users.data';
 
 @Injectable()
 export class UserService {

@@ -3,9 +3,9 @@ import { CommonModule }    from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule }    from '@angular/router';
 
-import { D3GraphComponent } from './../components/d3-graph.component';
+import { D3GraphComponent } from './components/d3-graph.component';
 import { DragDemoComponent } from './drag-demo.component';
-import { Dragula } from './../directives/dragula.directive';
+import { Dragula } from './directives/dragula.directive';
 import { GraphDemoComponent } from './graph-demo.component';
 import { ModalDemoComponent } from './modal-demo.component';
 import { PdfDemoComponent } from './pdf-demo.component';

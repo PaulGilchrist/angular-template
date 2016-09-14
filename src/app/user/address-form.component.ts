@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { State } from '../models/state.model';
-import { STATES } from './../data/states.data';
-import { Address } from '../models/address.model';
-import { User } from '../models/user.model';
-import { UserService } from '../services/user.service';
+import { State } from './models/state.model';
+import { STATES } from './data/states.data';
+import { Address } from './models/address.model';
+import { User } from './models/user.model';
+import { UserService } from './services/user.service';
 
 declare var toastr: any;
 declare var _: any;

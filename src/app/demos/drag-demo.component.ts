@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DragulaService } from '../services/dragula.service';
+import { DragulaService } from './services/dragula.service';
 
 declare let $:any;
 declare let _:any;
