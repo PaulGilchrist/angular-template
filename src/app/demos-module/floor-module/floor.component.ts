@@ -10,11 +10,11 @@ export interface Option { level: number; name: string; standardName: string; opt
 
 @Component({
     moduleId: module.id.toString(),
-    selector: 'floor-demo',
-    styleUrls: ['floor-demo.component.css'],
-    templateUrl: 'floor-demo.component.html'
+    selector: 'floor',
+    styleUrls: ['floor.component.css'],
+    templateUrl: 'floor.component.html'
 })
-export class FloorDemoComponent {
+export class FloorComponent {
     dimension: boolean = false;
     level: number = 1;
     flooringZones: FloorZone[] = [

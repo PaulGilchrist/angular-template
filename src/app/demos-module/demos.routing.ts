@@ -15,7 +15,7 @@ export const routing: ModuleWithProviders = RouterModule.forChild([
         path: 'floor',
         loadChildren: () => new Promise(resolve => {
             (require as any).ensure([], (require: any) => {
-                resolve(require('./floor-demo.module').FloorDemoModule);
+                resolve(require('./floor-module/floor.module').FloorModule);
             });
         })
     },

@@ -14,7 +14,7 @@ const routes: Routes = [
         path: 'demos',
         loadChildren: () => new Promise(resolve => {
             (require as any).ensure([], (require: any) => {
-                resolve(require('./demos/demos.module').DemosModule);
+                resolve(require('./demos-module/demos.module').DemosModule);
             });
         })
     },
@@ -22,7 +22,7 @@ const routes: Routes = [
         path: 'user',
         loadChildren: () => new Promise(resolve => {
             (require as any).ensure([], (require: any) => {
-                resolve(require('./user/user.module').UserModule);
+                resolve(require('./users-module/user.module').UserModule);
             });
         })
     },
@@ -30,7 +30,7 @@ const routes: Routes = [
         path: 'help',
         loadChildren: () => new Promise(resolve => {
             (require as any).ensure([], (require: any) => {
-                resolve(require('./help/help.module').HelpModule);
+                resolve(require('./help-module/help.module').HelpModule);
             });
         })
     },

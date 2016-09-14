@@ -8,11 +8,11 @@ import '@angular/platform-browser-dynamic';
 import '@angular/router';
 
 // RxJS
-import 'rxjs';
-// import 'rxjs/Observable';
-// import 'rxjs/add/operator/catch';
-// import 'rxjs/add/operator/do';
-// import 'rxjs/add/operator/map';
+//import 'rxjs';
+import 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/map';
 
 // Other vendors for example jQuery, Lodash or Bootstrap
 // You can import js, ts, css, sass, ... (best to keep in index.html unless they support commonJS module loading)
@@ -36,6 +36,3 @@ import './../bower_components/pdfmake/build/vfs_fonts.js';
 
 import './../src/css/app.css'; //Load this last so it can override all other css files
 
-// import 'jasmine-core/lib/jasmine-core/jasmine.js';
-// import 'jasmine-core/lib/jasmine-core/jasmine-html.js';
-// import 'jasmine-core/lib/jasmine-core/boot.js';

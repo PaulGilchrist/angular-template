@@ -4,14 +4,14 @@ import { RouterModule }    from '@angular/router';
 
 // Assumes D3GraphComponent was loaded at a higher module
 // import { D3GraphComponent } from './../components/d3-graph.component';
-import { FloorDemoComponent } from './floor-demo.component';
+import { FloorComponent } from './floor.component';
 
-import { routing } from './floor-demo.routing';
+import { routing } from './floor.routing';
 
 @NgModule({
     declarations: [
         // D3GraphComponent,
-        FloorDemoComponent,
+        FloorComponent,
     ], // directives, components, and pipes owned by this NgModule
     imports: [
         CommonModule,
@@ -19,4 +19,4 @@ import { routing } from './floor-demo.routing';
         routing
     ],
 })
-export class FloorDemoModule {}
+export class FloorModule {}
