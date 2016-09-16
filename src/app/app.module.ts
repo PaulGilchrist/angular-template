@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+/* Shared Modules */
+import { SharedModule } from './shared-module/shared.module';
 /* App Routing */
 import { routing } from './app.routing';
 /* App Services */
@@ -13,7 +15,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home.component';
 import { TokenComponent } from './login/token.component';
 import { TopNavComponent } from './nav/nav-top.component';
-/* Modules to pre-load.  Not needed if lazy loading */
+import { FilterObjectsPipe } from './pipes/filter-objects.pipe';
+import { SortObjectsPipe } from './pipes/sort-objects.pipe';
 
 @NgModule({
     bootstrap: [AppComponent],
@@ -23,9 +26,13 @@ import { TopNavComponent } from './nav/nav-top.component';
         TokenComponent,
         TopNavComponent
     ],
+    exports: [
+        //SharedModule
+    ],
     imports: [
         BrowserModule,
         RouterModule,
+        SharedModule,
         routing
     ],
     providers: [

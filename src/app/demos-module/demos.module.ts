@@ -3,6 +3,8 @@ import { CommonModule }    from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule }    from '@angular/router';
 
+import { SharedModule } from '../shared-module/shared.module';
+
 import { D3GraphComponent } from './components/d3-graph.component';
 import { DragDemoComponent } from './drag-demo.component';
 import { Dragula } from './directives/dragula.directive';
@@ -10,10 +12,12 @@ import { EditorDemoComponent } from './editor-demo.component';
 import { GraphDemoComponent } from './graph-demo.component';
 import { ModalDemoComponent } from './modal-demo.component';
 import { PdfDemoComponent } from './pdf-demo.component';
-import { SortObjectsPipe } from './../pipes/sort-objects.pipe';
 import { routing } from './demos.routing';
 
 import {CKEditorModule} from '../../../node_modules/ng2-ckeditor';
+
+// Depends on the following being loaded from a parent module
+//import { SortObjectsPipe } from '../pipes/sort-objects.pipe';
 
 @NgModule({
     declarations: [
@@ -24,13 +28,14 @@ import {CKEditorModule} from '../../../node_modules/ng2-ckeditor';
         GraphDemoComponent,
         ModalDemoComponent,
         PdfDemoComponent,
-        SortObjectsPipe
+        //SortObjectsPipe
     ], // directives, components, and pipes owned by this NgModule
     imports: [
         CKEditorModule,
         CommonModule,
         FormsModule,
         RouterModule,
+        SharedModule,
         routing
     ],
 })
