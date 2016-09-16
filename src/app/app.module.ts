@@ -15,8 +15,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home.component';
 import { TokenComponent } from './login/token.component';
 import { TopNavComponent } from './nav/nav-top.component';
-import { FilterObjectsPipe } from './pipes/filter-objects.pipe';
-import { SortObjectsPipe } from './pipes/sort-objects.pipe';
 
 @NgModule({
     bootstrap: [AppComponent],
@@ -27,7 +25,7 @@ import { SortObjectsPipe } from './pipes/sort-objects.pipe';
         TopNavComponent
     ],
     exports: [
-        //SharedModule
+        SharedModule
     ],
     imports: [
         BrowserModule,
