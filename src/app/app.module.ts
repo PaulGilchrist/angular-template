@@ -29,7 +29,7 @@ import { TopNavComponent } from './nav/nav-top.component';
         routing
     ],
     providers: [
-        { provide: LocationStrategy, useClass: HashLocationStrategy },
+        // { provide: LocationStrategy, useClass: HashLocationStrategy },
         IdentityService
     ]
 })

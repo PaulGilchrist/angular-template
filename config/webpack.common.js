@@ -47,6 +47,7 @@ module.exports = {
       template: 'src/index.html'
     }),
     new webpack.ProvidePlugin({
+        //ckeditor: "ckeditor",
         dragula: "dragula",
         d3: "d3",
         $: "jquery",

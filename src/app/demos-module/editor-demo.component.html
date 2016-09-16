@@ -1,0 +1,26 @@
+<div>
+    <div class="row">
+        <div class="col-md-3 well">
+            <h4>Supported Variables</h4>
+            <div *ngFor="let item of data | sortObjects:'name'">
+                {{item.name}}
+            </div>
+        </div>
+        <div class="col-md-9">
+            <ckeditor
+                [(ngModel)]="content"
+                [config]="{
+                    height: 400,
+                    scayt_autoStartup: true,
+                    tabSpaces: 4,
+                    uiColor: '#9AB8F3'
+                }"
+                (change)="onChange($event)"
+                (ready)="onReady($event)"
+                debounce="500">
+            </ckeditor>
+            <br/>
+            <div [innerHTML]="mergedContent"></div>
+        </div>
+    </div>
+</div>
