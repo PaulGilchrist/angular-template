@@ -37,6 +37,8 @@ export class UserFormComponent {
     @Output() onSave = new EventEmitter<User>();
 
     save(): void {
+        // Track when a user is modified
+        window['appInsights'].trackEvent("UserModified");
         // For the purpose of this demo, we are not going to save directly back to the API, but rather to the in memory list
         this._user.firstName = this.firstName;
         this._user.lastName = this.lastName;
