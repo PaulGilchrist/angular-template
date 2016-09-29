@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PDF_OVERVIEW } from './data/pdf-overview.data';
 
 declare let pdfMake: any;
@@ -14,9 +14,13 @@ export interface DocImage {
     selector: 'pdf-demo',
     templateUrl: 'pdf-demo.component.html'
 })
-export class PdfDemoComponent {
+export class PdfDemoComponent implements OnInit {
     overviewPdf: any = PDF_OVERVIEW; // Full docuemnt
     _modalActive: Boolean = false;
+
+    ngOnInit() {
+        window['appInsights'].trackPageView("demos-module/pdf-demo.component");
+    }
 
     viewModal(): void {
         this._modalActive = true;

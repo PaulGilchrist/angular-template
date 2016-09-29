@@ -1,4 +1,4 @@
-﻿import { Component } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,6 +7,10 @@ import { Router } from '@angular/router';
     styleUrls: ['home.component.css'],
     templateUrl: 'home.component.html'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
     constructor(private _router: Router) {}
+
+    ngOnInit() {
+        window['appInsights'].trackPageView("home.component");
+    }
  }

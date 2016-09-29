@@ -19,6 +19,7 @@ export class EditorDemoComponent implements OnInit {
 
 
     ngOnInit() {
+        window['appInsights'].trackPageView("demos-module/editor-demo.component");
         this.content = `
             <h1><strong>WYSIWYG Data Merge Demo</strong></h1>
             <p>&nbsp;</p>

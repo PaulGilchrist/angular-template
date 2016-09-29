@@ -32,6 +32,7 @@ export class DragDemoComponent implements OnInit {
     constructor(private dragulaService: DragulaService) { }
 
     ngOnInit(): void {
+        window['appInsights'].trackPageView("demos-module/drag-demo.component");
         let _self = this;
         this.dragulaService.setOptions('dragContainer', {
             isContainer: function (el: any) { return false; }, // only elements in drake.containers will be taken into account

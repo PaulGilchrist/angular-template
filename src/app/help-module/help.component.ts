@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 
 declare let System: any;
@@ -9,10 +9,15 @@ declare let System: any;
     styleUrls: ['help.component.css'],
     templateUrl: 'help.component.html'
 })
-export class HelpComponent {
+export class HelpComponent implements OnInit {
     showNav: boolean = true;
 
     toggleNav() {
         this.showNav = !this.showNav;
     }
+
+    ngOnInit() {
+        window['appInsights'].trackPageView("help-module/help.component");
+    }
+
 }
