@@ -1,8 +1,9 @@
-﻿{
+{
+  "comment": "npm run typings -- install dt~node --save --global",
   "globalDependencies": {
-    "core-js": "registry:dt/core-js#0.0.0+20160317120654",
-    "dragula": "github:DefinitelyTyped/DefinitelyTyped/dragula/dragula.d.ts#e8bdd1be7c8a81dcf9f4cdae126690c7bf249501",
-    "jasmine": "registry:dt/jasmine#2.2.0+20160505161446",
-    "node": "registry:dt/node#4.0.0+20160509154515"
+    "core-js": "registry:dt/core-js#0.0.0+20160914114559",
+    "dragula": "registry:dt/dragula#2.1.2+20160317120654",
+    "jasmine": "registry:dt/jasmine#2.5.0+20161003201800",
+    "node": "registry:dt/node#6.0.0+20161010101523"
   }
 }
