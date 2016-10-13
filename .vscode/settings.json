@@ -8,5 +8,6 @@
         "**/app/**/*.d.ts": true,
         "**/*.js.map": true
     },
-    "javascript.validate.lint.missingSemicolon": "warning"
+    "javascript.validate.lint.missingSemicolon": "warning",
+    "typescript.check.workspaceVersion": false
 }
