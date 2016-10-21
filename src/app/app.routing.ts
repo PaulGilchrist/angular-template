@@ -12,27 +12,15 @@ const routes: Routes = [
     // Lazy Loading
     {
         path: 'demos',
-        loadChildren: () => new Promise(resolve => {
-            (require as any).ensure([], (require: any) => {
-                resolve(require('./demos-module/demos.module').DemosModule);
-            });
-        })
+        loadChildren: './demos-module/demos.module#DemosModule'
     },
     {
         path: 'user',
-        loadChildren: () => new Promise(resolve => {
-            (require as any).ensure([], (require: any) => {
-                resolve(require('./users-module/user.module').UserModule);
-            });
-        })
+        loadChildren: './users-module/user.module#UserModule'
     },
     {
         path: 'help',
-        loadChildren: () => new Promise(resolve => {
-            (require as any).ensure([], (require: any) => {
-                resolve(require('./help-module/help.module').HelpModule);
-            });
-        })
+        loadChildren: './help-module/help.module#HelpModule'
     },
 ];
 

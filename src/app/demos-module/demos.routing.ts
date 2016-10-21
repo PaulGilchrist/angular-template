@@ -15,10 +15,6 @@ export const routing: ModuleWithProviders = RouterModule.forChild([
     // Lazy Loading
     {
         path: 'floor',
-        loadChildren: () => new Promise(resolve => {
-            (require as any).ensure([], (require: any) => {
-                resolve(require('./floor-module/floor.module').FloorModule);
-            });
-        })
+        loadChildren: './floor-module/floor.module#FloorModule'
     },
 ]);
