@@ -21,10 +21,10 @@ import 'animate.css/animate.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 //import 'ckeditor/ckeditor.js'; // not working due to extra files needed
-import 'd3/d3.js';
-import 'dragula/dist/dragula.css'
-import 'dragula/dragula.js'
 //import 'font-awesome/css/font-awesome.css'; // not working
+import 'd3/d3.js';
+import 'dragula/dist/dragula.css';
+import 'dragula/dragula.js';
 import 'jquery/src/jquery.js';
 import 'jquery-confirm/css/jquery-confirm.css';
 import 'jquery-confirm/js/jquery-confirm.js';

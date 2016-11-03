@@ -5,7 +5,7 @@ var helpers = require('./helpers');
 
 module.exports = {
   entry: {
-    //Modules that are lazy loaded (require.ensure) will automatically be loaded into separate chunks
+    //Modules that are lazy loaded (loadChildren) will automatically be loaded into separate chunks
     'app': './src/app/main.ts',
     'vendor': './src/vendor.ts',
     'polyfills': './src/polyfills.ts'
@@ -15,7 +15,7 @@ module.exports = {
     loaders: [
       {
         test: /\.ts$/,
-        loaders: ['ts', 'angular2-template-loader', 'angular2-router-loader'],
+        loaders: ['awesome-typescript-loader', 'angular2-template-loader', 'angular2-router-loader'],
         exclude: [/\.(spec|e2e)\.ts$/]
       },
       {

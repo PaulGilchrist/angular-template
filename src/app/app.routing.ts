@@ -1,5 +1,5 @@
 import { ModuleWithProviders }  from '@angular/core';
-import { Routes, RouterModule, PreloadAllModules, NoPreloading } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 // Components
 import { HomeComponent } from './home.component';
 import { TokenComponent } from './login/token.component';
