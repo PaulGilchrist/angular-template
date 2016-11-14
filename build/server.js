@@ -8,6 +8,7 @@
 //Requires
 var compression = require('compression'),
     express = require('express'),
+    os = require('os'),
     path = require('path'),
     fs = require('fs');
 //Global variables
@@ -36,5 +37,5 @@ app.use(function(req, res, next) {
 });
 //Start the application
 app.listen(app.get('port'), function() {
-    console.log('App running on port', app.get('port'));
+    console.log('App running on host', os.hostname(), 'and port', app.get('port'));
 });
