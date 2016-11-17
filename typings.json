@@ -1,7 +1,0 @@
-{
-  "comment": "npm run typings -- install dt~node --save --global",
-  "globalDependencies": {
-    "core-js": "registry:dt/core-js#0.0.0+20160914114559",
-    "dragula": "registry:dt/dragula#2.1.2+20160317120654"
-  }
-}

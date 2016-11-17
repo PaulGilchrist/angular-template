@@ -9,10 +9,10 @@ Angular 2.0’s powerful client side JavaScript library is the key to this appli
 As Angular, Typescript, Bootstrap, or Visual Studio changes or best practices evolve, this template will be updates to ensure it always remains a good starting point for any new project.
 
 ### Architecture Diagram
-![Architecture Diagram](https://github.com/PaulGilchrist/Angular2VSTemplate/blob/master/src/Angular2Template/wwwroot/img/architecture-diagram.png)
+![Architecture Diagram](https://github.com/PaulGilchrist/Angular2NodeTemplate/blob/master/src/Angular2Template/wwwroot/img/architecture-diagram.png)
 
 ### Module Scope: Page Example
-![Architecture Diagram](https://github.com/PaulGilchrist/Angular2VSTemplate/blob/master/src/Angular2Template/wwwroot/img/module-scope.png)
+![Architecture Diagram](https://github.com/PaulGilchrist/Angular2NodeTemplate/blob/master/src/Angular2Template/wwwroot/img/module-scope.png)
 
 [Learn more about Angular 2.0 development](https://angular.io/)
 Learn more about [Typescript](http://www.typescriptlang.org/), [Bootstrap](http://getbootstrap.com/), or [Visual Studio 2015](https://www.visualstudio.com/en-us/visual-studio-homepage-vs.aspx)
