@@ -15,8 +15,7 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 
 // Other vendors for example jQuery, Lodash or Bootstrap
-// You can import js, ts, css, sass, ... (best to keep in index.html unless they support commonJS module loading)
-
+// You can import js, ts, css, sass
 import 'animate.css/animate.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
