@@ -1,0 +1,10 @@
+# docker build -f DockerfileNodeLinux -t angular2template:nodelinux .
+# docker run -it -p 8080:3000 angular2template:nodelinux
+# Test on http://localhost:8080
+FROM node:alpine
+RUN mkdir -p /usr/src/app
+COPY build /usr/src/app
+WORKDIR /usr/src/app
+# RUN npm install
+EXPOSE 3000
+CMD [ "node", "server.js" ]

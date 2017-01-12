@@ -1,0 +1,6 @@
+# docker build -f DockerfileIisNano -t angular2template:iisnano .
+# docker run -it -rm -p 8080:80 angular2template:iisnano
+# docker inspect <containerID>
+FROM microsoft/iis:nanoserver
+COPY build C:/inetpub/wwwroot
+RUN "del C:\inetpub\wwwroot\web.config"
