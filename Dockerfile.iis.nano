@@ -2,6 +2,7 @@
 # docker run -d -p 80:3000 paulgilchrist/angular2template:iisnano
 # docker inspect <containerID>
 # Test on http://<containerIP>:80
+# docker rm -f <containerID>
 FROM microsoft/iis:nanoserver
 COPY build C:/inetpub/wwwroot
 RUN "del C:\inetpub\wwwroot\web.config"

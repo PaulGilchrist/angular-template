@@ -4,6 +4,7 @@
 # docker run -d -p 80:3000 paulgilchrist/angular2template:nodenano
 # docker inspect <containerId>
 # Test on http://<containerIP>:3000
+# docker rm -f <containerID>
 FROM node:nano
 RUN mkdir build
 COPY build /build
