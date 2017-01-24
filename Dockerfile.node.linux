@@ -1,5 +1,5 @@
 # docker build -f Dockerfile.node.linux -t paulgilchrist/angular2template:nodelinux .
-# docker run paulgilchrist/angular2template:nodelinux
+# docker run -d -p 80:3000 paulgilchrist/angular2template:nodelinux
 # Test on http://localhost:8080
 FROM node:alpine
 RUN mkdir -p /usr/src/app
