@@ -1,5 +1,5 @@
-# docker build -f DockerfileIisNano -t angular2template:iisnano .
-# docker run -it -p 8080:80 angular2template:iisnano
+# docker build -f Dockerfile.iis.nano -t paulgilchrist/angular2template:iisnano .
+# docker run paulgilchrist/angular2template:iisnano
 # docker inspect <containerID>
 # Test on http://<containerIP>:80
 FROM microsoft/iis:nanoserver
