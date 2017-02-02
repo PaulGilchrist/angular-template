@@ -5,7 +5,7 @@
 # docker inspect <containerId>
 # Test on http://<containerIP>:3000
 # docker rm -f <containerID>
-FROM node:nano
+FROM paulgilchrist/node:nano
 RUN mkdir build
 COPY build /build
 WORKDIR /build
