@@ -12,34 +12,44 @@ module.exports = {
   },
 
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.ts$/,
-        loaders: ['awesome-typescript-loader', 'angular2-template-loader', 'angular2-router-loader'],
+        loaders: [{
+          loader: 'awesome-typescript-loader',
+          options: { configFileName: helpers.root('', 'tsconfig.json') }
+        }, 'angular2-template-loader', 'angular2-router-loader'],
         exclude: [/\.(spec|e2e)\.ts$/]
       },
       {
         test: /\.html$/,
-        loader: 'html'
+        loader: 'html-loader'
       },
       {
         test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
-        loader: 'file?name=assets/[name].[hash].[ext]'
+        loader: 'file-loader?name=assets/[name].[hash].[ext]'
       },
       {
         test: /\.css$/,
         exclude: helpers.root('src', 'app'),
-        loader: ExtractTextPlugin.extract('style', 'css?sourceMap')
+        loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader?sourceMap' })
       },
       {
         test: /\.css$/,
         include: helpers.root('src', 'app'),
-        loader: 'raw'
+        loader: 'raw-loader'
       }
     ]
   },
 
   plugins: [
+    // Workaround for angular/angular#11580
+    new webpack.ContextReplacementPlugin(
+      // The (\\|\/) piece accounts for path separators in *nix and Windows
+      /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+      helpers.root('./src'), // location of your src
+      {} // a map of your routes
+    ),
     new webpack.optimize.CommonsChunkPlugin({
       name: ['app', 'vendor', 'polyfills']
     }),
@@ -61,7 +71,7 @@ module.exports = {
         // alias: {
         //     jquery: "jquery/src/jquery"
         // },
-        extensions: ['', '.js', '.ts']
+        extensions: ['.ts', '.js']
   },
 
 };

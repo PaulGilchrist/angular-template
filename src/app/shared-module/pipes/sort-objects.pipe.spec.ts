@@ -1,5 +1,6 @@
 ﻿import { inject } from '@angular/core/testing';
 import {SortObjectsPipe} from './sort-objects.pipe';
+import {} from 'jasmine';
 
 describe('SortObjectsPipe', () => {
     it('Object array sorted in ascending order based on name property', function () {

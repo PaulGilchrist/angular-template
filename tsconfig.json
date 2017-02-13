@@ -1,24 +1,16 @@
 ﻿{
-    "angularCompilerOptions": {
-        "genDir": ".",
-        "entryModule": "app.module#AppModule"
-    },
     "compilerOptions": {
-        "declaration": false,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
+        "lib": ["es2015", "dom"],
         "module": "commonjs",
         "moduleResolution": "node",
-        "noEmitOnError": true,
         "noImplicitAny": true,
-        "removeComments": false,
         "sourceMap": true,
-        "suppressImplicitAnyIndexErrors":true,
+        "suppressImplicitAnyIndexErrors": true,
         "target": "es5"
     },
     "exclude": [
-        "node_modules",
-        "typings/main",
-        "typings/main.d.ts"
+        "node_modules"
     ]
 }

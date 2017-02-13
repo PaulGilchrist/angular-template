@@ -13,13 +13,18 @@ module.exports = webpackMerge(commonConfig, {
 
     output: {
         path: helpers.root('build'),
-        publicPath: '/',
+        publicPath: 'http://localhost:3000/',
         filename: '[name].[hash].js',
         chunkFilename: '[id].[hash].chunk.js'
     },
 
     plugins: [
         new ExtractTextPlugin('[name].[hash].css')
-    ]
+    ],
+
+    devServer: {
+        historyApiFallback: true,
+        stats: 'minimal'
+    }
 
 });

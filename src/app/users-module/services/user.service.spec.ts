@@ -1,6 +1,8 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { HttpModule } from '@angular/http';
 import 'rxjs/Rx';
+import {} from 'jasmine';
+
 import { IdentityService } from '../../services/identity.service';
 import { UserService } from './user.service';
 import { Address } from '../models/address.model';

@@ -1,5 +1,6 @@
 ﻿import { inject } from '@angular/core/testing';
 import {FilterObjectsPipe} from './filter-objects.pipe';
+import {} from 'jasmine';
 
 describe('FilterObjectsPipe', () => {
     it('Object array filtered down to a single object', function () {
