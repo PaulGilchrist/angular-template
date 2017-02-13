@@ -34,7 +34,7 @@ import { TopNavComponent } from './nav/nav-top.component';
     ],
     providers: [
         // { provide: LocationStrategy, useClass: HashLocationStrategy },
-        { provide: Window, useValue: window},
+        { provide: Window, useValue: window },
         IdentityService
     ]
 })
