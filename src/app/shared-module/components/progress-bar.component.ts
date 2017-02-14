@@ -5,7 +5,7 @@
     selector: 'progress-bar',
     templateUrl: 'progress-bar.component.html'
 })
-export class ProgressBarComponent implements OnInit {
+export class ProgressBarComponent implements OnInit, OnDestroy {
     public now: number = 0;
     public min: number = 0;
     public max: number = 1000;
