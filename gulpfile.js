@@ -1,11 +1,24 @@
 ﻿const gulp = require('gulp');
 var gutil = require('gutil');
-const del = require('del');
+var argv = require('yargs').argv;
+var del = require('del');
+var git = require('gulp-git');
 var install = require('gulp-install');
 var karma = require('karma').Server;
 var sequence = require('gulp-sequence')
 var webpack = require('webpack');
 var webpackConfig = require('./config/webpack.prod.js');
+
+//run "gulp commit -m "commit message" to test, build, and check-in to source control all in one step
+//      Any failures along the way will be reported to the console and the process will stop
+
+// run "gulp test" to discover and run all unit tests (spec.ts) files and display results
+//      This will test the app without building or source control checkin
+
+// run "gulp build" to test and build the application
+//      This will not check-in to source control source control checkin
+
+//The remaining tasks are not usually run from the command prompt and used only inside of other tasks
 
 var paths = {
     source: "./src/",
@@ -25,6 +38,32 @@ var paths = {
 gulp.task('build', function (done) {
   sequence('test', ['copyFiles', 'pack'], 'packageInstall', done);
 })
+
+gulp.task('commit', function (done) {
+    //Don't waist time building if no commit message was passed in
+    var commitMessage = argv.m;
+    if(commitMessage === undefined) {
+         gutil.log('Commit mMessage required: -m "commit message"');
+    } else {
+         sequence('build', 'git-checkin', 'git-push', done);
+        // Missing step git pull before push
+    }
+});
+
+gulp.task('git-checkin', function (done) {
+    var commitMessage = argv.m;
+    if(commitMessage === undefined) {
+         gutil.log('Commit mMessage required: -m "commit message"');
+    } else {
+         return gulp.src('.')
+            .pipe(git.add())
+            .pipe(git.commit(commitMessage));
+    }
+});
+
+gulp.task('git-push', ['checkin'], function (done) {
+    git.push('origin', 'dev', done);
+});
 
 gulp.task('clean', function () {
     return del.sync([paths.target + '**']);

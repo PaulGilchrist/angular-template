@@ -59,6 +59,7 @@
     "extract-text-webpack-plugin": "^2.0.0-beta.5",
     "file-loader": "^0.10.0",
     "gulp": "^3.9.1",
+    "gulp-git": "^2.0.0",
     "gulp-install": "^0.6.0",
     "gulp-sequence": "^0.4.6",
     "gutil": "^1.6.4",
@@ -86,6 +87,7 @@
     "typescript": "^2.1.6",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.3.0",
-    "webpack-merge": "^2.6.1"
+    "webpack-merge": "^2.6.1",
+    "yargs": "^6.6.0"
   }
 }
