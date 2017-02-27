@@ -63,7 +63,7 @@ gulp.task('git-checkin', function (done) {
     }
 });
 
-gulp.task('git-push', ['checkin'], function (done) {
+gulp.task('git-push', function (done) {
     git.push('origin', 'dev', done);
 });
 
