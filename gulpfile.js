@@ -9,6 +9,8 @@ var sequence = require('gulp-sequence')
 var webpack = require('webpack');
 var webpackConfig = require('./config/webpack.prod.js');
 
+//Add paramteter "--Docker" to build containers after build
+
 //run "gulp commit -m "commit message" to test, build, and check-in to source control all in one step
 //      Any failures along the way will be reported to the console and the process will stop
 
