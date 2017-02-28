@@ -64,10 +64,7 @@ gulp.task('git-checkin', function (done) {
 });
 
 gulp.task('git-push', function (done) {
-    git.push('origin', 'dev', function() {
-        //Also push to private repository
-        git.push('origin', 'https://paulgilchrist.visualstudio.com/_git/Angular2Template', done);
-    });
+    git.push('origin', 'dev', done);
 });
 
 gulp.task('clean', function () {
