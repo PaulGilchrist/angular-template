@@ -33,6 +33,11 @@ var docker = {
     }
 }
 
+var gitRepo = {
+    primary: 'dev',
+    secondary: 'https://paulgilchrist.visualstudio.com/_git/Angular2Template' //Set to null if there is no secondary repo
+}
+
 var paths = {
     source: "./src/",
     target: "./build/",
@@ -70,9 +75,9 @@ gulp.task('docker-build', function(done) {
     } else {
         exec('docker build -f ' + getDockerFileName() + ' -t ' + getDockerImageFullName() + ' .', function(err, stdout, stderr) {
             if (err) {
-                console.log(err);
+                gutil.log(err);
             } else {
-                console.log(stdout);
+                gutil.log(stdout);
                 done();
             }
         });
@@ -86,9 +91,9 @@ gulp.task('docker-push', function(done) {
     } else {
         exec('docker push ' + getDockerImageFullName(), function(err, stdout, stderr) {
             if (err) {
-                console.log(err);
+                gutil.log(err);
             } else {
-                console.log(stdout);
+                gutil.log(stdout);
                 done();
             }
         });
@@ -107,7 +112,25 @@ gulp.task('git-checkin', function (done) {
 });
 
 gulp.task('git-push', function (done) {
-    git.push('origin', 'dev', done);
+    git.push('origin', gitRepo.primary, function(err, stdout, stderr) {
+        if(err) {
+            gutil.log('[git-push] Error\n' + err);
+        } else {
+            gutil.log(stdout);
+            if(gitRepo.secondary === null) {
+                done();
+            } else {
+                exec('git push --repo' + gitRepo.secondary, function(err, stdout, stderr) {
+                    if (err) {
+                        gutil.log('[git-push] Error pushing to secondary repository\n' + err);
+                    } else {
+                        gutil.log(stdout);
+                        done();
+                    }
+                });
+            }
+        }
+    });
 });
 
 gulp.task('clean', function () {
@@ -141,9 +164,9 @@ gulp.task('copyFiles', function (done) {
 gulp.task('pack', function(done) {
    return webpack(webpackConfig, function(err, stats) {
        if(err || (stats.compilation.errors && stats.compilation.errors.length)) {
-            gutil.log('[webpack] Error\n' + stats.compilation.errors);
+            gutil.log('[pack] Error\n' + stats.compilation.errors);
        } else {
-            gutil.log('[webpack] Completed\n' + stats.toString({
+            gutil.log('[pack] Completed\n' + stats.toString({
                 assets: true,
                 chunks: false,
                 chunkModules: false,
