@@ -2,6 +2,7 @@
 var gutil = require('gutil');
 var argv = require('yargs').argv;
 var del = require('del');
+var exec = require('child_process').exec;
 var git = require('gulp-git');
 var install = require('gulp-install');
 var karma = require('karma').Server;
@@ -9,18 +10,28 @@ var sequence = require('gulp-sequence')
 var webpack = require('webpack');
 var webpackConfig = require('./config/webpack.prod.js');
 
-//Add paramteter "--Docker" to build containers after build
+//Add paramteter "--docker" to build Docker image as part of build or commit task
 
 //run "gulp commit -m "commit message" to test, build, and check-in to source control all in one step
 //      Any failures along the way will be reported to the console and the process will stop
 
-// run "gulp test" to discover and run all unit tests (spec.ts) files and display results
-//      This will test the app without building or source control checkin
-
 // run "gulp build" to test and build the application
 //      This will not check-in to source control source control checkin
 
+// run "gulp test" to discover and run all unit tests (spec.ts) files and display results
+//      This will test the app without building or source control checkin
+
 //The remaining tasks are not usually run from the command prompt and used only inside of other tasks
+
+var docker = {
+    build: (argv.docker !== undefined), //If --docker is passed in as a paramater, build process will also build docker image
+    repository: 'paulgilchrist', //Can be blank "" if only stored locally
+    image: {
+        name: 'angular2template', // Should not include tags.  Tags will auto-generate based on os and webserver
+        os: 'windows', // Options are "windows" or "linux"
+        webserver: 'node' // Options are "node" or "iis" if os=windows or only "node" if os=linux
+    }
+}
 
 var paths = {
     source: "./src/",
@@ -38,7 +49,7 @@ var paths = {
 };
 
 gulp.task('build', function (done) {
-  sequence('test', ['copyFiles', 'pack'], 'packageInstall', done);
+        sequence('test', ['copyFiles', 'pack'], 'packageInstall', 'docker-build', done);
 })
 
 gulp.task('commit', function (done) {
@@ -47,8 +58,40 @@ gulp.task('commit', function (done) {
     if(commitMessage === undefined) {
          gutil.log('Commit mMessage required: -m "commit message"');
     } else {
-         sequence('build', 'git-checkin', 'git-push', done);
+         sequence('build', 'git-checkin', 'git-push', 'docker-push', done);
         // Missing step git pull before push
+    }
+});
+
+gulp.task('docker-build', function(done) {
+    if(!docker.build) {
+        gutil.log('Skipping Docker build step.  use "--docker" to include this step');
+        done();
+    } else {
+        exec('docker build -f ' + getDockerFileName() + ' -t ' + getDockerImageFullName() + ' .', function(err, stdout, stderr) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(stdout);
+                done();
+            }
+        });
+    }
+});
+
+gulp.task('docker-push', function(done) {
+    if(!docker.build) {
+        gutil.log('Skipping Docker push step.  use "--docker" to include this step');
+        done();
+    } else {
+        exec('docker push ' + getDockerImageFullName(), function(err, stdout, stderr) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(stdout);
+                done();
+            }
+        });
     }
 });
 
@@ -131,3 +174,34 @@ gulp.task('test', function (done) {
         }
     });
 });
+
+function getDockerFileName() {
+    var dockerFileName = 'Dockerfile.';
+    if(docker.image.os==='linux') {
+        dockerFileName += 'node.linux';
+    } else {
+        if(docker.image.webserver==='node') {
+            dockerFileName += 'node.nano';
+        } else {
+            dockerFileName += 'iis.nano';
+        }
+    }
+    return dockerFileName;
+};
+
+function getDockerImageFullName() {
+    var dockerImageName = docker.image.name;
+    if(docker.repository !== '') {
+        dockerImageName = docker.repository + '/' + docker.image.name;
+    }
+    if(docker.image.os==='linux') {
+        dockerImageName += ':nodelinux';
+    } else {
+        if(docker.image.webserver==='node') {
+            dockerImageName += ':nodenano';
+        } else {
+            dockerImageName += ':iisnano';
+        }
+    }
+    return dockerImageName;
+};
