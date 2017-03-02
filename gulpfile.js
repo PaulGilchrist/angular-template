@@ -112,15 +112,14 @@ gulp.task('git-checkin', function (done) {
 });
 
 gulp.task('git-push', function (done) {
-    git.push('origin', gitRepo.primary, function(err, stdout, stderr) {
+    git.push('origin', gitRepo.primary, function(err) {
         if(err) {
             gutil.log('[git-push] Error\n' + err);
         } else {
-            gutil.log(stdout);
             if(gitRepo.secondary === null) {
                 done();
             } else {
-                exec('git push --repo' + gitRepo.secondary, function(err, stdout, stderr) {
+                exec('git push --repo=' + gitRepo.secondary, function(err, stdout, stderr) {
                     if (err) {
                         gutil.log('[git-push] Error pushing to secondary repository\n' + err);
                     } else {
