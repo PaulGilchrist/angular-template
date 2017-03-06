@@ -10118,12 +10118,12 @@ button.close {
   filter: alpha(opacity=20);
 }
 /*!
- * jquery-confirm v3.0.3 (http://craftpip.github.io/jquery-confirm/)
+ * jquery-confirm v3.1.0 (http://craftpip.github.io/jquery-confirm/)
  * Author: boniface pereira
  * Website: www.craftpip.com
  * Contact: hey@craftpip.com
  *
- * Copyright 2013-2016 jquery-confirm
+ * Copyright 2013-2017 jquery-confirm
  * Licensed under MIT (https://github.com/craftpip/jquery-confirm/blob/master/LICENSE)
  */
 @-webkit-keyframes jconfirm-spin {
@@ -10189,7 +10189,6 @@ body[class*=jconfirm-no-scroll-] {
   position: relative;
   outline: none;
   padding: 15px 15px 0;
-  margin: 0 auto;
   overflow: hidden;
 }
 @-webkit-keyframes type-blue {
@@ -10401,6 +10400,13 @@ body[class*=jconfirm-no-scroll-] {
   display: block;
   font-size: 22px;
   line-height: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.jconfirm .jconfirm-box div.jconfirm-title-c.jconfirm-hand {
+  cursor: move;
 }
 .jconfirm .jconfirm-box div.jconfirm-title-c .jconfirm-icon-c {
   font-size: inherit;
@@ -10416,6 +10422,10 @@ body[class*=jconfirm-no-scroll-] {
   display: none;
 }
 .jconfirm .jconfirm-box div.jconfirm-title-c .jconfirm-title {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   font-size: inherit;
   font-family: inherit;
   display: inline-block;
@@ -10572,6 +10582,7 @@ body[class*=jconfirm-no-scroll-] {
 }
 .jconfirm.jconfirm-white .jconfirm-box,
 .jconfirm.jconfirm-light .jconfirm-box {
+  margin: 0 auto;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
 }

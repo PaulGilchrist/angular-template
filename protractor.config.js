@@ -1,22 +1,33 @@
-// FIRST TIME ONLY- run:
-//   ./node_modules/.bin/webdriver-manager update
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Protractor runs on selenium
+// Even if not testing an Angular application, Protractor is easier to setup than a native Selenium server
 //
-//   Try: `npm run webdriver:update`
+// Must first install Chrome browser
+// npm install -g protractor
+// webdriver-manager update
 //
-// AND THEN EVERYTIME ...
-//   1. Compile with `tsc`
-//   2. Make sure the test server (e.g., http-server: localhost:8080) is running.
-//   3. ./node_modules/.bin/protractor protractor.config.js
+// This next section is not needed bu follows the protractor tutorial
+//    webdriver-manager start
+//    WebDriver server will be at http://localhost:4444/wd/hub and accessable remotly
+//    exports.config = {
+//        seleniumAddress: 'http://localhost:4444/wd/hub',
+//        framework: 'jasmine',
+//        specs: ['./src/**/*.e2e-spec.js' ],
+//    }
 //
-//   To do all steps, try:  `npm run e2e`
+// Make sure the server being tested (baseUrl) is running.
+// protractor protractor.config.js
+//
+// Changes below this line that differ from https://github.com/angular/quickstart/blob/master/protractor.config.js
+//    specs: ['./src/**/*.e2e-spec.js' ],
+//    baseUrl: 'https://angular2template.azurewebsites.net',
 
 var fs = require('fs');
 var path = require('canonical-path');
 var _ = require('lodash');
 
-
 exports.config = {
-  directConnect: true,
+    directConnect: true,
 
   // Capabilities to be passed to the webdriver instance.
   capabilities: {
@@ -27,14 +38,14 @@ exports.config = {
   framework: 'jasmine',
 
   // Spec patterns are relative to this config file
-  specs: ['**/*e2e-spec.js' ],
+  specs: ['./src/**/*.e2e-spec.js' ],
 
 
   // For angular2 tests
   useAllAngular2AppRoots: true,
 
   // Base URL for application server
-  baseUrl: 'http://localhost:8080',
+  baseUrl: 'https://angular2template.azurewebsites.net',
 
   // doesn't seem to work.
   // resultJsonOutputFile: "foo.json",
@@ -48,8 +59,6 @@ exports.config = {
     // debugging
     // console.log('browser.params:' + JSON.stringify(browser.params));
     jasmine.getEnv().addReporter(new Reporter( browser.params )) ;
-
-    global.sendKeys = sendKeys;
 
     // Allow changing bootstrap mode to NG1 for upgrade tests
     global.setProtractorToNg1Mode = function() {
@@ -65,16 +74,6 @@ exports.config = {
     print: function() {}
   }
 };
-
-// Hack - because of bug with protractor send keys
-function sendKeys(element, str) {
-  return str.split('').reduce(function (promise, char) {
-    return promise.then(function () {
-      return element.sendKeys(char);
-    });
-  }, element.getAttribute('value'));
-  // better to create a resolved promise here but ... don't know how with protractor;
-  }
 
 // Custom reporter
 function Reporter(options) {
@@ -129,7 +128,26 @@ function Reporter(options) {
     fs.appendFileSync(outputFile, output);
   };
 
-  function initOutputFile(outputFile) {
+  function ensureDirectoryExistence(filePath) {
+    var dirname = path.dirname(filePath);
+    if (directoryExists(dirname)) {
+      return true;
+    }
+    ensureDirectoryExistence(dirname);
+    fs.mkdirSync(dirname);
+  }
+
+  function directoryExists(path) {
+    try {
+      return fs.statSync(path).isDirectory();
+    }
+    catch (err) {
+      return false;
+    }
+  }
+
+function initOutputFile(outputFile) {
+    ensureDirectoryExistence(outputFile);
     var header = "Protractor results for: " + (new Date()).toLocaleString() + "\n\n";
     fs.writeFileSync(outputFile, header);
   }

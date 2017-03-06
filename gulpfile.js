@@ -123,7 +123,7 @@ gulp.task('git-push', function (done) {
                     if (err) {
                         gutil.log('[git-push] Error pushing to secondary repository\n' + err);
                     } else {
-                        gutil.log(stdout);
+                        gutil.log(stdout + stderr);
                         done();
                     }
                 });
