@@ -51,6 +51,8 @@ exports.config = {
   // resultJsonOutputFile: "foo.json",
 
   onPrepare: function() {
+    // browser.ignoreSynchronization = true;
+
     //// SpecReporter
     //var SpecReporter = require('jasmine-spec-reporter');
     //jasmine.getEnv().addReporter(new SpecReporter({displayStacktrace: 'none'}));
@@ -61,17 +63,20 @@ exports.config = {
     jasmine.getEnv().addReporter(new Reporter( browser.params )) ;
 
     // Allow changing bootstrap mode to NG1 for upgrade tests
-    global.setProtractorToNg1Mode = function() {
-      browser.useAllAngular2AppRoots = false;
-      browser.rootEl = 'body';
-    };
+    // global.setProtractorToNg1Mode = function() {
+    //   browser.useAllAngular2AppRoots = false;
+    //   browser.rootEl = 'body';
+    // };
   },
 
   jasmineNodeOpts: {
-    // defaultTimeoutInterval: 60000,
-    defaultTimeoutInterval: 10000,
+    defaultTimeoutInterval: 60000,
+    // defaultTimeoutInterval: 10000,
+    includeStackTrace: false,
+    isVerbose: false,
+    print: function() {},
     showTiming: true,
-    print: function() {}
+    showColors: true
   }
 };
 

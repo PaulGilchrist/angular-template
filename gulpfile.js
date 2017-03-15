@@ -197,6 +197,15 @@ gulp.task('test', function (done) {
     });
 });
 
+gulp.task('test-e2e', function (done) {
+    exec('protractor protractor.config.js', function(err, stdout, stderr) {
+        gutil.log(stdout + stderr);
+        if (!err) {
+            done();
+        }
+    });
+});
+
 function getDockerFileName() {
     var dockerFileName = 'Dockerfile.';
     if(docker.image.os==='linux') {
