@@ -1,4 +1,42 @@
+//Helper function for drag and drop testing
+function simulateDragDrop(sourceNode, destinationNode) {
+    var EVENT_TYPES = { DRAG_END: 'dragend', DRAG_START: 'dragstart', DROP: 'drop' };
+    function createCustomEvent(type) {
+        var event = new CustomEvent('CustomEvent');
+        event.initCustomEvent(type, true, true, null);
+        event.dataTransfer = {
+        data: {},
+        setData: function (type, val) { this.data[type] = val; },
+        getData: function (type) { return this.data[type]; }
+        };
+        return event;
+    }
+    function dispatchEvent(node, type, event) {
+        if (node.dispatchEvent) {
+        return node.dispatchEvent(event);
+        }
+        if (node.fireEvent) {
+        return node.fireEvent('on' + type, event);
+        }
+    }
+    var event = createCustomEvent(EVENT_TYPES.DRAG_START);
+    dispatchEvent(sourceNode, EVENT_TYPES.DRAG_START, event);
+    var dropEvent = createCustomEvent(EVENT_TYPES.DROP);
+    dropEvent.dataTransfer = event.dataTransfer;
+    dispatchEvent(destinationNode, EVENT_TYPES.DROP, dropEvent);
+    var dragEndEvent = createCustomEvent(EVENT_TYPES.DRAG_END);
+    dragEndEvent.dataTransfer = event.dataTransfer;
+    dispatchEvent(sourceNode, EVENT_TYPES.DRAG_END, dragEndEvent);
+};
+
 /*
+Protractor uses selenium-webdriver
+These tests show...
+    Both Angular and non-Angular testing
+    iFrame testing (WYSIWYG)
+    Modal testing
+    Separate Windows testing (PDF)
+
 Hardest part of test automation is finding the right DOM element.
     Suggest adding id or name tags to elements you know will need testing
     XPath is not reliable enough
@@ -13,8 +51,6 @@ Best way to test that element was found
         });
 */
 
-
-browser.driver.manage().window().maximize();
 
 //beforeEach(function() {
     //browser.ignoreSyncronization = true;
@@ -49,6 +85,31 @@ describe('Drag Demo Page', function() {
         var list1divs = element.all(by.xpath('//*[@id="list1"]/div'));
         expect(list1divs.count()).toEqual(4);
     });
+    it('Not Implemented - Item in left container should be dragabble to right container', function() {
+        var el2 = element(by.id('2'));
+        var el5 = element(by.id('5'));
+        var list2 = element(by.id('list2'));
+        // browser.driver.actions().dragAndDrop(el2.getWebElement(), list2.getWebElement()).perform();  // Timeout works
+        // browser.driver.actions().mouseDown(el2.getWebElement()).mouseMove(list2.getWebElement()).mouseUp().perform();  // Timeout works
+
+        browser.driver.executeScript(simulateDragDrop, el2.getWebElement(), el5.getWebElement());
+
+
+        // var el = element(by.id('2')).getWebElement();
+        // browser.actions().mouseDown(el).perform();
+        // browser.actions().mouseMove({x:0, y:100}).perform();
+        // browser.actions().mouseDown(el).perform();
+        // browser.actions().mouseMove({x:0, y:75}).perform();
+        // browser.actions().mouseUp().perform();
+
+
+
+        // browser.actions().dragAndDrop(el2.find(), list2.find()).perform();
+        // browser.actions().dragAndDrop(el2.find(), {x: 0, y: 200}).perform();
+        // browser.actions().mouseMove(el2.getWebElement()).mouseDown().mouseMove(list2.getWebElement()).mouseUp().perform();
+        browser.sleep(5000);
+        expect(true).toBeTruthy();
+    });
 });
 describe('Editor Page', function() {
     it('Page should load', function() {
@@ -57,14 +118,17 @@ describe('Editor Page', function() {
             expect(browser.getCurrentUrl()).toContain('/demos/editor');
         });
     });
-    // it('Not Implemented - Updating WYSIWYG should update mail merge', function() {
-    //     var el = element(by.xpath('//*[@id="cke_1_contents"]/iframe'));
-    //     browser.switchTo().frame(el);
-    //     var doc = browser.driver.findElement(protractor.By.xpath('/html/body'));
-    //     doc.sendKeys('[DateToday]');
-    //     expect(doc.getText()).toContain('[DateToday]');
-    //     browser.switchTo().defaultContent();
-    // });
+    it('Updating WYSIWYG should update mail merge', function() {
+        var el = element(by.xpath('//*[@id="cke_1_contents"]/iframe'));
+        browser.driver.switchTo().frame(el.getWebElement()).then(function () {
+            var doc = browser.driver.findElement(protractor.By.xpath('/html/body'));
+            doc.sendKeys('[DeveloperName]\n');
+            browser.driver.switchTo().defaultContent().then(function () {
+                var wysiwygHeader = element(by.xpath('//editor-demo/div/div/div[2]/div/h1'));
+                expect(wysiwygHeader.getAttribute('innerHTML')).toContain('Paul Gilchrist');
+            });
+        });
+    });
 });
 describe('Graph Page', function() {
     it('Page should load', function() {
@@ -137,7 +201,7 @@ describe('Floorplan Page', function() {
         var dimensionData = element.all(by.css('.dimension')).first();
         expect(dimensionData.getAttribute('style')).toContain('opacity: 1;');
     });
-    it('Not Implemented - Changing "Flooring Zones" radio buttons changes SVG floor color for the respective rooms', function() {
+    it('Changing "Flooring Zones" radio buttons changes SVG floor color for the respective rooms', function() {
         //Default is to have no flooring selected.  Once carpet, tile, or wood is selected, those respective classes will be added to objects in the SVG
         var carpet = element.all(by.buttonText('Carpet'))
         carpet.get(0).click();
@@ -154,48 +218,62 @@ describe('Floorplan Page', function() {
         expect(carpetedRooms.count()).toBeGreaterThan(0);
     });
 });
-// describe('PDF Page', function() {
-//     it('Page should load', function() {
-//         var el = element(by.cssContainingText("a", "PDF"));
-//         el.click().then(() => {
-//             expect(browser.getCurrentUrl()).toContain('/demos/pdf');
-//         });
-//     });
-//     it('Not Implemented - Selecting "View PDF" button opens new window with PDF generated', function() {
-//         expect(true).toBeTruthy();
-//     });
-//     it('Not Implemented - Selecting "View Modal" button opens modal window', function() {
-//         expect(true).toBeTruthy();
-//     });
-// });
-// describe('User Page', function() {
-//     it('Page should load', function() {
-//         var el = element(by.cssContainingText("a", "User"));
-//         el.click();
-//         expect(browser.getCurrentUrl()).toContain('/user');
-//     });
-//     it('Selecting user from list populates user and address edit forms', function() {
-//         // var row = element(by.xpath('/html/body/my-app/div/main/user-home/div[2]/div/user-list/div/div/div[2]/div[1]/div/table/tbody/tr[1]'));
-//         var row = element(by.xpath('//user-list//tbody/tr[1]'));
-//         row.click();
-//         expect(element(by.id('user-form')).isDisplayed()).toBeTruthy();
-//     });
-//     it('Save is disabled if user form has not changed, or fails validation', function() {
-//         //Assumes a user is already selected from the list
-//         var saveButton = element(by.xpath('//*[@id="user-form"]/form/button[1]'));
-//         expect(saveButton.getAttribute('disabled')).toBeTruthy();
-//     });
-//     it('Save is enabled once user form has changed', function() {
-//         //Assumes a user is already selected from the list
-//         var firstName = element(by.xpath('//*[@id="user-form"]/form/div[1]/div[1]/input'));
-//         firstName.clear();
-//         firstName.sendKeys('Aar');
-//         firstName.sendKeys(protractor.Key.TAB);
-//         var saveButton = element(by.xpath('//*[@id="user-form"]/form/button[1]'));
-//         expect(saveButton.getAttribute('disabled')).toBeFalsy();
-//     });
+describe('PDF Page', function() {
+    it('Page should load', function() {
+        var el = element(by.cssContainingText("a", "PDF"));
+        el.click().then(() => {
+            expect(browser.getCurrentUrl()).toContain('/demos/pdf');
+        });
+    });
+    it('Selecting "View PDF" button opens new window with PDF generated', function() {
+        var el = element.all(by.buttonText('View PDF'));
+        el.click().then(function () {
+            browser.getAllWindowHandles().then(function (handles) {
+                var oldWindowHandle = handles[0];
+                var newWindowHandle = handles[1];
+                browser.switchTo().window(newWindowHandle).then(function () {
+                    expect(browser.driver.getCurrentUrl()).toContain('data:application/pdf');
+                    //Now we need to close this browser window going back to the PDF page
+                    browser.switchTo().window(oldWindowHandle);
+                    //Do we need to wait for this to complete?  Testing shows it is currently working.
+                });
+            });
+        });
+    });
+    //Could always insert some tests here to look at the content of the PDF
+    it('Selecting "View Modal" button opens modal window', function() {
+        element.all(by.buttonText('View Modal')).click();
+        expect(element(by.css('modal-title')).isDisplayed()).toBeTruthy();
+    });
+});
+describe('User Page', function() {
+    it('Page should load', function() {
+        var el = element(by.cssContainingText("a", "User"));
+        el.click();
+        expect(browser.getCurrentUrl()).toContain('/user');
+    });
+    it('Selecting user from list populates user and address edit forms', function() {
+        // var row = element(by.xpath('/html/body/my-app/div/main/user-home/div[2]/div/user-list/div/div/div[2]/div[1]/div/table/tbody/tr[1]'));
+        var row = element(by.xpath('//user-list//tbody/tr[1]'));
+        row.click();
+        expect(element(by.id('user-form')).isDisplayed()).toBeTruthy();
+    });
+    it('Save is disabled if user form has not changed, or fails validation', function() {
+        //Assumes a user is already selected from the list
+        var saveButton = element(by.xpath('//*[@id="user-form"]/form/button[1]'));
+        expect(saveButton.getAttribute('disabled')).toBeTruthy();
+    });
+    it('Save is enabled once user form has changed', function() {
+        //Assumes a user is already selected from the list
+        var firstName = element(by.xpath('//*[@id="user-form"]/form/div[1]/div[1]/input'));
+        firstName.clear();
+        firstName.sendKeys('Aar');
+        firstName.sendKeys(protractor.Key.TAB);
+        var saveButton = element(by.xpath('//*[@id="user-form"]/form/button[1]'));
+        expect(saveButton.getAttribute('disabled')).toBeFalsy();
+    });
 
-// });
+});
 
 
 

@@ -198,7 +198,15 @@ gulp.task('test', function (done) {
 });
 
 gulp.task('test-e2e', function (done) {
-    exec('protractor protractor.config.js', function(err, stdout, stderr) {
+    var command = 'protractor protractor.config.js';
+    //Local examples: gulp test-e2e --baseUrl http://localhost:3000
+    //Dev environment example: gulp test-e2e --baseUrl https://angular2template.azurewebsites.net
+    //Docker container example: gulp test-e2e --baseUrl http://<containerip>:<containerport>
+    var baseUrl = argv.baseUrl;
+    if(baseUrl !== undefined) {
+        command += ' --baseUrl ' + baseUrl
+    }
+    exec(command, function(err, stdout, stderr) {
         gutil.log(stdout + stderr);
         if (!err) {
             done();

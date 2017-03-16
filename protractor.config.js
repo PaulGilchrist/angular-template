@@ -29,55 +29,56 @@ var _ = require('lodash');
 exports.config = {
     directConnect: true,
 
-  // Capabilities to be passed to the webdriver instance.
-  capabilities: {
-    'browserName': 'chrome'
-  },
+    // Capabilities to be passed to the webdriver instance.
+    capabilities: {
+      'browserName': 'chrome'
+    },
 
-  // Framework to use. Jasmine is recommended.
-  framework: 'jasmine',
+    // Framework to use. Jasmine is recommended.
+    framework: 'jasmine',
 
-  // Spec patterns are relative to this config file
-  specs: ['./src/**/*.e2e-spec.js' ],
+    // Spec patterns are relative to this config file
+    specs: ['./src/**/*.e2e-spec.js' ],
 
 
-  // For angular2 tests
-  useAllAngular2AppRoots: true,
+    // For angular2 tests
+    useAllAngular2AppRoots: true,
 
-  // Base URL for application server
-  baseUrl: 'https://angular2template.azurewebsites.net',
+    // Base URL for application server
+    baseUrl: 'https://angular2template.azurewebsites.net',
 
-  // doesn't seem to work.
-  // resultJsonOutputFile: "foo.json",
+    // doesn't seem to work.
+    // resultJsonOutputFile: "foo.json",
 
-  onPrepare: function() {
-    // browser.ignoreSynchronization = true;
+    onPrepare: function() {
+        browser.driver.manage().window().maximize();
+        // browser.ignoreSynchronization = true;
 
-    //// SpecReporter
-    //var SpecReporter = require('jasmine-spec-reporter');
-    //jasmine.getEnv().addReporter(new SpecReporter({displayStacktrace: 'none'}));
-    //// jasmine.getEnv().addReporter(new SpecReporter({displayStacktrace: 'all'}));
+        //// SpecReporter
+        //var SpecReporter = require('jasmine-spec-reporter');
+        //jasmine.getEnv().addReporter(new SpecReporter({displayStacktrace: 'none'}));
+        //// jasmine.getEnv().addReporter(new SpecReporter({displayStacktrace: 'all'}));
 
-    // debugging
-    // console.log('browser.params:' + JSON.stringify(browser.params));
-    jasmine.getEnv().addReporter(new Reporter( browser.params )) ;
+        // debugging
+        // console.log('browser.params:' + JSON.stringify(browser.params));
+        jasmine.getEnv().addReporter(new Reporter( browser.params )) ;
 
-    // Allow changing bootstrap mode to NG1 for upgrade tests
-    // global.setProtractorToNg1Mode = function() {
-    //   browser.useAllAngular2AppRoots = false;
-    //   browser.rootEl = 'body';
-    // };
-  },
+        // Allow changing bootstrap mode to NG1 for upgrade tests
+        // global.setProtractorToNg1Mode = function() {
+        //   browser.useAllAngular2AppRoots = false;
+        //   browser.rootEl = 'body';
+        // };
+    },
 
-  jasmineNodeOpts: {
-    defaultTimeoutInterval: 60000,
-    // defaultTimeoutInterval: 10000,
-    includeStackTrace: false,
-    isVerbose: false,
-    print: function() {},
-    showTiming: true,
-    showColors: true
-  }
+    jasmineNodeOpts: {
+        defaultTimeoutInterval: 60000,
+        // defaultTimeoutInterval: 10000,
+        includeStackTrace: false,
+        isVerbose: false,
+        print: function() {},
+        showTiming: true,
+        showColors: true
+    }
 };
 
 // Custom reporter
