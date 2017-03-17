@@ -1,4 +1,4 @@
-// if(browser.params.runAllTests) {
+if(browser.params.runAllTests) {
     describe('Editor Page', () => {
         it('Page should load', () => {
             element(by.cssContainingText("a", "Editor")).click();
@@ -9,12 +9,13 @@
             browser.driver.switchTo().frame(el.getWebElement()).then(() => {
                 let doc = browser.driver.findElement(protractor.By.xpath('/html/body'));
                 doc.sendKeys('[DeveloperName]\n');
-                browser.sleep(5000);
-                browser.driver.switchTo().defaultContent().then(() => {
-                    let wysiwygHeader = element(by.xpath('//editor-demo/div/div/div[2]/div/h1'));
-                    expect(wysiwygHeader.getAttribute('innerHTML')).toContain('Paul Gilchrist');
+                browser.switchTo().defaultContent().then(() => {
+                    //Need to allow time for iFrame to change parent DOM
+                    browser.sleep(1000);
+                    let mergedContentHeader = element.all(by.xpath('//*[@id="mergedContent"]/h1')).first();
+                    expect(mergedContentHeader.getAttribute('innerHTML')).toContain('Paul Gilchrist');
                 });
             });
         });
     });
-// }
+}

@@ -54,7 +54,7 @@ var _ = require('lodash');
 
 exports.config = {
     params: {
-      runAllTests: false,
+      runAllTests: true,
     },
 
     directConnect: true,
