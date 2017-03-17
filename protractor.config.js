@@ -1,5 +1,10 @@
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Protractor runs on selenium
+// Protractor uses selenium-webdriver
+// These tests show...
+//     Both Angular and non-Angular testing
+//     iFrame testing (WYSIWYG)
+//     Modal testing
+//     Separate Windows testing (PDF)
+//
 // Even if not testing an Angular application, Protractor is easier to setup than a native Selenium server
 //
 // Must first install Chrome browser
@@ -10,23 +15,48 @@
 //    webdriver-manager start
 //    WebDriver server will be at http://localhost:4444/wd/hub and accessable remotly
 //    exports.config = {
+//        params: {
+//            runAllTests: true,
+//        },
 //        seleniumAddress: 'http://localhost:4444/wd/hub',
 //        framework: 'jasmine',
 //        specs: ['./src/**/*.e2e-spec.js' ],
 //    }
 //
 // Make sure the server being tested (baseUrl) is running.
-// protractor protractor.config.js
+// Two ways to run:
+//     protractor protractor.config.js
+//     gulp test-e2e
+//
+// Hardest part of test automation is finding the right DOM element.
+//     Suggest adding id or name tags to elements you know will need testing
+//     XPath is not reliable enough
+
+// Best way to test that element was found
+//     svg.getAttribute('innerHTML')
+//         .then((text) => {
+//             console.log('inner HTML: ' + text);
+//         },
+//         (err) => {
+//             console.log('ERROR: ' + err);
+//         });
 //
 // Changes below this line that differ from https://github.com/angular/quickstart/blob/master/protractor.config.js
 //    specs: ['./src/**/*.e2e-spec.js' ],
 //    baseUrl: 'https://angular2template.azurewebsites.net',
+//    onPrepare
+//        browser.driver.manage().window().maximize();
+//        browser.get('/home');
 
 var fs = require('fs');
 var path = require('canonical-path');
 var _ = require('lodash');
 
 exports.config = {
+    params: {
+      runAllTests: false,
+    },
+
     directConnect: true,
 
     // Capabilities to be passed to the webdriver instance.
@@ -51,8 +81,20 @@ exports.config = {
     // resultJsonOutputFile: "foo.json",
 
     onPrepare: function() {
-        browser.driver.manage().window().maximize();
         // browser.ignoreSynchronization = true;
+
+        browser.driver.manage().window().maximize();
+        browser.get('/home');
+
+        // browser.manage().logs().get('browser').then(function(browserLogs) {
+        //    // browserLogs is an array of objects with level and message fields
+        //    browserLogs.forEach(function(log){
+        //       if (log.level.value > 900) { // it's an error log
+        //         console.log('Browser console error!');
+        //         console.log(log.message);
+        //       }
+        //    });
+        // });
 
         //// SpecReporter
         //var SpecReporter = require('jasmine-spec-reporter');
@@ -62,12 +104,6 @@ exports.config = {
         // debugging
         // console.log('browser.params:' + JSON.stringify(browser.params));
         jasmine.getEnv().addReporter(new Reporter( browser.params )) ;
-
-        // Allow changing bootstrap mode to NG1 for upgrade tests
-        // global.setProtractorToNg1Mode = function() {
-        //   browser.useAllAngular2AppRoots = false;
-        //   browser.rootEl = 'body';
-        // };
     },
 
     jasmineNodeOpts: {
