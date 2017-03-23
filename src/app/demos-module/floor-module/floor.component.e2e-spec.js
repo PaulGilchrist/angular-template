@@ -5,7 +5,7 @@ if(browser.params.runAllTests) {
             expect(browser.getCurrentUrl()).toContain('/demos/floor');
         });
         it('Changing "Floor" to "Level 2" changes the floorplan drawing to show the second floor', () => {
-            //Floorplans turn on and off by changing their opacity from 0 to 1
+            // Floorplans turn on and off by changing their opacity from 0 to 1
             element(by.buttonText('Level 2')).click();
             let level2 = element(by.css('.level2'));
             expect(level2.getAttribute('style')).toContain('opacity: 1;');
@@ -16,7 +16,7 @@ if(browser.params.runAllTests) {
             expect(dimensionData.getAttribute('style')).toContain('opacity: 1;');
         });
         it('Changing "Flooring Zones" radio buttons changes SVG floor color for the respective rooms', () => {
-            //Default is to have no flooring selected.  Once carpet, tile, or wood is selected, those respective classes will be added to objects in the SVG
+            // Default is to have no flooring selected.  Once carpet, tile, or wood is selected, those respective classes will be added to objects in the SVG
             let carpet = element.all(by.buttonText('Carpet'));
             carpet.get(0).click();
             carpet.get(3).click();
@@ -26,9 +26,7 @@ if(browser.params.runAllTests) {
             let wood = element.all(by.buttonText('Wood'));
             wood.get(2).click();
             wood.get(5).click();
-            let carpetedRooms = element.all(by.tagName('path')).filter((el) => {
-                return el.element(by.css('.carpet'));
-            });
+            let carpetedRooms = element.all(by.css('path.carpet'));
             expect(carpetedRooms.count()).toBeGreaterThan(0);
         });
     });
