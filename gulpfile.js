@@ -21,6 +21,9 @@ var webpackConfig = require('./config/webpack.prod.js');
 // run "gulp test" to discover and run all unit tests (spec.ts) files and display results
 //      This will test the app without building or source control checkin
 
+// run "gulp test-e2e" to discover and run all end to end tests (e2e-spec.ts) files and display results
+//      This will test the app without building or source control checkin
+
 //The remaining tasks are not usually run from the command prompt and used only inside of other tasks
 
 var docker = {
