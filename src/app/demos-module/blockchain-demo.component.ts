@@ -11,7 +11,7 @@ import { BlockchainService } from './services/blockchain.service';
 export class BlockchainDemoComponent implements OnInit {
 
     _address: string = '1MEXc2kArQxrXzJSkWBK5T9CpGLP4UiS8R';
-    _receivedAmmount: number = 0;
+    _receivedBitcoins: number = 0;
     _usdExchangeRate = 0;
 
     constructor(public _blockchainService: BlockchainService) { }
@@ -36,7 +36,7 @@ export class BlockchainDemoComponent implements OnInit {
             let specAdd = self._address;
                 if(outAdd == specAdd) {
                     let amount = response.x.out[i].value;
-                    self._receivedAmmount = amount / 100000000;  // Converts from satoshi to Bitcoins (BTC)
+                    self._receivedBitcoins = amount / 100000000;  // Converts from satoshi to Bitcoins (BTC)
                 };
             };
         }
