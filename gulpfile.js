@@ -148,7 +148,7 @@ gulp.task('copyAppCss', function () {
 });
 
 gulp.task('copyVendorCss', function () {
-    return gulp.src(paths.source + 'css/*.css').pipe(gulp.dest(paths.target + 'css'));
+    return gulp.src(paths.css).pipe(gulp.dest(paths.target + 'css'));
 });
 
 gulp.task('copyVendorFonts', function () {

@@ -32,6 +32,7 @@ import 'toastr/toastr.js';
 import 'underscore/underscore.js';
 
 import './../bower_components/pdfmake/build/pdfmake.js';
+//require('imports?this=>window!./../bower_components/pdfmake/build/vfs_fonts.js');
 import './../bower_components/pdfmake/build/vfs_fonts.js';
 
 import './../src/css/app.css'; // Load this last so it can override all other css files
