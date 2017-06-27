@@ -1,16 +1,16 @@
-## Angular 4.2.3, TypeScript, Bootstrap, and Visual Studio Code
+## Angular, TypeScript, Bootstrap, and Visual Studio Code
 
-This site was put together to demonstrate code examples for Angular 4.x, Typescript, and Bootstrap developed in a Visual Studio Code hosted IDE. This combination of tools allows for a browser and device agnostic highly responsive application. Open standard tools such as NPM (node package manager), Gulp (task runner), Jasmine (unit testing), Karma (test runner), and Git (version control) are also leveraged. This project runs equally well using .Net Core or Node for hosting and supports not just Visual Studio Code, but also Visual Studio, Sublime, Atom, and more. Tools like BrowserSync detect code changes, automatically re-compile, unit testing, and refresh all connected browsers improving development and debugging time efficiency.
+This site was put together to demonstrate code examples for Angular, Typescript, and Bootstrap developed in a Visual Studio Code hosted IDE. This combination of tools allows for a browser and device agnostic highly responsive application. Open standard tools such as NPM (node package manager), Gulp (task runner), Jasmine (unit testing), Karma (test runner), and Git (version control) are also leveraged. This project runs equally well using .Net Core or Node for hosting and supports not just Visual Studio Code, but also Visual Studio, Sublime, Atom, and more. Tools like BrowserSync detect code changes, automatically re-compile, unit testing, and refresh all connected browsers improving development and debugging time efficiency.
 
 Angular’s powerful client side JavaScript library is the key to this applications architecture. Although developed as a lightweight template or starting point for new projects, examples exist throughout the code demonstrating Angular, Typescript, and Bootstrap capabilities and best practices. Make sure to check out the “Features” section below for a list of Angular features demonstrated in this project.
 
 As Angular, Typescript, Bootstrap, or Visual Studio Code changes or best practices evolve, this template will be updates to ensure it always remains a good starting point for any new project.
 
 ### Architecture Diagram
-![Architecture Diagram](https://github.com/PaulGilchrist/AngularTemplate/blob/master/src/Angular2Template/wwwroot/img/architecture-diagram.png)
+![Architecture Diagram](https://github.com/PaulGilchrist/AngularTemplate/blob/master/src/AngularTemplate/wwwroot/img/architecture-diagram.png)
 
 ### Module Scope: Page Example
-![Architecture Diagram](https://github.com/PaulGilchrist/AngularTemplate/blob/master/src/Angular2Template/wwwroot/img/module-scope.png)
+![Architecture Diagram](https://github.com/PaulGilchrist/AngularTemplate/blob/master/src/AngularTemplate/wwwroot/img/module-scope.png)
 
 [Learn more about Angular 2.0 development](https://angular.io/)
 Learn more about [Typescript](http://www.typescriptlang.org/), [Bootstrap](http://getbootstrap.com/), or [Visual Studio 2015](https://www.visualstudio.com/en-us/visual-studio-homepage-vs.aspx)
