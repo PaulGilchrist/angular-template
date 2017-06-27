@@ -1,28 +1,26 @@
-TypeScript version. For JavaScript version see project Angular2VSTemplateJS
+## Angular 4.2.3, TypeScript, Bootstrap, and Visual Studio Code
 
-## Angular 2.0, TypeScript, Bootstrap, and Visual Studio 2015
+This site was put together to demonstrate code examples for Angular 4.x, Typescript, and Bootstrap developed in a Visual Studio Code hosted IDE. This combination of tools allows for a browser and device agnostic highly responsive application. Open standard tools such as NPM (node package manager), Gulp (task runner), Jasmine (unit testing), Karma (test runner), and Git (version control) are also leveraged. This project runs equally well using .Net Core or Node for hosting and supports not just Visual Studio Code, but also Visual Studio, Sublime, Atom, and more. Tools like BrowserSync detect code changes, automatically re-compile, unit testing, and refresh all connected browsers improving development and debugging time efficiency.
 
-This site was put together to demonstrate code examples for Angular 2.0, Typescript, and Bootstrap developed in a Visual Studio 2015 hosted IDE. This combination of tools allows for a browser and device agnostic highly responsive application. Open standard tools such as NPM (node package manager), Gulp (task runner), Jasmine (unit testing), Karma (test runner), and Git (version control) are also leveraged. This project runs equally well using .Net Core or Node for hosting and supports not just Visual Studio 2015, but also Visual Studio Code, Sublime, Atom, and more. Tools like BrowserSync detect code changes, automatically re-compile, unit testing, and refresh all connected browsers improving development and debugging time efficiency.
+Angular’s powerful client side JavaScript library is the key to this applications architecture. Although developed as a lightweight template or starting point for new projects, examples exist throughout the code demonstrating Angular, Typescript, and Bootstrap capabilities and best practices. Make sure to check out the “Features” section below for a list of Angular features demonstrated in this project.
 
-Angular 2.0’s powerful client side JavaScript library is the key to this applications architecture. Although developed as a lightweight template or starting point for new projects, examples exist throughout the code demonstrating Angular, Typescript, and Bootstrap capabilities and best practices. Make sure to check out the “Features” section below for a list of Angular 2.0 features demonstrated in this project.
-
-As Angular, Typescript, Bootstrap, or Visual Studio changes or best practices evolve, this template will be updates to ensure it always remains a good starting point for any new project.
+As Angular, Typescript, Bootstrap, or Visual Studio Code changes or best practices evolve, this template will be updates to ensure it always remains a good starting point for any new project.
 
 ### Architecture Diagram
-![Architecture Diagram](https://github.com/PaulGilchrist/Angular2NodeTemplate/blob/master/src/Angular2Template/wwwroot/img/architecture-diagram.png)
+![Architecture Diagram](https://github.com/PaulGilchrist/AngularTemplate/blob/master/src/Angular2Template/wwwroot/img/architecture-diagram.png)
 
 ### Module Scope: Page Example
-![Architecture Diagram](https://github.com/PaulGilchrist/Angular2NodeTemplate/blob/master/src/Angular2Template/wwwroot/img/module-scope.png)
+![Architecture Diagram](https://github.com/PaulGilchrist/AngularTemplate/blob/master/src/Angular2Template/wwwroot/img/module-scope.png)
 
 [Learn more about Angular 2.0 development](https://angular.io/)
 Learn more about [Typescript](http://www.typescriptlang.org/), [Bootstrap](http://getbootstrap.com/), or [Visual Studio 2015](https://www.visualstudio.com/en-us/visual-studio-homepage-vs.aspx)
 
 ### Getting Started
-This template is designed to work primarily on Visual Studio 2015 and Visual Studio Code, but has been developed using all cross-platform libraries and can be hosted with either Node or .Net core.  This means code editors such as Atom, Sublime, or even something as simple as NotePad++ could be used.  Even if this template will be hosted using .Net core or another non Node server, NodeJS will still need to be installed to support package management (npm), task workflows (gulp), and their supporting tools.  You can download and install NodeJS from here…
+This template is designed to work primarily on Visual Studio Code and Visual Studio 2015-2017, but has been developed using all cross-platform libraries and can be hosted with either Node or .Net core.  This means code editors such as Atom, Sublime, or even something as simple as NotePad++ could be used.  Even if this template will be hosted using .Net core or another non Node server, NodeJS will still need to be installed to support package management (npm), task workflows (gulp), and their supporting tools.  You can download and install NodeJS from here…
 
 [https://nodejs.org](https://nodejs.org)
 
-After installing node, open a command prompt at the project root folder (src\Angular2Template) and run “npm install”.  This command will read the “package.json” file and download and install all the referenced packages. At this point, the application will run using a mock service for supplying user and address data.  The template also comes with a service that gets its data from a backend API instead of mocking the data.  If you are also implementing the GitHub solution named <a href="https://github.com/PaulGilchrist/ApiTemplate">“ApiTemplate”</a>, you can follow these steps to switch from mock data to API accessed data:
+After installing node, open a command prompt at the project root folder (src\AngularTemplate) and run “npm install”.  This command will read the “package.json” file and download and install all the referenced packages. At this point, the application will run using a mock service for supplying user and address data.  The template also comes with a service that gets its data from a backend API instead of mocking the data.  If you are also implementing the GitHub solution named <a href="https://github.com/PaulGilchrist/ApiTemplate">“ApiTemplate”</a>, you can follow these steps to switch from mock data to API accessed data:
 
 1. From the folder “app/services”, rename “user.service.ts” to “mock-user.service.ts”
 2. From the folder “app/services”, rename “api-user.service.ts” to “user.service.ts”

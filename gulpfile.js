@@ -38,7 +38,7 @@ var docker = {
 
 var gitRepo = {
     primary: 'dev',
-    secondary: 'https://paulgilchrist.visualstudio.com/_git/Angular2Template' //Set to null if there is no secondary repo
+    secondary: 'https://paulgilchrist.visualstudio.com/_git/AngularTemplate' //Set to null if there is no secondary repo
 }
 
 var paths = {
