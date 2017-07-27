@@ -2,13 +2,13 @@
   "authors": [
     "Paul Gilchrist"
   ],
-  "name": "angular2-template",
-  "description": "Angular2 Template using npm for packages, gulp as the task runner",
+  "name": "angular-template",
+  "description": "Angular Template using npm for packages, gulp as the task runner",
   "homepage": "https://angular2template.azurewebsites.net",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/PaulGilchrist/Angular2NodeTemplate.git"
+    "url": "https://github.com/PaulGilchrist/AngularTemplate.git"
   },
   "private": true,
   "version": "1.0.0",

@@ -38,7 +38,7 @@ var docker = {
 
 var gitRepo = {
     primary: 'dev',
-    secondary: 'https://paulgilchrist.visualstudio.com/_git/Angular2Template' //Set to null if there is no secondary repo
+    secondary: 'https://paulgilchrist.visualstudio.com/_git/AngularTemplate' //Set to null if there is no secondary repo
 }
 
 var paths = {
@@ -148,7 +148,7 @@ gulp.task('copyAppCss', function () {
 });
 
 gulp.task('copyVendorCss', function () {
-    return gulp.src(paths.source + 'css/*.css').pipe(gulp.dest(paths.target + 'css'));
+    return gulp.src(paths.css).pipe(gulp.dest(paths.target + 'css'));
 });
 
 gulp.task('copyVendorFonts', function () {
