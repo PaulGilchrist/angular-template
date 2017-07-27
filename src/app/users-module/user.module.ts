@@ -12,17 +12,9 @@ import { UserHomeComponent } from './user-home.component';
 import { UserService } from './services/user.service';
 import { routing } from './user.routing';
 
-// Depends on the following being loaded from a parent module
-// import { ProgressBarComponent } from './../nav/progress-bar.component';
-// import { FilterObjectsPipe } from '../pipes/filter-objects.pipe';
-// import { SortObjectsPipe } from '../pipes/sort-objects.pipe';
-
 @NgModule({
     declarations: [
         AddressFormComponent,
-        //FilterObjectsPipe,
-        //ProgressBarComponent,
-        //SortObjectsPipe,
         UserFormComponent,
         UserListComponent,
         UserHomeComponent
@@ -31,7 +23,8 @@ import { routing } from './user.routing';
         CommonModule,
         FormsModule,
         HttpModule,
-        SharedModule,
+        SharedModule, // Required to leverage table sorting and filtering
+
         routing
     ],
     providers: [UserService]

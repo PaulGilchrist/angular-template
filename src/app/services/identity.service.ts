@@ -255,7 +255,7 @@ export class IdentityService {
                 ifr.style.width = ifr.style.height = ifr.border = '0px';
                 iFrame = <HTMLIFrameElement>(document.getElementsByTagName('body')[0].appendChild(ifr));
             } else if (document.body && document.body.insertAdjacentHTML) {
-                document.body.insertAdjacentHTML('beforeEnd', '<iframe name=' + iframeId + ' id=' + iframeId + ' style=\'display:none\'></iframe>');
+                document.body.insertAdjacentHTML('beforeend', '<iframe name=' + iframeId + ' id=' + iframeId + ' style=\'display:none\'></iframe>');
             }
             if (window.frames && window.frames[iframeId]) {
                 iFrame = window.frames[iframeId];
