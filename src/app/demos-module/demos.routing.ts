@@ -5,7 +5,7 @@ import { BlockchainDemoComponent } from './blockchain-demo.component';
 import { DragDemoComponent } from './drag-demo.component';
 import { EditorDemoComponent } from './editor-demo.component';
 import { GraphDemoComponent } from './graph-demo.component';
-import { PdfDemoComponent } from './pdf-demo.component';
+//import { PdfDemoComponent } from './pdf-demo.component';
 
 export const routing: ModuleWithProviders = RouterModule.forChild([
     // Static Loading
@@ -13,7 +13,7 @@ export const routing: ModuleWithProviders = RouterModule.forChild([
     { path: 'drag', component: DragDemoComponent },
     { path: 'editor', component: EditorDemoComponent },
     { path: 'graph', component: GraphDemoComponent },
-    { path: 'pdf', component: PdfDemoComponent },
+    //{ path: 'pdf', component: PdfDemoComponent },
     // Lazy Loading
     {
         path: 'floor',

@@ -13,7 +13,7 @@ import { Dragula } from './directives/dragula.directive';
 import { EditorDemoComponent } from './editor-demo.component';
 import { GraphDemoComponent } from './graph-demo.component';
 import { ModalDemoComponent } from './modal-demo.component';
-import { PdfDemoComponent } from './pdf-demo.component';
+//import { PdfDemoComponent } from './pdf-demo.component';
 import { routing } from './demos.routing';
 
 import { BlockchainService } from './services/blockchain.service';
@@ -32,8 +32,7 @@ import {CKEditorModule} from '../../../node_modules/ng2-ckeditor';
         EditorDemoComponent,
         GraphDemoComponent,
         ModalDemoComponent,
-        PdfDemoComponent,
-        //SortObjectsPipe
+        //PdfDemoComponent,
     ], // directives, components, and pipes owned by this NgModule
     imports: [
         CKEditorModule,

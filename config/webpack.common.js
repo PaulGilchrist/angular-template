@@ -63,6 +63,7 @@ module.exports = {
         d3: "d3",
         $: "jquery",
         jQuery: "jquery",
+        //pdfMake: "pdfMake",
         toastr: "toastr",
         _: "underscore"
     })
