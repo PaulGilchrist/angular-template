@@ -1,6 +1,7 @@
-# docker build -f Dockerfile.node.linux -t paulgilchrist/angular2template:nodelinux .
-# docker run -d -p 80:3000 paulgilchrist/angular2template:nodelinux
-# Test on http://localhost:8080
+# docker build -f Dockerfile.node.linux -t paulgilchrist/angulartemplate-node-linux .
+# docker run -d -p 80:3000 paulgilchrist/angulartemplate-node-linux
+# docker inspect <containerId>
+# Test on http://<containerIP>:3000
 # docker rm -f <containerID>
 FROM node:alpine
 RUN mkdir -p /usr/src/app

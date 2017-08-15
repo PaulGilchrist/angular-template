@@ -1,0 +1,16 @@
+# docker-compose -f docker-compose.linux.yml build
+version: '2.1'
+
+networks:
+  default:
+    external:
+      name: nat
+
+services:
+  angulartemplate-node-linux:
+    image: paulgilchrist/angulartemplate-node-linux
+    build:
+      context: .
+      dockerfile: Dockerfile.node.linux
+    ports:
+      - "80:3000"

@@ -1,4 +1,10 @@
-version: '2'
+version: '2.1'
+
+networks:
+  default:
+    external:
+      name: nat
+
 services:
   db:
     image: microsoft/mssql-server-2016-express-windows
@@ -9,7 +15,7 @@ services:
 
   web:
     build:
-      contect: .
+      context: .
       dockerfile: Dockerfile.node.nano
     environment:
       - "Data:DefaultConnection:ConnectionString=Server=db,1433;Database=ApiDev;User Id;Password=Password1;MultipleActiveResultSets=True"
@@ -17,8 +23,3 @@ services:
       - "db"
     ports:
       - "3000:3000"
-
-  networks:
-    default:
-      external:
-        name: nat

@@ -1,0 +1,17 @@
+# docker-compose -f docker-compose.windows.yml build
+version: '2.1'
+
+networks:
+  default:
+    external:
+      name: nat
+
+services:
+  angulartemplate-node-nano:
+    image: paulgilchrist/angulartemplate-node-nano
+    build:
+      context: .
+      dockerfile: Dockerfile.node.nano
+    ports:
+      - "80:3000"
+

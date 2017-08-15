@@ -1,11 +1,11 @@
 # Ensure you have setup Docker and created a NodeJS container
 #    See dockerReadMe.md
-# docker build -f Dockerfile.node.nano -t paulgilchrist/angular2template:nodenano .
-# docker run -d -p 80:3000 paulgilchrist/angular2template:nodenano
+# docker build -f Dockerfile.node.nano -t paulgilchrist/angulartemplate-node-nano .
+# docker run -d -p 80:3000 paulgilchrist/angulartemplate-node-nano
 # docker inspect <containerId>
 # Test on http://<containerIP>:3000
 # docker rm -f <containerID>
-FROM paulgilchrist/node:nano
+FROM paulgilchrist/node-nano
 RUN mkdir build
 COPY build /build
 WORKDIR /build
