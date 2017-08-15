@@ -12,5 +12,16 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.node.linux
+    environment:
+      - "Data Source=mssql-server-windows;Initial Catalog=ApiDev;Integrated Security=False;User Id=sa;Password=Password123!;Connect Timeout=60;Encrypt=True"
     ports:
       - "80:3000"
+    depends_on:
+      - mssql-server-windows
+  mssql-server-linux:
+    image: microsoft/mssql-server-linux
+    environment:
+      - "ACCEPT_EULA='Y'"
+      - "sa_password=Password123!"
+    ports:
+      - "1433:1433" # for debug.  Remove this for production
