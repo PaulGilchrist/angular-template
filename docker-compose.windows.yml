@@ -1,6 +1,6 @@
 # docker-compose -f docker-compose.windows.yml build
 # docker run -d -p 1433:1433 -e sa_password=Password123! -e ACCEPT_EULA=Y -v C:/data/:C:/data/ -e attach_dbs="[{'dbName':'ApiDev','dbFiles':['C:\\data\\ApiDev.mdf','C:\\data\\ApiDev_log.ldf']}]" microsoft/mssql-server-windows
-version: '2.1'
+version: '2'
 
 networks:
   default:
@@ -9,7 +9,6 @@ networks:
 
 services:
   angulartemplate-node-nano:
-    image: paulgilchrist/angulartemplate-node-nano
     build:
       context: .
       dockerfile: Dockerfile.node.nano
@@ -18,12 +17,15 @@ services:
       PORT: 80
     depends_on:
       - mssql-server-windows
+    image: paulgilchrist/angulartemplate-node-nano
+    ports: ["80:80"]
   mssql-server-windows:
-    image: microsoft/mssql-server-windows
     environment:
       ACCEPT_EULA: Y
       sa_password: Password123!
       attach_dbs: "[{'dbName':'ApiDev','dbFiles':['C:\\\\data\\\\ApiDev.mdf','C:\\\\data\\\\ApiDev_log.ldf']}]"
+    expose: [1433]
+    image: microsoft/mssql-server-windows
     volumes:
       - "C:/data/:C:/data/"
 
