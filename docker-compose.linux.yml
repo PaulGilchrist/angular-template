@@ -1,4 +1,5 @@
 # docker-compose -f docker-compose.linux.yml build
+# docker run -d -p 1433:1433 -e sa_password=Password123! -e ACCEPT_EULA=Y -v C:/data/:C:/data/ -e attach_dbs="[{'dbName':'ApiDev','dbFiles':['C:\\data\\ApiDev.mdf','C:\\data\\ApiDev_log.ldf']}]" microsoft/mssql-server-windows
 version: '2.1'
 
 networks:
@@ -13,15 +14,14 @@ services:
       context: .
       dockerfile: Dockerfile.node.linux
     environment:
-      - "Data Source=mssql-server-windows;Initial Catalog=ApiDev;Integrated Security=False;User Id=sa;Password=Password123!;Connect Timeout=60;Encrypt=True"
-    ports:
-      - "80:3000"
+      "Data Source": "mssql-server-windows;Initial Catalog=ApiDev;Integrated Security=False;User Id=sa;Password=Password123!;Connect Timeout=60;Encrypt=True"
+      PORT: 80
     depends_on:
       - mssql-server-windows
   mssql-server-linux:
     image: microsoft/mssql-server-linux
-    environment:
-      - "ACCEPT_EULA='Y'"
-      - "sa_password=Password123!"
-    ports:
-      - "1433:1433" # for debug.  Remove this for production
+      ACCEPT_EULA: Y
+      sa_password: Password123!
+      attach_dbs: "[{'dbName':'ApiDev','dbFiles':['C:\\\\data\\\\ApiDev.mdf','C:\\\\data\\\\ApiDev_log.ldf']}]"
+    volumes:
+      - "C:/data/:C:/data/"

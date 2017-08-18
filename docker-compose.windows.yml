@@ -14,9 +14,8 @@ services:
       context: .
       dockerfile: Dockerfile.node.nano
     environment:
-      - "Data Source=mssql-server-windows;Initial Catalog=ApiDev;Integrated Security=False;User Id=sa;Password=Password123!;Connect Timeout=60;Encrypt=True"
-    ports:
-      - "80:3000"
+      "Data Source": "mssql-server-windows;Initial Catalog=ApiDev;Integrated Security=False;User Id=sa;Password=Password123!;Connect Timeout=60;Encrypt=True"
+      PORT: 80
     depends_on:
       - mssql-server-windows
   mssql-server-windows:
@@ -25,8 +24,6 @@ services:
       ACCEPT_EULA: Y
       sa_password: Password123!
       attach_dbs: "[{'dbName':'ApiDev','dbFiles':['C:\\\\data\\\\ApiDev.mdf','C:\\\\data\\\\ApiDev_log.ldf']}]"
-    ports:
-      - "1433:1433" # for debug.  Remove this for production
     volumes:
       - "C:/data/:C:/data/"
 
