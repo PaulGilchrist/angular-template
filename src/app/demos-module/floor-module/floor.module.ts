@@ -4,7 +4,7 @@ import { RouterModule }    from '@angular/router';
 
 // Assumes D3GraphComponent was loaded at a higher module
 // import { D3GraphComponent } from './../components/d3-graph.component';
-import { FloorComponent } from './floor.component';
+import { FloorComponent } from './components/floor/floor.component';
 
 import { routing } from './floor.routing';
 
@@ -15,8 +15,9 @@ import { routing } from './floor.routing';
     ], // directives, components, and pipes owned by this NgModule
     imports: [
         CommonModule,
-        RouterModule,
-        routing
+        RouterModule.forChild([
+            { path: '', component: FloorComponent },
+        ])
     ],
 })
 export class FloorModule {}

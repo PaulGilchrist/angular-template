@@ -6,15 +6,14 @@ import { RouterModule }    from '@angular/router';
 
 import { SharedModule } from '../shared-module/shared.module';
 
-import { BlockchainDemoComponent } from './blockchain-demo.component';
-import { D3GraphComponent } from './components/d3-graph.component';
-import { DragDemoComponent } from './drag-demo.component';
+import { BlockchainDemoComponent } from './components//blockchain/blockchain-demo.component';
+import { D3GraphComponent } from './components/d3-graph/d3-graph.component';
+import { DragDemoComponent } from './components/drag-demo/drag-demo.component';
 import { Dragula } from './directives/dragula.directive';
-import { EditorDemoComponent } from './editor-demo.component';
-import { GraphDemoComponent } from './graph-demo.component';
-import { ModalDemoComponent } from './modal-demo.component';
+import { EditorDemoComponent } from './components/editor-demo/editor-demo.component';
+import { GraphDemoComponent } from './components/graph-demo/graph-demo.component';
+import { ModalDemoComponent } from './components/modal-demo/modal-demo.component';
 //import { PdfDemoComponent } from './pdf-demo.component';
-import { routing } from './demos.routing';
 
 import { BlockchainService } from './services/blockchain.service';
 
@@ -39,9 +38,17 @@ import {CKEditorModule} from '../../../node_modules/ng2-ckeditor';
         CommonModule,
         HttpModule,
         FormsModule,
-        RouterModule,
-        SharedModule,
-        routing
+        RouterModule.forChild([
+            // Static Loading
+            { path: 'blockchain', component: BlockchainDemoComponent },
+            { path: 'drag', component: DragDemoComponent },
+            { path: 'editor', component: EditorDemoComponent },
+            { path: 'graph', component: GraphDemoComponent },
+            //{ path: 'pdf', component: PdfDemoComponent },
+            // Lazy Loading
+            { path: 'floor', loadChildren: './floor-module/floor.module#FloorModule' },
+        ]),
+        SharedModule
     ],
     providers: [
         BlockchainService

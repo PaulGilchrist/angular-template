@@ -37,5 +37,3 @@ import 'toastr/build/toastr.css';
 import 'toastr/toastr.js';
 import 'underscore/underscore.js';
 
-import './../src/css/app.css'; // Load this last so it can override all other css files
-

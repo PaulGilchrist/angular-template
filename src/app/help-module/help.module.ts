@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule }    from '@angular/router';
 import { CommonModule, LocationStrategy, HashLocationStrategy } from '@angular/common';
 /* Module Declarations */
-import { HelpComponent } from './help.component';
-import { HelpHomeComponent } from './help-home.component';
-import { HelpNavComponent } from './help-nav.component';
-import { routing } from './help.routing';
+import { HelpComponent } from './components/help/help.component';
+import { HelpHomeComponent } from './components/help-home/help-home.component';
+import { HelpNavComponent } from './components/help-nav/help-nav.component';
+
 
 @NgModule({
     declarations: [
@@ -15,8 +15,15 @@ import { routing } from './help.routing';
     ],
     imports: [
         CommonModule,
-        RouterModule,
-        routing
+        RouterModule.forChild([
+            {
+                path: '',
+                component: HelpComponent,
+                children: [
+                    { path: '', component: HelpHomeComponent }
+                ]
+            }
+        ])
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy }
