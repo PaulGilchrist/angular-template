@@ -21,7 +21,11 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 //import 'ckeditor/ckeditor.js'; // not working due to extra files needed
 //import 'font-awesome/css/font-awesome.css'; // not working
-import 'd3/d3.js';
+
+import * as d3 from 'd3';
+import { Selection, select } from 'd3-selection';
+import { transition } from 'd3-transition';
+
 import 'dragula/dist/dragula.css';
 import 'dragula/dragula.js';
 import 'jquery/src/jquery.js';
