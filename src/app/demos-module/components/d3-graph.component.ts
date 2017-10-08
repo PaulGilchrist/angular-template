@@ -171,10 +171,7 @@ export class D3GraphComponent implements OnInit, OnChanges {
 
     createPieChart(): void {
         let _this = this;
-        let isDate: boolean = (this.xType==='date');
-        let timeFormat = d3.timeFormat('%b');
         let r = _this.width/2;
-        let color = d3.scaleOrdinal(d3.schemeCategory20c); //builtin range of colors
         let vis = d3.select(_this.el.nativeElement)
             .append('svg:svg') // Create the SVG element inside nativeElement
             .data([_this.data]) // Associate our data with the document
@@ -184,12 +181,13 @@ export class D3GraphComponent implements OnInit, OnChanges {
             .attr('transform', 'translate(' + r + ',' + r + ')'); // Move the center of the pie chart from 0, 0 to radius, radius
         let pie = d3.pie() // Create arc data for us given a list of values
             .value(function(d: any) { return d[_this.yKey]; }); // Tell it how to access the value of each element in our data array
-        let arc = d3.arc().outerRadius(r); // Declare an arc generator function that will create <path> elements for us using arc data
         let arcs = vis.selectAll('g.slice') // Selects all <g> elements with class slice (there aren't any yet)
             .data(pie) // Associate the generated pie data (an array of arcs, each having startAngle, endAngle and value properties)
             .enter() // This will create <g> elements for every "extra" data element that should be associated with a selection. The result is creating a <g> for every object in the data array
             .append('svg:g') // Create a group to hold each slice (we will have a <path> and a <text> element associated with each slice)
             .attr('class', 'slice'); // Allow us to style things in the slices (like text)
+        let color = d3.scaleOrdinal(d3.schemeCategory20c); //builtin range of colors
+        let arc = d3.arc().outerRadius(r).innerRadius(0); // Declare an arc generator function that will create <path> elements for us using arc data
         arcs.append('svg:path')
             .attr('fill', function(d: any, i: any) { return color(i); }) // Set the color for each slice to be chosen from the color function defined above
             .attr('d', function (d: any) { return arc(d); }) //this creates the actual SVG path using the associated data (pie) with the arc drawing function
@@ -208,6 +206,8 @@ export class D3GraphComponent implements OnInit, OnChanges {
                 _this._tooltip.transition().duration(500).style('opacity', 0);
             });
         //Labels
+        let isDate: boolean = (this.xType==='date');
+        let timeFormat = d3.timeFormat('%b');
         arcs.append('svg:text') // Add a label to each slice
             .attr('class', 'd3-axis')
             .attr('transform', function(d: any) { // Set the label's origin to the center of the arc
