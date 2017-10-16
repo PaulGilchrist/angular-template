@@ -52,6 +52,7 @@ export class UserService {
         // Then when looking for the addresses for a single user, do that in memory (but this is a demo, so small API calls are fine)
         let url: string = this._usersUrl + '/' + user.id + '/addresses';
         return this.http.get(url)
+            .retry(3)
             .map(res => <Address[]>res.json())
             .catch(this.handleError);
     }

@@ -13,7 +13,6 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { UserHomeComponent } from './components/user-home/user-home.component';
 
 import { UserService } from './services/user.service';
-import { ApiInterceptor } from './services/api.interceptor';
 
 @NgModule({
     declarations: [
@@ -32,7 +31,6 @@ import { ApiInterceptor } from './services/api.interceptor';
         SharedModule, // Required to leverage table sorting and filtering
     ],
     providers: [
-        { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true, }, //Add token to all API requests
         UserService
     ]
 })

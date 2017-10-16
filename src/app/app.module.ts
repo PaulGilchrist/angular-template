@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, NoPreloading } from '@angular/router';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 /* Shared Modules */
 import { SharedModule } from './shared-module/shared.module';
 /* App Services */
@@ -12,6 +13,9 @@ import { AppComponent } from './components/app/app.component';
 import { HomeComponent } from './components/home/home.component';
 import { TokenComponent } from './components/login/token.component';
 import { TopNavComponent } from './components/nav/nav-top.component';
+
+import { AuthInterceptor } from './services/auth.interceptor';
+import { LoggingInterceptor } from './services/logging.interceptor';
 
 @NgModule({
     bootstrap: [AppComponent],
@@ -43,6 +47,8 @@ import { TopNavComponent } from './components/nav/nav-top.component';
     providers: [
         // { provide: LocationStrategy, useClass: HashLocationStrategy },
         { provide: Window, useValue: window },
+        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true, }, // Add token to all API requests
+        { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true, }, // Time how long each http rerquests takes
         IdentityService
     ]
 })
