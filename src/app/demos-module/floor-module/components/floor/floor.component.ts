@@ -9,10 +9,9 @@ export interface FloorZone { name: string; type: string; layers: string[]; activ
 export interface Option { level: number; name: string; standardName: string; optionName: string; standardLayers: string[]; optionLayers: string[]; active: boolean; }
 
 @Component({
-    moduleId: module.id.toString(),
     selector: 'floor',
-    styleUrls: ['floor.component.css'],
-    templateUrl: 'floor.component.html'
+    styleUrls: ['./floor.component.css'],
+    templateUrl: './floor.component.html'
 })
 export class FloorComponent {
     dimension: boolean = false;

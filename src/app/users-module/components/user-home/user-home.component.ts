@@ -3,9 +3,8 @@ import { Component, OnInit, Input, Output } from '@angular/core';
 import { User } from '../../models/user.model';
 
 @Component({
-    moduleId: module.id.toString(),
-    selector: 'user-home',
-    templateUrl: 'user-home.component.html'
+    selector: './user-home',
+    templateUrl: './user-home.component.html'
 })
 export class UserHomeComponent implements OnInit {
     user: User;

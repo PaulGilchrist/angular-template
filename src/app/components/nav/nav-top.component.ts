@@ -7,10 +7,9 @@ import { IdentityService } from '../../services/identity.service';
 declare let toastr:any;
 
 @Component({
-    moduleId: module.id.toString(),
     selector: 'nav-top',
-    styleUrls: ['nav-top.component.css'],
-    templateUrl: 'nav-top.component.html'
+    styleUrls: ['./nav-top.component.css'],
+    templateUrl: './nav-top.component.html'
 })
 export class TopNavComponent implements OnInit {
 

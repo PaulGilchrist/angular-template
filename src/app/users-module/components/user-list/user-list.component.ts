@@ -7,10 +7,9 @@ declare var _: any;
 declare var $: any;
 
 @Component({
-    moduleId: module.id.toString(),
     selector: 'user-list',
-    styleUrls: ['user-list.component.css'],
-    templateUrl: 'user-list.component.html'
+    styleUrls: ['./user-list.component.css'],
+    templateUrl: './user-list.component.html'
 })
 export class UserListComponent implements OnInit, OnDestroy  {
     @Output() onSelect = new EventEmitter<User>();

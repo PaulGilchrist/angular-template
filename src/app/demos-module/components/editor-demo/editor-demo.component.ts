@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    moduleId: module.id.toString(),
     selector: 'editor-demo',
-    styleUrls: ['editor-demo.component.css'],
-    templateUrl: 'editor-demo.component.html'
+    styleUrls: ['./editor-demo.component.css'],
+    templateUrl: './editor-demo.component.html'
 })
 export class EditorDemoComponent implements OnInit {
 

@@ -3,10 +3,9 @@ import { HttpModule } from '@angular/http';
 import { BlockchainService } from '../../services/blockchain.service';
 
 @Component({
-    moduleId: module.id.toString(),
     selector: 'blockchain-demo',
-    styleUrls: ['blockchain-demo.component.css'],
-    templateUrl: 'blockchain-demo.component.html'
+    styleUrls: ['./blockchain-demo.component.css'],
+    templateUrl: './blockchain-demo.component.html'
 })
 export class BlockchainDemoComponent implements OnInit {
 

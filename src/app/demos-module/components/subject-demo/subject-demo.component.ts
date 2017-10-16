@@ -4,10 +4,9 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 
 @Component({
-    moduleId: module.id.toString(),
     selector: 'subject-demo',
-    styleUrls: ['subject-demo.component.css'],
-    templateUrl: 'subject-demo.component.html'
+    styleUrls: ['./subject-demo.component.css'],
+    templateUrl: './subject-demo.component.html'
 })
 export class SubjectDemoComponent implements OnInit, OnDestroy {
 	// Although the property "subject" is created in this component, we are simulating how we would detect changes to is if it was created and modified outside of this component

@@ -4,10 +4,9 @@ import {} from 'node'
 declare let $: any;
 declare let System: any;
 @Component({
-    moduleId: module.id.toString(),
     selector: 'my-app',
-    styleUrls: ['app.component.css'],
-    templateUrl: 'app.component.html'
+    styleUrls: ['./app.component.css'],
+    templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
     ngOnInit(): void {

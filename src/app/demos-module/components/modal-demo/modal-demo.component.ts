@@ -1,9 +1,8 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-    moduleId: module.id.toString(),
-    selector: 'modal-demo',
-    templateUrl: 'modal-demo.component.html'
+    selector: './modal-demo',
+    templateUrl: './modal-demo.component.html'
 })
 export class ModalDemoComponent {
 

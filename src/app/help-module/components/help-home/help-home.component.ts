@@ -4,10 +4,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 declare var $: any;
 
 @Component({
-    moduleId: module.id.toString(),
     selector: 'help-home',
-    styleUrls: ['help-home.component.css'],
-    templateUrl: 'help-home.component.html'
+    styleUrls: ['./help-home.component.css'],
+    templateUrl: './help-home.component.html'
 })
 export class HelpHomeComponent implements OnInit, OnDestroy {
 
