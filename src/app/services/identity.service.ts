@@ -29,14 +29,6 @@ export class IdentityService {
         this._state = null;
     }
 
-    public appendAuthHeader(headers: Headers): any {
-        // Will pass an expired header if that is all we have
-        if(this.id_token) {
-            headers.append('Authorization', 'Bearer ' + this.id_token);
-        }
-        return headers;
-    }
-
     public getToken(): void {
         // Save current URL to local storage before redirecting through the OAuth implicit flow process
         localStorage.setItem('redirectUrl', location.href);

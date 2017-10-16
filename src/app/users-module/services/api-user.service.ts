@@ -5,7 +5,7 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
-
+import 'rxjs/add/operator/retry';
 
 import { CONFIG } from '../../data/config.data';
 import { IdentityService } from '../../services/identity.service';
@@ -32,7 +32,8 @@ export class UserService {
         // If the users are less than 1 hour old do not GET them again from the API
         if (!this.users || (this._lastUserGetTime + this._maxUserCacheTimeMilliseconds < Date.now())) {
             // Get users from API
-            return this.http.get(this._usersUrl /* , { headers: this._identityService.appendAuthHeader(new Headers()) }*/)
+            return this.http.get(this._usersUrl)
+                .retry(3)
                 .map(res => <User[]>res.json())
                 .do(data => {
                     this.users = data; // Save the user array inside the service
@@ -50,7 +51,7 @@ export class UserService {
         // If it was a requirement to secure this endpoint, then for performance reasons, it would be best to get all addresses one time
         // Then when looking for the addresses for a single user, do that in memory (but this is a demo, so small API calls are fine)
         let url: string = this._usersUrl + '/' + user.id + '/addresses';
-        return this.http.get(url /* , { headers: this._identityService.appendAuthHeader(new Headers()) }*/)
+        return this.http.get(url)
             .map(res => <Address[]>res.json())
             .catch(this.handleError);
     }
