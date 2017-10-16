@@ -13,6 +13,7 @@ import { Dragula } from './directives/dragula.directive';
 import { EditorDemoComponent } from './components/editor-demo/editor-demo.component';
 import { GraphDemoComponent } from './components/graph-demo/graph-demo.component';
 import { ModalDemoComponent } from './components/modal-demo/modal-demo.component';
+import { SubjectDemoComponent } from './components/subject-demo/subject-demo.component';
 //import { PdfDemoComponent } from './pdf-demo.component';
 
 import { BlockchainService } from './services/blockchain.service';
@@ -31,6 +32,7 @@ import {CKEditorModule} from '../../../node_modules/ng2-ckeditor';
         EditorDemoComponent,
         GraphDemoComponent,
         ModalDemoComponent,
+        SubjectDemoComponent
         //PdfDemoComponent,
     ], // directives, components, and pipes owned by this NgModule
     imports: [
@@ -47,6 +49,7 @@ import {CKEditorModule} from '../../../node_modules/ng2-ckeditor';
             //{ path: 'pdf', component: PdfDemoComponent },
             // Lazy Loading
             { path: 'floor', loadChildren: './floor-module/floor.module#FloorModule' },
+            { path: 'subject', component: SubjectDemoComponent },
         ]),
         SharedModule
     ],

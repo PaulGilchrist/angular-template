@@ -11,3 +11,4 @@ COPY build /build
 WORKDIR /build
 # RUN npm install
 CMD [ "node", "server.js" ]
+# docker push paulgilchrist/angulartemplate-node-nano

@@ -9,3 +9,4 @@ COPY build /usr/src/app
 WORKDIR /usr/src/app
 # RUN npm install
 CMD [ "node", "server.js" ]
+# docker push paulgilchrist/angulartemplate-node-linux
