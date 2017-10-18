@@ -31,9 +31,15 @@ app.use(function(req, res, next) {
     var ext = path.extname(req.path);
     if(ext !== '') {
         return next();
-    }
-    //Send the root page back to the client (SPA)
-    fs.createReadStream(staticRoot + 'index.html').pipe(res);
+	}
+	//Return the settings file
+	if(req.path.endsWith('api/settings')) {
+		res.writeHead(200, {'Content-Type': 'application/json'});
+		fs.createReadStream(staticRoot + 'settings.json').pipe(res);
+		return next();
+	}
+	//Send the root page back to the client (SPA)
+	fs.createReadStream(staticRoot + 'index.html').pipe(res);
 });
 //Start the application
 app.listen(app.get('port'), function() {

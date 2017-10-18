@@ -4,11 +4,11 @@ var commonConfig = require('./webpack.common.js');
 var helpers = require('./helpers');
 
 module.exports = webpackMerge(commonConfig, {
-  devtool: 'cheap-module-eval-source-map',
+	devtool: 'cheap-module-eval-source-map',
 
     devServer: {
-        historyApiFallback: true,
-        stats: 'minimal'
+		historyApiFallback: true,
+		stats: 'minimal'
     },
 
     output: {
@@ -20,11 +20,6 @@ module.exports = webpackMerge(commonConfig, {
 
     plugins: [
         new ExtractTextPlugin('[name].[hash].css')
-    ],
-
-    devServer: {
-        historyApiFallback: true,
-        stats: 'minimal'
-    }
+    ]
 
 });

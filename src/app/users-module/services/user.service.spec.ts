@@ -4,6 +4,7 @@ import 'rxjs/Rx';
 import {} from 'jasmine';
 
 import { IdentityService } from '../../services/identity.service';
+import { SettingsService } from '../../services/settings.service';
 import { UserService } from './user.service';
 import { Address } from '../models/address.model';
 import { User } from '../models/user.model';
@@ -15,6 +16,7 @@ describe('UserService', () => {
         TestBed.configureTestingModule({
             imports: [HttpModule],
             providers: [
+                SettingsService,
                 IdentityService,
                 UserService
             ]

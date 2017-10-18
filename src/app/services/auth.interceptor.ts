@@ -10,9 +10,9 @@ export class AuthInterceptor implements HttpInterceptor {
     constructor(private _identityService: IdentityService) { }
 
 	intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-		if(this._identityService.id_token) {
+		if(this._identityService.token) {
 			// Clone the request to add the new header.
-			const authReq = req.clone({setHeaders: { Authorization: 'Bearer ' + this._identityService.id_token }});
+			const authReq = req.clone({setHeaders: { Authorization: 'Bearer ' + this._identityService.token }});
 			// Pass on the cloned request instead of the original request.
 			return next.handle(authReq);
 		} else {

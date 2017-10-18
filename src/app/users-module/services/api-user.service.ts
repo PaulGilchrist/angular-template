@@ -7,11 +7,11 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/retry';
 
-import { CONFIG } from '../../data/config.data';
-import { IdentityService } from '../../services/identity.service';
 import { Address } from '../models/address.model';
 import { User } from '../models/user.model';
 
+import { Settings } from '../../models/settings.model';
+import { SettingsService } from '../../services/settings.service';
 
 @Injectable()
 export class UserService {
@@ -22,11 +22,14 @@ export class UserService {
     public users: User[];
 
     // Private variables
-    _usersUrl = CONFIG.apiUrl + '/users';
+    _usersUrl: string = null;
     _lastUserGetTime: number; // number of milliseconds elapsed since 1 January 1970 00:00:00 UTC
 
     // Assumes HTTP_PROVIDERS was added as a provider at a higher level
-    constructor(private http: Http, private _identityService: IdentityService) { }
+    constructor(private http: Http, private _settingsService: SettingsService) {
+		//Application should have loaded settings at startup
+		this._usersUrl = _settingsService.settings.apiUrl + '/users';
+	}
 
     public getUsers(): Observable<User[]> {
         // If the users are less than 1 hour old do not GET them again from the API

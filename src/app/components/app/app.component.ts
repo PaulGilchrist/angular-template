@@ -1,15 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import {} from 'node'
+
+import { SettingsService } from '../../services/settings.service';
 
 declare let $: any;
-declare let System: any;
 @Component({
     selector: 'my-app',
     styleUrls: ['./app.component.css'],
     templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
+
+	constructor(private _settingsService: SettingsService) {}
+
     ngOnInit(): void {
+		// Get Application settings from API at application startup
+		this._settingsService.getSettings().subscribe();
         // Extend jQuery to allow for simpler animations
         $.fn.extend({
             animateCss: function (animationName: string) {

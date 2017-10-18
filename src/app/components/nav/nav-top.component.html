@@ -24,14 +24,14 @@
                 <li routerLinkActive="active"><a [routerLink]="['demos/floor']">Floor</a></li>
                 <li routerLinkActive="active"><a [routerLink]="['user']">User</a></li>
                 <li routerLinkActive="active"><a [routerLink]="['help']">Help</a></li>
-                <li *ngIf="user.identity.isAuthenticated"  routerLinkActive="active"><a [routerLink]="['token']">Token</a></li>
+                <li *ngIf="identityService.user"  routerLinkActive="active"><a [routerLink]="['token']">Token</a></li>
             </ul>
             <form class="navbar-form navbar-right">
-                <input *ngIf="!user.identity.isAuthenticated" (click)="login()" type="button" class="btn btn-primary" value="Login">
-                <input *ngIf="user.identity.isAuthenticated" (click)="logout()" type="button" class="btn sm btn-default" value="Logout">
+                <input *ngIf="!identityService.user" (click)="login()" type="button" class="btn btn-primary" value="Login">
+                <input *ngIf="identityService.user" (click)="logout()" type="button" class="btn sm btn-default" value="Logout">
             </form>
-            <div *ngIf="user.identity.isAuthenticated" class="nav navbar-right hidden-xs hidden-sm">
-                <span class="navbar-text">{{user.identity.name}}</span>
+            <div *ngIf="identityService.user" class="nav navbar-right hidden-xs hidden-sm">
+                <span class="navbar-text">{{ this.identityService.user.profile['given_name'] + ' ' + this.identityService.user.profile['family_name'] }}</span>
             </div>
         </div>
     </div>
