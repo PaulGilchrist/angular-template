@@ -6,9 +6,9 @@
 # Test on http://<containerIP>:3000
 # docker rm -f <containerID>
 FROM paulgilchrist/node-nano
-RUN mkdir build
-COPY build /build
-WORKDIR /build
+RUN mkdir dist
+COPY dist /dist
+WORKDIR /dist
 # RUN npm install
 CMD [ "node", "server.js" ]
 # docker push paulgilchrist/angulartemplate-node-nano
