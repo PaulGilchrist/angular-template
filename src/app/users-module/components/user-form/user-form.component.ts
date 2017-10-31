@@ -2,7 +2,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { User } from '../../models/user.model';
 
-declare var $: any;
+import * as $ from 'jquery';
+import 'animate.css';
 
 @Component({
     selector: 'user-form',
@@ -50,8 +51,9 @@ export class UserFormComponent {
         // Remove the original animation before adding a different one
         let userForm = $('#user-form');
         userForm.removeClass('animated slideInLeft');
-        // Add the new animation that will remove itself once completed
-        userForm.animateCss('bounce');
+		// Add the new animation that will remove itself once completed
+		// No typings for animate.css
+        (<any>userForm).animateCss('bounce');
     }
 
     cancel(): void {
@@ -64,6 +66,7 @@ export class UserFormComponent {
         // Remove the original animation before adding a different one
         userForm.removeClass('animated slideInLeft');
         // Add the new animation that will remove itself once completed
-        userForm.animateCss('shake');
+		// No typings for animate.css
+        (<any>userForm).animateCss('shake');
     }
 }

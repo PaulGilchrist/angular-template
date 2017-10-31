@@ -1,8 +1,7 @@
 // https://github.com/bevacqua/dragula#readme
 import {Injectable, EventEmitter} from '@angular/core';
 
-// Must be imported in main.ts;
-declare var dragula: any;
+import * as dragula from 'dragula';
 
 @Injectable()
 export class DragulaService {

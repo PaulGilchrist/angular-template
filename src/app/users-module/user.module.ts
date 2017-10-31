@@ -4,6 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule }    from '@angular/http';
 import { RouterModule } from '@angular/router';
 
+import * as $ from 'jquery';
+import 'animate.css';
+import { confirm, alert } from 'jquery-confirm';
+import * as _ from 'underscore';
+import * as toastr from 'toastr';
+
 import { SharedModule } from '../shared-module/shared.module';
 
 import { AddressFormComponent } from './components/address-form/address-form.component';

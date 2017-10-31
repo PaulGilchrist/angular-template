@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-// Must be inlcuded in index.html
-declare let $: any;
-declare let d3: any;
+import * as $ from 'jquery';
+import * as d3 from 'd3';
+import { Selection, select } from 'd3-selection';
+import { transition } from 'd3-transition';
+
 
 // We only put interfaces in the models folder when they are reused across components
 export interface FloorZone { name: string; type: string; layers: string[]; active: boolean; } // Valid types are undecided, carpet, tile, or wood
@@ -112,7 +114,7 @@ export class FloorComponent {
             layer.find('.dimzone path').on('click', function() {
                  console.log('clicked');
             });
-            d3.select();
+            //d3.select();
         }
     }
 

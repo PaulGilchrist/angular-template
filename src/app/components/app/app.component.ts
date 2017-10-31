@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+import * as $ from 'jquery';
+
 import { SettingsService } from '../../services/settings.service';
 
-declare let $: any;
 @Component({
     selector: 'my-app',
     styleUrls: ['./app.component.css'],

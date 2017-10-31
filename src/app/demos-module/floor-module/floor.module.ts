@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule }    from '@angular/common';
 import { RouterModule }    from '@angular/router';
 
-// Assumes D3GraphComponent was loaded at a higher module
-// import { D3GraphComponent } from './../components/d3-graph.component';
+import * as d3 from 'd3';
+import { Selection, select } from 'd3-selection';
+import { transition } from 'd3-transition';
+
 import { FloorComponent } from './components/floor/floor.component';
 
 import { routing } from './floor.routing';

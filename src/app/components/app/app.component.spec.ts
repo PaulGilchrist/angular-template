@@ -1,7 +1,9 @@
 /* tslint:disable:no-unused-variable */
+import { HttpModule } from '@angular/http';
 import { async, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import {} from 'jasmine';
+
 
 import { AppComponent } from './app.component';
 import { SettingsService } from '../../services/settings.service';
@@ -17,7 +19,11 @@ describe('Smoke test', () => {
 describe('AppComponent', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
-            declarations: [AppComponent],
+			declarations: [AppComponent],
+			imports: [
+				HttpModule
+			],
+			providers: [SettingsService]
         });
         TestBed.overrideComponent(AppComponent, {
             set: {
@@ -26,12 +32,12 @@ describe('AppComponent', () => {
             }
         });
     });
-    // it('Should instantiate component', async(() => {
-    //     TestBed.compileComponents().then(() => {
-    //         let fixture = TestBed.createComponent(AppComponent);
-    //         expect(fixture.componentInstance instanceof AppComponent).toBe(true, 'should create AppComponent');
-    //     });
-    // }));
+    it('Should instantiate component', async(() => {
+        TestBed.compileComponents().then(() => {
+            let fixture = TestBed.createComponent(AppComponent);
+            expect(fixture.componentInstance instanceof AppComponent).toBe(true, 'should create AppComponent');
+        });
+    }));
     // it('Should have expected <div> text', async(() => {
     //     TestBed.compileComponents().then(() => {
     //         let fixture = TestBed.createComponent(AppComponent);

@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule }    from '@angular/router';
 import { CommonModule, LocationStrategy, HashLocationStrategy } from '@angular/common';
+
+import * as $ from 'jquery';
+
 /* Module Declarations */
 import { HelpComponent } from './components/help/help.component';
 import { HelpHomeComponent } from './components/help-home/help-home.component';

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common' ;
 
-declare let $: any;
+import * as $ from 'jquery';
 
 @Component({
     selector: 'help-nav',

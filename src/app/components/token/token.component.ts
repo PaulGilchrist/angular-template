@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Location } from '@angular/common' ;
+import { Location } from '@angular/common';
+
+import * as $ from 'jquery';
+import 'bootstrap';
 
 import { IdentityService } from '../../services/identity.service';
-
-declare var toastr:any;
-declare var $:any;
 
 @Component({
     selector: 'my-token',

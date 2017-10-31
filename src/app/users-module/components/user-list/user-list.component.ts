@@ -1,10 +1,17 @@
 ﻿import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 
+import 'jquery';
+import * as _ from 'underscore';
+import { confirm, alert } from 'jquery-confirm';
+
+// No typings for jquery-confirm
+declare const $: {
+    alert: Function,
+    confirm: Function
+};
+
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
-
-declare var _: any;
-declare var $: any;
 
 @Component({
     selector: 'user-list',
@@ -30,6 +37,7 @@ export class UserListComponent implements OnInit, OnDestroy  {
         //     Doing this earlier in the lifecycle would allow for leaving the page to be canceled
         let usersRequiringSave = _.where(this._userService.users, { isDirty: true });
         if (usersRequiringSave.length > 0) {
+			// No typings for jquery-confirm
             $.confirm({
                 title: 'Confirm!',
                 content: 'Save all modified users?',

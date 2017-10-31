@@ -1,3 +1,11 @@
+@import '~animate.css/animate.min.css';
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~dragula/dist/dragula.min.css';
+@import '~font-awesome/css/font-awesome.min.css';
+@import '~jquery-confirm/dist/jquery-confirm.min.css';
+@import '~toastr/build/toastr.min.css';
+
+
 /*
 Try and keep global CSS to a minimum and mainly to global variables.  This prevents components from breaking when used in other projects
 */

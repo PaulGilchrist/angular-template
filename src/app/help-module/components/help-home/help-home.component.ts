@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-declare var $: any;
+import * as $ from 'jquery';
 
 @Component({
     selector: 'help-home',

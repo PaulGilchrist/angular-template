@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { PDF_OVERVIEW } from '../../data/pdf-overview.data';
 
+import * as _ from 'underscore';
+
 declare let pdfMake: any;
-declare let _:any;
 
 export interface DocImage {
     name: string;
