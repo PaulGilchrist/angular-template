@@ -15,7 +15,7 @@ export class TopNavComponent implements OnInit {
 
     shrinkNavbar: boolean = false;
 
-    constructor(private _location: Location, private _router: Router, private identityService: IdentityService) {}
+    constructor(private _location: Location, private _router: Router, public identityService: IdentityService) {}
 
     onScroll(event: any): void {
         // Shrink the header top and bottom padding when scrolling beyond 300px

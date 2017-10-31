@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 
-import * as $ from 'jquery';
-import 'bootstrap';
-
 import { IdentityService } from '../../services/identity.service';
 
 @Component({
@@ -18,7 +15,8 @@ export class TokenComponent implements OnInit {
     ngOnInit(): void {
 		//Initialize tooltips just for this component
 		$(document).ready(() => {
-			$('my-token [data-toggle="tooltip"]').tooltip({ container: 'body' });
+			// No typings for bootstrap's tooltip
+			(<any>$('my-token [data-toggle="tooltip"]')).tooltip({ container: 'body' });
 		});
 
     };

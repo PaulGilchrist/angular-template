@@ -6,9 +6,6 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import * as $ from 'jquery';
-import 'bootstrap';
-
 /* Shared Modules */
 import { SharedModule } from './shared-module/shared.module';
 /* App Services */
@@ -52,8 +49,6 @@ import { LoggingInterceptor } from './services/logging.interceptor';
         SharedModule
     ],
     providers: [
-        // { provide: LocationStrategy, useClass: HashLocationStrategy },
-        { provide: Window, useValue: window },
         { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true, }, // Add token to all API requests
 		{ provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true, }, // Time how long each http rerquests takes
 		IdentityService,

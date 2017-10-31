@@ -1,8 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import * as $ from 'jquery';
-
 @Component({
     selector: 'help-home',
     styleUrls: ['./help-home.component.css'],

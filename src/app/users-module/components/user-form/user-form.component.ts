@@ -2,9 +2,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { User } from '../../models/user.model';
 
-import * as $ from 'jquery';
-import 'animate.css';
-
 @Component({
     selector: 'user-form',
     styleUrls: ['./user-form.component.css'],

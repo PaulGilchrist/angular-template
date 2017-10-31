@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common' ;
 
-import * as $ from 'jquery';
-
 @Component({
     selector: 'help-nav',
     styleUrls: ['./help-nav.component.css'],

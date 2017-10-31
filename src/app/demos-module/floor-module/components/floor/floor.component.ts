@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import * as $ from 'jquery';
 import * as d3 from 'd3';
 import { Selection, select } from 'd3-selection';
 import { transition } from 'd3-transition';
