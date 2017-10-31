@@ -1,25 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'editor-demo',
-    styleUrls: ['./editor-demo.component.css'],
-    templateUrl: './editor-demo.component.html'
+	selector: 'editor-demo',
+	styleUrls: ['./editor-demo.component.css'],
+	templateUrl: './editor-demo.component.html'
 })
 export class EditorDemoComponent implements OnInit {
 
-    content: string;
-    mergedContent: string;
+	content: string;
+	mergedContent: string;
 
-    data: any = [
-        { name: '[CustomerName]', value: 'John Smith' },
-        { name: '[DeveloperName]', value: 'Paul Gilchrist' },
-        { name: '[DateToday]', value: new Date().toDateString() },
-    ];
+	data: any = [
+		{ name: '[CustomerName]', value: 'John Smith' },
+		{ name: '[DeveloperName]', value: 'Paul Gilchrist' },
+		{ name: '[DateToday]', value: new Date().toDateString() },
+	];
 
 
-    ngOnInit() {
-        window['appInsights'].trackPageView("demos-module/editor-demo.component");
-        this.content = `
+	ngOnInit() {
+		// window['appInsights'].trackPageView('demos-module/editor-demo.component');
+		this.content = `
             <h1><strong>WYSIWYG Data Merge Demo</strong></h1>
             <p>&nbsp;</p>
             <h3>[CustomerName],</h3>
@@ -28,20 +28,20 @@ export class EditorDemoComponent implements OnInit {
             <p>Thanks,</p>
             <p>[DeveloperName]</p>
         `;
-        this.updateMergedContent();
-    }
+		this.updateMergedContent();
+	}
 
-    onChange(event: any) {
-        this.updateMergedContent();
-    }
+	onChange(event: any) {
+		this.updateMergedContent();
+	}
 
-    onReady(event: any) { }
+	onReady(event: any) { }
 
-    updateMergedContent() {
-        // Find and replace any variables with their respective values
-        let _self = this;
-        this.mergedContent = this.content;
-        this.data.forEach((item: any, index: number) => _self.mergedContent = _self.mergedContent.split(item.name).join(item.value));
-    }
+	updateMergedContent() {
+		// Find and replace any variables with their respective values
+		const _self = this;
+		this.mergedContent = this.content;
+		this.data.forEach((item: any, index: number) => _self.mergedContent = _self.mergedContent.split(item.name).join(item.value));
+	}
 
 }

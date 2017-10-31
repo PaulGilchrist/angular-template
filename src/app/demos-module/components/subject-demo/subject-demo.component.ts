@@ -4,9 +4,9 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 
 @Component({
-    selector: 'subject-demo',
-    styleUrls: ['./subject-demo.component.css'],
-    templateUrl: './subject-demo.component.html'
+	selector: 'subject-demo',
+	styleUrls: ['./subject-demo.component.css'],
+	templateUrl: './subject-demo.component.html'
 })
 export class SubjectDemoComponent implements OnInit, OnDestroy {
 	// Although the property "subject" is created in this component, we are simulating how we would detect changes to is if it was created and modified outside of this component
@@ -24,20 +24,20 @@ export class SubjectDemoComponent implements OnInit, OnDestroy {
 
 	subject = new BehaviorSubject<string>('');
 
-    ngOnInit() {
+	ngOnInit() {
 		this.subject
-	    	.debounceTime(1000)       // Wait 1000ms after each keystroke before considering the message
-    	  	.distinctUntilChanged()   // Ignore if next message is same as previous
+			.debounceTime(1000)       // Wait 1000ms after each keystroke before considering the message
+		  	.distinctUntilChanged()   // Ignore if next message is same as previous
 			.subscribe(value => {
 				// Do something everytime subject changes
 				this.tracker = new Date();
 			});
 
-		this.message = "Hello World!!!";
-    }
+		this.message = 'Hello World!!!';
+	}
 
-    ngOnDestroy() {
+	ngOnDestroy() {
 		this.subject.unsubscribe();
-    }
+	}
 
 }

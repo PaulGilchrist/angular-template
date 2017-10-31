@@ -1,4 +1,4 @@
 export interface State {
-  abbreviation: string;
-  name: string;
+	abbreviation: string;
+	name: string;
 }

@@ -21,38 +21,38 @@ import { AuthInterceptor } from './services/auth.interceptor';
 import { LoggingInterceptor } from './services/logging.interceptor';
 
 @NgModule({
-    bootstrap: [AppComponent],
-    declarations: [
-        AppComponent,
-        HomeComponent,
-        TokenComponent,
-        TopNavComponent
-    ],
-    exports: [
-        SharedModule
-    ],
-    imports: [
+	bootstrap: [AppComponent],
+	declarations: [
+		AppComponent,
+		HomeComponent,
+		TokenComponent,
+		TopNavComponent
+	],
+	exports: [
+		SharedModule
+	],
+	imports: [
 		BrowserModule,
 		HttpModule,
-        RouterModule.forRoot([
-                // Static Loading
-                { path: '', redirectTo: '/home', pathMatch: 'full' },
-                { path: 'home', component: HomeComponent },
-                { path: 'token', component: TokenComponent },
-                // Lazy Loading
-                { path: 'demos', loadChildren: './demos-module/demos.module#DemosModule' },
-                { path: 'user', loadChildren: './users-module/user.module#UserModule' },
-                { path: 'help', loadChildren: './help-module/help.module#HelpModule' },
-            ],
-            {preloadingStrategy: NoPreloading}
-        ),
-        SharedModule
-    ],
-    providers: [
-        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true, }, // Add token to all API requests
+		RouterModule.forRoot([
+				// Static Loading
+				{ path: '', redirectTo: '/home', pathMatch: 'full' },
+				{ path: 'home', component: HomeComponent },
+				{ path: 'token', component: TokenComponent },
+				// Lazy Loading
+				{ path: 'demos', loadChildren: './demos-module/demos.module#DemosModule' },
+				{ path: 'user', loadChildren: './users-module/user.module#UserModule' },
+				{ path: 'help', loadChildren: './help-module/help.module#HelpModule' },
+			],
+			{preloadingStrategy: NoPreloading}
+		),
+		SharedModule
+	],
+	providers: [
+		{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true, }, // Add token to all API requests
 		{ provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true, }, // Time how long each http rerquests takes
 		IdentityService,
 		SettingsService
-    ]
+	]
 })
 export class AppModule {}

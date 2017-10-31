@@ -5,7 +5,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 
-import AuthenticationContext = require("adal-angular");
+import AuthenticationContext = require('adal-angular');
 
 import { SettingsService } from './settings.service';
 import { Settings } from '../models/settings.model';
@@ -18,8 +18,8 @@ export class IdentityService {
 	public context: AuthenticationContext;
 
 	public Roles = {
-		Admin: "Admin",
-		User: "User",
+		Admin: 'Admin',
+		User: 'User',
 	};
 
 	constructor(private _settingsService: SettingsService) {}
@@ -30,21 +30,21 @@ export class IdentityService {
 	}
 
 	public getToken(): Observable<string> {
-		//Gets the current token for the signed in user
+		// Gets the current token for the signed in user
 		return this._settingsService.getSettings()
 			.do(settings => {
 				this.context = new AuthenticationContext({
 					clientId: settings.azureAuthProvider.clientId,
 					tenant: settings.azureAuthProvider.tenant,
-					cacheLocation: "localStorage",
+					cacheLocation: 'localStorage',
 					extraQueryParameter: `domain_hint=${settings.azureAuthProvider.domainHint}`, /* To prevent login prompt */
 					expireOffsetSeconds: 900 // 15 minutes.  For testing set to 3480 = 58 min so should time out after 2 minutes
 				});
 				if (this.context.isCallback(window.location.hash)) {
 					this.context.handleWindowCallback();
 				} else {
-					let token = this.context.getCachedToken(settings.azureAuthProvider.clientId);
-					let user = this.context.getCachedUser();
+					const token = this.context.getCachedToken(settings.azureAuthProvider.clientId);
+					const user = this.context.getCachedUser();
 					if (!token || token.length === 0 || !user) {
 						this.context.login();
 						return Observable.throw('Token or User not in cache so starting login');
@@ -86,7 +86,7 @@ export class IdentityService {
 
 	public getRoles(): Observable<string> {
 		return this.getUser()
-			.map(user => user.profile["roles"])
+			.map(user => user.profile['roles'])
 			.catch(this.handleError);
 	}
 

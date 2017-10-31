@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { CommonModule }    from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HttpModule }    from '@angular/http';
+import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import * as $ from 'jquery';
@@ -20,23 +20,23 @@ import { UserHomeComponent } from './components/user-home/user-home.component';
 import { UserService } from './services/user.service';
 
 @NgModule({
-    declarations: [
-        AddressFormComponent,
-        UserFormComponent,
-        UserListComponent,
-        UserHomeComponent
-    ], // directives, components, and pipes owned by this NgModule
-    imports: [
-        CommonModule,
-        FormsModule,
-        HttpModule,
-        RouterModule.forChild([
-            { path: '', component: UserHomeComponent }
-        ]),
-        SharedModule, // Required to leverage table sorting and filtering
-    ],
-    providers: [
-        UserService
-    ]
+	declarations: [
+		AddressFormComponent,
+		UserFormComponent,
+		UserListComponent,
+		UserHomeComponent
+	], // directives, components, and pipes owned by this NgModule
+	imports: [
+		CommonModule,
+		FormsModule,
+		HttpModule,
+		RouterModule.forChild([
+			{ path: '', component: UserHomeComponent }
+		]),
+		SharedModule, // Required to leverage table sorting and filtering
+	],
+	providers: [
+		UserService
+	]
 })
 export class UserModule {}

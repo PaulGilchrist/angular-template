@@ -6,7 +6,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 
-let CONFIG = require('../../settings.json');
+const CONFIG = require('../../settings.json');
 import { Settings } from '../models/settings.model';
 
 @Injectable()
@@ -16,7 +16,7 @@ export class SettingsService {
 
 	// Assumes HTTP_PROVIDERS was added as a provider at a higher level
 	constructor(private http: Http) {
-		//Production will request settings from the server API, but development will pull the same settings directly from the settings file since node is not running in webpack dev
+		// Production will request settings from the server API, but development will pull the same settings directly from the settings file since node is not running in webpack dev
 		if (process.env.ENV !== 'production') {
 			this.settings = CONFIG;
 		}

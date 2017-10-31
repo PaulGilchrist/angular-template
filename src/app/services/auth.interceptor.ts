@@ -7,7 +7,7 @@ import { IdentityService } from './identity.service';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-    constructor(private _identityService: IdentityService) { }
+	constructor(private _identityService: IdentityService) { }
 
 	intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 		if(this._identityService.token) {
