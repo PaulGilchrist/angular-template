@@ -25,7 +25,7 @@ import { EditorDemoComponent } from './components/editor-demo/editor-demo.compon
 import { GraphDemoComponent } from './components/graph-demo/graph-demo.component';
 import { ModalDemoComponent } from './components/modal-demo/modal-demo.component';
 import { SubjectDemoComponent } from './components/subject-demo/subject-demo.component';
-//import { PdfDemoComponent } from './pdf-demo.component';
+//import { PdfDemoComponent } from './components/pdf-demo.component';
 
 import { BlockchainService } from './services/blockchain.service';
 
