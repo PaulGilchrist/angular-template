@@ -8,8 +8,6 @@ import { transition } from 'd3-transition';
 
 import { FloorComponent } from './components/floor/floor.component';
 
-import { routing } from './floor.routing';
-
 @NgModule({
 	declarations: [
 		// D3GraphComponent,
