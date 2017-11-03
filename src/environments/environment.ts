@@ -4,5 +4,13 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+	apiUrl: 'https://apidev2.azurewebsites.net',
+	azureAuthProvider: {
+		'aadInstance': 'https://login.microsoftonline.com/{0}',
+		'clientId': 'bd065891-b008-4968-9b26-5f2bcb9c1b66',
+		'domainHint': 'pulte.com',
+		'tenant': 'pulte.onmicrosoft.com'
+	},
+	envName: 'dev',
+	production: false
 };

@@ -9,7 +9,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SharedModule } from './shared-module/shared.module';
 /* App Services */
 import { IdentityService } from './services/identity.service';
-import { SettingsService } from './services/settings.service';
 /* App Root */
 import { AppComponent } from './components/app/app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -48,10 +47,9 @@ import { LoggingInterceptor } from './services/logging.interceptor';
 		SharedModule
 	],
 	providers: [
-		// { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true, }, // Add token to all API requests
-		// { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true, }, // Time how long each http rerquests takes
 		IdentityService,
-		SettingsService
+		{ provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true, }, // Time how long each http rerquests takes
+		{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true, } // Add token to all API requests
 	]
 })
 export class AppModule {}

@@ -6,6 +6,6 @@ export const environment = {
 		'domainHint': 'pulte.com',
 		'tenant': 'pulte.onmicrosoft.com'
 	},
-	envName: 'prod',
-	production: true
+	envName: 'qa',
+	production: false
 };

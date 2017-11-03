@@ -4,11 +4,10 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, retry, tap } from 'rxjs/operators';
 
+import { environment } from '../../../environments/environment';
+
 import { Address } from '../models/address.model';
 import { User } from '../models/user.model';
-
-import { Settings } from '../../models/settings.model';
-import { SettingsService } from '../../services/settings.service';
 
 @Injectable()
 export class UserService {
@@ -23,9 +22,9 @@ export class UserService {
 	_lastUserGetTime: number; // number of milliseconds elapsed since 1 January 1970 00:00:00 UTC
 
 	// Assumes HTTP_PROVIDERS was added as a provider at a higher level
-	constructor(private http: HttpClient, private _settingsService: SettingsService) {
+	constructor(private http: HttpClient) {
 		// Application should have loaded settings at startup
-		this._usersUrl = _settingsService.settings.apiUrl + '/users';
+		this._usersUrl = environment.apiUrl + '/users';
 	}
 
 	public getUsers(): Observable<User[]> {

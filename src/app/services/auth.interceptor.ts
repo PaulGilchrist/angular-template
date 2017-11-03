@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpEvent, HttpInterceptor, HttpHandler, HttpRequest} from '@angular/common/http';
+import {HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse} from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 import { IdentityService } from './identity.service';
@@ -19,4 +19,6 @@ export class AuthInterceptor implements HttpInterceptor {
 			return next.handle(req);
 		}
 	}
+
 }
+

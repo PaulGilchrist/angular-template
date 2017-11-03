@@ -5,8 +5,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 import AuthenticationContext = require('adal-angular'); // tslint:disable-line
 
-import { SettingsService } from './settings.service';
-import { Settings } from '../models/settings.model';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class IdentityService {
@@ -20,8 +19,6 @@ export class IdentityService {
 		User: 'User',
 	};
 
-	constructor(private _settingsService: SettingsService) {}
-
 	public clearToken() {
 		this.token = null;
 		this.user = null;
@@ -29,42 +26,39 @@ export class IdentityService {
 
 	public getToken(): Observable<string> {
 		// Gets the current token for the signed in user
-		return this._settingsService.getSettings().pipe(
-			tap(settings => {
-				this.context = new AuthenticationContext({
-					clientId: settings.azureAuthProvider.clientId,
-					tenant: settings.azureAuthProvider.tenant,
-					cacheLocation: 'localStorage',
-					extraQueryParameter: `domain_hint=${settings.azureAuthProvider.domainHint}`, /* To prevent login prompt */
-					expireOffsetSeconds: 900 // 15 minutes.  For testing set to 3480 = 58 min so should time out after 2 minutes
-				});
-				if (this.context.isCallback(window.location.hash)) {
-					this.context.handleWindowCallback();
+		this.context = new AuthenticationContext({
+			clientId: environment.azureAuthProvider.clientId,
+			tenant: environment.azureAuthProvider.tenant,
+			cacheLocation: 'localStorage',
+			extraQueryParameter: `domain_hint=${environment.azureAuthProvider.domainHint}`, /* To prevent login prompt */
+			expireOffsetSeconds: 900 // 15 minutes.  For testing set to 3480 = 58 min so should time out after 2 minutes
+		});
+		if (this.context.isCallback(window.location.hash)) {
+			this.context.handleWindowCallback();
+		} else {
+			const token = this.context.getCachedToken(environment.azureAuthProvider.clientId);
+			const user = this.context.getCachedUser();
+			if (!token || token.length === 0 || !user) {
+				this.context.login();
+				return Observable.throw('Token or User not in cache so starting login');
+			} else {
+				this.token = token;
+				return of(token);
+			}
+		}
+		try {
+			this.context.acquireToken(environment.azureAuthProvider.clientId, (error, token) => {
+				if (error) {
+					return Observable.throw('Error aquiring token - ' + error);
 				} else {
-					const token = this.context.getCachedToken(settings.azureAuthProvider.clientId);
-					const user = this.context.getCachedUser();
-					if (!token || token.length === 0 || !user) {
-						this.context.login();
-						return Observable.throw('Token or User not in cache so starting login');
-					}
+					this.token = token;
+					return of(token);
 				}
-				try {
-					this.context.acquireToken(settings.azureAuthProvider.clientId, (error, token) => {
-						if (error) {
-							return Observable.throw('Error aquiring token - ' + error);
-						} else {
-							this.token = token;
-							return of(token);
-						}
-					});
-				} catch (error) {
-					this.context.login();
-					return Observable.throw('Error during aquiring token so starting login - ' + error);
-				}
-			}),
-			map(res => this.token),
-			catchError(this.handleError)
-		);
+			});
+		} catch (error) {
+			this.context.login();
+			return Observable.throw('Error during aquiring token so starting login - ' + error);
+		}
 	}
 
 	public getUser(): Observable<User> {
