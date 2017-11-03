@@ -3,7 +3,7 @@ Make sure global CSS defines the colors success and danger
 */
 .dragContainer {
     background-color: #f5f6f7;
-    border: 1px solid var(--color-success);
+    border: 1px solid var(--color-success, #5cb85c);
     border-radius: 4px;
     padding: 10px;
 }
@@ -13,8 +13,8 @@ Make sure global CSS defines the colors success and danger
     cursor: -webkit-grab;
 }
 .drag-error {
-    background-color: var(--color-danger);
+    background-color: var(--color-danger, #d9534f);
 }
 .drag-success {
-    background-color: var(--color-success);
+    background-color: var(--color-success, #5cb85c);
 }

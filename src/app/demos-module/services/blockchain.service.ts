@@ -1,10 +1,9 @@
 ﻿import { Injectable } from '@angular/core';
-import { Headers, Http, Response } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
+
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/map';
+import { of } from 'rxjs/observable/of';
+import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable()
 export class BlockchainService {
@@ -12,18 +11,19 @@ export class BlockchainService {
 	_exchangeRates: any;
 
 	// Assumes HTTP_PROVIDERS was added as a provider at a higher level
-	constructor(private _http: Http) { }
+	constructor(private _http: HttpClient) { }
 
 	public getUsdExchangeRate(): Observable<number> {
-		return this._http.get(this._tickerUrl)
-			.map(res => <number>res.json().USD.last)
-			.catch(this.handleError);
+		return this._http.get(this._tickerUrl).pipe(
+			map(res => (<any>res).USD.last),
+			catchError(this.handleError)
+		);
 	}
 
 	private handleError(error: Response) {
 		// In the future, we may send the server to some remote logging infrastructure
 		console.error(error);
-		return Observable.throw(error.json().error || 'Server error');
+		return Observable.throw(error || 'Server error');
 	}
 
 }

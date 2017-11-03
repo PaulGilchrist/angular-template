@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import * as $ from 'jquery';
@@ -29,7 +29,7 @@ import { UserService } from './services/user.service';
 	imports: [
 		CommonModule,
 		FormsModule,
-		HttpModule,
+		HttpClientModule,
 		RouterModule.forChild([
 			{ path: '', component: UserHomeComponent }
 		]),

@@ -7,8 +7,8 @@ Make sure global CSS defines the colors success and danger
 h2 {
     margin-top: 0;
 }
-input.ng-valid { border-left: 5px solid var(--color-success); }
-input.ng-invalid { border-left: 5px solid var(--color-danger); }
+input.ng-valid { border-left: 5px solid var(--color-success, #5cb85c); }
+input.ng-invalid { border-left: 5px solid var(--color-danger, #d9534f); }
 label {
     margin-bottom: 1px;
 }

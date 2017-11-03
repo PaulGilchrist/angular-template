@@ -1,10 +1,9 @@
 ﻿import { Injectable } from '@angular/core';
-import { Headers, Http, Response } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
+
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/map';
+import { of } from 'rxjs/observable/of';
+import { catchError, map, tap } from 'rxjs/operators';
 
 const CONFIG = require('../../settings.json');
 import { Settings } from '../models/settings.model';
@@ -15,7 +14,7 @@ export class SettingsService {
 	private _settingsUrl = 'api/settings';
 
 	// Assumes HTTP_PROVIDERS was added as a provider at a higher level
-	constructor(private http: Http) {
+	constructor(private http: HttpClient) {
 		// Production will request settings from the server API, but development will pull the same settings directly from the settings file since node is not running in webpack dev
 		if (process.env.ENV !== 'production') {
 			this.settings = CONFIG;
@@ -25,17 +24,17 @@ export class SettingsService {
 	public getSettings(): Observable<Settings> {
 		if (this.settings) {
 			// Return existing settings as an observable
-			return Observable.of(this.settings);
+			return of(this.settings);
 		} else {
 			// Get settings from API
-			return this.http.get(this._settingsUrl)
-				.map(res => <Settings>res.json())
-				.do(data => {
-					this.settings = data; // Save the settings inside the service
-				})
-				.catch(error => {
+			return this.http.get(this._settingsUrl).pipe(
+				tap(data => {
+					this.settings = <Settings>data; // Save the settings inside the service
+				}),
+				catchError(error => {
 					return Observable.throw('Error getting settings - ' + error);
-				});
+				})
+			);
 		}
 	}
 

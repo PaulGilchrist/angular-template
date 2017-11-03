@@ -1,11 +1,9 @@
 ﻿import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/map';
+import { Observable  } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
+import { catchError, map, tap } from 'rxjs/operators';
 
-import AuthenticationContext = require('adal-angular');
+import AuthenticationContext = require('adal-angular'); // tslint:disable-line
 
 import { SettingsService } from './settings.service';
 import { Settings } from '../models/settings.model';
@@ -31,8 +29,8 @@ export class IdentityService {
 
 	public getToken(): Observable<string> {
 		// Gets the current token for the signed in user
-		return this._settingsService.getSettings()
-			.do(settings => {
+		return this._settingsService.getSettings().pipe(
+			tap(settings => {
 				this.context = new AuthenticationContext({
 					clientId: settings.azureAuthProvider.clientId,
 					tenant: settings.azureAuthProvider.tenant,
@@ -56,57 +54,62 @@ export class IdentityService {
 							return Observable.throw('Error aquiring token - ' + error);
 						} else {
 							this.token = token;
-							return Observable.of(token);
+							return of(token);
 						}
 					});
 				} catch (error) {
 					this.context.login();
 					return Observable.throw('Error during aquiring token so starting login - ' + error);
 				}
-			})
-			.map(res => this.token)
-			.catch(this.handleError);
+			}),
+			map(res => this.token),
+			catchError(this.handleError)
+		);
 	}
 
 	public getUser(): Observable<User> {
-		return this.getToken()
-			.do(token => {
+		return this.getToken().pipe(
+			tap(token => {
 				this.context.getUser((msg, user) => {
 					if (msg) {
 						return Observable.throw('Error getting user - ' + msg);
 					} else {
 						this.user = user;
-						return Observable.of(user);
+						return of(user);
 					}
 				});
-			})
-			.map(res => this.user)
-			.catch(this.handleError);
+			}),
+			map(res => this.user),
+			catchError(this.handleError)
+		);
 	}
 
 	public getRoles(): Observable<string> {
-		return this.getUser()
-			.map(user => user.profile['roles'])
-			.catch(this.handleError);
+		return this.getUser().pipe(
+			map(user => user.profile['roles']),
+			catchError(this.handleError)
+		);
 	}
 
 	public isInAllRoles(...neededRoles: Array<string>): Observable<boolean> {
-		return this.getRoles()
-			.map(roles => {
+		return this.getRoles().pipe(
+			map(roles => {
 				roles = roles.toLocaleLowerCase();
 				return neededRoles.every(neededRole => roles.includes(neededRole.toLocaleLowerCase()));
-			})
-			.catch(this.handleError);
+			}),
+			catchError(this.handleError)
+		);
 	}
 
 	public isInRole(neededRole: string): Observable<boolean> {
 		neededRole = neededRole.toLocaleLowerCase();
-		return this.getRoles()
-			.map(roles => {
+		return this.getRoles().pipe(
+			map(roles => {
 				roles = roles.toLocaleLowerCase();
 				return roles.includes(neededRole);
-			})
-			.catch(this.handleError);
+			}),
+			catchError(this.handleError)
+		);
 	}
 
 	private handleError(error: Response) {

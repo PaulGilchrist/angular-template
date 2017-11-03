@@ -1,6 +1,7 @@
 ﻿import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
+import { of } from 'rxjs/observable/of';
+
 
 import { Address } from '../models/address.model';
 import { ADDRESSES } from '../data/addresses.data';
@@ -19,7 +20,7 @@ export class UserService {
 
 	public getUsers(): Observable<User[]> {
 		// We already have the data so simulate an async call
-		return Observable.of(this.users);
+		return of(this.users);
 	}
 
 	public getUserAddresses(user: User): Observable<Address[]> {
@@ -35,7 +36,7 @@ export class UserService {
 				}
 			}
 		}
-		return Observable.of(userAddresses);
+		return of(userAddresses);
 	}
 
 }

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
@@ -42,7 +42,7 @@ import {CKEditorModule} from '../../../node_modules/ng2-ckeditor';
 	imports: [
 		CKEditorModule,
 		CommonModule,
-		HttpModule,
+		HttpClientModule,
 		FormsModule,
 		RouterModule.forChild([
 			// Static Loading

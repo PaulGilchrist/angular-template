@@ -2,9 +2,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, NoPreloading } from '@angular/router';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-import { HttpModule } from '@angular/http';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LocationStrategy, HashLocationStrategy  } from '@angular/common';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 /* Shared Modules */
 import { SharedModule } from './shared-module/shared.module';
@@ -33,7 +32,7 @@ import { LoggingInterceptor } from './services/logging.interceptor';
 	],
 	imports: [
 		BrowserModule,
-		HttpModule,
+		HttpClientModule,
 		RouterModule.forRoot([
 				// Static Loading
 				{ path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -49,8 +48,8 @@ import { LoggingInterceptor } from './services/logging.interceptor';
 		SharedModule
 	],
 	providers: [
-		{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true, }, // Add token to all API requests
-		{ provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true, }, // Time how long each http rerquests takes
+		// { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true, }, // Add token to all API requests
+		// { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true, }, // Time how long each http rerquests takes
 		IdentityService,
 		SettingsService
 	]

@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { async, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import {} from 'jasmine';
@@ -22,7 +22,7 @@ describe('AppComponent', () => {
 		TestBed.configureTestingModule({
 			declarations: [AppComponent],
 			imports: [
-				HttpModule
+				HttpClientModule
 			],
 			providers: [SettingsService]
 		});

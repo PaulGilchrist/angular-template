@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpModule } from '@angular/http';
 import { BlockchainService } from '../../services/blockchain.service';
 
 @Component({

@@ -9,7 +9,6 @@ Try and keep global CSS to a minimum and mainly to global variables.  This preve
 */
 :root {
   --color-blue: #337ab7;
-
   --color-info: #5bc0de;
   --color-success: #5cb85c;
   --color-warning: #f0ad4e;

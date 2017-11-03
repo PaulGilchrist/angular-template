@@ -2,13 +2,13 @@
 Make sure global CSS defines the colors blue and warning
 */
 .d3-default {
-    fill: var(--color-blue);
+    fill: var(--color-blue, #337ab7);
 }
 .d3-warning {
-    fill: var(--color-warning);
+    fill: var(--color-warning, #f0ad4e);
 }
 .d3-path {
-    stroke: var(--color-blue);
+    stroke: var(--color-blue, #337ab7);
     stroke-width: 2;
 }
 .d3-tooltip {
@@ -20,7 +20,7 @@ Make sure global CSS defines the colors blue and warning
 }
 .d3-axis path, .d3-axis line {
     fill: none;
-    stroke: var(--color-blue);
+    stroke: var(--color-blue, #337ab7);
 }
 .d3-axis text {
     font-family: sans-serif;
