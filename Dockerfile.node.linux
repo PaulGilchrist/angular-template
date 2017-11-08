@@ -8,5 +8,6 @@ RUN mkdir -p /usr/src/app
 COPY dist /usr/src/app
 WORKDIR /usr/src/app
 # RUN npm install
+EXPOSE 3000
 CMD [ "node", "server.js" ]
 # docker push paulgilchrist/angulartemplate-node-linux
