@@ -11,7 +11,7 @@ declare var _: any;
 
 @Component({
 	selector: 'address-form',
-	styleUrls: ['./address-form.component.css'],
+	styleUrls: ['./address-form.component.scss'],
 	templateUrl: './address-form.component.html'
 })
 export class AddressFormComponent {

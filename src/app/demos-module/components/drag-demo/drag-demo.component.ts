@@ -8,7 +8,7 @@ export interface DragObject { id: number; text: string; allowMove: boolean; }
 
 @Component({
 	selector: 'drag-demo',
-	styleUrls: ['./drag-demo.component.css'],
+	styleUrls: ['./drag-demo.component.scss'],
 	viewProviders: [DragulaService],
 	templateUrl: './drag-demo.component.html'
 })

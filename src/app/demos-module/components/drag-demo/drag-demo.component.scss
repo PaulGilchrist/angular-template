@@ -1,0 +1,19 @@
+@import '~_variables.scss';
+
+.dragContainer {
+    background-color: #f5f6f7;
+    border: 1px solid $color-success;
+    border-radius: 4px;
+    padding: 10px;
+}
+.dragContainer > div {
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+.drag-error {
+    background-color: $color-danger;
+}
+.drag-success {
+    background-color: $color-success;
+}
