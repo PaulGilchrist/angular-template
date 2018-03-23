@@ -3,6 +3,8 @@ import { Component, Input, OnInit, OnChanges, ElementRef, ViewEncapsulation } fr
 import * as d3 from 'd3';
 import { Selection, select } from 'd3-selection';
 import { transition } from 'd3-transition';
+import { schemePaired } from 'd3-scale-chromatic';
+
 
 // https://keathmilligan.net/create-a-reusable-chart-component-with-angular-and-d3-js/
 
@@ -185,7 +187,7 @@ export class D3GraphComponent implements OnInit, OnChanges {
 			.enter() // This will create <g> elements for every "extra" data element that should be associated with a selection. The result is creating a <g> for every object in the data array
 			.append('svg:g') // Create a group to hold each slice (we will have a <path> and a <text> element associated with each slice)
 			.attr('class', 'slice'); // Allow us to style things in the slices (like text)
-		const color = d3.scaleOrdinal(d3.schemeCategory20c); // Builtin range of colors
+		const color = d3.scaleOrdinal(schemePaired); // Builtin range of colors
 		const arc = d3.arc().outerRadius(r).innerRadius(0); // Declare an arc generator function that will create <path> elements for us using arc data
 		arcs.append('svg:path')
 			.attr('fill', function(d: any, i: any) { return color(i); }) // Set the color for each slice to be chosen from the color function defined above
