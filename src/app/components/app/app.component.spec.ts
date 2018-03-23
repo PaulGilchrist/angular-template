@@ -7,7 +7,6 @@ import {} from 'jasmine';
 import * as $ from 'jquery';
 
 import { AppComponent } from './app.component';
-import { SettingsService } from '../../services/settings.service';
 
 ////////  SPECS  /////////////
 /// Delete this
@@ -24,7 +23,7 @@ describe('AppComponent', () => {
 			imports: [
 				HttpClientModule
 			],
-			providers: [SettingsService]
+			providers: []
 		});
 		TestBed.overrideComponent(AppComponent, {
 			set: {

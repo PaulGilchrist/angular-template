@@ -49,6 +49,7 @@ function simulateDragDrop(sourceNode, destinationNode) {
 		};
 		return myEvent;
 	}
+	const event = createCustomEvent(EVENT_TYPES.DRAG_START);
 	function dispatchEvent(node, type, inputEvent) {
 		if (node.dispatchEvent) {
 			return node.dispatchEvent(event);
@@ -57,7 +58,6 @@ function simulateDragDrop(sourceNode, destinationNode) {
 			return node.fireEvent('on' + type, inputEvent);
 		}
 	}
-	const event = createCustomEvent(EVENT_TYPES.DRAG_START);
 	dispatchEvent(sourceNode, EVENT_TYPES.DRAG_START, event);
 	const dropEvent = createCustomEvent(EVENT_TYPES.DROP);
 	dropEvent.dataTransfer = event.dataTransfer;
