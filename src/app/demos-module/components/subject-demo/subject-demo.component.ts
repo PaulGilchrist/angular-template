@@ -1,7 +1,9 @@
+
+import {distinctUntilChanged, debounceTime} from 'rxjs/operators';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
+import { BehaviorSubject } from 'rxjs';
+
+
 
 @Component({
 	selector: 'subject-demo',
@@ -25,9 +27,9 @@ export class SubjectDemoComponent implements OnInit, OnDestroy {
 	subject = new BehaviorSubject<string>('');
 
 	ngOnInit() {
-		this.subject
-			.debounceTime(1000)       // Wait 1000ms after each keystroke before considering the message
-		  	.distinctUntilChanged()   // Ignore if next message is same as previous
+		this.subject.pipe(
+			debounceTime(1000),       // Wait 1000ms after each keystroke before considering the message
+		  	distinctUntilChanged(),)   // Ignore if next message is same as previous
 			.subscribe(value => {
 				// Do something everytime subject changes
 				this.tracker = new Date();

@@ -1,8 +1,7 @@
-﻿import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+import {throwError as observableThrowError,  Observable ,  of } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable()
@@ -23,7 +22,7 @@ export class BlockchainService {
 	private handleError(error: Response) {
 		// In the future, we may send the server to some remote logging infrastructure
 		console.error(error);
-		return Observable.throw(error || 'Server error');
+		return observableThrowError(error || 'Server error');
 	}
 
 }

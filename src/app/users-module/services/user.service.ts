@@ -1,6 +1,5 @@
-﻿import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+import { Injectable } from '@angular/core';
+import { Observable ,  of } from 'rxjs';
 
 
 import { Address } from '../models/address.model';

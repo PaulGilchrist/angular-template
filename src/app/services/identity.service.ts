@@ -1,6 +1,6 @@
-﻿import { Injectable } from '@angular/core';
-import { Observable  } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+
+import {throwError as observableThrowError,  Observable  ,  of } from 'rxjs';
+import { Injectable } from '@angular/core';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import AuthenticationContext = require('adal-angular'); // tslint:disable-line
@@ -40,7 +40,7 @@ export class IdentityService {
 			const user = this.context.getCachedUser();
 			if (!token || token.length === 0 || !user) {
 				this.context.login();
-				return Observable.throw('Token or User not in cache so starting login');
+				return observableThrowError('Token or User not in cache so starting login');
 			} else {
 				this.token = token;
 				return of(token);
@@ -49,7 +49,7 @@ export class IdentityService {
 		try {
 			this.context.acquireToken(environment.azureAuthProvider.clientId, (error, token) => {
 				if (error) {
-					return Observable.throw('Error aquiring token - ' + error);
+					return observableThrowError('Error aquiring token - ' + error);
 				} else {
 					this.token = token;
 					return of(token);
@@ -57,7 +57,7 @@ export class IdentityService {
 			});
 		} catch (error) {
 			this.context.login();
-			return Observable.throw('Error during aquiring token so starting login - ' + error);
+			return observableThrowError('Error during aquiring token so starting login - ' + error);
 		}
 	}
 
@@ -66,7 +66,7 @@ export class IdentityService {
 			tap(token => {
 				this.context.getUser((msg, user) => {
 					if (msg) {
-						return Observable.throw('Error getting user - ' + msg);
+						return observableThrowError('Error getting user - ' + msg);
 					} else {
 						this.user = user;
 						return of(user);
@@ -109,7 +109,7 @@ export class IdentityService {
 	private handleError(error: Response) {
 		// In the future, we may send the server to some remote logging infrastructure
 		console.error(error);
-		return Observable.throw(error || 'Server error');
+		return observableThrowError(error || 'Server error');
 	}
 
 

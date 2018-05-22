@@ -1,7 +1,7 @@
-﻿import { Injectable } from '@angular/core';
+
+import {throwError as observableThrowError,  Observable ,  of } from 'rxjs';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
 import { catchError, map, retry, tap } from 'rxjs/operators';
 
 import { environment } from '../../../environments/environment';
@@ -27,7 +27,7 @@ export class UserService {
 		this._usersUrl = environment.apiUrl + '/users';
 	}
 
-	public getUsers(): Observable<User[]> {
+	public getUsers(): Observable<any> {
 		// If the users are less than 1 hour old do not GET them again from the API
 		if (!this.users || (this._lastUserGetTime + this._maxUserCacheTimeMilliseconds < Date.now())) {
 			// Get users from API
@@ -45,7 +45,7 @@ export class UserService {
 		}
 	}
 
-	public getUserAddresses(user: User): Observable<Address[]> {
+	public getUserAddresses(user: User): Observable<any> {
 		// The token is larger than the entire address payload.
 		// If it was a requirement to secure this endpoint, then for performance reasons, it would be best to get all addresses one time
 		// Then when looking for the addresses for a single user, do that in memory (but this is a demo, so small API calls are fine)
@@ -59,7 +59,7 @@ export class UserService {
 	private handleError(error: Response) {
 		// In the future, we may send the server to some remote logging infrastructure
 		console.error(error);
-		return Observable.throw(error || 'Server error');
+		return observableThrowError(error || 'Server error');
 	}
 
 }
