@@ -1,6 +1,6 @@
 <div *ngIf="isActive" id="user-form" class="animated slideInLeft">
     <h2>User</h2>
-    <form (ngSubmit)="save()" #userForm="ngForm" novalidate>
+    <form (ngSubmit)="saveForm()" #userForm="ngForm" novalidate>
         <div class="form-group" [class.has-error]="firstNameControl.invalid && firstNameControl.dirty">
             <label class="control-label">First Name</label>
             <div class="input-group margin-bottom-sm">
@@ -53,7 +53,7 @@
         </div>
         <div style="height:10px;"></div>
         <button type="submit" class="btn btn-success" [disabled]="userForm.pristine || userForm.invalid"><i class="fa fa-check"></i> Save</button>
-        <button type="submit" class="btn btn-success" [disabled]="userForm.pristine" (click)="cancel()"><i class="fa fa-check"></i> Cancel</button>
+        <button type="submit" class="btn btn-success" [disabled]="userForm.pristine" (click)="cancelForm()"><i class="fa fa-check"></i> Cancel</button>
         <div class="hidden-md-up" style="height:20px;"></div><!--Only show when user and address forms are stacked vertically-->
     </form>
 </div>

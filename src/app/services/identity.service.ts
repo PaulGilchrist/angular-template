@@ -3,7 +3,10 @@ import {throwError as observableThrowError,  Observable  ,  of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import AuthenticationContext = require('adal-angular'); // tslint:disable-line
+
+const AuthenticationContext = require('adal-angular'); // ES5 require
+// import AuthenticationContext from  'adal-angular'; // ES6 import
+
 
 import { environment } from '../../environments/environment';
 

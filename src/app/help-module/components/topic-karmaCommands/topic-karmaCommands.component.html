@@ -1,0 +1,15 @@
+<article>
+    <h3>Karma Commands</h3>
+    <!--Need to update -> Karma implementation was discontinued after Angular2 went release candidate -->
+    Karma is a unit test runner currently configured to use Jasmine for unit testing, and Chrome as the test browser.  Karma is executed as part of several existing Gulp tasks, but also can be run from the console by preceding it with the name “karma” (example: karma start).  Karma is configured from the file “karma.config.js” where it loads all files needed to support the unit test.  When adding any 3rd party libraries to the application, make sure to also add them to the Karma configuration file.  Karma also uses a file named “karma-test-shim.js” where it sets Jasmine timeouts and path information along with preparing the SystemJS library for module importing.
+    <br/>
+    <br/>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead><tr class="success"><td>Command</td><td>Description</td></tr></thead>
+            <tbody>
+                <tr><td>start</td><td>Starts execution of all discovered unity tests (files ending in “spec.ts”).  It is usually recommended to use the Gulp task “test” as it ensures all files are compiled before executing any tests, but sometime if you know all files are compiled, it is faster to just directly execute karma start.</td></tr>
+            </tbody>
+        </table>
+    </div>
+</article>

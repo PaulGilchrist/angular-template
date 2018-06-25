@@ -1,0 +1,20 @@
+<article>
+    <h3>Gulp Commands</h3>
+    All of these commands can be run from inside Visual Studio Code by typing “Control+P” then typing task and selecting from the dropdown list.  These commands can also be run from the console by preceding them with the name “gulp” (example: gulp test)<br/>
+    <br/>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead><tr class="success"><td>Command</td><td>Description</td></tr></thead>
+            <tbody>
+                <tr><td>build</td><td>Compiles TypeScript to minified JavaScript while also creating source maps.  All TypeScript files are left in the wwwroot folder with the deployed JS files as an Angular best practice, keeping all related files together simplifying both development and client side debugging.</td></tr>
+                <tr><td>clean</td><td>Removes all files from the “wwwroot” folder that originated from a Node or Bower package including CSS, declaration (d.ts), fonts, JavaScript, and map files.  Also removes all files compiled from application source leaving behind only the original TypeScript, HTML, and CSS files.</td></tr>
+                <tr><td>copyFiles</td><td>Copies files from “node_modules” to their required destination folders under “wwwroot”.  The only files copied are those explicitly required by the application.  As third party CSS, font, or JavaScript files are needed by the client browser, these need to be added to the “gulpfile.js” variables cssToMove, fontsToMove, or jsToMove respectively.</td></tr>
+                <tr><td>rebuild</td><td>Removes unneeded files from the “wwwroot” folder, refreshes package files, then compiles all TypeScript files into minified JavaScript and their associated map files.  More specifically, this task executes the Gulp “clean” process then when complete executes both the “copyFiles”, and “build” processes in parallel.</td></tr>
+                <tr><td>test</td><td>Executes a Gulp “build” process followed by execution of all existing unit tests.  Unit tests should be in the same folder as the component they test, and be named with the same name as the test, but ending in “spec.ts”.  This task will output the number of tests run, how many were successful, how many failed, and the reason for each failure. You can look in the services or pipes folder for examples of spec file naming standards and overall usage best practices.  The files named “user.serivce.spec.ts” shows a good example on how to test components that have direct injection dependencies.</td></tr>
+                <tr><td>watch</td><td>Executes the “build” task followed by the “test” task, then watches all TypeScript files for changes automatically re-compiling and re-testing them as needed.</td></tr>
+                <tr><td>copyProd</td><td>Removes all files and folders from the “build” folder and then replaces them with an exact copy of “wwwroot”</td></tr>
+                <tr><td>buildProd</td><td>Copies only the minimal files needed for a production deployment from the “wwwroot” folder to the “build” folder.  TypeScript, declaration, and map files will not be included, leaving only minified css, JavaScript, and standard HTML.  The plan is to also minify the HTML also in the future.</td></tr>
+            </tbody>
+        </table>
+    </div>
+</article>

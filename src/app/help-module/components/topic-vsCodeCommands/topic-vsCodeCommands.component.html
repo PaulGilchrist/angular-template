@@ -1,0 +1,32 @@
+<article>
+    <h3>Visual Studio Code Commands</h3>
+    Visual Studio Code supports hundreds of keyboard shortcuts that are all customizable from the menu item “File > Preferences > Keyboard Shortcuts”.  A few of the frequently used keyboard shortcuts are listed here for those less familiar with Visual Studio Code.
+    <br/>
+    <br/>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead><tr class="success"><td>Command</td><td>Description</td></tr></thead>
+            <tbody>
+                <tr><td>F1</td><td>Show all commands</td></tr>
+                <tr><td>Alt+Click</td><td>Create multiple cursors where any keystrokes are applied to all active cursors</td></tr>
+                <tr><td>Ctrl+2</td><td>Opens a vertical split and second window.  Can also do Control+3, etc. for more windows.</td></tr>
+                <tr><td>Ctrl+B</td><td>Toggles opening and closing the sidebar</td></tr>
+                <tr><td>Ctrl+K then Ctrl+C</td><td>Comments out selected rows</td></tr>
+                <tr><td>Ctrl+K then Ctrl+U</td><td>Uncomments selected rows</td></tr>
+                <tr><td>Ctrl+P</td><td>Show custom commands such as gulp tasks when followed by "task " to get a dropdown list of tasks</td></tr>
+                <tr><td>Ctrl+S</td><td>Save current file</td></tr>
+                <tr><td>Ctrl+Alt+F</td><td>Format code</td></tr>
+                <tr><td>Ctrl+Shift+C</td><td>Opens a comand prompt external to VS code</td></tr>
+                <tr><td>Ctrl+~</td><td>Opens a comand prompt internal to VS code</td></tr>
+                <tr><td>Ctrl+Space</td><td>Trigger suggestion (intellisense)</td></tr>
+                <tr><td>Ctrl+Tab</td><td>Switch between recently accessed files</td></tr>
+                <tr><td>Ctrl+]</td><td>Indent selected rows</td></tr>
+                <tr><td>Ctrl+[</td><td>Outdent selected rows</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <br/>
+    Visual Studio Code also supports customizing settings at either the workspace or user level.  This project has some custom settings designed at improving the development experience.  Feel free to override these workspace settings with your own custom user settings, but do not update the workspace settings directly as they are the recommended defaults are managed along with the rest of the application through version control.<br/>
+    <br/>
+    The basic customizations made are to hide JavaScript files where there is a Typescript file of the same name, and to hide map files.  These changes simplify the Explorer view cleaner making it quicker to find the important editable files.  Some minor additional customizations were also added to automatically format code while typing and to remove trailing whitespace and enforce the requirement for semicolons on each line.<br/>
+</article>

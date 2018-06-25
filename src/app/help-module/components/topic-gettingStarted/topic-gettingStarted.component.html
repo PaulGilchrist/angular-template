@@ -1,0 +1,33 @@
+<article>
+    <h3>Getting Started</h3>
+    This template was designed using Angular CLI and Ahead of Time (AoT) compilation.  The application is designed to HTML5 and CSS3 standards and should run on any major modern browser on any device and operating system.  This application runs completely client side allowing it to be hosted from any web hosting service such as Internet Information Service (IIS), NodeJS, Apache, etc.<br/>
+	Development was done using Visual Studio Code, but could have just as easily used any IDE or editor such as Atom, Sublime, or even something as simple as NotePad++.  The only requirement for development is a system supporting Node package Manager (NPM) packages.  If you do not already have NodeJS installed, you can download and install it from here…<br/>
+	<br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://nodejs.org/en/">https://nodejs.org</a><br/>
+    <br/>
+    <img class="img-responsive inline-block animated slideInRight" style="float:right" src="./assets/asp-net-angular2-300x176.jpg">
+    After installing NodeJS open a command prompt at the project root folder (src\AngularTemplate) and run “npm install”. This command will read the “package.json” file and download and install all the referenced packages.<br/>
+    <br/>
+	If you plan to build additional Angular projects, or modify and test this project, you may want to add the following packages globally:<br/>
+    <br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;npm install -g @angular/cli, jasmine, jshint, karma, npm, protractor, rxjs-tslint, tslint, webpack<br/>
+	<br/>
+	A nice command to see what global packages are already installed is as follows:<br/>
+	<br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;npm ls -g --depth=0<br/>
+	<br/>
+	You can also check if any packages are out of date with the following command:<br/>
+	<br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;npm outdated -g --depth=0<br/>
+	<br/>
+	At this point, you can run the application with the command “ng serve”, build the application for development using the command “ng build”, or build an optimized version for production using the command “ng build --prod -c production”.  You can see the production optimizations, paths to environment specific variables, and the additional QA and Staging environment details all in the angular.json file.<br/>
+	<br/>
+	For demonstration purposes without requiring a separate API, the application will by default run using a service for supplying mock user and address data. The template also comes with another service that gets its data from a backend API instead of mocking the data. If you are also implementing the GitHub solution named “ApiTemplate”, you can follow these steps to switch from mock data to API accessed data:<br/>
+    <ol>
+        <li>From the folder “app/services”, rename “user.service.ts” to “mock-user.service.ts”</li>
+        <li>From the folder “app/services”, rename “api-user.service.ts” to “user.service.ts”</li>
+        <li>Edit “app/data/config.data.ts” variable “apiUrl” to the location you are hosting the API template</li>
+        <li>Rebuild the application (gulp rebuild)</li>
+    </ol>
+    This application also supports OAuth 2.0 implicit flow token for communication with the API. Authentication is supported but not required for template usage. Enabling authentication support, requires editing the “authProvider” variable in the environment variable files mentioned above, to your OAuth service provider information.<br/>
+</article>

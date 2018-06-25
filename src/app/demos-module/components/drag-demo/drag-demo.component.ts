@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DragulaService } from '../../services/dragula.service';
+
+// import { DragulaService } from '../../services/dragula.service';
+import { DragulaService } from 'ng2-dragula';
 
 import * as _ from 'underscore';
 
@@ -30,7 +32,6 @@ export class DragDemoComponent implements OnInit {
 	constructor(private dragulaService: DragulaService) { }
 
 	ngOnInit(): void {
-		// window['appInsights'].trackPageView('demos-module/drag-demo.component');
 		const _self = this;
 		this.dragulaService.setOptions('dragContainer', {
 			isContainer: function (el: any) { return false; }, // only elements in drake.containers will be taken into account
@@ -42,7 +43,7 @@ export class DragDemoComponent implements OnInit {
 				// Elements can be dropped in any of the `containers` by default
 				const itemId: number = parseInt($(el).attr('id'), 10);
 				const item = _.findWhere(_self.list1, {id: itemId}) || _.findWhere(_self.list2, {id: itemId});
-				if(!item.allowMove) {
+				if (!item.allowMove) {
 					return false;
 				} else {
 					return true;
@@ -72,8 +73,8 @@ export class DragDemoComponent implements OnInit {
 		const [el, container, source] = args;
 		const itemId: number = parseInt($(el).attr('id'), 10);
 		const item = _.findWhere(this.list1, {id: itemId}) || _.findWhere(this.list2, {id: itemId});
-		if(container !== source) {
-			if(item.allowMove) {
+		if (container !== source) {
+			if (item.allowMove) {
 				$(container).addClass('drag-success');
 			} else {
 				$(container).addClass('drag-error');
@@ -86,11 +87,11 @@ export class DragDemoComponent implements OnInit {
 		$(container).removeClass('drag-success drag-error');
 	}
 
-	private removeObject(list:Array<any>, objToRemove:any): void {
+	private removeObject(list: Array<any>, objToRemove: any): void {
 		// Finds the object in the list with the matching id and removes it
-		for (let i =0; i < list.length; i++) {
+		for (let i = 0; i < list.length; i++) {
 			if (list[i].id === objToRemove.id) {
-				list.splice(i,1);
+				list.splice(i, 1);
 				break;
 			}
 		}

@@ -11,6 +11,9 @@
       "check-space"
     ],
     "curly": true,
+    "deprecation": {
+      "severity": "warn"
+    },
     "eofline": true,
     "forin": true,
     "import-blacklist": [
@@ -19,14 +22,13 @@
     ],
     "import-spacing": true,
     "indent": [
-      true,
-	  "tabs",
-	  4
+      false,
+      "spaces"
     ],
     "interface-over-type-literal": true,
     "label-position": true,
     "max-line-length": [
-      false,
+      true,
       300
     ],
     "member-access": false,
@@ -107,25 +109,14 @@
     "unified-signatures": true,
     "variable-name": false,
     "whitespace": [
-      false,
+      true,
       "check-branch",
       "check-decl",
       "check-operator",
       "check-separator",
       "check-type"
     ],
-    "directive-selector": [
-      false,
-      "attribute",
-      "app",
-      "camelCase"
-    ],
-    "component-selector": [
-      false,
-      "element",
-      "app",
-      "kebab-case"
-    ],
+    "no-output-on-prefix": true,
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,
     "use-host-property-decorator": true,

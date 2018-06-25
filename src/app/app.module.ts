@@ -1,8 +1,6 @@
-// Angular modules and components
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 import { RouterModule, NoPreloading } from '@angular/router';
-import { LocationStrategy, HashLocationStrategy  } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 /* Shared Modules */
@@ -11,32 +9,33 @@ import { SharedModule } from './shared-module/shared.module';
 import { IdentityService } from './services/identity.service';
 /* App Root */
 import { AppComponent } from './components/app/app.component';
-import { HomeComponent } from './components/home/home.component';
-import { TokenComponent } from './components/token/token.component';
-import { TopNavComponent } from './components/nav/nav-top.component';
+import { AppHomeComponent } from './components/app-home/app-home.component';
+import { AppTokenComponent } from './components/app-token/app-token.component';
+import { AppNavTopComponent } from './components/app-nav/app-nav-top.component';
 
 import { AuthInterceptor } from './services/auth.interceptor';
 import { LoggingInterceptor } from './services/logging.interceptor';
 
+import * as $ from 'jquery';
 @NgModule({
 	bootstrap: [AppComponent],
 	declarations: [
-		AppComponent,
-		HomeComponent,
-		TokenComponent,
-		TopNavComponent
+    	AppComponent,
+		AppHomeComponent,
+		AppTokenComponent,
+		AppNavTopComponent
 	],
 	exports: [
 		SharedModule
 	],
 	imports: [
-		BrowserModule,
+    	BrowserModule,
 		HttpClientModule,
 		RouterModule.forRoot([
 				// Static Loading
 				{ path: '', redirectTo: '/home', pathMatch: 'full' },
-				{ path: 'home', component: HomeComponent },
-				{ path: 'token', component: TokenComponent },
+				{ path: 'home', component: AppHomeComponent },
+				{ path: 'token', component: AppTokenComponent },
 				// Lazy Loading
 				{ path: 'demos', loadChildren: './demos-module/demos.module#DemosModule' },
 				{ path: 'user', loadChildren: './users-module/user.module#UserModule' },
@@ -52,4 +51,4 @@ import { LoggingInterceptor } from './services/logging.interceptor';
 		{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true, } // Add token to all API requests
 	]
 })
-export class AppModule {}
+export class AppModule { }

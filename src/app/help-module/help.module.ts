@@ -5,25 +5,48 @@ import { CommonModule, LocationStrategy, HashLocationStrategy } from '@angular/c
 import * as $ from 'jquery';
 
 /* Module Declarations */
-import { HelpComponent } from './components/help/help.component';
 import { HelpHomeComponent } from './components/help-home/help-home.component';
 import { HelpNavComponent } from './components/help-nav/help-nav.component';
+import { TopicClientLibrariesComponent } from './components/topic-clientLibraries/topic-clientLibraries.component';
+import { TopicGettingStartedComponent } from './components/topic-gettingStarted/topic-gettingStarted.component';
+import { TopicGitBranchingComponent } from './components/topic-gitBranching/topic-gitBranching.component';
+import { TopicGulpCommandsComponent } from './components/topic-gulpCommands/topic-gulpCommands.component';
+import { TopicKarmaCommandsComponent } from './components/topic-karmaCommands/topic-karmaCommands.component';
+import { TopicNpmCommandsComponent } from './components/topic-npmCommands/topic-npmCommands.component';
+import { TopicServerLibrariesComponent } from './components/topic-serverLibraries/topic-serverLibraries.component';
+import { TopicVsCodeCommandsComponent } from './components/topic-vsCodeCommands/topic-vsCodeCommands.component';
+
 
 
 @NgModule({
 	declarations: [
-		HelpComponent,
 		HelpHomeComponent,
-		HelpNavComponent
+		HelpNavComponent,
+		TopicClientLibrariesComponent,
+		TopicGettingStartedComponent,
+		TopicGitBranchingComponent,
+		TopicGulpCommandsComponent,
+		TopicKarmaCommandsComponent,
+		TopicNpmCommandsComponent,
+		TopicServerLibrariesComponent,
+		TopicVsCodeCommandsComponent
 	],
 	imports: [
 		CommonModule,
 		RouterModule.forChild([
 			{
 				path: '',
-				component: HelpComponent,
+				component: HelpHomeComponent,
 				children: [
-					{ path: '', component: HelpHomeComponent }
+					{ path: '', component: TopicGettingStartedComponent },
+					{ path: 'topic-clientLibraries', component: TopicClientLibrariesComponent },
+					{ path: 'topic-gettingStarted', component: TopicGettingStartedComponent	},
+					{ path: 'topic-gitBranching', component: TopicGitBranchingComponent	},
+					{ path: 'topic-gulpCommands', component: TopicGulpCommandsComponent	},
+					{ path: 'topic-karmaCommands', component: TopicKarmaCommandsComponent	},
+					{ path: 'topic-npmCommands', component: TopicNpmCommandsComponent	},
+					{ path: 'topic-serverLibraries', component: TopicServerLibrariesComponent },
+					{ path: 'topic-vsCodeCommands', component: TopicVsCodeCommandsComponent }
 				]
 			}
 		])

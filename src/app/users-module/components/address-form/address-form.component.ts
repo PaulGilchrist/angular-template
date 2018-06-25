@@ -51,7 +51,7 @@ export class AddressFormComponent {
 	}
 
 	// Bubble up that the form was saved
-	@Output() onSave = new EventEmitter<Address>();
+	@Output() save = new EventEmitter<Address>();
 
 	constructor(public _userService: UserService) { }
 
@@ -60,7 +60,7 @@ export class AddressFormComponent {
 		toastr.info(event.target.selectedOptions[0].text);
 	}
 
-	save(): void {
+	saveForm(): void {
 		// For the purpose of this demo, we are not going to save directly back to the API, but rather to the in memory list
 		this._address.name = this.name;
 		this._address.streetNumber = this.streetNumber;
@@ -72,10 +72,10 @@ export class AddressFormComponent {
 		// We will also set the address as isDirty so it can later update the API in bulk
 		this._address.isDirty = true;
 		// Bubble up that this user has been saved in case the parent is interested
-		this.onSave.emit(this._address);
+		this.save.emit(this._address);
 	}
 
-	cancel(): void {
+	cancelForm(): void {
 		// Reset the form back to the original user details
 		this.name = this._address.name;
 		this.streetNumber = this._address.streetNumber;
