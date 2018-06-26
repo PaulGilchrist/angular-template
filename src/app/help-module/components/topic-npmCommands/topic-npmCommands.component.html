@@ -1,6 +1,24 @@
 <article>
-    <h3>NPM Commands</h3>
-    Node Package Manager (NPM) can also execute tasks but we should defer to Gulp whenever possible.  These commands can be run from the console by preceding them with the name “npm” (example: npm install)<br/>
+    <h3>NPM and NG Commands</h3>
+	Angular CLI has several useful commands for creating and building applications.    These commands can be run from the console by preceding them with the name “ng” (example: ng new [myNewApp])<br/>
+    <br/>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead><tr class="success"><td>Command</td><td>Description</td></tr></thead>
+            <tbody>
+                <!--Need to add -> test, postinstall -->
+                <!--Need to update -> start to discuss how it concurrently runs test -->
+                <tr><td>new</td><td>Creates a new project from a template that follow Angular best practices and styles.</td></tr>
+                <tr><td>serve</td><td>Builds the application outputing it to memory only, then launching and watching the application for code changes, automatically re-compiling and refreshing the browser as needed.</td></tr>
+                <tr><td>build</td><td>Builds the application following the options listed in angular.json or passed on the command line, based on the environment configuration passed in.  A default new project has a development environment (default), and a production environment.  Other envirnments like QA and staging, can be added to angular.json as needed.</td></tr>
+                <tr><td>test</td><td>Builds the test configuration as defined in angular.json, and discovers and launches all 'spec' files reporting on the results of each test.</td></tr>
+                <tr><td>lint</td><td>Analyses the source code and compared against rules defined in tslint.json reporting on any found issues.</td></tr>
+                <tr><td>e2e</td><td>Runs all the end to end tests located in the e2e folder reporting on any found issues.</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <br/>
+    Node Package Manager (NPM) can also execute scripts defined in the package.json file but it is best to use the Angular commands whenever possible.  These commands can be run from the console by preceding them with the name “npm” (example: npm install)<br/>
     <br/>
     <div class="table-responsive">
         <table class="table table-striped table-hover">
@@ -9,9 +27,6 @@
                 <!--Need to add -> test, postinstall -->
                 <!--Need to update -> start to discuss how it concurrently runs test -->
                 <tr><td>install</td><td>Reads the “package.json” file, identifies all node packages required by the project, then pulls them down from the Internet and places them (including all dependencies) into the “node_modules” folder.  Packages are not added to version control, so this command should be run whenever the packages within “package.json” changes.  This command is idempotent so it is safe to run at any time and will not re-download packages that already exist and have not changed.</td></tr>
-                <tr><td>postinstall</td><td>Installs or updates configured TypeScript definition files after all node modules have been installed or updated.</td></tr>
-                <tr><td>start</td><td>Executes the Gulp “watch” to ensure all files are compiles and tested, then launches a lightweight Node server names BrowserSync that hosts the application and watches all CSS, JavaScript, and HTML files for changes.  If any TypeScript files change, the Gulp task will recompile and retest them.  The recompile to JavaScript is noticed by BrowserSync, and all connected browsers are automatically refreshed.  This command also launches the "test" command for Jasmine unit-test monitoring in a separate browser tab.  Connected browsers are refreshed when code changes are saved.  This is one of the most commonly used commands allowing for rapid development and testing.</td></tr>
-                <tr><td>test</td><td>Launches Jamine unit testing URL separate from the application.</td></tr>
             </tbody>
         </table>
     </div>

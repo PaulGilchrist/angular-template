@@ -1,0 +1,113 @@
+<article>
+	 <h3>Deploying a native Angular CLI application to Azure using VSTS</h3>
+	 The GIT ignore file (.gitignore) will ensure only source code is saved to the repository, by excluding things like the ‘dist’ and ‘node_modules’ folders.  This means that what is placed into source control is not what should be deployed to the web server.  Visual Studio Team Services (VSTS) and other deployment tools are used to go through the same ‘ng build’ process, and deploy the final output to the web server.  Below are the steps to achieve a successful build using VSTS to Azure App Service, and these steps should be easily modifiable to other deployment tools and hosting environments.<br/>
+	 <br/>
+	 <ol>
+        <li>
+			Create new project using Angular CLI to ensure the structure follows Angular best practices and styles
+			<ul>
+				<li><code>ng new [angularProjectName] --style=scss</code></li>
+			</ul>
+		</li>
+        <li><code>cd [angularProjectName]</code></li>
+        <li><code>code .</code></li>
+        <li>Change 'outputPath' in angular.json to "dist" removing project subfolder</li>
+		<li>
+			Check-in code changes
+			<ol>
+				<li>Login to VSTS - example: https://[vstsTenantName].visualstudio.com</li>
+				<li>
+					Optional - Create new VSTS project
+					<ul>
+						<li>version control = GIT</li>
+					</ul>
+				</li>
+				<li>
+					Optional - Create new VSTS repo in existing project
+					<ul>
+						<li>
+							select "code" tab then dropdown of repos at upper left and choose "+ new repository"
+							<ul>
+								<li>Type = GIT</li>
+								<li>Repository Name = [angularProjectName]</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li>
+					Bind local GIT repo to VSTS repo from CMD prompt from root folder of angular project (local repo root)
+					<ol>
+						<li><code>git remote add origin https://[vststenantname].visualstudio.com/[vstsProjectName]/_git/[repoName]</code></li>
+						<li><code>git push -u origin --all</code></li>
+					</ol>
+				</li>
+			</ol>
+		</li>
+		<li>
+			Setup Azure App Service
+			<ol>
+				<li>Example: https://[angularProjectName].azurewebsites.net</li>
+				<li>Change platform to "64-bit"</li>
+				<li>Change HTTP Version to "2.0"</li>
+				<li>Change Affinity to "Off"</li>
+			</ol>
+		</li>
+		<li>
+			Setup build process in VSTS
+			<ol>
+				<li>Select "Build and Release" tab and click "+ New Definition"</li>
+				<li>Select project, repository, and branch</li>
+				<li>Select "Empty Process"</li>
+				<li>
+					Add step: Node Tool Installer
+					<ul>
+						<li>Set to version spec 8.9 (required for Angular Cli 6)</li>
+					</ul>
+				</li>
+				<li>
+					Add step: NPM
+					<ul>
+						<li>Command = install</li>
+					</ul>
+				</li>
+				<li>
+					Add step: NPM
+					<ul>
+						<li>Display Name = build</li>
+						<li>Command = custom</li>
+						<li>
+							Command and arguments
+							<ul>
+								<li>Development = run ng -- build</li>
+								<li>QA (if setup in project) = run ng -- build -c qa</li>
+								<li>Staging (if setup in project) = run ng -- build -c staging</li>
+								<li>Production = run ng -- build --prod -c production</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li>
+					Add step: "Azure App Service Deploy"
+					<ul>
+						<li>
+							Package or folder = $(System.DefaultWorkingDirectory)/dist
+							<ul>
+								<li>
+									If project subfolder was not previously removed from angular.json dist folder in (above step), then it must be added here
+									<ul>
+										<li>example: $(System.DefaultWorkingDirectory)/dist/[angularProjectName]</li>
+									</ul>
+								</li>
+								<li>Check "Additional Deployment Options/Publish using Web Deploy"</li>
+								<li>Check "Additional Deployment Options/Remove additional files at destination"</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li>Save & queue</li>
+				<li>Confirm successful deployment and smoke test application URL</li>
+			</ol>
+		</li>
+		<li>Setup dev, qa, and staging GIT branches and associated builds</li>
+    </ol>
+</article>

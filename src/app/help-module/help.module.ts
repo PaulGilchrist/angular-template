@@ -10,13 +10,10 @@ import { HelpNavComponent } from './components/help-nav/help-nav.component';
 import { TopicClientLibrariesComponent } from './components/topic-clientLibraries/topic-clientLibraries.component';
 import { TopicGettingStartedComponent } from './components/topic-gettingStarted/topic-gettingStarted.component';
 import { TopicGitBranchingComponent } from './components/topic-gitBranching/topic-gitBranching.component';
-import { TopicGulpCommandsComponent } from './components/topic-gulpCommands/topic-gulpCommands.component';
-import { TopicKarmaCommandsComponent } from './components/topic-karmaCommands/topic-karmaCommands.component';
 import { TopicNpmCommandsComponent } from './components/topic-npmCommands/topic-npmCommands.component';
 import { TopicServerLibrariesComponent } from './components/topic-serverLibraries/topic-serverLibraries.component';
 import { TopicVsCodeCommandsComponent } from './components/topic-vsCodeCommands/topic-vsCodeCommands.component';
-
-
+import { TopicVstsDeployComponent } from './components/topic-vstsDeploy/topic-vstsDeploy.component';
 
 @NgModule({
 	declarations: [
@@ -25,11 +22,10 @@ import { TopicVsCodeCommandsComponent } from './components/topic-vsCodeCommands/
 		TopicClientLibrariesComponent,
 		TopicGettingStartedComponent,
 		TopicGitBranchingComponent,
-		TopicGulpCommandsComponent,
-		TopicKarmaCommandsComponent,
 		TopicNpmCommandsComponent,
 		TopicServerLibrariesComponent,
-		TopicVsCodeCommandsComponent
+		TopicVsCodeCommandsComponent,
+		TopicVstsDeployComponent
 	],
 	imports: [
 		CommonModule,
@@ -42,11 +38,10 @@ import { TopicVsCodeCommandsComponent } from './components/topic-vsCodeCommands/
 					{ path: 'topic-clientLibraries', component: TopicClientLibrariesComponent },
 					{ path: 'topic-gettingStarted', component: TopicGettingStartedComponent	},
 					{ path: 'topic-gitBranching', component: TopicGitBranchingComponent	},
-					{ path: 'topic-gulpCommands', component: TopicGulpCommandsComponent	},
-					{ path: 'topic-karmaCommands', component: TopicKarmaCommandsComponent	},
 					{ path: 'topic-npmCommands', component: TopicNpmCommandsComponent	},
 					{ path: 'topic-serverLibraries', component: TopicServerLibrariesComponent },
-					{ path: 'topic-vsCodeCommands', component: TopicVsCodeCommandsComponent }
+					{ path: 'topic-vsCodeCommands', component: TopicVsCodeCommandsComponent },
+					{ path: 'topic-vstsDeploy', component: TopicVstsDeployComponent }
 				]
 			}
 		])
