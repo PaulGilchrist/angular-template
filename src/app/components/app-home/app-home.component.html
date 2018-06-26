@@ -4,9 +4,9 @@
     </div>
     <div class="panel-body">
         <div class="sub-section">
-            <p>This site was put together to demonstrate code examples for Angular, Typescript, and Bootstrap developed in a Visual Studio Code hosted IDE.  This combination of tools allows for a browser and device agnostic highly responsive application.  Open standard tools such as NPM (node package manager), Gulp (task runner), Jasmine (unit testing), Karma (test runner), and Git (version control) are also leveraged.  This project runs very well using Node for hosting and Visual Studio Code, but can alos work equally well using .Net or .Net core and Visual Studio, Sublime, Atom, and more.  This environment detects code changes, automaticly hot swapping changes and refresh all connected browsers improving development and debugging time efficiency.</p>
-            <p>Angular’s powerful client side JavaScript library is the key to this applications architecture.  Although developed as a lightweight template or starting point for new projects, examples exist throughout the code demonstrating Angular, Typescript, and Bootstrap capabilities and best practices.  Make sure to check out the “Features” section below for a list of Angular features demonstrated in this project.</p>
-            <p>As Angular, Typescript, Bootstrap, or Visual Studio changes or best practices evolve, this template will be updates to ensure it always remains a good starting point for any new project.</p>
+    		<p>This template was designed using Angular CLI and Ahead of Time (AoT) compilation.  The application is designed to HTML5 and CSS3 standards and should run on any major modern browser on any device and operating system.  This application runs completely client side allowing it to be hosted from any web hosting service such as Internet Information Service (IIS), NodeJS, Apache, etc.</p>
+			<p>Development was done using Visual Studio Code, but could have just as easily used any IDE or editor such as Atom, Sublime, or even something as simple as NotePad++.  The only requirement for development is a system supporting Node package Manager (NPM) packages.  Open standard tools such as NPM (node package manager), Jasmine (unit testing), Karma (test runner), and Git (version control), and Webpack (compile, minify, uglify, bundle) are also leveraged.  This environment detects code changes, automaticly hot swapping changes and refresh all connected browsers improving development and debugging time efficiency.</p>
+            <p>Angular’s powerful client side JavaScript library is the key to this applications architecture.  Examples exist throughout this application demonstrating Angular, Typescript, and Bootstrap capabilities and best practices.  Make sure to check out the “Features” section below for a list of Angular features demonstrated in this project.  As Angular, Typescript, Bootstrap, or Visual Studio changes or best practices evolve, this template will be updated to ensure it always remains a good reference for any new project.</p>
             <br />
             <input (click)="router.navigate(['help']);" type="button" class="btn btn-primary animated flash" value="Getting Started"><br />
             <br />
@@ -24,7 +24,7 @@
             </div>
             <div>
                 <div class="clearfix">
-                    <div class="pull-left"><a href="https://angular.io/">Learn more about Angular 2.0 development</a></div>
+                    <div class="pull-left"><a href="https://angular.io/">Learn more about Angular development</a></div>
                     <div class="pull-right">
                         Learn more about <a href="http://www.typescriptlang.org/">Typescript</a>, <a href="http://getbootstrap.com/">Bootstrap</a>, or <a href="https://www.visualstudio.com/en-us/visual-studio-homepage-vs.aspx">Visual Studio</a>
                     </div>
@@ -63,7 +63,7 @@
                             <li>Structural directives *</li>
                             <li>Local template variables #</li>
                             <li>Components</li>
-                            <li>Component scoped CSS</li>
+                            <li>Component scoped CSS and SCSS</li>
                             <li>Injectors</li>
                             <li>Lifecycle hooks</li>
                             <li>Modules</li>
@@ -73,24 +73,8 @@
                             <li>Form validation</li>
                             <li>AJAX calls</li>
                             <li>Async observables</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <div class="panel-title"><h4>Recently Added </h4></div>
-                    </div>
-                    <div class="panel-body">
-                        <ul>
-                            <li>Webpack module loading with minification, mangling, bundling</li>
-                            <li>Hot reload debugging</li>
                             <li>Module lazy loading</li>
-                            <li>Karma/Jasmine unit testing</li>
-                            <li>Help page discussing all usage details</li>
-                            <li>Form dirty checking</li>
-                            <li>Progress bar component</li>
-                            <li>Modal component</li>
-                            <li>Catch leaving page containing changed data, prompting for bulk save</li>
+                            <li>TypeScript</li>
                         </ul>
                     </div>
                 </div>
@@ -104,11 +88,10 @@
                         <ul>
                             <li>Animations and Transitions</li>
                             <li>Auto re-compile, re-test, browser refresh on change</li>
-                            <li>Azure/Git continuous deployment (dev\master)</li>
+                            <li>Azure/Git deployment (dev\master)</li>
                             <li>Bootstrap grids, forms, nav, panels, tables, etc.</li>
                             <li>Drag and Drop</li>
                             <li>Graphs, charts, and dashboards (using D3)</li>
-                            <li>Gulp post build automation</li>
                             <li>Header scroll awareness</li>
                             <li>Mock data support</li>
                             <li>OAuth bearer tokens</li>
@@ -117,29 +100,12 @@
                             <li>Responsive sidebar</li>
                             <li>SVG manipulation via CSS</li>
                             <li>Table caching, sorting, and search filtering</li>
-                            <li>TypeScript</li>
+                            <li>Webpack compiling, minification, mangling, bundling</li>
+                            <li>Karma/Jasmine unit testing</li>
+                            <li>Protractor end to end testing (based on Selineum)</li>
+                            <li>Help page discussing all usage details</li>
+                            <li>Form dirty checking</li>
                         </ul>
-                    </div>
-                </div>
-                <div class="panel panel-warning">
-                    <div class="panel-heading">
-                        <div class="panel-title"><h4>To Do List</h4></div>
-                    </div>
-                    <div class="panel-body">
-                        <ul>
-                            <li>API endpoint to receive client errors.  Abstract all logging through client service.</li>
-                            <li>API feedback endpoint and client side UI</li>
-                            <li>Document key files and their purpose (ex: gulpfile.js, karma.conf.js, package.json, tsconfig.json, etc.)</li>
-                            <li>HTML minification (when supported)</li>
-                            <li>Ahead of Time compilation (when supported in webpack)</li>
-                            <li>Service interface definitions to ensure mock data interface matches production interface</li>
-                        </ul>
-                    </div>
-                    <div id="closableMessage">
-                        <div class="panel-footer">
-                            <a href="#closableMessage" data-dismiss="alert" class="close">&times;</a>
-                            <h5>This site is still in development and experience may change</h5>
-                        </div>
                     </div>
                 </div>
             </div>
