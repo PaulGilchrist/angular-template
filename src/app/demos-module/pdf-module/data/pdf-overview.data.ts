@@ -40,7 +40,7 @@ export let PDF_OVERVIEW: any = {
 			fontSize: 8,
 			italics: true,
 			margin: [0, 20, 20, 0],
-			text: 'Angular 2.0 Template',
+			text: 'Angular Template',
 	};
 	},
 	footer: function(currentPage: number, pageCount: number) {
@@ -57,7 +57,9 @@ export let PDF_OVERVIEW: any = {
 			style: 'h1',
 			text: 'Angular Template and Training Code Example Site'
 		},
-		'\nThis site was put together to demonstrate code examples for Angular, Typescript, and Bootstrap developed in a Visual Studio 2015 hosted IDE. This combination of tools allows for a browser and device agnostic highly responsive application. Open standard tools such as NPM (node package manager), Gulp (task runner), Jasmine (unit testing), Karma (test runner), and Git (version control) are also leveraged. This project runs equally well using .Net Core or Node for hosting and supports not just Visual Studio 2015, but also Visual Studio Code, Sublime, Atom, and more. Tools like BrowserSync detect code changes, automaticly re-compile, unit testing, and refresh all connected browsers improving development and debugging time efficiency.\n\nAngular 2.0’s powerful client side JavaScript library is the key to this applications architecture. Although developed as a lightweight template or starting point for new projects, examples exist throughout the code demonstrating Angular, Typescript, and Bootstrap capabilities and best practices. Make sure to check out the “Features” section below for a list of Angular 2.0 features demonstrated in this project.\n\nAs Angular, Typescript, Bootstrap, or Visual Studio changes or best practices evolve, this template will be updates to ensure it always remains a good starting point for any new project.\n\n',
+    	'\nThis template was designed using Angular CLI and Ahead of Time (AoT) compilation.  The application is designed to HTML5 and CSS3 standards and should run on any major modern browser on any device and operating system.  This application runs completely client side allowing it to be hosted from any web hosting service such as Internet Information Service (IIS), NodeJS, Apache, etc.\n\n',
+		'Development was done using Visual Studio Code, but could have just as easily used any IDE or editor such as Atom, Sublime, or even something as simple as NotePad++.  The only requirement for development is a system supporting Node package Manager (NPM) packages.  Open standard tools such as NPM (node package manager), Jasmine (unit testing), Karma (test runner), and Git (version control), and Webpack (compile, minify, uglify, bundle) are also leveraged.  This environment detects code changes, automaticly hot swapping changes and refresh all connected browsers improving development and debugging time efficiency.\n\n',
+        'Angular’s powerful client side JavaScript library is the key to this applications architecture.  Examples exist throughout this application demonstrating Angular, Typescript, and Bootstrap capabilities and best practices.  Make sure to check out the “Features” section below for a list of Angular features demonstrated in this project.  As Angular, Typescript, Bootstrap, or Visual Studio changes or best practices evolve, this template will be updated to ensure it always remains a good reference for any new project.\n\n',
 		{text: 'Angular\'s Value Proposition', style: 'h2'},
 		{
 			ul: [
@@ -92,12 +94,15 @@ export let PDF_OVERVIEW: any = {
 							'Component scoped CSS',
 							'Injectors',
 							'Lifecycle hooks',
+							'Modules',
+							'Module Lazy Loading',
 							'Routers (parent and child)',
 							'Services',
 							'Custom pipes',
 							'Form validation',
 							'AJAX calls',
 							'Async observables',
+							'Typescript'
 							]
 					}
 				],
@@ -111,16 +116,19 @@ export let PDF_OVERVIEW: any = {
 							'Bootstrap grids, forms, nav, panels, tables, etc.',
 							'Drag and Drop',
 							'Graphs, charts, and dashboards (using D3)',
-							'Gulp post build automation',
 							'Header scroll awareness',
 							'Mock data support',
 							'OAuth bearer tokens',
+							'PDF Printing',
 							'RegEx form validation',
 							'Responsive sidebar',
 							'SVG manipulation via CSS',
 							'Table caching, sorting, and search filtering',
-							'TypeScript',
-							'Unit testing (using Jasmine)'
+							'Webpack compiling, minification, mangling, bundling',
+							'Karma/Jasmine unit testing',
+							'Protractor end to end testing (based on Selineum)',
+							'Help page discussing all usage details',
+							'Form dirty checking'
 							]
 					}
 				],
