@@ -1,14 +1,7 @@
-import { AppPage } from './app.po';
+import { browser, by, element } from 'protractor';
 
-describe('workspace-project App', () => {
-  let page: AppPage;
-
-  beforeEach(() => {
-    page = new AppPage();
-  });
-
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to AngularTemplate!');
-  });
-});
+if (browser.params.runAllTests) {
+	it('should display welcome message', () => {
+	  expect(element(by.css('p')).getText()).toContain('This template was designed using Angular CLI');
+	});
+}
