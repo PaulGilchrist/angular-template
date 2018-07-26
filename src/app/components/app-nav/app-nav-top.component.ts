@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common' ;
 
-import { IdentityService } from '../../services/identity.service';
+import { AdalService } from 'adal-angular4';
 
 @Component({
 	selector: 'app-nav-top',
@@ -13,7 +13,7 @@ export class AppNavTopComponent implements OnInit {
 
 	public shrinkNavbar = false;
 
-	constructor(private _location: Location, private _router: Router, public identityService: IdentityService) {}
+	constructor(private _location: Location, private _router: Router, private adalService: AdalService) {}
 
 	onScroll(event: any): void {
 		// Shrink the header top and bottom padding when scrolling beyond 300px
@@ -22,6 +22,7 @@ export class AppNavTopComponent implements OnInit {
 
 
 	ngOnInit(): void {
+		this.adalService.handleWindowCallback();
 	}
 
 	currentPage(path: string): boolean {
@@ -38,16 +39,15 @@ export class AppNavTopComponent implements OnInit {
 	}
 
 	login(): void {
-		this.identityService.getUser().subscribe(user => {
-			console.log(this.identityService.user);
-		}, error => {
-			console.log(error);
-		});
+		this.adalService.login();
 	}
 
 	logout(): void {
-		this.identityService.clearToken();
-		this._router.navigate(['home']);
+		this.adalService.logOut();
 	}
+
+	get authenticated(): boolean {
+    	return this.adalService.userInfo.authenticated;
+  	}
 
 }

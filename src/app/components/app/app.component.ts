@@ -1,11 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { AdalService } from 'adal-angular4';
 
+import { environment } from '../../../environments/environment';
 @Component({
 	selector: 'app-root',
 	styleUrls: ['./app.component.css'],
 	templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
+
+	constructor(private adalService: AdalService) {
+		// init requires object with clientId and tenant properties
+    	adalService.init(environment.azureAuthProvider);
+  	}
 
 	ngOnInit(): void {
 		// Extend jQuery to allow for simpler animations

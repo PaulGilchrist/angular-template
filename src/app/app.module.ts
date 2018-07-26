@@ -3,10 +3,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, NoPreloading } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
+import { AdalService, AdalGuard } from 'adal-angular4';
+
 /* Shared Modules */
 import { SharedModule } from './shared-module/shared.module';
-/* App Services */
-import { IdentityService } from './services/identity.service';
+
 /* App Root */
 import { AppComponent } from './components/app/app.component';
 import { AppHomeComponent } from './components/app-home/app-home.component';
@@ -35,7 +36,7 @@ import * as $ from 'jquery';
 				// Static Loading
 				{ path: '', redirectTo: '/home', pathMatch: 'full' },
 				{ path: 'home', component: AppHomeComponent },
-				{ path: 'token', component: AppTokenComponent },
+				{ path: 'token', component: AppTokenComponent, canActivate: [AdalGuard] },
 				// Lazy Loading
 				{ path: 'demos', loadChildren: './demos-module/demos.module#DemosModule' },
 				{ path: 'user', loadChildren: './users-module/user.module#UserModule' },
@@ -46,7 +47,8 @@ import * as $ from 'jquery';
 		SharedModule
 	],
 	providers: [
-		IdentityService,
+		AdalService,
+		AdalGuard,
 		{ provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true, }, // Time how long each http rerquests takes
 		{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true, } // Add token to all API requests
 	]

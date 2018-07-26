@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { IdentityService } from '../../services/identity.service';
+import { AdalService } from 'adal-angular4';
 
 @Component({
 	selector: 'app-token',
@@ -10,7 +10,7 @@ import { IdentityService } from '../../services/identity.service';
 })
 export class AppTokenComponent implements OnInit {
 
-	constructor(private _location: Location, private _router: Router, public identityService: IdentityService) {}
+	constructor(private _location: Location, private _router: Router, private adalService: AdalService) {}
 
 	ngOnInit(): void {
 		// Initialize tooltips just for this component
@@ -23,22 +23,19 @@ export class AppTokenComponent implements OnInit {
 
 	getDateString(num: number): string {
 		let returnString = '';
-		if(num) {
+		if (num) {
 			returnString = num + ' (' + new Date(num * 1000) + ')';
 		}
 		return returnString;
 	}
 
 	logout(): void {
-		// Remove token from both memory and local storage
-		this.identityService.clearToken();
-		// Redirect back to the home page now that there is no longer token info to display
-		this._router.navigate(['home']);
+		this.adalService.logOut();
 	}
 
 	renew(): void {
 		// Test renewing a currently valid token without UI
-		this.identityService.getToken().subscribe();
+		// this.identityService.getToken().subscribe();
 		// Should refresh the screen after a second (or after token has been replaced)
 	}
 }
