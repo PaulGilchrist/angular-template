@@ -23,12 +23,12 @@
     "import-spacing": true,
     "indent": [
       false,
-      "spaces"
+      "tabs"
     ],
     "interface-over-type-literal": true,
     "label-position": true,
     "max-line-length": [
-      true,
+      false,
       300
     ],
     "member-access": false,
@@ -109,7 +109,7 @@
     "unified-signatures": true,
     "variable-name": false,
     "whitespace": [
-      true,
+      false,
       "check-branch",
       "check-decl",
       "check-operator",

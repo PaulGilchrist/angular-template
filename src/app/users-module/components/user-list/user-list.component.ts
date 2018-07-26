@@ -14,12 +14,12 @@ import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
 
 @Component({
-	selector: 'user-list',
+	selector: 'app-user-list',
 	styleUrls: ['./user-list.component.css'],
 	templateUrl: './user-list.component.html'
 })
 export class UserListComponent implements OnInit, OnDestroy  {
-	@Output() onSelect = new EventEmitter<User>();
+	@Output() select = new EventEmitter<User>();
 	id: string;
 
 	public errorMessage: string;
@@ -29,13 +29,20 @@ export class UserListComponent implements OnInit, OnDestroy  {
 	public sortReverse = false;
 	public searchString = '';
 
+	users: User[];
+
 	constructor(public _userService: UserService) { }
+
+	ngOnInit(): void {
+		this.getUsers();
+		this.isListOpen = true;
+	}
 
 	ngOnDestroy(): void {
 		// Make sure all the users are saved to the API before leaving this component
 		// Look for angular to release a better lifecycle hook than onDestroy for this
 		//     Doing this earlier in the lifecycle would allow for leaving the page to be canceled
-		const usersRequiringSave = _.where(this._userService.users, { isDirty: true });
+		const usersRequiringSave = _.where(this.users, { isDirty: true });
 		if (usersRequiringSave.length > 0) {
 			// No typings for jquery-confirm
 			$.confirm({
@@ -67,12 +74,8 @@ export class UserListComponent implements OnInit, OnDestroy  {
 				}
 			});
 		}
-	}
-
-	ngOnInit(): void {
-		this.isBusy = true;
-		this.getUsers();
-		this.isListOpen = true;
+		// Unsubscribe
+		// this._userService.users$.unsubscribe();
 	}
 
 	public changeSort(newSortType: string) {
@@ -86,15 +89,16 @@ export class UserListComponent implements OnInit, OnDestroy  {
 
 	getUsers(): void {
 		this.isBusy = true;
-		this._userService.getUsers()
-			// We are not going to store the users in this component but rather leave them in the service itself
-			//     This means we are subscribing not to get the data, but to know when the service has the data
-			.subscribe(users => this.isBusy = false, error => this.errorMessage = <any>error);
+		this._userService.getUsers().subscribe(() => this.isBusy = false);
+		this._userService.users$.subscribe(users => {
+			// Copy the array so we do not update the original object in the service
+			this.users = jQuery.extend(true, [], users);
+		});
 	}
 
 	public selectUser(user: User): void {
 		// Bubble up to the parent that a new user was selected
-		this.onSelect.emit(user);
+		this.select.emit(user);
 	}
 
 }

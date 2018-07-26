@@ -4,8 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { DragulaModule } from '../../../node_modules/ng2-dragula';
-import { CKEditorModule } from '../../../node_modules/ng2-ckeditor';
+import { DragulaModule } from 'ng2-dragula';
+import { CKEditorModule } from 'ng2-ckeditor';
 
 import { SharedModule } from '../shared-module/shared.module';
 
@@ -17,7 +17,7 @@ import * as d3 from 'd3';
 import { Selection, select } from 'd3-selection';
 import { transition } from 'd3-transition';
 
-import { BlockchainDemoComponent } from './components//blockchain/blockchain-demo.component';
+import { BlockchainDemoComponent } from './components/blockchain/blockchain-demo.component';
 import { D3GraphComponent } from './components/d3-graph/d3-graph.component';
 import { DragDemoComponent } from './components/drag-demo/drag-demo.component';
 import { EditorDemoComponent } from './components/editor-demo/editor-demo.component';

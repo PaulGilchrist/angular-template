@@ -1,6 +1,6 @@
-import {State} from './../models/state.model';
+import {State} from '../models/state.model';
 
-export let STATES: State[] = [
+export const STATES: State[] = [
 	{ name: 'ALABAMA', abbreviation: 'AL'},
 	{ name: 'ALASKA', abbreviation: 'AK'},
 	{ name: 'ARIZONA', abbreviation: 'AZ'},

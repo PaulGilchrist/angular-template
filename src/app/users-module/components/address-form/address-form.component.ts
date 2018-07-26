@@ -10,7 +10,7 @@ declare var toastr: any;
 declare var _: any;
 
 @Component({
-	selector: 'address-form',
+	selector: 'app-address-form',
 	styleUrls: ['./address-form.component.scss'],
 	templateUrl: './address-form.component.html'
 })

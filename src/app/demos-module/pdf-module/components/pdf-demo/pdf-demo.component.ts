@@ -13,7 +13,7 @@ export interface DocImage {
 }
 
 @Component({
-	selector: 'pdf-demo',
+	selector: 'app-pdf-demo',
 	templateUrl: './pdf-demo.component.html'
 })
 export class PdfDemoComponent {

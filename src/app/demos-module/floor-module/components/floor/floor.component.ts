@@ -10,7 +10,7 @@ export interface FloorZone { name: string; type: string; layers: string[]; activ
 export interface Option { level: number; name: string; standardName: string; optionName: string; standardLayers: string[]; optionLayers: string[]; active: boolean; }
 
 @Component({
-	selector: 'floor',
+	selector: 'app-floor',
 	styleUrls: ['./floor.component.css'],
 	templateUrl: './floor.component.html'
 })
@@ -47,7 +47,7 @@ export class FloorComponent implements OnInit {
 			this.toggleOption(option);
 		}
 		// Add mousewheel event listner to control svg scale
-		$('#floorplan').bind('mousewheel', function(e: any) {
+		$('#floorplan').on('mousewheel', function(e: any) {
 			const stepping = 20;
 			const floorplan: any = $('#floorplan');
 			let width: string = floorplan.css('width');

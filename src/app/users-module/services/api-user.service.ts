@@ -1,5 +1,5 @@
 
-import {throwError as observableThrowError,  Observable ,  of } from 'rxjs';
+import { BehaviorSubject, throwError as observableThrowError, Observable , of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, retry, tap } from 'rxjs/operators';
@@ -15,33 +15,36 @@ export class UserService {
 	_maxUserCacheTimeMilliseconds = 3600000;
 
 	// Public variables
-	public users: User[];
+	public users$: BehaviorSubject<User[]>;
 
 	// Private variables
-	_usersUrl: string = null;
 	_lastUserGetTime: number; // number of milliseconds elapsed since 1 January 1970 00:00:00 UTC
+	_usersUrl: string = null;
 
 	// Assumes HTTP_PROVIDERS was added as a provider at a higher level
 	constructor(private http: HttpClient) {
+		// Initialize with empty arrays
+		this.users$ = new BehaviorSubject<User[]>([]);
 		// Application should have loaded settings at startup
 		this._usersUrl = environment.apiUrl + '/users';
 	}
 
-	public getUsers(): Observable<any> {
+	public getUsers(force: boolean = false): Observable<any> {
 		// If the users are less than 1 hour old do not GET them again from the API
-		if (!this.users || (this._lastUserGetTime + this._maxUserCacheTimeMilliseconds < Date.now())) {
+		const users = this.users$.getValue();
+		if(force || users.length === 0 || (this._lastUserGetTime + this._maxUserCacheTimeMilliseconds < Date.now())) {
 			// Get users from API
 			return this.http.get(this._usersUrl).pipe(
 				retry(3),
 				tap(data => {
-					this.users = <User[]>data; // Save the user array inside the service
+					this.users$.next(<User[]>data); // Save the user array inside the service
 					this._lastUserGetTime = Date.now(); // Track when the last successful user GET occured
 				}),
 				catchError(this.handleError)
 			);
 		} else {
 			// Return existing users as an observable
-			return of(this.users);
+			return of(users);
 		}
 	}
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BlockchainService } from '../../services/blockchain.service';
 
 @Component({
-	selector: 'blockchain-demo',
+	selector: 'app-blockchain-demo',
 	styleUrls: ['./blockchain-demo.component.css'],
 	templateUrl: './blockchain-demo.component.html'
 })

@@ -1,14 +1,15 @@
 <div class='row'>
     <div class='col-sm-5'>
-        <user-form [user]="user"></user-form>
+        <app-user-form [user]="user"></app-user-form>
     </div>
     <div class='col-sm-5 col-sm-offset-2'>
-        <address-form [user]="user"></address-form>
+        <app-address-form [user]="user"></app-address-form>
     </div>
 </div>
 <br/>
+<app-user-test></app-user-test>
 <div class='row'>
     <div style='padding:10px 20px;'>
-        <user-list (onSelect)="onSelect($event)"></user-list>
+        <app-user-list (select)="onSelect($event)"></app-user-list>
     </div>
 </div>

@@ -16,6 +16,7 @@ import { AddressFormComponent } from './components/address-form/address-form.com
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UserHomeComponent } from './components/user-home/user-home.component';
+import { UserTestComponent } from './components/user-test/user-test.component';
 
 import { UserService } from './services/user.service';
 
@@ -24,7 +25,8 @@ import { UserService } from './services/user.service';
 		AddressFormComponent,
 		UserFormComponent,
 		UserListComponent,
-		UserHomeComponent
+		UserHomeComponent,
+		UserTestComponent
 	], // directives, components, and pipes owned by this NgModule
 	imports: [
 		CommonModule,

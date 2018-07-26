@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { User } from '../../models/user.model';
 
 @Component({
-	selector: 'user-form',
+	selector: 'app-user-form',
 	styleUrls: ['./user-form.component.scss'],
 	templateUrl: './user-form.component.html'
 })
@@ -64,4 +64,5 @@ export class UserFormComponent {
 		// No typings for animate.css
 		(<any>userForm).animateCss('shake');
 	}
+
 }

@@ -6,10 +6,10 @@ import { AdalService } from 'adal-angular4';
 
 @Component({
 	selector: 'app-nav-top',
-	styleUrls: ['./app-nav-top.component.css'],
-	templateUrl: './app-nav-top.component.html'
+	styleUrls: ['./nav-top.component.css'],
+	templateUrl: './nav-top.component.html'
 })
-export class AppNavTopComponent implements OnInit {
+export class NavTopComponent implements OnInit {
 
 	public shrinkNavbar = false;
 

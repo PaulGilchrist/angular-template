@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-	selector: 'editor-demo',
+	selector: 'app-editor-demo',
 	styleUrls: ['./editor-demo.component.css'],
 	templateUrl: './editor-demo.component.html'
 })

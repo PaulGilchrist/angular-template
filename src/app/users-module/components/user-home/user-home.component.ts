@@ -3,7 +3,7 @@ import { Component, Input, Output } from '@angular/core';
 import { User } from '../../models/user.model';
 
 @Component({
-	selector: './user-home',
+	selector: './app-user-home',
 	templateUrl: './user-home.component.html'
 })
 export class UserHomeComponent {

@@ -9,7 +9,7 @@ import * as _ from 'underscore';
 export interface DragObject { id: number; text: string; allowMove: boolean; }
 
 @Component({
-	selector: 'drag-demo',
+	selector: 'app-drag-demo',
 	styleUrls: ['./drag-demo.component.scss'],
 	viewProviders: [DragulaService],
 	templateUrl: './drag-demo.component.html'

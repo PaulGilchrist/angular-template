@@ -13,7 +13,7 @@ declare var _:any;
 
 @Component({
 	encapsulation: ViewEncapsulation.None,
-	selector: './d3-graph',
+	selector: 'app-d3-graph',
 	styleUrls: ['./d3-graph.component.scss'],
 	template: ''
 })

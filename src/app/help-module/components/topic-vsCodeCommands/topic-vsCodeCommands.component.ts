@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-	selector: 'topic-vsCodeCommands',
+	selector: 'app-topic-vs-code-commands',
 	templateUrl: './topic-vsCodeCommands.component.html'
 })
 export class TopicVsCodeCommandsComponent { }

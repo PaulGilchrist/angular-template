@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Location } from '@angular/common' ;
 
 @Component({
-	selector: 'help-nav',
+	selector: 'app-help-nav',
 	styleUrls: ['./help-nav.component.css'],
 	templateUrl: './help-nav.component.html'
 })

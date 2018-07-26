@@ -25,18 +25,18 @@
 <div>
     <div class="graph-inline">
         <h1>Bar Graph</h1>
-        <d3-graph type="bar" [data]="data" xKey="month" yKey="sales" [width]="width" [height]="height" [labels]='label' [warningLevel]="warningLevel"></d3-graph>
+        <app-d3-graph type="bar" [data]="data" xKey="month" yKey="sales" [width]="width" [height]="height" [labels]='label' [warningLevel]="warningLevel"></app-d3-graph>
     </div>
     <div class="graph-inline">
         <h1>Line Chart</h1>
-        <d3-graph type="line" [data]="data" xType="date" xKey="month" yKey="sales" [width]="width" [height]="height" [labels]='label' [warningLevel]="warningLevel"></d3-graph>
+        <app-d3-graph type="line" [data]="data" xType="date" xKey="month" yKey="sales" [width]="width" [height]="height" [labels]='label' [warningLevel]="warningLevel"></app-d3-graph>
     </div>
     <div class="graph-inline">
         <h1>Scatter Plot</h1>
-        <d3-graph type="scatter" [data]="data" xType="date" xKey="month" yKey="sales" [width]="width" [height]="height" [labels]='label' [warningLevel]="warningLevel"></d3-graph>
+        <app-d3-graph type="scatter" [data]="data" xType="date" xKey="month" yKey="sales" [width]="width" [height]="height" [labels]='label' [warningLevel]="warningLevel"></app-d3-graph>
     </div>
     <div class="graph-inline">
         <h1>Pie Chart</h1>
-        <d3-graph type="pie" [data]="data" xType="date" xKey="month" yKey="sales" [width]="width" [labels]='label' [warningLevel]="warningLevel"></d3-graph>
+        <app-d3-graph type="pie" [data]="data" xType="date" xKey="month" yKey="sales" [width]="width" [labels]='label' [warningLevel]="warningLevel"></app-d3-graph>
     </div>
 </div>

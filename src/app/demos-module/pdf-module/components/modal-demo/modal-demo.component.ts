@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-	selector: './modal-demo',
+	selector: 'app-modal-demo',
 	templateUrl: './modal-demo.component.html'
 })
 export class ModalDemoComponent {

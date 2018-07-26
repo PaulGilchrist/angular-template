@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-	selector: 'topic-gettingStarted',
+	selector: 'app-topic-getting-started',
 	templateUrl: './topic-gettingStarted.component.html'
 })
 export class TopicGettingStartedComponent { }

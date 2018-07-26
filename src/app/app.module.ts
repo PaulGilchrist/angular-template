@@ -10,9 +10,9 @@ import { SharedModule } from './shared-module/shared.module';
 
 /* App Root */
 import { AppComponent } from './components/app/app.component';
-import { AppHomeComponent } from './components/app-home/app-home.component';
-import { AppTokenComponent } from './components/app-token/app-token.component';
-import { AppNavTopComponent } from './components/app-nav/app-nav-top.component';
+import { HomeComponent } from './components/home/home.component';
+import { TokenComponent } from './components/token/token.component';
+import { NavTopComponent } from './components/nav-top/nav-top.component';
 
 import { AuthInterceptor } from './services/auth.interceptor';
 import { LoggingInterceptor } from './services/logging.interceptor';
@@ -22,9 +22,9 @@ import * as $ from 'jquery';
 	bootstrap: [AppComponent],
 	declarations: [
     	AppComponent,
-		AppHomeComponent,
-		AppTokenComponent,
-		AppNavTopComponent
+		HomeComponent,
+		TokenComponent,
+		NavTopComponent
 	],
 	exports: [
 		SharedModule
@@ -35,8 +35,8 @@ import * as $ from 'jquery';
 		RouterModule.forRoot([
 				// Static Loading
 				{ path: '', redirectTo: '/home', pathMatch: 'full' },
-				{ path: 'home', component: AppHomeComponent },
-				{ path: 'token', component: AppTokenComponent, canActivate: [AdalGuard] },
+				{ path: 'home', component: HomeComponent },
+				{ path: 'token', component: TokenComponent, canActivate: [AdalGuard] },
 				// Lazy Loading
 				{ path: 'demos', loadChildren: './demos-module/demos.module#DemosModule' },
 				{ path: 'user', loadChildren: './users-module/user.module#UserModule' },
