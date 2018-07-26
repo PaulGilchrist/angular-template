@@ -33,9 +33,4 @@ export class AppTokenComponent implements OnInit {
 		this.adalService.logOut();
 	}
 
-	renew(): void {
-		// Test renewing a currently valid token without UI
-		// this.identityService.getToken().subscribe();
-		// Should refresh the screen after a second (or after token has been replaced)
-	}
 }
