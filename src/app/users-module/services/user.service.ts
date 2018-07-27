@@ -1,4 +1,4 @@
-import { BehaviorSubject, Subject, throwError as observableThrowError, Observable , of } from 'rxjs';
+import { BehaviorSubject, throwError as observableThrowError, Observable , of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, retry, tap } from 'rxjs/operators';
@@ -62,6 +62,17 @@ export class UserService {
 			}
 		}
 		return of(userAddresses);
+	}
+
+	public updateUsers(): Observable<boolean> {
+		const users = this.users.getValue();
+		const modifiedUsers = users.filter(u => u.isDirty===true);
+		if(modifiedUsers.length > 0) {
+			// Simulate saving modifiedUsers back to API
+			modifiedUsers.forEach(u => u.isDirty = false);
+			this.users.next(users);
+		}
+		return of(true);
 	}
 
 	private handleError(error: Response) {

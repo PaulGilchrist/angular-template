@@ -15,8 +15,7 @@ import { SharedModule } from '../shared-module/shared.module';
 import { AddressFormComponent } from './components/address-form/address-form.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { UserListComponent } from './components/user-list/user-list.component';
-import { UserHomeComponent } from './components/user-home/user-home.component';
-import { UserTestComponent } from './components/user-test/user-test.component';
+import { UserShellComponent } from './components/user-shell/user-shell.component';
 
 import { UserService } from './services/user.service';
 
@@ -25,15 +24,14 @@ import { UserService } from './services/user.service';
 		AddressFormComponent,
 		UserFormComponent,
 		UserListComponent,
-		UserHomeComponent,
-		UserTestComponent
+		UserShellComponent
 	], // directives, components, and pipes owned by this NgModule
 	imports: [
 		CommonModule,
 		FormsModule,
 		HttpClientModule,
 		RouterModule.forChild([
-			{ path: '', component: UserHomeComponent }
+			{ path: '', component: UserShellComponent }
 		]),
 		SharedModule, // Required to leverage table sorting and filtering
 	],

@@ -1,6 +1,6 @@
 ﻿<div class="animated slideInUp">
     <div class="panel panel-default">
-        <div class="panel-heading clearfix" data-toggle="collapse">
+        <div class="panel-heading clearfix" data-toggle="collapse" (click)="isListOpen=!isListOpen">
             <div class="pull-left"><span style="font-size: 1.5em">User List&nbsp;<span class="badge">{{users.length}}</span></span></div>
             <app-progress-bar *ngIf="isBusy" class="pull-left" style="margin-left:20px;width:50%;"></app-progress-bar>
             <div class="pull-right" style="max-width:300px;">
@@ -39,7 +39,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let user of users | filterObjects:searchString | sortObjects:sortType:sortReverse" (click)="selectUser(user)" [class.success]="user.isDirty">
+                            <tr *ngFor="let user of users | filterObjects:searchString | sortObjects:sortType:sortReverse" (click)="selectUser(user)" [class.success]="user === selectedUser" [class.bold]="user.isDirty">
                                 <td>{{user.firstName}}</td>
                                 <td>{{user.lastName}}</td>
                                 <td>{{user.email}}</td>

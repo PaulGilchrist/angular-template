@@ -7,3 +7,6 @@
     -webkit-transition: 500ms all;
     transition: 500ms all;
 }
+tr.bold {
+	font-weight: bold;
+}

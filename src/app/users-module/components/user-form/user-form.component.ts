@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { User } from '../../models/user.model';
+import { EmailValidator } from '../../../../../node_modules/@angular/forms';
+import { now } from '../../../../../node_modules/@types/d3';
 
 @Component({
 	selector: 'app-user-form',
@@ -8,25 +10,24 @@ import { User } from '../../models/user.model';
 	templateUrl: './user-form.component.html'
 })
 export class UserFormComponent {
-	public isActive = false;
-	public firstName: string;
-	public lastName: string;
-	public email: string;
-	public phone: string;
-	public dob: string;  // Date of Birth
 
-	private _user: User = null;
+	firstName: string;
+	lastName: string;
+	email: string;
+	phone: string;
+	dob: Date;
+
+	inputUser: User;
 
 	@Input()
 	set user(user: User) {
-		if (user) {
-			this._user = user;
-			this.firstName = user.firstName;
-			this.lastName = user.lastName;
-			this.email = user.email;
-			this.phone = user.phone;
-			this.dob = null;
-			this.isActive = true;
+		this.inputUser = user;
+		if(user) {
+			this.firstName=user.firstName;
+			this.lastName=user.lastName;
+			this.email=user.email;
+			this.phone=user.phone;
+			this.dob=new Date(Date.now());
 		}
 	}
 
@@ -35,14 +36,12 @@ export class UserFormComponent {
 
 	saveForm(): void {
 		// For the purpose of this demo, we are not going to save directly back to the API, but rather to the in memory list
-		this._user.firstName = this.firstName;
-		this._user.lastName = this.lastName;
-		this._user.email = this.email;
-		this._user.phone = this.phone;
-		// We will also set the user as isDirty so it can later update the API in bulk
-		this._user.isDirty = true;
+		this.inputUser.firstName = this.firstName;
+		this.inputUser.lastName = this.lastName;
+		this.inputUser.email = this.email;
+		this.inputUser.phone = this.phone;
 		// Bubble up that this user has been saved in case the parent is interested
-		this.save.emit(this._user);
+		this.save.emit(this.inputUser);
 		// Remove the original animation before adding a different one
 		const userForm = $('#user-form');
 		userForm.removeClass('animated slideInLeft');
@@ -53,15 +52,14 @@ export class UserFormComponent {
 
 	cancelForm(): void {
 		// Reset the form back to the original user details
-		this.firstName = this._user.firstName;
-		this.lastName = this._user.lastName;
-		this.email = this._user.email;
-		this.phone = this._user.phone;
-		const userForm = $('#user-form');
+		this.firstName=this.inputUser.firstName;
+		this.lastName=this.inputUser.lastName;
+		this.email=this.inputUser.email;
+		this.phone=this.inputUser.phone;
 		// Remove the original animation before adding a different one
+		const userForm = $('#user-form');
 		userForm.removeClass('animated slideInLeft');
 		// Add the new animation that will remove itself once completed
-		// No typings for animate.css
 		(<any>userForm).animateCss('shake');
 	}
 
