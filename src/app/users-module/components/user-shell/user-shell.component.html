@@ -7,6 +7,7 @@
     </div>
 </div>
 <br/>
+<button class="btn btn-default" (click)="reset()">Reset</button>
 <div class='row'>
     <div style='padding:10px 20px;'>
         <app-user-list [users]="users" (select)="onSelect($event)"></app-user-list>

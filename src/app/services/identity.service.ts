@@ -1,26 +1,22 @@
-
-import {throwError as observableThrowError,  Observable  ,  of } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { catchError, map, tap } from 'rxjs/operators';
-
 import { AdalService } from 'adal-angular4';
-import { environment } from '../../environments/environment';
 
 @Injectable()
-export class IdentityService extends AdalService {
+export class IdentityService {
 	// Adds some minor functionality to the AdalService
+	constructor(private adalService: AdalService) {}
 
 	public getRoles(): string {
-		if (this.userInfo.authenticated) {
-			return this.userInfo.profile.roles;
+		if (this.adalService.userInfo.authenticated) {
+			return this.adalService.userInfo.profile.roles;
 		} else {
 			return '';
 		}
 	}
 
 	public isInAllRoles(...neededRoles: Array<string>): boolean {
-		if (this.userInfo.authenticated) {
-			const roles = this.userInfo.profile.roles.toLowerCase();
+		if (this.adalService.userInfo.authenticated) {
+			const roles = this.adalService.userInfo.profile.roles.toLowerCase();
 			return neededRoles.every(neededRole => roles.includes(neededRole.toLowerCase()));
 		} else {
 			return false;
@@ -28,14 +24,12 @@ export class IdentityService extends AdalService {
 	}
 
 	public isInRole(neededRole: string): boolean {
-		if (this.userInfo.authenticated) {
-			const roles = this.userInfo.profile.roles.toLowerCase();
+		if (this.adalService.userInfo.authenticated) {
+			const roles = this.adalService.userInfo.profile.roles.toLowerCase();
 			return roles.includes(neededRole.toLowerCase());
 		} else {
 			return false;
 		}
 	}
 
-
 }
-

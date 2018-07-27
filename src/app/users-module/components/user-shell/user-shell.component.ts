@@ -38,7 +38,9 @@ export class UserShellComponent implements OnDestroy, OnInit {
 
 	getUsers(): void {
 		this._userService.getUsers();
-		this.usersSubscription = this._userService.users$.subscribe(users => this.users = users);
+		this.usersSubscription = this._userService.users$.subscribe(users => {
+			this.users = users;
+		});
 	}
 
 	onSaveUser(user: User): void {
@@ -53,6 +55,10 @@ export class UserShellComponent implements OnDestroy, OnInit {
 		this.user = user;
 		this._userService.getUserAddresses(user)
 			.subscribe(addresses => this.address = addresses[0]);
+	}
+
+	reset() {
+		this._userService.getUsers(true);
 	}
 
 }
