@@ -40,7 +40,7 @@ import { BlockchainService } from './services/blockchain.service';
 	imports: [
 		CKEditorModule,
 		CommonModule,
-		DragulaModule,
+		DragulaModule.forRoot(),
 		HttpClientModule,
 		FormsModule,
 		RouterModule.forChild([

@@ -33,7 +33,7 @@ export class DragDemoComponent implements OnInit {
 
 	ngOnInit(): void {
 		const _self = this;
-		this.dragulaService.setOptions('dragContainer', {
+		this.dragulaService.createGroup('dragContainer', {
 			isContainer: function (el: any) { return false; }, // only elements in drake.containers will be taken into account
 			moves: function (el: any, source: any, handle: any, sibling: any) {
 				// Elements are always draggable by default
@@ -60,10 +60,10 @@ export class DragDemoComponent implements OnInit {
 		});
 		// Look at DragulaService for additional events to subscribe to
 		// Drag, dragend, drop cancel, remove, shadow, over, out, cloned
-		this.dragulaService.over.subscribe((value: any) => {
+		this.dragulaService.over('dragContainer').subscribe((value: any) => {
 			this.onOver(value.slice(1));
 		});
-		this.dragulaService.out.subscribe((value: any) => {
+		this.dragulaService.out('dragContainer').subscribe((value: any) => {
 			this.onOut(value.slice(1));
 		});
 	}
