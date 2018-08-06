@@ -6,7 +6,6 @@ import { RouterModule } from '@angular/router';
 
 import * as $ from 'jquery';
 import 'animate.css';
-import { confirm, alert } from 'jquery-confirm';
 import * as _ from 'underscore';
 import * as toastr from 'toastr';
 
