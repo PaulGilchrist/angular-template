@@ -46,7 +46,6 @@
     "reflect-metadata": "^0.1.12",
     "rxjs": "^6.2.2",
     "toastr": "^2.1.4",
-    "underscore": "^1.9.1",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

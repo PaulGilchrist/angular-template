@@ -3,8 +3,6 @@ import { Component, OnInit } from '@angular/core';
 // import { DragulaService } from '../../services/dragula.service';
 import { DragulaService } from 'ng2-dragula';
 
-import * as _ from 'underscore';
-
 // We only put interfaces in the models folder when they are reused across components
 export interface DragObject { id: number; text: string; allowMove: boolean; }
 
@@ -42,7 +40,7 @@ export class DragDemoComponent implements OnInit {
 			accepts: function (el: any, target: any, source: any, sibling: any) {
 				// Elements can be dropped in any of the `containers` by default
 				const itemId: number = parseInt($(el).attr('id'), 10);
-				const item = _.findWhere(_self.list1, {id: itemId}) || _.findWhere(_self.list2, {id: itemId});
+				const item = _self.list1.find(d => d.id===itemId) || _self.list2.find(d => d.id===itemId);
 				if (!item.allowMove) {
 					return false;
 				} else {
@@ -72,7 +70,7 @@ export class DragDemoComponent implements OnInit {
 		// Container is the source not the target container
 		const [el, container, source] = args;
 		const itemId: number = parseInt($(el).attr('id'), 10);
-		const item = _.findWhere(this.list1, {id: itemId}) || _.findWhere(this.list2, {id: itemId});
+		const item = this.list1.find(d => d.id===itemId) || this.list2.find(d => d.id===itemId);
 		if (container !== source) {
 			if (item.allowMove) {
 				$(container).addClass('drag-success');

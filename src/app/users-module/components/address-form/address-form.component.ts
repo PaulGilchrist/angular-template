@@ -4,8 +4,6 @@ import { State } from '../../models/state.model';
 import { STATES } from '../../data/states.data';
 import { Address } from '../../models/address.model';
 
-declare var toastr: any;
-
 @Component({
 	selector: 'app-address-form',
 	styleUrls: ['./address-form.component.scss'],

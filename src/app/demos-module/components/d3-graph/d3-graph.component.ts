@@ -8,9 +8,6 @@ import { schemePaired } from 'd3-scale-chromatic';
 
 // https://keathmilligan.net/create-a-reusable-chart-component-with-angular-and-d3-js/
 
-// Must be included in index.html
-declare var _:any;
-
 @Component({
 	encapsulation: ViewEncapsulation.None,
 	selector: 'app-d3-graph',

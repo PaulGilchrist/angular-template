@@ -41,8 +41,7 @@
               "node_modules/dragula/dist/dragula.js",
               "node_modules/pdfmake/build/pdfmake.js",
               "node_modules/pdfmake/build/vfs_fonts.js",
-              "node_modules/toastr/toastr.js",
-              "node_modules/underscore/underscore.js"
+              "node_modules/toastr/toastr.js"
             ]
           },
           "configurations": {
