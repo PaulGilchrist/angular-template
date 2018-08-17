@@ -1,7 +1,8 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, NoPreloading } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AdalService, AdalGuard } from 'adal-angular4';
 
@@ -31,6 +32,7 @@ import * as $ from 'jquery';
 	],
 	imports: [
     	BrowserModule,
+		BrowserAnimationsModule,
 		HttpClientModule,
 		RouterModule.forRoot([
 				// Static Loading

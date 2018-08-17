@@ -9,8 +9,6 @@ import { CKEditorModule } from 'ng2-ckeditor';
 
 import { SharedModule } from '../shared-module/shared.module';
 
-import * as $ from 'jquery';
-import * as _ from 'underscore';
 // import 'ckeditor/ckeditor.js'; // not working due to extra files needed
 
 import * as d3 from 'd3';

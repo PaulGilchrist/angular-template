@@ -4,9 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
-import * as $ from 'jquery';
-import 'animate.css';
-import * as _ from 'underscore';
 import * as toastr from 'toastr';
 
 import { SharedModule } from '../shared-module/shared.module';
