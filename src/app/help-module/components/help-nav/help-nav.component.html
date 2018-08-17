@@ -1,13 +1,13 @@
 <div>
     <nav class="affix animated slideInLeft">
-        <ul class="nav nav-pills nav-stacked">
-            <li [class.active]="currentPage('/help') || currentPage('/help/topic-gettingStarted')"><a [routerLink]="['topic-gettingStarted']">Getting Started</a></li>
-            <li [class.active]="currentPage('/help/topic-clientLibraries')"><a [routerLink]="['topic-clientLibraries']">Client Libraries</a></li>
-            <li [class.active]="currentPage('/help/topic-serverLibraries')"><a [routerLink]="['topic-serverLibraries']">Server Libraries</a></li>
-            <li [class.active]="currentPage('/help/topic-npmCommands')"><a [routerLink]="['topic-npmCommands']">NPM & NG Commands</a></li>
-            <li [class.active]="currentPage('/help/topic-vsCodeCommands')"><a [routerLink]="['topic-vsCodeCommands']">VS Code Commands</a></li>
-            <li [class.active]="currentPage('/help/topic-gitBranching')"><a [routerLink]="['topic-gitBranching']">Git Branching</a></li>
-            <li [class.active]="currentPage('/help/topic-vstsDeploy')"><a [routerLink]="['topic-vstsDeploy']">VSTS Deployment</a></li>
+        <ul class="nav nav-pills flex-column">
+            <li class="nav-item"><a class="nav-link" [class.active]="currentPage('/help') || currentPage('/help/topic-gettingStarted')" [routerLink]="['topic-gettingStarted']">Getting Started</a></li>
+            <li class="nav-item"><a class="nav-link" [class.active]="currentPage('/help/topic-serverLibraries')" [routerLink]="['topic-serverLibraries']">Server Libraries</a></li>
+            <li class="nav-item"><a class="nav-link" [class.active]="currentPage('/help/topic-clientLibraries')" [routerLink]="['topic-clientLibraries']">Client Libraries</a></li>
+            <li class="nav-item"><a class="nav-link" [class.active]="currentPage('/help/topic-npmCommands')" [routerLink]="['topic-npmCommands']">NPM & NG Commands</a></li>
+            <li class="nav-item"><a class="nav-link" [class.active]="currentPage('/help/topic-vsCodeCommands')" [routerLink]="['topic-vsCodeCommands']">VS Code Commands</a></li>
+            <li class="nav-item"><a class="nav-link" [class.active]="currentPage('/help/topic-gitBranching')" [routerLink]="['topic-gitBranching']">Git Branching</a></li>
+            <li class="nav-item"><a class="nav-link" [class.active]="currentPage('/help/topic-vstsDeploy')" [routerLink]="['topic-vstsDeploy']">VSTS Deployment</a></li>
         </ul>
     </nav>
 </div>

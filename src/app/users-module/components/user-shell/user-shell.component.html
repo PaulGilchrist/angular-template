@@ -1,15 +1,12 @@
 <div class='row'>
-    <div class='col-sm-5'>
+    <div class='col'>
         <app-user-form [user]="user" (save)="onSaveUser($event)"></app-user-form>
     </div>
-    <div class='col-sm-5 col-sm-offset-2'>
+    <div class='col'>
         <app-address-form [address]="address"></app-address-form>
     </div>
 </div>
 <br/>
-<button class="btn btn-default" (click)="reset()">Reset</button>
-<div class='row'>
-    <div style='padding:10px 20px;'>
-        <app-user-list [users]="users" (select)="onSelect($event)"></app-user-list>
-    </div>
-</div>
+<button class="btn btn-default" (click)="reset()">Reset</button><br/>
+<br/>
+<app-user-list [users]="users" (select)="onSelect($event)"></app-user-list>

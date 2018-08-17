@@ -1,11 +1,15 @@
 <div>
-    <div class='wrapper row'>
-        <div id='list1' class='dragContainer col-md-5' [dragula]='"dragContainer"' [(dragulaModel)]='list1'>
-            <div *ngFor='let item of list1' [id]='item.id' [innerHtml]='item.text' class='well'></div>
-        </div>
-        <div id='list2' class='dragContainer col-md-5 col-md-offset-2' [dragula]='"dragContainer"' [(dragulaModel)]='list2'>
-            <div *ngFor='let item of list2' [id]='item.id' [innerHtml]='item.text' class='well'></div>
-        </div>
+    <div class='row'>
+		<div class="col-sm-6 col-md-5 mt-4">
+			<div id='list1' class='dragContainer' [dragula]='"dragContainer"' [(dragulaModel)]='list1'>
+				<div *ngFor='let item of list1' [id]='item.id' [innerHtml]='item.text' class='card card-body mt-2 mb-2'></div>
+			</div>
+		</div>
+		<div class="col-sm-6 col-md-5 mt-4">
+			<div id='list2' class='dragContainer' [dragula]='"dragContainer"' [(dragulaModel)]='list2'>
+				<div *ngFor='let item of list2' [id]='item.id' [innerHtml]='item.text' class='card card-body mt-2 mb-2'></div>
+			</div>
+		</div>
     </div>
     <br/>
     {{list1.length}} + {{list2.length}} = {{list1.length + list2.length}}

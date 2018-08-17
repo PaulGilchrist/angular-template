@@ -1,58 +1,51 @@
 ﻿<div class="animated slideInUp">
-    <div class="panel panel-default">
-        <div class="panel-heading clearfix" data-toggle="collapse" (click)="isListOpen=!isListOpen">
-            <div class="pull-left"><span style="font-size: 1.5em">User List&nbsp;<span class="badge">{{users.length}}</span></span></div>
-            <app-progress-bar *ngIf="isBusy" class="pull-left" style="margin-left:20px;width:50%;"></app-progress-bar>
-            <div class="pull-right" style="max-width:300px;">
-                <div class="input-group margin-bottom-sm">
-                    <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
-                    <input class="form-control" type="text" [(ngModel)]="searchString" placeholder="Search String">
-                </div>
-            </div>
+    <div class="card">
+        <div class="card-header bg-dark text-light clearfix" (click)="isListOpen=!isListOpen">
+	        <span class="card-title align-baseline" style="font-size: 1.5em">User List&nbsp;<span class="badge-dark rounded">{{users.length}}</span></span>
+			<form class="form-inline float-right">
+				<div class="input-group">
+					<div class="input-group-prepend">
+						<span class="input-group-text"><i class="fa fa-search fa-fw"></i></span>
+					</div>
+					<input [(ngModel)]="searchString" name="searchString" type="text" class="form-control" placeholder="Search String" aria-label="Search String">
+				</div>
+			</form>
         </div>
-        <div class="panel-collapse collapse in" [class.in]="isListOpen">
-            <div class="panel-body">
-                <div *ngIf='errorMessage' class="alert alert-danger">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <strong>Error!</strong> {{errorMessage}}
-                </div>
-                <div *ngIf='users.length > 0' class="table-responsive">
-                    <table class="table table-striped table-hover" style="cursor:pointer;">
-                        <thead>
-                            <tr>
-                                <th (click)="changeSort('firstName')">
-                                    First Name&nbsp;
-                                    <i *ngIf="sortType==='firstName'" class="fa" [ngClass]="{'fa-caret-down': !sortReverse, 'fa-caret-up': sortReverse}"></i>
-                                </th>
-                                <th (click)="changeSort('lastName')">
-                                    Last Name&nbsp;
-                                    <i *ngIf="sortType==='lastName'" class="fa" [ngClass]="{'fa-caret-down': !sortReverse, 'fa-caret-up': sortReverse}"></i>
-                                </th>
-                                <th (click)="changeSort('email')">
-                                    Email&nbsp;
-                                    <i *ngIf="sortType==='email'" class="fa" [ngClass]="{'fa-caret-down': !sortReverse, 'fa-caret-up': sortReverse}"></i>
-                                </th>
-                                <th (click)="changeSort('phone')">
-                                    Phone&nbsp;
-                                    <i *ngIf="sortType==='phone'" class="fa" [ngClass]="{'fa-caret-down': !sortReverse, 'fa-caret-up': sortReverse}"></i>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let user of users | filterObjects:searchString | sortObjects:sortType:sortReverse" (click)="selectUser(user)" [class.success]="user === selectedUser" [class.bold]="user.isDirty">
-                                <td>{{user.firstName}}</td>
-                                <td>{{user.lastName}}</td>
-                                <td>{{user.email}}</td>
-                                <td>{{user.phone}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+		<div class="card-body">
+			<div *ngIf='users.length > 0' class="table-responsive">
+				<table class="table table-striped table-hover" style="cursor:pointer;">
+					<thead>
+						<tr>
+							<th scope="col" (click)="changeSort('firstName')">
+								First Name&nbsp;
+								<i *ngIf="sortType==='firstName'" class="fa" [ngClass]="{'fa-caret-down': !sortReverse, 'fa-caret-up': sortReverse}"></i>
+							</th>
+							<th scope="col" (click)="changeSort('lastName')">
+								Last Name&nbsp;
+								<i *ngIf="sortType==='lastName'" class="fa" [ngClass]="{'fa-caret-down': !sortReverse, 'fa-caret-up': sortReverse}"></i>
+							</th>
+							<th scope="col" (click)="changeSort('email')">
+								Email&nbsp;
+								<i *ngIf="sortType==='email'" class="fa" [ngClass]="{'fa-caret-down': !sortReverse, 'fa-caret-up': sortReverse}"></i>
+							</th>
+							<th scope="col" (click)="changeSort('phone')">
+								Phone&nbsp;
+								<i *ngIf="sortType==='phone'" class="fa" [ngClass]="{'fa-caret-down': !sortReverse, 'fa-caret-up': sortReverse}"></i>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let user of users | filterObjects:searchString | sortObjects:sortType:sortReverse" (click)="selectUser(user)"[class.bg-secondary]="user === selectedUser" [class.text-light]="user === selectedUser" [class.bold]="user.isDirty">
+							<td>{{user.firstName}}</td>
+							<td>{{user.lastName}}</td>
+							<td>{{user.email}}</td>
+							<td>{{user.phone}}</td>
+						</tr>
+					</tbody>
+				</table>
             </div>
-            <div class="panel-footer">
-                <div class="text-info">
-                    Select user to edit or view address details<br>
-                </div>
+            <div class="card-footer text-info">
+                Select user to edit or view address details<br>
             </div>
         </div>
     </div>

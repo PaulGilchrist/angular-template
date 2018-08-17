@@ -1,39 +1,48 @@
-<nav class="navbar navbar-inverse navbar-static-top" (window:scroll)="onScroll($event)" [class.navbar-shrink]="shrinkNavbar">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <div class="clearfix" [routerLink]="['home']">
-                <i class="navbar-left fa fa-home fa-3x"></i>
-                <span class="navbar-left navbar-brand">Angular 2 Template</span>
-            </div>
-        </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li routerLinkActive="active"><a [routerLink]="['home']">Home</a></li>
-                <li routerLinkActive="active"><a [routerLink]="['demos/blockchain']">Blockchain</a></li>
-                <li routerLinkActive="active"><a [routerLink]="['demos/drag']">Drag</a></li>
-                <li routerLinkActive="active"><a [routerLink]="['demos/editor']">Editor</a></li>
-                <li routerLinkActive="active"><a [routerLink]="['demos/graph']">Graph</a></li>
-                <li routerLinkActive="active"><a [routerLink]="['demos/floor']">Floor</a></li>
-                <li routerLinkActive="active"><a [routerLink]="['demos/pdf']">PDF</a></li>
-                <li routerLinkActive="active"><a [routerLink]="['user']">User</a></li>
-                <li routerLinkActive="active"><a [routerLink]="['help']">Help</a></li>
-                <li *ngIf="authenticated"  routerLinkActive="active"><a [routerLink]="['token']">Token</a></li>
-            </ul>
-            <form class="navbar-form navbar-right">
-                <input *ngIf="!authenticated" (click)="login()" type="button" class="btn btn-primary" value="Login">
-                <input *ngIf="authenticated" (click)="logout()" type="button" class="btn sm btn-default" value="Logout">
-            </form>
-            <div *ngIf="authenticated" class="nav navbar-right hidden-xs hidden-sm">
-                <span class="navbar-text">{{ adalService.userInfo.profile.given_name + ' ' + adalService.userInfo.profile.family_name }}</span>
-            </div>
-        </div>
-    </div>
+<nav class="navbar navbar-dark bg-primary navbar-expand-sm fixed-top">
+  <a class="navbar-brand" [routerLink]="['/']">Angular Template</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['home']">Home</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['demos/blockchain']">Blockchain</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['demos/drag']">Drag</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['demos/editor']">Editor</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['demos/graph']">Graph</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['demos/floor']">Floor</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['demos/pdf']">PDF</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['user']">User</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['help']">Help</a>
+      </li>
+      <li *ngIf="authenticated" class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['token']">Token</a>
+      </li>
+    </ul>
+	<div *ngIf="authenticated" class="nav navbar-right hidden-xs hidden-sm text-light">
+		{{ adalService.userInfo.profile.given_name + ' ' + adalService.userInfo.profile.family_name }}
+	</div>
+	&nbsp;&nbsp;
+	<form class="navbar-form navbar-right">
+		<input *ngIf="!authenticated" (click)="login()" type="button" class="btn btn-primary" value="Login">
+		<input *ngIf="authenticated" (click)="logout()" type="button" class="btn sm btn-default" value="Logout">
+	</form>
+  </div>
 </nav>

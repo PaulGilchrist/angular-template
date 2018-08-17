@@ -4,7 +4,6 @@ import { User } from '../../models/user.model';
 
 @Component({
 	selector: 'app-user-list',
-	styleUrls: ['./user-list.component.css'],
 	templateUrl: './user-list.component.html'
 })
 export class UserListComponent {
