@@ -11,7 +11,7 @@ export class UserListComponent {
 	id: string;
 
 	errorMessage: string;
-	isListOpen = true;  // Used to toggle open and closed the bootstrap panel
+	isOpen = true;  // Used to toggle open and closed the bootstrap panel
 	sortType = 'firstName';
 	sortReverse = false;
 	searchString = '';
