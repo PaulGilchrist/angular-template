@@ -4,7 +4,7 @@
         <div class="form-group" [class.has-error]="firstNameControl.invalid && firstNameControl.dirty">
             <label class="control-label">First Name</label>
             <div class="input-group margin-bottom-sm">
-                <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+                <div class="input-group-prepend"><div class="input-group-text"><i class="fa fa-user fa-fw"></i></div></div>
                 <input type="text" name="firstName" [(ngModel)]="firstName" #firstNameControl="ngModel" class="form-control" placeholder="First Name" pattern="[A-Za-z ,.'-]+" required autofocus minlength="2" maxlength="20">
             </div>
             <div [hidden]="firstNameControl.valid || firstNameControl.pristine" class="alert alert-danger">
@@ -14,7 +14,7 @@
         <div class="form-group" [class.has-error]="lastNameControl.invalid && lastNameControl.dirty">
             <label class="control-label">Last Name</label>
             <div class="input-group margin-bottom-sm">
-                <span class="input-group-addon"><i class="fa fa-users fa-fw"></i></span>
+                <div class="input-group-prepend"><div class="input-group-text"><i class="fa fa-users fa-fw"></i></div></div>
                 <input type="text" name="lastName" [(ngModel)]="lastName" #lastNameControl="ngModel" class="form-control" placeholder="Last Name" pattern="[A-Za-z ,.'-]+" required minlength="2" maxlength="20">
             </div>
             <div [hidden]="lastNameControl.valid || lastNameControl.pristine" class="alert alert-danger">
@@ -24,7 +24,7 @@
         <div class="form-group" [class.has-error]="emailControl.invalid && emailControl.dirty">
             <label class="control-label">Email Address</label>
             <div class="input-group margin-bottom-sm">
-                <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+                <div class="input-group-prepend"><div class="input-group-text"><i class="fa fa-envelope-o fa-fw"></i></div></div>
                 <input type="email" name="email" required [(ngModel)]="email" #emailControl="ngModel" class="form-control" placeholder="Email address" pattern="[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}">
             </div>
             <div [hidden]="emailControl.valid || emailControl.pristine" class="alert alert-danger">
@@ -34,7 +34,7 @@
         <div class="form-group" [class.has-error]="phoneControl.invalid && phoneControl.dirty">
             <label class="control-label">Phone Number</label>
             <div class="input-group margin-bottom-sm">
-                <span class="input-group-addon"><i class="fa fa-phone fa-fw"></i></span>
+                <div class="input-group-prepend"><div class="input-group-text"><i class="fa fa-phone fa-fw"></i></div></div>
                 <input type="tel" name="phone" [(ngModel)]="phone" #phoneControl="ngModel" class="form-control" placeholder="(###) ###-####" pattern='[\(]\d{3}[\)][\s]\d{3}[\-]\d{4}' required>
             </div>
             <div [hidden]="phoneControl.valid || phoneControl.pristine" class="alert alert-danger">
@@ -44,7 +44,7 @@
         <div class="form-group" [class.has-error]="dobControl.invalid && dobControl.dirty">
             <label class="control-label">Date of Birth</label>
             <div class="input-group margin-bottom-sm">
-                <span class="input-group-addon"><i class="fa fa-calendar fa-fw"></i></span>
+                <div class="input-group-prepend"><div class="input-group-text"><i class="fa fa-calendar fa-fw"></i></div></div>
                 <input type="date" name="dob" [(ngModel)]="dob" #dobControl="ngModel" class="form-control" placeholder="MM/DD/YYYY">
             </div>
             <div [hidden]="dobControl.valid" class="alert alert-danger">
