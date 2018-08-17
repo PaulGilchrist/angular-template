@@ -6,6 +6,7 @@ import { AdalService } from 'adal-angular4';
 
 @Component({
 	selector: 'app-token',
+	styleUrls: ['./token.component.css'],
 	templateUrl: './token.component.html'
 })
 export class TokenComponent implements OnInit {
@@ -13,11 +14,11 @@ export class TokenComponent implements OnInit {
 	constructor(private _location: Location, private _router: Router, private adalService: AdalService) {}
 
 	ngOnInit(): void {
-		// Initialize tooltips just for this component
-		$(function() {
-			// No typings for bootstrap's tooltip
-			(<any>$('my-token [data-toggle="tooltip"]')).tooltip({ container: 'body' });
-		});
+		// // Initialize tooltips just for this component
+		// $(function() {
+		// 	// No typings for bootstrap's tooltip
+		// 	$('my-token [data-toggle="tooltip"]')).tooltip({ container: 'body' });
+		// });
 	}
 
 	getDateString(num: number): string {
