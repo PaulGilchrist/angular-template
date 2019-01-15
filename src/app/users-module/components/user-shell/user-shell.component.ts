@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { forkJoin } from 'rxjs';
 
 import { Address } from '../../models/address.model';
 import { User } from '../../models/user.model';
@@ -13,14 +13,18 @@ export class UserShellComponent implements OnDestroy, OnInit {
 
 	address: Address = null;
 	user: User = null;
-	users: User[];
-
-	private usersSubscription: Subscription;
+	users: User[] = [];
 
 	constructor(public _userService: UserService) { }
 
 	ngOnInit(): void {
-		this.getUsers();
+        forkJoin( // forkJoin only because we may add other data to get in parallel later
+            this._userService.getUsers()
+        ).subscribe(data => {
+            this.users = data[0];
+        }, error => {
+            console.log(error);
+        });
 	}
 
 	ngOnDestroy(): void {
@@ -32,15 +36,6 @@ export class UserShellComponent implements OnDestroy, OnInit {
 			// Simulate saving the user changes
 			this._userService.updateUsers();
 		}
-		// Remove any subscriptions before exiting component
-		this.usersSubscription.unsubscribe();
-	}
-
-	getUsers(): void {
-		this._userService.getUsers();
-		this.usersSubscription = this._userService.users$.subscribe(users => {
-			this.users = users;
-		});
 	}
 
 	onSaveUser(user: User): void {

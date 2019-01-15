@@ -1,21 +1,25 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { forkJoin } from 'rxjs';
+
+import { UserService } from '../../services/user.service';
 
 import { State } from '../../models/state.model';
-import { STATES } from '../../data/states.data';
 import { Address } from '../../models/address.model';
+
+
 
 @Component({
 	selector: 'app-address-form',
 	styleUrls: ['./address-form.component.scss'],
 	templateUrl: './address-form.component.html'
 })
-export class AddressFormComponent {
+export class AddressFormComponent implements OnInit {
 	public name: string;
 	public streetNumber: number;
 	public streetName: string;
 	public city: string;
 	public state: string;
-	public states: State[] = STATES; // Full list of states
+	public states: State[] = [];
 	public zipCode: string;
 
 	inputAddress: Address;
@@ -36,6 +40,18 @@ export class AddressFormComponent {
 	// Bubble up that the form was saved
 	@Output() save = new EventEmitter<Address>();
 
+	constructor(public _userService: UserService) { }
+
+	ngOnInit(): void {
+        forkJoin( // forkJoin only because we may add other data to get in parallel later
+            this._userService.getStates()
+        ).subscribe(data => {
+            this.states = data[0];
+        }, error => {
+            console.log(error);
+        });
+	}
+
 	onUpdateState(event: any): void {
 		// Only the value roles up to the parent select.  To get the label you have to go to the selected option
 		toastr.info(event.target.selectedOptions[0].text);
@@ -48,7 +64,7 @@ export class AddressFormComponent {
 		this.inputAddress.streetName = this.streetName;
 		this.inputAddress.city = this.city;
 		// We need to convert from full state name to state abbreviation
-		this.inputAddress.state = STATES.find(s => s.name===this.state).abbreviation;
+		this.inputAddress.state = this.states.find(s => s.name===this.state).abbreviation;
 		this.inputAddress.zipCode = this.zipCode;
 		// Bubble up that this user has been saved in case the parent is interested
 		this.save.emit(this.inputAddress);

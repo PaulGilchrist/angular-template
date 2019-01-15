@@ -25,7 +25,8 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-			        "src/web.config"
+              { "glob": "**/data/*.json", "input": "src/app/", "output": "/" },
+			  "src/web.config"
             ],
             "styles": [
               "src/styles.scss"
@@ -133,7 +134,8 @@
             ],
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              { "glob": "*.json", "input": "src/app/users-module/data", "output": "data" }
             ]
           }
         },
