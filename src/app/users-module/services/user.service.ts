@@ -23,7 +23,7 @@ export class UserService {
 	// Private variables
 	private _lastUserGetTime: number; // number of milliseconds elapsed since 1 January 1970 00:00:00 UTC
 	private _maxUserCacheTimeMilliseconds = 3600000;
-    private _dataPath = './users-module/data/';
+    private _dataPath = './assets/';
 
 	constructor(private http: HttpClient) {
 
@@ -35,7 +35,6 @@ export class UserService {
             return this.http.get(this._dataPath + 'addresses.json').pipe(
                 retry(3),
                 tap((addresses: Address[]) => {
-                    console.log('getAddresses()');
                     this.addresses.next(addresses);
                 }),
                 map(data => this.addresses.getValue()),
@@ -73,7 +72,6 @@ export class UserService {
             return this.http.get(this._dataPath + 'users.json').pipe(
                 retry(3),
                 tap((users: User[]) => {
-                    console.log('getUsers()');
                     this.users.next(users);
                 }),
                 map(data => this.users.getValue()),
@@ -89,7 +87,6 @@ export class UserService {
             return this.http.get(this._dataPath + 'states.json').pipe(
                 retry(3),
                 tap((states: State[]) => {
-                    console.log('getStates()');
                     this.states.next(states);
                 }),
                 map(data => this.states.getValue()),
