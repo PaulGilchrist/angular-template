@@ -14,26 +14,35 @@ export class AppInsightsService {
     constructor(public adalService: AdalService) {
         if (!AppInsights.config) {
             AppInsights.downloadAndSetup(this.config);
-            if(adalService.userInfo.authenticated) {
-                AppInsights.setAuthenticatedUserContext(adalService.userInfo.profile.upn);
-            }
         }
     }
 
     logPageView(name?: string, url?: string, properties?: any, measurements?: any, duration?: number) {
+        this.setUser();
         AppInsights.trackPageView(name, url, properties, measurements, duration);
     }
 
     logEvent(name: string, properties?: any, measurements?: any) {
+        this.setUser();
         AppInsights.trackEvent(name, properties, measurements);
     }
 
     logException(exception: Error, handledAt?: string, properties?: any, measurements?: any) {
+        this.setUser();
         AppInsights.trackException(exception, handledAt, properties, measurements);
     }
 
     logTrace(message: string, properties?: any, severityLevel?: any) {
+        this.setUser();
         AppInsights.trackTrace(message, properties, severityLevel);
+    }
+
+    setUser() {
+        if(this.adalService.userInfo.authenticated) {
+            AppInsights.setAuthenticatedUserContext(this.adalService.userInfo.profile.upn);
+        } else {
+            AppInsights.clearAuthenticatedUserContext();
+        }
     }
 
 }
