@@ -15,6 +15,7 @@ import { HomeComponent } from './components/home/home.component';
 import { TokenComponent } from './components/token/token.component';
 import { NavTopComponent } from './components/nav-top/nav-top.component';
 
+import { AppInsightsService } from './services/app-insights.service';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { LoggingInterceptor } from './services/logging.interceptor';
 
@@ -51,6 +52,7 @@ import * as $ from 'jquery';
 	providers: [
 		AdalService,
 		AdalGuard,
+        AppInsightsService,
 		{ provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true, }, // Time how long each http rerquests takes
 		{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true, } // Add token to all API requests
 	]
