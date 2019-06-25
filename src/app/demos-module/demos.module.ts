@@ -48,8 +48,8 @@ import { BlockchainService } from './services/blockchain.service';
 			{ path: 'editor', component: EditorDemoComponent },
 			{ path: 'graph', component: GraphDemoComponent },
 			// // Lazy Loading
-			{ path: 'floor', loadChildren: './floor-module/floor.module#FloorModule' },
-			{ path: 'pdf', loadChildren: './pdf-module/pdf.module#PdfModule' },
+			{ path: 'floor', loadChildren: () => import('./floor-module/floor.module').then(m => m.FloorModule) },
+			{ path: 'pdf', loadChildren: () => import('./pdf-module/pdf.module').then(m => m.PdfModule) },
 		]),
 		SharedModule
 	],

@@ -37,10 +37,10 @@ import * as $ from "jquery";
         // Lazy Loading
         {
           path: "demos",
-          loadChildren: "./demos-module/demos.module#DemosModule"
+          loadChildren: () => import('./demos-module/demos.module').then(m => m.DemosModule)
         },
-        { path: "user", loadChildren: "./users-module/user.module#UserModule" },
-        { path: "help", loadChildren: "./help-module/help.module#HelpModule" }
+        { path: "user", loadChildren: () => import('./users-module/user.module').then(m => m.UserModule) },
+        { path: "help", loadChildren: () => import('./help-module/help.module').then(m => m.HelpModule) }
       ],
       { preloadingStrategy: NoPreloading }
     ),
