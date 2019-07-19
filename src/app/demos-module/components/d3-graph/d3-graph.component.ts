@@ -60,7 +60,7 @@ export class D3GraphComponent implements OnInit, OnChanges {
         const _this = this;
         const padding = 2;
         // Find best fit for data to fill height
-        const yMultiplier = _this.height / d3.max(_this.data, function(d: any) { return d[_this.yKey]; });
+        const yMultiplier = _this.height / d3.max(_this.data, (d: any) => d[_this.yKey]);
         // Find best fit for data to fill width
         const xMultiplier = _this.width / _this.data.length;
         const svg = d3.select(_this.el.nativeElement)
@@ -69,11 +69,11 @@ export class D3GraphComponent implements OnInit, OnChanges {
             .attr('height', _this.height);
         // Bars
         svg.selectAll('rect').data(_this.data).enter().append('rect')
-            .attr('x', function(d: any, i: number) { return i * xMultiplier; })
-            .attr('y', function(d: any) { return _this.height - (d[_this.yKey] * yMultiplier); })
+            .attr('x', (d: any, i: number) => i * xMultiplier)
+            .attr('y', (d: any) => _this.height - (d[_this.yKey] * yMultiplier))
             .attr('width', xMultiplier - padding)
-            .attr('height', function(d: any) { return d[_this.yKey] * yMultiplier; })
-            .attr('class', function(d: any) { return _this.classPicker(d[_this.yKey], _this.warningLevel); })
+            .attr('height', (d: any) => d[_this.yKey] * yMultiplier)
+            .attr('class', (d: any) => _this.classPicker(d[_this.yKey], _this.warningLevel))
             // Dynamic Lables
             .on('mouseover', function(d: any) {
                 // Show tooltip at mouse pointer
@@ -91,7 +91,7 @@ export class D3GraphComponent implements OnInit, OnChanges {
                     .attr('text-anchor', 'middle')
                     .attr('id', 'hoverLabel_' + d[_this.yKey]);
             })
-            .on('mouseout', function(d: any) {
+            .on('mouseout', (d: any) => {
                 // Hide tooltip
                 _this._tooltip.transition().duration(500).style('opacity', 0);
                 // Remove y value to top of bar
@@ -99,9 +99,9 @@ export class D3GraphComponent implements OnInit, OnChanges {
             });
         // Static Lables
         svg.selectAll('text').data(_this.data).enter().append('text')
-            .text(function(d: any) { return _this.showLabels(_this.yKey, d[_this.yKey], _this.labels, true); })
-            .attr('x', function(d: any, i: number) { return i * xMultiplier + (xMultiplier - padding) / 2; })
-            .attr('y', function(d: any) { return _this.height - (d[_this.yKey] * yMultiplier) + 14; }) // Text 14px below the bar top, or roughly up 1em
+            .text((d: any) => _this.showLabels(_this.yKey, d[_this.yKey], _this.labels, true))
+            .attr('x', (d: any, i: number) => i * xMultiplier + (xMultiplier - padding) / 2)
+            .attr('y', (d: any) => _this.height - (d[_this.yKey] * yMultiplier) + 14) // Text 14px below the bar top, or roughly up 1em
             .attr('text-anchor', 'middle');
    }
 
@@ -119,8 +119,8 @@ export class D3GraphComponent implements OnInit, OnChanges {
         const yAxisGen = d3.axisLeft(yScale);
         const lineFunction = d3.line()
             // Make sure all date strings are date objects before putting them into the path
-            .x(function(d: any) { return xScale(isDate ? new Date(d[_this.xKey]) : d[_this.xKey]); })
-            .y(function(d: any) { return yScale(d[_this.yKey]); })
+            .x((d: any) => xScale(isDate ? new Date(d[_this.xKey]) : d[_this.xKey]))
+            .y((d: any) => yScale(d[_this.yKey]))
             .curve(d3.curveLinear);
         const svg = d3.select(_this.el.nativeElement)
             .append('svg')
@@ -133,12 +133,12 @@ export class D3GraphComponent implements OnInit, OnChanges {
         .attr('fill', 'none');
         // Dots
         svg.selectAll('circle').data(_this.data).enter().append('circle')
-            .attr('cx', function(d: any) { return xScale(isDate ? new Date(d[_this.xKey]) : d[_this.xKey]); })
-            .attr('cy', function(d: any) { return yScale(d[_this.yKey]); })
+            .attr('cx', (d: any) => xScale(isDate ? new Date(d[_this.xKey]) : d[_this.xKey]))
+            .attr('cy', (d: any) => yScale(d[_this.yKey]))
             .attr('r', 3)
-            .attr('class', function(d: any) { return _this.classPicker(d[_this.yKey], _this.warningLevel); })
+            .attr('class', (d: any) => _this.classPicker(d[_this.yKey], _this.warningLevel))
             // Dynamic Lables
-            .on('mouseover', function(d: any) {
+            .on('mouseover', (d: any) => {
                 // Show tooltip at mouse pointer
                 _this._tooltip.transition().duration(500).style('opacity', 0.9);
                 let tip = '<strong>' + _this.xKey + ':</strong> ' + d[_this.xKey] + '<br/>';
@@ -147,17 +147,17 @@ export class D3GraphComponent implements OnInit, OnChanges {
                         .style('left', (d3.event.pageX) + 'px')
                         .style('top', (d3.event.pageY - 28) + 'px');
             })
-            .on('mouseout', function(d: any) {
+            .on('mouseout', (d: any) => {
                 // Hide tooltip
                 _this._tooltip.transition().duration(500).style('opacity', 0);
             });
         // Lables
         svg.selectAll('text').data(_this.data).enter().append('text')
-            .text(function(d: any) { return _this.showLabels(_this.yKey, d[_this.yKey], _this.labels, true); })
-            .attr('x', function(d: any) { return xScale(isDate ? new Date(d[_this.xKey]) : d[_this.xKey]); })
-            .attr('y', function(d: any) { return yScale(d[_this.yKey]); })
+            .text((d: any) => _this.showLabels(_this.yKey, d[_this.yKey], _this.labels, true))
+            .attr('x', (d: any) => xScale(isDate ? new Date(d[_this.xKey]) : d[_this.xKey]))
+            .attr('y', (d: any) => yScale(d[_this.yKey]))
             .attr('text-anchor', 'start')
-            .attr('class', function(d: any) { return _this.classPicker(d[_this.yKey], _this.warningLevel); });
+            .attr('class', (d: any) => _this.classPicker(d[_this.yKey], _this.warningLevel));
         svg.append('g').call(xAxisGen)
             .attr('class', 'd3-axis')
             .attr('transform', 'translate(0, ' + (_this.height - padding) + ')');
@@ -177,7 +177,7 @@ export class D3GraphComponent implements OnInit, OnChanges {
             .append('svg:g') // Make a group to hold our pie chart
             .attr('transform', 'translate(' + r + ',' + r + ')'); // Move the center of the pie chart from 0, 0 to radius, radius
         const pie = d3.pie() // Create arc data for us given a list of values
-            .value(function(d: any) { return d[_this.yKey]; }); // Tell it how to access the value of each element in our data array
+            .value((d: any) => d[_this.yKey]); // Tell it how to access the value of each element in our data array
         const arcs = vis.selectAll('g.slice') // Selects all <g> elements with class slice (there aren't any yet)
             .data(pie) // Associate the generated pie data (an array of arcs, each having startAngle, endAngle and value properties)
             .enter() // This will create <g> elements for every "extra" data element that should be associated with a selection. The result is creating a <g> for every object in the data array
@@ -186,10 +186,10 @@ export class D3GraphComponent implements OnInit, OnChanges {
         const color = d3.scaleOrdinal(schemePaired); // Builtin range of colors
         const arc = d3.arc().outerRadius(r).innerRadius(0); // Declare an arc generator function that will create <path> elements for us using arc data
         arcs.append('svg:path')
-            .attr('fill', function(d: any, i: any) { return color(i); }) // Set the color for each slice to be chosen from the color function defined above
-            .attr('d', function(d: any) { return arc(d); }) // This creates the actual SVG path using the associated data (pie) with the arc drawing function
+            .attr('fill', (d: any, i: any) => color(i)) // Set the color for each slice to be chosen from the color function defined above
+            .attr('d', (d: any) => arc(d)) // This creates the actual SVG path using the associated data (pie) with the arc drawing function
             // Dynamic Lables
-            .on('mouseover', function(d: any, i: number) {
+            .on('mouseover', (d: any, i: number) => {
                 // Show tooltip at mouse pointer
                 _this._tooltip.transition().duration(500).style('opacity', 0.9);
                 let tip = '<strong>' + _this.xKey + ':</strong> ' + _this.data[i][_this.xKey] + '<br/>';
@@ -198,7 +198,7 @@ export class D3GraphComponent implements OnInit, OnChanges {
                     .style('left', (d3.event.pageX) + 'px')
                     .style('top', (d3.event.pageY - 28) + 'px');
             })
-            .on('mouseout', function(d: any) {
+            .on('mouseout', (d: any) => {
                 // Hide tooltip
                 _this._tooltip.transition().duration(500).style('opacity', 0);
             });
@@ -207,20 +207,22 @@ export class D3GraphComponent implements OnInit, OnChanges {
         const timeFormat = d3.timeFormat('%b');
         arcs.append('svg:text') // Add a label to each slice
             .attr('class', 'd3-axis')
-            .attr('transform', function(d: any) { // Set the label's origin to the center of the arc
+            .attr('transform', (d: any) => { // Set the label's origin to the center of the arc
                     // Make sure to set these before calling arc.centroid
                     d.innerRadius = 0;
                     d.outerRadius = r;
                     const labelR = r * 0.9;
-                    const c = arc.centroid(d), x = c[0], y = c[1], // Gives us a pair of coordinates like [50, 50]
+                    const c = arc.centroid(d);
+                    const  x = c[0];
+                    const  y = c[1]; // Gives us a pair of coordinates like [50, 50]
                     // Pythagorean theorem for hypotenuse
-                    h = Math.sqrt(x * x + y * y);
+                    const h = Math.sqrt(x * x + y * y);
                     return 'translate(' + (x / h * labelR) +  ',' + (y / h * labelR) +  ')';
             })
             .attr('text-anchor', 'middle') // Center the text on it's origin
-            .text( function(d: any, i: number) {
-                const max = d3.max(_this.data, function(d2: any) { return d2[_this.yKey]; });
-                const min = d3.min(_this.data, function(d2: any) { return d2[_this.yKey]; });
+            .text( (d: any, i: number) => {
+                const max = d3.max(_this.data, (d2: any) => d2[_this.yKey]);
+                const min = d3.min(_this.data, (d2: any) => d2[_this.yKey]);
                 const xValue = _this.data[i][_this.xKey];
                 const yValue = _this.data[i][_this.yKey];
                 if ((_this.labels !== 'none') && ((_this.labels === 'minmax' && (yValue === max || yValue === min)) || (_this.labels === 'all')))  {
@@ -247,12 +249,12 @@ export class D3GraphComponent implements OnInit, OnChanges {
             .attr('height', _this.height);
         // Dots
         svg.selectAll('circle').data(_this.data).enter().append('circle')
-            .attr('cx', function(d: any) { return xScale(isDate ? new Date(d[_this.xKey]) : d[_this.xKey]); })
-            .attr('cy', function(d: any) { return yScale(d[_this.yKey]); })
+            .attr('cx', (d: any) => xScale(isDate ? new Date(d[_this.xKey]) : d[_this.xKey]))
+            .attr('cy', (d: any) => yScale(d[_this.yKey]))
             .attr('r', 5)
-            .attr('class', function(d: any) { return _this.classPicker(d[_this.yKey], _this.warningLevel); })
+            .attr('class', (d: any) => _this.classPicker(d[_this.yKey], _this.warningLevel))
             // Dynamic Lables
-            .on('mouseover', function(d: any) {
+            .on('mouseover', (d: any) => {
                 // Show tooltip at mouse pointer
                 _this._tooltip.transition().duration(500).style('opacity', 0.9);
                 let tip = '<strong>' + _this.xKey + ':</strong> ' + d[_this.xKey] + '<br/>';
@@ -261,17 +263,17 @@ export class D3GraphComponent implements OnInit, OnChanges {
                         .style('left', (d3.event.pageX) + 'px')
                         .style('top', (d3.event.pageY - 28) + 'px');
             })
-            .on('mouseout', function(d: any) {
+            .on('mouseout', (d: any) => {
                 // Hide tooltip
                 _this._tooltip.transition().duration(500).style('opacity', 0);
             });
         // Static Lables
         svg.selectAll('text').data(_this.data).enter().append('text')
-            .text(function(d: any) { return _this.showLabels(_this.yKey, d[_this.yKey], _this.labels, true); })
-            .attr('x', function(d: any) { return xScale(isDate ? new Date(d[_this.xKey]) : d[_this.xKey]); })
-            .attr('y', function(d: any) { return yScale(d[_this.yKey]); })
+            .text((d: any) => _this.showLabels(_this.yKey, d[_this.yKey], _this.labels, true))
+            .attr('x', (d: any) => xScale(isDate ? new Date(d[_this.xKey]) : d[_this.xKey]))
+            .attr('y', (d: any) => yScale(d[_this.yKey]))
             .attr('text-anchor', 'start')
-            .attr('class', function(d: any) { return _this.classPicker(d[_this.yKey], _this.warningLevel); });
+            .attr('class', (d: any) => _this.classPicker(d[_this.yKey], _this.warningLevel));
         svg.append('g').call(xAxisGen)
             .attr('class', 'd3-axis')
             .attr('transform', 'translate(0, ' + (_this.height - padding) + ')');
@@ -306,24 +308,26 @@ export class D3GraphComponent implements OnInit, OnChanges {
                 this.createScatterPlot();
                 break;
         }
-        }
+    }
 
     scale(key: string, range: Array<number>, useMin= false): any {
         // Scale to use to best fit data into viewable space
         // Size refers to the x or y pixel size
         const _this = this;
-        let min: any, max: any, scale: any;
+        let min: any;
+        let max: any;
+        let scale: any;
         if (this.xType === 'date') {
-            min = new Date(d3.min(_this.data, function(d: any) { return d[key]; }));
-            max = new Date(d3.max(_this.data, function(d: any) { return d[key]; }));
+            min = new Date(d3.min(_this.data, (d: any) => d[key]));
+            max = new Date(d3.max(_this.data, (d: any) => d[key]));
             scale = d3.scaleTime();
         } else {
             if (useMin) {
-                min = d3.min(_this.data, function(d: any) { return d[key]; });
+                min = d3.min(_this.data, (d: any) => d[key]);
             } else {
                 min = 0;
             }
-            max = d3.max(_this.data, function(d: any) { return d[key]; });
+            max = d3.max(_this.data, (d: any) => d[key]);
             scale = d3.scaleLinear();
         }
         return scale.domain([min, max]).range(range);
@@ -332,10 +336,10 @@ export class D3GraphComponent implements OnInit, OnChanges {
     showLabels(key: string, value: any, type: string, useMin= true): any {
         // Allows for either showing no labels, just the min and max labels, or all labels
         const _this = this;
-        const max = d3.max(_this.data, function(d: any) { return d[key]; });
+        const max = d3.max(_this.data, (d: any) => d[key]);
         let min = 0;
         if (useMin) {
-            min = d3.min(_this.data, function(d: any) { return d[key]; });
+            min = d3.min(_this.data, (d: any) => d[key]);
         }
         if ((type !== 'none') && ((type === 'minmax' && (value === max || value === min)) || (type === 'all')))  {
             return value;

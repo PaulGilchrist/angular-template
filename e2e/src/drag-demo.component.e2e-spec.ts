@@ -44,7 +44,7 @@ function simulateDragDrop(sourceNode, destinationNode) {
                 this.data[t] = val;
                 return true;
             },
-            setDragImage: (image, x, y) => {}
+            // setDragImage: (image, x, y) => {}
         };
         return myEvent;
     }
