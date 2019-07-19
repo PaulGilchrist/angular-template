@@ -39,14 +39,13 @@ export class FloorComponent implements OnInit {
         this.changeDimension(this.dimension);
         this.changeLevel(this.level);
         // Loop through options setting their initial default visibility
-        for (let i = 0; i < this.options.length; i++) {
-            const option = this.options[i];
+        for (const option of this.options) {
             // The function will toggle the active value, but this one time we do not want it changed
             option.active = !option.active;
             this.toggleOption(option);
         }
         // Add mousewheel event listner to control svg scale
-        $('#floorplan').on('mousewheel', function(e: any) {
+        $('#floorplan').on('mousewheel', (e: any) => {
             const stepping = 20;
             const floorplan: any = $('#floorplan');
             let width: string = floorplan.css('width');
@@ -67,9 +66,9 @@ export class FloorComponent implements OnInit {
         // Zone.active = !zone.active;
         zone.active = true;
         zone.type = type;
-        for (let i = 0; i < zone.layers.length; i++) {
+        for (const layer of zone.layers) {
             // Turn on or off each associated layer based on the active state of the zone
-            const dimzone = $('.' + zone.layers[i] + ' .dimzone');
+            const dimzone = $('.' + layer + ' .dimzone');
             const path = dimzone.find('path');
             switch (zone.type) {
                 case 'carpet':
@@ -95,23 +94,19 @@ export class FloorComponent implements OnInit {
     toggleOption(option: Option): void {
         const _this = this;
         option.active = !option.active;
-        for (let j = 0; j < option.standardLayers.length; j++) {
-            const layer = $('.' + option.standardLayers[j]);
+        for (const standardLayer of option.standardLayers) {
+            const layer = $('.' + standardLayer);
             layer.css('opacity', option.active ? 0 : 1);
             // Testing - Setup click events
             layer.find('.dimzone path').addClass('test');
-            layer.find('.dimzone path').on('click', function() {
-                    console.log('clicked');
-            });
+            layer.find('.dimzone path').on('click', () => console.log('clicked'));
         }
-        for (let j = 0; j < option.optionLayers.length; j++) {
-            const layer = $('.' + option.optionLayers[j]);
+        for (const optionLayer of option.optionLayers) {
+            const layer = $('.' + optionLayer);
             layer.css('opacity', option.active ? 1 : 0);
             // Testing - Setup click events
             layer.find('.dimzone path').addClass('test');
-            layer.find('.dimzone path').on('click', function() {
-                    console.log('clicked');
-            });
+            layer.find('.dimzone path').on('click', () => console.log('clicked'));
             // d3.select();
         }
     }

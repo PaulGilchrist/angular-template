@@ -16,7 +16,7 @@ export interface DocImage {
 })
 export class PdfDemoComponent {
     overviewPdf: any = PDF_OVERVIEW; // Full docuemnt
-    _modalActive: Boolean = false;
+    _modalActive = false;
 
     viewModal(): void {
         this._modalActive = true;

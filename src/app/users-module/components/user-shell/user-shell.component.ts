@@ -18,9 +18,9 @@ export class UserShellComponent implements OnDestroy, OnInit {
     constructor(public _userService: UserService) { }
 
     ngOnInit(): void {
-        forkJoin( // forkJoin only because we may add other data to get in parallel later
+        forkJoin([ // forkJoin only because we may add other data to get in parallel later
             this._userService.getUsers()
-        ).subscribe(data => {
+        ]).subscribe(data => {
             this.users = data[0];
         }, error => {
             console.log(error);

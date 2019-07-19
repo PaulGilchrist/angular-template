@@ -53,10 +53,10 @@ export class UserService {
                 // Reduce the result down to just the addresses for the given user
                 const userAddresses: Address[] = [] ;
                 if (user.addresses) {
-                    for (let i = 0; i < user.addresses.length; i++) {
-                        for (let j = 0; j < addresses.length; j++) {
-                            if (user.addresses[i] === addresses[j].id) {
-                                userAddresses.push(addresses[j]);
+                    for (const userAddress of user.addresses) {
+                        for (const address of addresses) {
+                            if (userAddress === address.id) {
+                                userAddresses.push(address);
                             }
                         }
                     }

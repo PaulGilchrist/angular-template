@@ -3,7 +3,7 @@ import {SortObjectsPipe} from './sort-objects.pipe';
 import {} from 'jasmine';
 
 describe('SortObjectsPipe', () => {
-    it('Object array sorted in ascending order based on name property', function() {
+    it('Object array sorted in ascending order based on name property', () => {
         const sortObjectsPipe = new SortObjectsPipe();
         const inputObjectArray = [
             { name: 'Gary', job: 'Data' },
@@ -16,7 +16,7 @@ describe('SortObjectsPipe', () => {
         const outputObjectArray: any = sortObjectsPipe.transform(inputObjectArray, 'name', false);
         expect(outputObjectArray[0].name).toEqual('Brent');
     });
-    it('Object array sorted in decending order based on name property', function() {
+    it('Object array sorted in decending order based on name property', () => {
         const sortObjectsPipe = new SortObjectsPipe();
         const inputObjectArray = [
             { name: 'Gary', job: 'Data' },

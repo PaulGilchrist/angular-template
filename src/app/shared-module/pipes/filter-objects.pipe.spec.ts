@@ -3,7 +3,7 @@ import {FilterObjectsPipe} from './filter-objects.pipe';
 import {} from 'jasmine';
 
 describe('FilterObjectsPipe', () => {
-    it('Object array filtered down to a single object', function() {
+    it('Object array filtered down to a single object', () => {
         const filterObjectsPipe = new FilterObjectsPipe();
         const inputObjectArray = [
             { name: 'Brent', job: 'Solutions' },
@@ -16,7 +16,7 @@ describe('FilterObjectsPipe', () => {
         const outputObjectArray = filterObjectsPipe.transform(inputObjectArray, 'Paul');
         expect(outputObjectArray.length).toEqual(1);
     });
-    it('Object array filtered down to 2 objects', function() {
+    it('Object array filtered down to 2 objects', () => {
         const filterObjectsPipe = new FilterObjectsPipe();
         const inputObjectArray = [
             { name: 'Brent', job: 'Business' },

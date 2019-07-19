@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 export class ModalDemoComponent {
 
     @Input() id = '';
-    @Input() active: Boolean = false;
+    @Input() active = false;
 
     close(): void {
         this.active = false;

@@ -18,7 +18,7 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         // Animate the progress bar every 100 milliseconds
         const _this = this;
-        this._interval = setInterval(function() {
+        this._interval = setInterval(() => {
             _this.now++;
             if (_this.now > _this.max) {
                 // Start over

@@ -41,9 +41,9 @@ export class AddressFormComponent implements OnInit {
     constructor(public _userService: UserService) { }
 
     ngOnInit(): void {
-        forkJoin( // forkJoin only because we may add other data to get in parallel later
+        forkJoin([ // forkJoin only because we may add other data to get in parallel later
             this._userService.getStates()
-        ).subscribe(data => {
+        ]).subscribe(data => {
             this.states = data[0];
         }, error => {
             console.log(error);
