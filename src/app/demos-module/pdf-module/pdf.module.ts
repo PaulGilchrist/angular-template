@@ -10,15 +10,15 @@ import { ModalDemoComponent } from './components/modal-demo/modal-demo.component
 import { PdfDemoComponent } from './components/pdf-demo/pdf-demo.component';
 
 @NgModule({
-	declarations: [
-		ModalDemoComponent,
-		PdfDemoComponent
-	], // directives, components, and pipes owned by this NgModule
-	imports: [
-		CommonModule,
-		RouterModule.forChild([
-			{ path: '', component: PdfDemoComponent },
-		])
-	],
+    declarations: [
+        ModalDemoComponent,
+        PdfDemoComponent
+    ], // directives, components, and pipes owned by this NgModule
+    imports: [
+        CommonModule,
+        RouterModule.forChild([
+            { path: '', component: PdfDemoComponent },
+        ])
+    ],
 })
 export class PdfModule {}

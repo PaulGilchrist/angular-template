@@ -16,23 +16,23 @@ import { UserShellComponent } from './components/user-shell/user-shell.component
 import { UserService } from './services/user.service';
 
 @NgModule({
-	declarations: [
-		AddressFormComponent,
-		UserFormComponent,
-		UserListComponent,
-		UserShellComponent
-	], // directives, components, and pipes owned by this NgModule
-	imports: [
-		CommonModule,
-		FormsModule,
-		HttpClientModule,
-		RouterModule.forChild([
-			{ path: '', component: UserShellComponent }
-		]),
-		SharedModule, // Required to leverage table sorting and filtering
-	],
-	providers: [
-		UserService
-	]
+    declarations: [
+        AddressFormComponent,
+        UserFormComponent,
+        UserListComponent,
+        UserShellComponent
+    ], // directives, components, and pipes owned by this NgModule
+    imports: [
+        CommonModule,
+        FormsModule,
+        HttpClientModule,
+        RouterModule.forChild([
+            { path: '', component: UserShellComponent }
+        ]),
+        SharedModule, // Required to leverage table sorting and filtering
+    ],
+    providers: [
+        UserService
+    ]
 })
 export class UserModule {}

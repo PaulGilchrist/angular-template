@@ -6,24 +6,24 @@ import * as pdfFonts from 'pdfmake/build/vfs_fonts.js';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 export interface DocImage {
-	name: string;
-	size: number;
+    name: string;
+    size: number;
 }
 
 @Component({
-	selector: 'app-pdf-demo',
-	templateUrl: './pdf-demo.component.html'
+    selector: 'app-pdf-demo',
+    templateUrl: './pdf-demo.component.html'
 })
 export class PdfDemoComponent {
-	overviewPdf: any = PDF_OVERVIEW; // Full docuemnt
-	_modalActive: Boolean = false;
+    overviewPdf: any = PDF_OVERVIEW; // Full docuemnt
+    _modalActive: Boolean = false;
 
-	viewModal(): void {
-		this._modalActive = true;
-	}
+    viewModal(): void {
+        this._modalActive = true;
+    }
 
-	viewPdf(name: string): void {
-		pdfMake.createPdf(this.overviewPdf).download('demo.pdf');
-	}
+    viewPdf(name: string): void {
+        pdfMake.createPdf(this.overviewPdf).download('demo.pdf');
+    }
 
 }

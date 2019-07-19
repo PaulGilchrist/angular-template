@@ -38,7 +38,7 @@ export class AppInsightsService {
     }
 
     setUser() {
-        if(this.adalService.userInfo.authenticated) {
+        if (this.adalService.userInfo.authenticated) {
             AppInsights.setAuthenticatedUserContext(this.adalService.userInfo.profile.upn);
         } else {
             AppInsights.clearAuthenticatedUserContext();

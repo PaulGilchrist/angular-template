@@ -6,18 +6,18 @@ import { FilterObjectsPipe } from './pipes/filter-objects.pipe';
 import { SortObjectsPipe } from './pipes/sort-objects.pipe';
 
 @NgModule({
-	exports: [
-		FilterObjectsPipe,
-		ProgressBarComponent,
-		SortObjectsPipe
-	],
-	declarations: [
-		FilterObjectsPipe,
-		ProgressBarComponent,
-		SortObjectsPipe
-	],
-	imports: [
-		CommonModule
-	],
+    exports: [
+        FilterObjectsPipe,
+        ProgressBarComponent,
+        SortObjectsPipe
+    ],
+    declarations: [
+        FilterObjectsPipe,
+        ProgressBarComponent,
+        SortObjectsPipe
+    ],
+    imports: [
+        CommonModule
+    ],
 })
 export class SharedModule {}

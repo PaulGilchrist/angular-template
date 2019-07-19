@@ -16,39 +16,39 @@ import { TopicVsCodeCommandsComponent } from './components/topic-vsCodeCommands/
 import { TopicVstsDeployComponent } from './components/topic-vstsDeploy/topic-vstsDeploy.component';
 
 @NgModule({
-	declarations: [
-		HelpHomeComponent,
-		HelpNavComponent,
-		TopicClientLibrariesComponent,
-		TopicGettingStartedComponent,
-		TopicGitBranchingComponent,
-		TopicNpmCommandsComponent,
-		TopicServerLibrariesComponent,
-		TopicVsCodeCommandsComponent,
-		TopicVstsDeployComponent
-	],
-	imports: [
-		CommonModule,
-		RouterModule.forChild([
-			{
-				path: '',
-				component: HelpHomeComponent,
-				children: [
-					{ path: '', component: TopicGettingStartedComponent },
-					{ path: 'topic-clientLibraries', component: TopicClientLibrariesComponent },
-					{ path: 'topic-gettingStarted', component: TopicGettingStartedComponent	},
-					{ path: 'topic-gitBranching', component: TopicGitBranchingComponent	},
-					{ path: 'topic-npmCommands', component: TopicNpmCommandsComponent	},
-					{ path: 'topic-serverLibraries', component: TopicServerLibrariesComponent },
-					{ path: 'topic-vsCodeCommands', component: TopicVsCodeCommandsComponent },
-					{ path: 'topic-vstsDeploy', component: TopicVstsDeployComponent }
-				]
-			}
-		])
-	],
-	providers: [
-		{ provide: LocationStrategy, useClass: HashLocationStrategy }
-	],
+    declarations: [
+        HelpHomeComponent,
+        HelpNavComponent,
+        TopicClientLibrariesComponent,
+        TopicGettingStartedComponent,
+        TopicGitBranchingComponent,
+        TopicNpmCommandsComponent,
+        TopicServerLibrariesComponent,
+        TopicVsCodeCommandsComponent,
+        TopicVstsDeployComponent
+    ],
+    imports: [
+        CommonModule,
+        RouterModule.forChild([
+            {
+                path: '',
+                component: HelpHomeComponent,
+                children: [
+                    { path: '', component: TopicGettingStartedComponent },
+                    { path: 'topic-clientLibraries', component: TopicClientLibrariesComponent },
+                    { path: 'topic-gettingStarted', component: TopicGettingStartedComponent	},
+                    { path: 'topic-gitBranching', component: TopicGitBranchingComponent	},
+                    { path: 'topic-npmCommands', component: TopicNpmCommandsComponent	},
+                    { path: 'topic-serverLibraries', component: TopicServerLibrariesComponent },
+                    { path: 'topic-vsCodeCommands', component: TopicVsCodeCommandsComponent },
+                    { path: 'topic-vstsDeploy', component: TopicVstsDeployComponent }
+                ]
+            }
+        ])
+    ],
+    providers: [
+        { provide: LocationStrategy, useClass: HashLocationStrategy }
+    ],
 
 })
 export class HelpModule {}
