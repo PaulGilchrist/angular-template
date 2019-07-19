@@ -1,25 +1,25 @@
-import { NgModule } from "@angular/core";
-import { RouterModule, NoPreloading } from "@angular/router";
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
-import { BrowserModule } from "@angular/platform-browser";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NgModule } from '@angular/core';
+import { RouterModule, NoPreloading } from '@angular/router';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AdalService, AdalGuard } from "adal-angular4";
+import { AdalService, AdalGuard } from 'adal-angular4';
 
 /* Shared Modules */
-import { SharedModule } from "./shared-module/shared.module";
+import { SharedModule } from './shared-module/shared.module';
 
 /* App Root */
-import { AppComponent } from "./components/app/app.component";
-import { HomeComponent } from "./components/home/home.component";
-import { TokenComponent } from "./components/token/token.component";
-import { NavTopComponent } from "./components/nav-top/nav-top.component";
+import { AppComponent } from './components/app/app.component';
+import { HomeComponent } from './components/home/home.component';
+import { TokenComponent } from './components/token/token.component';
+import { NavTopComponent } from './components/nav-top/nav-top.component';
 
-import { AppInsightsService } from "./services/app-insights.service";
-import { AuthInterceptor } from "./services/auth.interceptor";
-import { LoggingInterceptor } from "./services/logging.interceptor";
+import { AppInsightsService } from './services/app-insights.service';
+import { AuthInterceptor } from './services/auth.interceptor';
+import { LoggingInterceptor } from './services/logging.interceptor';
 
-import * as $ from "jquery";
+import * as $ from 'jquery';
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [AppComponent, HomeComponent, TokenComponent, NavTopComponent],
@@ -31,16 +31,16 @@ import * as $ from "jquery";
     RouterModule.forRoot(
       [
         // Static Loading
-        { path: "", redirectTo: "/home", pathMatch: "full" },
-        { path: "home", component: HomeComponent },
-        { path: "token", component: TokenComponent, canActivate: [AdalGuard] },
+        { path: '', redirectTo: '/home', pathMatch: 'full' },
+        { path: 'home', component: HomeComponent },
+        { path: 'token', component: TokenComponent, canActivate: [AdalGuard] },
         // Lazy Loading
         {
-          path: "demos",
+          path: 'demos',
           loadChildren: () => import('./demos-module/demos.module').then(m => m.DemosModule)
         },
-        { path: "user", loadChildren: () => import('./users-module/user.module').then(m => m.UserModule) },
-        { path: "help", loadChildren: () => import('./help-module/help.module').then(m => m.HelpModule) }
+        { path: 'user', loadChildren: () => import('./users-module/user.module').then(m => m.UserModule) },
+        { path: 'help', loadChildren: () => import('./help-module/help.module').then(m => m.HelpModule) }
       ],
       { preloadingStrategy: NoPreloading }
     ),
