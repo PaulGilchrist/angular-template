@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AdalService, AdalGuard } from 'adal-angular4';
+import { ToastrModule } from 'ngx-toastr';
 
 /* Shared Modules */
 import { SharedModule } from './shared-module/shared.module';
@@ -44,7 +45,8 @@ import * as $ from 'jquery';
       ],
       { preloadingStrategy: NoPreloading }
     ),
-    SharedModule
+    SharedModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     AdalService,

@@ -27,12 +27,10 @@ export class UserService {
                 this.http.get<User[]>(environment.apiUrl + 'users.json')
             ]).pipe(
                 retry(3),
-                map(([addresses, users]) =>
-                    users.map(user => ({
-                        ...user,
-                        addresses: addresses.filter(a => user.addressIds.includes(a.id))
-                    }) as User)
-                ),
+                map(([addresses, users]) => {
+                    users.forEach(user => user.addresses = addresses.filter(a => user.addressIds.includes(a.id)));
+                    return users;
+                }),
                 tap((users: User[]) => {
                     this._lastUserDataRetreivalTime = Date.now();
                     // Caller can subscribe to users$ to retreive the users any time they are updated

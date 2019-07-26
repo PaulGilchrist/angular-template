@@ -4,8 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
-import * as toastr from 'toastr';
-
 import { SharedModule } from '../shared-module/shared.module';
 
 import { AddressFormComponent } from './components/address-form/address-form.component';
@@ -29,7 +27,7 @@ import { UserService } from './services/user.service';
         RouterModule.forChild([
             { path: '', component: UserShellComponent }
         ]),
-        SharedModule, // Required to leverage table sorting and filtering
+        SharedModule // Required to leverage table sorting and filtering
     ],
     providers: [
         UserService
