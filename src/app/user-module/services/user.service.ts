@@ -10,15 +10,11 @@ import { User } from '../models/user.model';
 
 @Injectable()
 export class UserService {
-    // This is a mock version of api-user.service.ts
-
-    // Public variables
     private states = new BehaviorSubject<State[]>([]);
     states$ = this.states.asObservable();
     private users = new BehaviorSubject<User[]>([]);
     users$ = this.users.asObservable();
 
-    // Private variables
     private _lastStateDataRetreivalTime: number; // Time when user data was last retireved fromt he remote souce
     private _lastUserDataRetreivalTime: number; // Time when user data was last retireved fromt he remote souce
 

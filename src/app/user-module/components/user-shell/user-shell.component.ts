@@ -21,7 +21,7 @@ export class UserShellComponent implements OnDestroy, OnInit {
 
     ngOnInit(): void {
         // React every time the list of users changes
-        this._userService.getUsers().subscribe(
+        this.userSubscription = this._userService.getUsers().subscribe(
             users => this.users = users
         );
     }
