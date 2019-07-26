@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, forkJoin, throwError as observableThrowError, Observable, of, Subscription } from 'rxjs';
 import { catchError, map, find, retry, tap } from 'rxjs/operators';
 
+import { environment } from '../../../environments/environment';
 import { Address } from '../models/address.model';
 import { State } from '../models/state.model';
 import { User } from '../models/user.model';
@@ -20,17 +21,16 @@ export class UserService {
     users$ = this.users.asObservable();
 
     // Private variables
-    private _lastUserGetTime: number; // number of milliseconds elapsed since 1 January 1970 00:00:00 UTC
-    private _maxUserCacheTimeMilliseconds = 3600000;
-    private _dataPath = './assets/';
+    private _lastStateDataRetreivalTime: number; // Time when user data was last retireved fromt he remote souce
+    private _lastUserDataRetreivalTime: number; // Time when user data was last retireved fromt he remote souce
 
     constructor(private http: HttpClient) {
 
     }
 
     public getAddresses(force: boolean = false): Observable<Address[]> {
-        if (force || this.addresses.getValue().length === 0 || this._lastUserGetTime + this._maxUserCacheTimeMilliseconds < Date.now()) {
-            this.http.get(this._dataPath + 'addresses.json').pipe(
+        if (force || this.addresses.getValue().length === 0 || Date.now() - this._lastUserDataRetreivalTime > environment.dataCaching.userData) {
+            this.http.get(environment.apiUrl + 'addresses.json').pipe(
                 retry(3),
                 tap((addresses: Address[]) => {
                     // Caller can subscribe to addresses$ to retreive the users any time they are updated
@@ -56,10 +56,11 @@ export class UserService {
     }
 
     public getUsers(force: boolean = false): Observable<User[]> {
-        if (force || this.users.getValue().length === 0 || this._lastUserGetTime + this._maxUserCacheTimeMilliseconds < Date.now()) {
-            this.http.get(this._dataPath + 'users.json').pipe(
+        if (force || this.users.getValue().length === 0 || Date.now() - this._lastUserDataRetreivalTime > environment.dataCaching.userData) {
+            this.http.get(environment.apiUrl + 'users.json').pipe(
                 retry(3),
                 tap((users: User[]) => {
+                    this._lastUserDataRetreivalTime = Date.now();
                     // Caller can subscribe to users$ to retreive the users any time they are updated
                     this.users.next(users);
                     console.log(`GET users`);
@@ -71,10 +72,11 @@ export class UserService {
     }
 
     public getStates(force: boolean = false): Observable<State[]> {
-        if (force || this.states.getValue().length === 0 || this._lastUserGetTime + this._maxUserCacheTimeMilliseconds < Date.now()) {
-            this.http.get(this._dataPath + 'states.json').pipe(
+        if (force || this.states.getValue().length === 0 || Date.now() - this._lastStateDataRetreivalTime > environment.dataCaching.defaultLong) {
+            this.http.get(environment.apiUrl + 'states.json').pipe(
                 retry(3),
                 tap((states: State[]) => {
+                    this._lastStateDataRetreivalTime = Date.now();
                     // Caller can subscribe to states$ to retreive the users any time they are updated
                     this.states.next(states);
                     console.log(`GET states`);
