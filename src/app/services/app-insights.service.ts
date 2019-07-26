@@ -8,7 +8,7 @@ import { AdalService } from 'adal-angular4';
 export class AppInsightsService {
 
     private config: Microsoft.ApplicationInsights.IConfig = {
-        instrumentationKey: environment.applicationInsights.instrumentationKey
+        instrumentationKey: environment.appInsights.instrumentationKey
     };
 
     constructor(public adalService: AdalService) {

@@ -21,14 +21,8 @@ export class UserShellComponent implements OnDestroy, OnInit {
 
     ngOnInit(): void {
         // React every time the list of users changes
-        this.userSubscription = combineLatest([
-            this._userService.getAddresses(),
-            this._userService.getUsers()
-        ]).subscribe(
-            ([addresses, users]) => {
-                this.addresses = addresses;
-                this.users = users;
-            }
+        this._userService.getUsers().subscribe(
+            users => this.users = users
         );
     }
 
@@ -55,9 +49,8 @@ export class UserShellComponent implements OnDestroy, OnInit {
         window.scrollTo(0, 0);
         this.user = user;
         // Get the first address for this user
-        const userAddresses = this._userService.getUserAddresses(user);
-        if (userAddresses.length > 0) {
-            this.address = userAddresses[0];
+        if (user.addresses && user.addresses.length > 0) {
+            this.address = user.addresses[0];
         }
     }
 

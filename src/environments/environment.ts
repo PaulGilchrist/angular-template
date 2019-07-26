@@ -5,7 +5,7 @@
 
 export const environment = {
     apiUrl: './assets/', // Would normally be a remote API, but for this demo we are using local JSON files
-    applicationInsights: {
+    appInsights: {
         instrumentationKey: '2ca976b1-98fd-4564-a913-967c14b3a19b'
     },
     azureAuthProvider: {
