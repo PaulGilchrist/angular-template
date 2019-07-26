@@ -9,13 +9,8 @@ import { User } from '../../models/user.model';
 })
 export class UserFormComponent {
 
-    firstName: string;
-    lastName: string;
-    email: string;
-    phone: string;
-    dob: Date;
-
     inputUser: User;
+    formUser: User;
 
     status = 'new';
 
@@ -23,11 +18,9 @@ export class UserFormComponent {
     set user(user: User) {
         this.inputUser = user;
         if (user) {
-            this.firstName = user.firstName;
-            this.lastName = user.lastName;
-            this.email = user.email;
-            this.phone = user.phone;
-            this.dob = new Date(Date.now());
+            this.formUser = {
+                ...user
+            };
         }
     }
 
@@ -35,11 +28,7 @@ export class UserFormComponent {
     @Output() save = new EventEmitter<User>();
 
     saveForm(): void {
-        // For the purpose of this demo, we are not going to save directly back to the API, but rather to the in memory list
-        this.inputUser.firstName = this.firstName;
-        this.inputUser.lastName = this.lastName;
-        this.inputUser.email = this.email;
-        this.inputUser.phone = this.phone;
+        Object.assign(this.inputUser, this.formUser);
         // Bubble up that this user has been saved in case the parent is interested
         this.save.emit(this.inputUser);
         this.status = 'saved';
@@ -47,10 +36,7 @@ export class UserFormComponent {
 
     cancelForm(): void {
         // Reset the form back to the original user details
-        this.firstName = this.inputUser.firstName;
-        this.lastName = this.inputUser.lastName;
-        this.email = this.inputUser.email;
-        this.phone = this.inputUser.phone;
+        Object.assign(this.formUser, this.inputUser);
         this.status = 'canceled';
     }
 

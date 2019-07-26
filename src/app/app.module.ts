@@ -39,7 +39,8 @@ import * as $ from 'jquery';
           path: 'demos',
           loadChildren: () => import('./demos-module/demos.module').then(m => m.DemosModule)
         },
-        { path: 'user', loadChildren: () => import('./users-module/user.module').then(m => m.UserModule) },
+        { path: 'user', loadChildren: () => import('./user-module/user.module').then(m => m.UserModule) },
+        { path: 'user2', loadChildren: () => import('./user2-module/user.module').then(m => m.UserModule) },
         { path: 'help', loadChildren: () => import('./help-module/help.module').then(m => m.HelpModule) }
       ],
       { preloadingStrategy: NoPreloading }

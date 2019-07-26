@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { forkJoin } from 'rxjs';
+import { combineLatest, Subscription } from 'rxjs';
 
 import { Address } from '../../models/address.model';
 import { User } from '../../models/user.model';
@@ -12,19 +12,24 @@ import { UserService } from '../../services/user.service';
 export class UserShellComponent implements OnDestroy, OnInit {
 
     address: Address = null;
+    addresses: Address[] = [];
     user: User = null;
     users: User[] = [];
+    userSubscription: Subscription;
 
     constructor(public _userService: UserService) { }
 
     ngOnInit(): void {
-        forkJoin([ // forkJoin only because we may add other data to get in parallel later
+        // React every time the list of users changes
+        this.userSubscription = combineLatest([
+            this._userService.getAddresses(),
             this._userService.getUsers()
-        ]).subscribe(data => {
-            this.users = data[0];
-        }, error => {
-            console.log(error);
-        });
+        ]).subscribe(
+            ([addresses, users]) => {
+                this.addresses = addresses;
+                this.users = users;
+            }
+        );
     }
 
     ngOnDestroy(): void {
@@ -36,6 +41,7 @@ export class UserShellComponent implements OnDestroy, OnInit {
             // Simulate saving the user changes
             this._userService.updateUsers();
         }
+        this.userSubscription.unsubscribe();
     }
 
     onSaveUser(user: User): void {
@@ -48,8 +54,11 @@ export class UserShellComponent implements OnDestroy, OnInit {
         // Let the UserFormComponent know to populate user details and scroll it into view
         window.scrollTo(0, 0);
         this.user = user;
-        this._userService.getUserAddresses(user)
-            .subscribe(addresses => this.address = addresses[0]);
+        // Get the first address for this user
+        const userAddresses = this._userService.getUserAddresses(user);
+        if (userAddresses.length > 0) {
+            this.address = userAddresses[0];
+        }
     }
 
     reset() {

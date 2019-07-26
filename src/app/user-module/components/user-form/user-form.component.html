@@ -1,4 +1,4 @@
-<div *ngIf="inputUser" id="user-form" class="animated" [ngClass]="{ slideInLeft: status==='new', bounce: status==='saved', shake: status==='canceled' }">
+<div *ngIf="formUser" id="user-form" class="animated" [ngClass]="{ slideInLeft: status==='new', bounce: status==='saved', shake: status==='canceled' }">
     <h2>User</h2>
     <form #userForm="ngForm" novalidate>
         <div class="form-group" [class.has-error]="firstNameControl.invalid && firstNameControl.dirty">
@@ -7,7 +7,7 @@
                 <div class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-user fa-fw"></i></div>
                 </div>
-                <input type="text" name="firstName" [(ngModel)]="firstName" #firstNameControl="ngModel" class="form-control"
+                <input type="text" name="firstName" [(ngModel)]="formUser.firstName" #firstNameControl="ngModel" class="form-control"
                     placeholder="First Name" pattern="[A-Za-z ,.'-]+" required autofocus minlength="2" maxlength="20">
             </div>
             <div [hidden]="firstNameControl.valid || firstNameControl.pristine" class="alert alert-danger">
@@ -20,7 +20,7 @@
                 <div class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-users fa-fw"></i></div>
                 </div>
-                <input type="text" name="lastName" [(ngModel)]="lastName" #lastNameControl="ngModel" class="form-control"
+                <input type="text" name="lastName" [(ngModel)]="formUser.lastName" #lastNameControl="ngModel" class="form-control"
                     placeholder="Last Name" pattern="[A-Za-z ,.'-]+" required minlength="2" maxlength="20">
             </div>
             <div [hidden]="lastNameControl.valid || lastNameControl.pristine" class="alert alert-danger">
@@ -33,7 +33,7 @@
                 <div class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-envelope-o fa-fw"></i></div>
                 </div>
-                <input type="email" name="email" required [(ngModel)]="email" #emailControl="ngModel" class="form-control"
+                <input type="email" name="email" required [(ngModel)]="formUser.email" #emailControl="ngModel" class="form-control"
                     placeholder="Email address" pattern="[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}">
             </div>
             <div [hidden]="emailControl.valid || emailControl.pristine" class="alert alert-danger">
@@ -46,7 +46,7 @@
                 <div class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-phone fa-fw"></i></div>
                 </div>
-                <input type="tel" name="phone" [(ngModel)]="phone" #phoneControl="ngModel" class="form-control"
+                <input type="tel" name="phone" [(ngModel)]="formUser.phone" #phoneControl="ngModel" class="form-control"
                     placeholder="(###) ###-####" pattern='[\(]\d{3}[\)][\s]\d{3}[\-]\d{4}' required>
             </div>
             <div [hidden]="phoneControl.valid || phoneControl.pristine" class="alert alert-danger">
@@ -59,7 +59,7 @@
                 <div class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-calendar fa-fw"></i></div>
                 </div>
-                <input type="date" name="dob" [(ngModel)]="dob" #dobControl="ngModel" class="form-control" placeholder="MM/DD/YYYY">
+                <input type="date" name="dob" [(ngModel)]="formUser.dob" #dobControl="ngModel" class="form-control" placeholder="MM/DD/YYYY">
             </div>
             <div [hidden]="dobControl.valid" class="alert alert-danger">
                 Date of birth is invalid

@@ -1,0 +1,53 @@
+﻿<div *ngIf="users$ | async as users" class="animated slideInUp">
+    <div class="card">
+        <div class="card-header bg-dark text-light d-flex">
+	        <span style="font-size: 1.5em" class="mr-auto">User List&nbsp;<span class="badge-light rounded">{{users.length}}</span></span>
+			<form class="form-inline">
+				<div class="input-group">
+					<div class="input-group-prepend">
+						<span class="input-group-text"><i class="fa fa-search fa-fw"></i></span>
+					</div>
+					<input [(ngModel)]="searchString" name="searchString" type="text" class="form-control" placeholder="Search String" aria-label="Search String">
+				</div>
+			</form>
+			&nbsp;&nbsp;<i class="fa fa-fw align-self-center" [class.fa-chevron-right]="!isOpen" [class.fa-chevron-down]="isOpen" (click)="isOpen=!isOpen"></i>
+        </div>
+		<div class="card-body" [class.collapse]="!isOpen">
+			<div *ngIf='users.length > 0' class="table-responsive">
+				<table class="table table-striped table-hover" style="cursor:pointer;">
+					<thead>
+						<tr>
+							<th scope="col" (click)="changeSort('firstName')">
+								First Name&nbsp;
+								<i *ngIf="sortType==='firstName'" class="fa" [ngClass]="{'fa-caret-down': !sortReverse, 'fa-caret-up': sortReverse}"></i>
+							</th>
+							<th scope="col" (click)="changeSort('lastName')">
+								Last Name&nbsp;
+								<i *ngIf="sortType==='lastName'" class="fa" [ngClass]="{'fa-caret-down': !sortReverse, 'fa-caret-up': sortReverse}"></i>
+							</th>
+							<th scope="col" (click)="changeSort('email')">
+								Email&nbsp;
+								<i *ngIf="sortType==='email'" class="fa" [ngClass]="{'fa-caret-down': !sortReverse, 'fa-caret-up': sortReverse}"></i>
+							</th>
+							<th scope="col" (click)="changeSort('phone')">
+								Phone&nbsp;
+								<i *ngIf="sortType==='phone'" class="fa" [ngClass]="{'fa-caret-down': !sortReverse, 'fa-caret-up': sortReverse}"></i>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let user of users | filterObjects:searchString | sortObjects:sortType:sortReverse" (click)="onSelected(user.id)" [ngClass]="{'bg-secondary text-light': user?.id === (selectedUser$ | async)?.id}">
+							<td>{{user.firstName}}</td>
+							<td>{{user.lastName}}</td>
+							<td>{{user.email}}</td>
+							<td>{{user.phone}}</td>
+						</tr>
+					</tbody>
+				</table>
+            </div>
+        </div>
+		<div class="card-footer text-info" [class.collapse]="!isOpen">
+			Select user to edit or view address details<br>
+		</div>
+    </div>
+</div>
