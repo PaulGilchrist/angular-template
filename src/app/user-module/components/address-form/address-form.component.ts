@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output, OnDestroy } from '@angular/core';
-import { forkJoin, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
+
+import { ToastrService } from 'ngx-toastr';
 
 import { UserService } from '../../services/user.service';
-
 import { State } from '../../models/state.model';
 import { Address } from '../../models/address.model';
 
@@ -30,7 +31,7 @@ export class AddressFormComponent implements OnInit, OnDestroy {
     // Bubble up that the form was saved
     @Output() save = new EventEmitter<Address>();
 
-    constructor(public _userService: UserService) { }
+    constructor(private toastrService: ToastrService, public _userService: UserService) { }
 
     ngOnInit(): void {
         this.stateSubscription = this._userService.getStates().subscribe(
@@ -44,7 +45,7 @@ export class AddressFormComponent implements OnInit, OnDestroy {
 
     onUpdateState(event: any): void {
         // Only the value roles up to the parent select.  To get the label you have to go to the selected option
-        toastr.info(event.target.selectedOptions[0].text);
+        this.toastrService.success(event.target.selectedOptions[0].text, 'State Changed');
     }
 
     saveForm(): void {
