@@ -59,10 +59,10 @@ export class DragDemoComponent implements OnInit {
         // Look at DragulaService for additional events to subscribe to
         // Drag, dragend, drop cancel, remove, shadow, over, out, cloned
         this.dragulaService.over('dragContainer').subscribe((value: any) => {
-            this.onOver(value.slice(1));
+            // Do something here
         });
         this.dragulaService.out('dragContainer').subscribe((value: any) => {
-            this.onOut(value.slice(1));
+            // Do something here
         });
     }
 

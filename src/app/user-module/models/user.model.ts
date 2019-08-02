@@ -8,5 +8,6 @@ export interface User {
     phone: string;
     addressIds?: number[];
     addresses?: Address[];
+    dob?: Date;
     isDirty?: boolean;
 }
