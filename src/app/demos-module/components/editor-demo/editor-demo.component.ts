@@ -34,7 +34,7 @@ export class EditorDemoComponent implements OnInit {
         this.updateMergedContent();
     }
 
-    onReady(event: any) { }
+    // onReady(event: any) { }
 
     updateMergedContent() {
         // Find and replace any variables with their respective values
