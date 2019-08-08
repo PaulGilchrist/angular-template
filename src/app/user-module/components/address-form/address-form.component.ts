@@ -18,8 +18,7 @@ export class AddressFormComponent implements OnInit, OnDestroy {
     formAddress: Address;
     inputAddress: Address;
 
-    @Input()
-    set address(address: Address) {
+    @Input() set address(address: Address) {
         this.inputAddress = address;
         if (address) {
             this.formAddress = {
@@ -29,7 +28,7 @@ export class AddressFormComponent implements OnInit, OnDestroy {
     }
 
     // Bubble up that the form was saved
-    @Output() save = new EventEmitter<Address>();
+    @Output() readonly save = new EventEmitter<Address>();
 
     constructor(private toastrService: ToastrService, public _userService: UserService) { }
 

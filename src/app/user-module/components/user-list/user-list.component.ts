@@ -7,7 +7,7 @@ import { User } from '../../models/user.model';
     templateUrl: './user-list.component.html'
 })
 export class UserListComponent {
-    @Output() select = new EventEmitter<User>();
+    @Output() readonly choose = new EventEmitter<User>();
     id: string;
 
     errorMessage: string;
@@ -32,7 +32,7 @@ export class UserListComponent {
         // Keep track of the selected user so it can be highlighted in the HTML
         this.selectedUser = user;
         // Bubble up to the parent that a new user was selected
-        this.select.emit(user);
+        this.choose.emit(user);
     }
 
 }

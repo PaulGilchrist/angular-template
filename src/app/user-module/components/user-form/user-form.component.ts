@@ -14,8 +14,7 @@ export class UserFormComponent {
 
     status = 'new';
 
-    @Input()
-    set user(user: User) {
+    @Input() set user(user: User) {
         this.inputUser = user;
         if (user) {
             this.formUser = {
@@ -25,7 +24,7 @@ export class UserFormComponent {
     }
 
     // Bubble up that the form was saved
-    @Output() save = new EventEmitter<User>();
+    @Output() readonly save = new EventEmitter<User>();
 
     saveForm(): void {
         Object.assign(this.inputUser, this.formUser);
