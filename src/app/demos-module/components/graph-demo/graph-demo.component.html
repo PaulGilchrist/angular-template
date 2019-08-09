@@ -1,42 +1,50 @@
-<div class="row">
-    <div class="col-sm-6">
-        <div class="form-group">
-            <label for="widthControl">Width</label>
-            <input class="form-control" type="number" required min="100" max="1024" [(ngModel)]="width" placeholder="width (#)" pattern="[0-9]+">
+<div class="d-flex flex-column align-items-center">
+    <h2 class="mb-3">Graph Demo</h2>
+    <div class="card settings">
+        <div class="card-body">
+            <h5 class="card-title">Settings</h5>
+            <div class="d-flex">
+                <div class="flex-column w-50 pr-3">
+                    <div class="form-group">
+                        <label for="widthControl">Width</label>
+                        <input class="form-control" type="number" required min="100" max="1024" [(ngModel)]="width" placeholder="width (#)" pattern="[0-9]+">
+                    </div>
+                    <div class="form-group">
+                        <label for="heightControl">Height</label>
+                        <input class="form-control" type="number" required min="100" max="768" [(ngModel)]="height" placeholder="height (#)" pattern="[0-9]+">
+                    </div>
+                </div>
+                <div class="flex-column w-50">
+                    <div class="form-group">
+                        <label for="labelControl">Label</label>
+                        <select class="form-control" [ngModel]="label" (change)="onUpdateLabel($event)">
+                            <option *ngFor="let l of labels" [value]="l">{{l}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="warningLevelControl">Warning Level</label>
+                        <input class="form-control" type="number" required min="0" [(ngModel)]="warningLevel" placeholder="Warning Level (#)" pattern="[0-9]+">
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="heightControl">Height</label>
-            <input class="form-control" type="number" required min="100" max="768" [(ngModel)]="height" placeholder="height (#)" pattern="[0-9]+">
+    </div>
+    <div class="d-flex justify-content-around flex-wrap">
+        <div class="p-3">
+            <h5>Bar Graph</h5>
+            <app-d3-graph type="bar" [data]="data" xKey="month" yKey="sales" [width]="width" [height]="height" [labels]='label' [warningLevel]="warningLevel"></app-d3-graph>
         </div>
-    </div>
-    <div class="col-sm-6">
-        <div class="form-group">
-            <label for="labelControl">Label</label>
-            <select class="form-control" [ngModel]="label" (change)="onUpdateLabel($event)">
-                <option *ngFor="let l of labels" [value]="l">{{l}}</option>
-            </select>
+        <div class="p-3">
+            <h5>Line Chart</h5>
+            <app-d3-graph type="line" [data]="data" xType="date" xKey="month" yKey="sales" [width]="width" [height]="height" [labels]='label' [warningLevel]="warningLevel"></app-d3-graph>
         </div>
-        <div class="form-group">
-            <label for="warningLevelControl">Warning Level</label>
-            <input class="form-control" type="number" required min="0" [(ngModel)]="warningLevel" placeholder="Warning Level (#)" pattern="[0-9]+">
+        <div class="p-3">
+            <h5>Scatter Plot</h5>
+            <app-d3-graph type="scatter" [data]="data" xType="date" xKey="month" yKey="sales" [width]="width" [height]="height" [labels]='label' [warningLevel]="warningLevel"></app-d3-graph>
         </div>
-    </div>
-</div>
-<div>
-    <div class="graph-inline">
-        <h1>Bar Graph</h1>
-        <app-d3-graph type="bar" [data]="data" xKey="month" yKey="sales" [width]="width" [height]="height" [labels]='label' [warningLevel]="warningLevel"></app-d3-graph>
-    </div>
-    <div class="graph-inline">
-        <h1>Line Chart</h1>
-        <app-d3-graph type="line" [data]="data" xType="date" xKey="month" yKey="sales" [width]="width" [height]="height" [labels]='label' [warningLevel]="warningLevel"></app-d3-graph>
-    </div>
-    <div class="graph-inline">
-        <h1>Scatter Plot</h1>
-        <app-d3-graph type="scatter" [data]="data" xType="date" xKey="month" yKey="sales" [width]="width" [height]="height" [labels]='label' [warningLevel]="warningLevel"></app-d3-graph>
-    </div>
-    <div class="graph-inline">
-        <h1>Pie Chart</h1>
-        <app-d3-graph type="pie" [data]="data" xType="date" xKey="month" yKey="sales" [width]="width" [labels]='label' [warningLevel]="warningLevel"></app-d3-graph>
+        <div class="p-3">
+            <h5>Pie Chart</h5>
+            <app-d3-graph type="pie" [data]="data" xType="date" xKey="month" yKey="sales" [width]="width" [labels]='label' [warningLevel]="warningLevel"></app-d3-graph>
+        </div>
     </div>
 </div>

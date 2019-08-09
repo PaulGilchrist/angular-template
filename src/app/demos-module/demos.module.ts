@@ -15,7 +15,6 @@ import * as d3 from 'd3';
 import { Selection, select } from 'd3-selection';
 import { transition } from 'd3-transition';
 
-import { BlockchainDemoComponent } from './components/blockchain/blockchain-demo.component';
 import { D3GraphComponent } from './components/d3-graph/d3-graph.component';
 import { DragDemoComponent } from './components/drag-demo/drag-demo.component';
 import { EditorDemoComponent } from './components/editor-demo/editor-demo.component';
@@ -28,7 +27,6 @@ import { BlockchainService } from './services/blockchain.service';
 
 @NgModule({
     declarations: [
-        BlockchainDemoComponent,
         D3GraphComponent,
         DragDemoComponent,
         EditorDemoComponent,
@@ -42,7 +40,6 @@ import { BlockchainService } from './services/blockchain.service';
         FormsModule,
         RouterModule.forChild([
             // Static Loading
-            { path: 'blockchain', component: BlockchainDemoComponent },
             { path: 'drag', component: DragDemoComponent },
             { path: 'editor', component: EditorDemoComponent },
             { path: 'graph', component: GraphDemoComponent },

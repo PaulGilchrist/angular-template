@@ -12,6 +12,7 @@ export interface DocImage {
 
 @Component({
     selector: 'app-pdf-demo',
+    styleUrls: ['./pdf-demo.component.css'],
     templateUrl: './pdf-demo.component.html'
 })
 export class PdfDemoComponent {

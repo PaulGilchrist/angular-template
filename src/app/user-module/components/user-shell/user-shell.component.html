@@ -6,7 +6,5 @@
         <app-address-form [address]="address"></app-address-form>
     </div>
 </div>
-<br/>
-<button class="btn btn-default" (click)="reset()">Reset</button><br/>
-<br/>
+<button *ngIf="user" class="btn btn-warning mb-3" (click)="reset()">Reset List</button><br/>
 <app-user-list [users]="users" (choose)="onSelect($event)"></app-user-list>

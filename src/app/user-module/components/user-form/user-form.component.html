@@ -1,5 +1,5 @@
 <div *ngIf="formUser" id="user-form" class="animated" [ngClass]="{ slideInLeft: status==='new', bounce: status==='saved', shake: status==='canceled' }">
-    <h2>User</h2>
+    <h3>User</h3>
     <form #userForm="ngForm" novalidate>
         <div class="form-group" [class.has-error]="firstNameControl.invalid && firstNameControl.dirty">
             <label class="control-label">First Name</label>

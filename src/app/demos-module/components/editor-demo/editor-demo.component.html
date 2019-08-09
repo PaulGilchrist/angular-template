@@ -1,27 +1,31 @@
-<div>
-    <div class="row">
-        <div class="col-md-3 well">
-            <h4>Supported Variables</h4>
+<div class="d-flex">
+    <div class="card">
+        <div class='card-body tightMargin'>
+            <h4 class="card-title">Supported Variables</h4>
             <div *ngFor="let item of data | sortObjects:'name'">
                 {{item.name}}
             </div>
         </div>
-        <div class="col-md-9">
-            <ckeditor
-                [(ngModel)]="content"
-                [config]="{
-                    extraPlugins: 'divarea',
-                    height: 400,
-                    scayt_autoStartup: true,
-                    tabSpaces: 4,
-                    uiColor: '#9AB8F3'
-                }"
-                (change)="onChange($event)"
-                (ready)="onReady($event)"
-                debounce="500">
-            </ckeditor>
-            <br/>
-            <div id='mergedContent' [innerHTML]="mergedContent"></div>
+    </div>
+    <div class="pl-3">
+        <h3 class="d-flex justify-content-center mb-3">WYSIWYG Data Merge Demo</h3>
+        <ckeditor
+            [(ngModel)]="content"
+            [config]="{
+                extraPlugins: 'divarea',
+                height: 400,
+                scayt_autoStartup: true,
+                tabSpaces: 4,
+                uiColor: '#9AB8F3'
+            }"
+            (change)="onChange($event)"
+            (ready)="onReady($event)"
+            debounce="500">
+        </ckeditor>
+        <div class="mt-3 card">
+            <div class="card-body">
+                <div id='mergedContent' [innerHTML]="mergedContent"></div>
+            </div>
         </div>
     </div>
 </div>

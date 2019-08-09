@@ -1,16 +1,17 @@
 <div>
-    <div class='row'>
-		<div class="col-sm-6 col-md-5 mt-4">
+    <h3 class="d-flex justify-content-center">Drag and Drop Demo</h3><br/>
+    <div class='d-flex justify-content-around'>
+		<div class="flex-fill p-1">
 			<div id='list1' class='dragContainer' [dragula]='"dragContainer"' [(dragulaModel)]='list1'>
 				<div *ngFor='let item of list1' [id]='item.id' [innerHtml]='item.text' class='card card-body mt-2 mb-2'></div>
 			</div>
 		</div>
-		<div class="col-sm-6 col-md-5 mt-4">
+		<div class="flex-fill p-1">
 			<div id='list2' class='dragContainer' [dragula]='"dragContainer"' [(dragulaModel)]='list2'>
 				<div *ngFor='let item of list2' [id]='item.id' [innerHtml]='item.text' class='card card-body mt-2 mb-2'></div>
 			</div>
 		</div>
     </div>
     <br/>
-    {{list1.length}} + {{list2.length}} = {{list1.length + list2.length}}
+    <div class="d-flex justify-content-center">{{list1.length}} (left) + {{list2.length}} (right) = {{list1.length + list2.length}} (total)</div>
 </div>
