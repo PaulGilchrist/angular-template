@@ -140,7 +140,7 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              { "glob": "*.json", "input": "src/app/users-module/data", "output": "/assets" }
+              { "glob": "*.json", "input": "src/app/user-module/data", "output": "/assets" }
             ]
           }
         },
