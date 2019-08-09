@@ -2,14 +2,14 @@
     <div class="col-sm-4">
         <label class="form-label">Floor</label><br/>
         <div class="btn-group" role="group">
-            <button type="button" class="btn btn-default btn-sm" [class.btn-primary]='level==3' (click)="changeLevel(3)">Basement</button>
-            <button type="button" class="btn btn-default btn-sm" [class.btn-primary]='level==1' (click)="changeLevel(1)">Level 1</button>
-            <button type="button" class="btn btn-default btn-sm" [class.btn-primary]='level==2' (click)="changeLevel(2)">Level 2</button>
+            <button type="button" class="btn btn-secondary" [class.btn-active]='level==3' (click)="changeLevel(3)">Basement</button>
+            <button type="button" class="btn btn-secondary" [class.btn-active]='level==1' (click)="changeLevel(1)">Level 1</button>
+            <button type="button" class="btn btn-secondary" [class.btn-active]='level==2' (click)="changeLevel(2)">Level 2</button>
         </div><br/>
         <label class="form-label">Dimension Data</label><br/>
         <div class="btn-group" role="group">
-            <button type="button" class="btn btn-default btn-sm" [class.btn-primary]='!dimension' (click)="changeDimension(false)">Off</button>
-            <button type="button" class="btn btn-default btn-sm" [class.btn-primary]='dimension' (click)="changeDimension(true)">On</button>
+            <button type="button" class="btn btn-secondary btn-sm" [class.btn-active]='!dimension' (click)="changeDimension(false)">Off</button>
+            <button type="button" class="btn btn-secondary btn-sm" [class.btn-active]='dimension' (click)="changeDimension(true)">On</button>
         </div><br/>
         <label class="form-label">Flooring Zones</label><br/>
         <table class='table-zones'>
@@ -17,10 +17,10 @@
               <td>{{zone.name}}&nbsp;</td>
               <td>
                   <div class="btn-group btn-group-xs" role="group">
-                      <button type="button" class="btn btn-default btn-xs" [class.btn-primary]="zone.type=='undecided'" (click)="toggleFlooringZones(zone, 'undecided')">None</button>
-                      <button type="button" class="btn btn-default btn-xs carpet" [class.btn-primary]="zone.type=='carpet'" [class.text-light]="zone.type=='carpet'" (click)="toggleFlooringZones(zone, 'carpet')">Carpet</button>
-                      <button type="button" class="btn btn-default btn-xs tile" [class.btn-primary]="zone.type=='tile'" [class.text-light]="zone.type=='tile'" (click)="toggleFlooringZones(zone, 'tile')">Tile</button>
-                      <button type="button" class="btn btn-default btn-xs wood" [class.btn-primary]="zone.type=='wood'" [class.text-light]="zone.type=='wood'" (click)="toggleFlooringZones(zone, 'wood')">Wood</button>
+                      <button type="button" class="btn btn-secondary btn-xs" [class.btn-active]="zone.type=='undecided'" (click)="toggleFlooringZones(zone, 'undecided')">None</button>
+                      <button type="button" class="btn btn-secondary btn-xs carpet" [class.btn-active]="zone.type=='carpet'" [class.text-light]="zone.type=='carpet'" (click)="toggleFlooringZones(zone, 'carpet')">Carpet</button>
+                      <button type="button" class="btn btn-secondary btn-xs tile" [class.btn-active]="zone.type=='tile'" [class.text-light]="zone.type=='tile'" (click)="toggleFlooringZones(zone, 'tile')">Tile</button>
+                      <button type="button" class="btn btn-secondary btn-xs wood" [class.btn-active]="zone.type=='wood'" [class.text-light]="zone.type=='wood'" (click)="toggleFlooringZones(zone, 'wood')">Wood</button>
                   </div>
               </td>
           </tr>
@@ -28,8 +28,8 @@
         <div *ngFor='let option of options'>
             <label class="form-label">{{option.name}}</label><br/>
             <div class="btn-group" role="group">
-                <button type="button" class="btn btn-default btn-sm" [class.btn-primary]='!option.active' (click)="toggleOption(option)">{{option.standardName}}</button>
-                <button type="button" class="btn btn-default btn-sm" [class.btn-primary]='option.active' (click)="toggleOption(option)">{{option.optionName}}</button>
+                <button type="button" class="btn btn-secondary btn-sm" [class.btn-active]='!option.active' (click)="toggleOption(option)">{{option.standardName}}</button>
+                <button type="button" class="btn btn-secondary btn-sm" [class.btn-active]='option.active' (click)="toggleOption(option)">{{option.optionName}}</button>
             </div><br/>
         </div>
         <div *ngIf='focusOption'>

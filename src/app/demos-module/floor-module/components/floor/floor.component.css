@@ -1,21 +1,26 @@
 .s25_1 { opacity: 0; } /* laundry room */
 .t84 { opacity: 0; } /* basement text */
 .form-label { margin-bottom: 0px; }
-.btn-group { margin-bottom: 10px; }
+.btn-active {
+    background-color: CornflowerBlue;
+}
+.btn-group {
+    margin-bottom: 10px;
+}
 .btn-group-xs { margin-bottom: 0; }
 .dimzone { opacity: 0; } /* Blue room overlay */
 .NoOptionsBoundingBox { opacity: 0; }
 .wood {
-    color: red;
-    fill: red;
+    color: Tomato;
+    fill: Tomato;
 }
 .tile {
-    color: green;
-    fill: green;
+    color: LightGreen;
+    fill: LightGreen;
 }
 .carpet {
-    color: blue;
-    fill: blue;
+    color: LightSkyBlue ;
+    fill: LightSkyBlue;
 }
 .table-zones {
     font-size: 80%;

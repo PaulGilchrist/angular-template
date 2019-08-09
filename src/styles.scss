@@ -8,3 +8,12 @@
 /*
 Try and keep global SCSS and CSS to a minimum and mainly to global variables.  This prevents components from breaking when used in other projects
 */
+.w-20 {
+    width: 20%!important;
+}
+.w-30 {
+    width: 30%!important;
+}
+.w-60 {
+    width: 60%!important;
+}

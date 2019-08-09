@@ -94,6 +94,7 @@ export class FloorComponent implements OnInit {
     toggleOption(option: Option): void {
         const _this = this;
         option.active = !option.active;
+        // console.log(option.active);
         for (const standardLayer of option.standardLayers) {
             const layer = $('.' + standardLayer);
             layer.css('opacity', option.active ? 0 : 1);
