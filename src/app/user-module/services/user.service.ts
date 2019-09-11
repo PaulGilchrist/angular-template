@@ -15,8 +15,8 @@ export class UserService {
     private users = new BehaviorSubject<User[]>([]);
     users$ = this.users.asObservable();
 
-    private _lastStateDataRetreivalTime: number; // Time when user data was last retireved fromt he remote souce
-    private _lastUserDataRetreivalTime: number; // Time when user data was last retireved fromt he remote souce
+    private _lastStateDataRetreivalTime: number; // Time when user data was last retireved from the remote souce
+    private _lastUserDataRetreivalTime: number; // Time when user data was last retireved from the remote souce
 
     constructor(private http: HttpClient) {}
 
@@ -49,7 +49,7 @@ export class UserService {
                 retry(3),
                 tap((states: State[]) => {
                     this._lastStateDataRetreivalTime = Date.now();
-                    // Caller can subscribe to states$ to retreive the users any time they are updated
+                    // Caller can subscribe to states$ to retreive the states any time they are updated
                     this.states.next(states);
                     console.log(`GET states`);
                 }),
