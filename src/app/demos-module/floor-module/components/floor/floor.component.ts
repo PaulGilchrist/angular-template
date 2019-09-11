@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import * as d3 from 'd3';
-import { Selection, select } from 'd3-selection';
-import { transition } from 'd3-transition';
+import * as $ from 'jquery';
 
 // We only put interfaces in the models folder when they are reused across components
 export interface FloorZone { name: string; type: string; layers: string[]; active: boolean; } // Valid types are undecided, carpet, tile, or wood

@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 // import { DragulaService } from '../../services/dragula.service';
 import { DragulaService } from 'ng2-dragula';
 
+import * as $ from 'jquery';
+
 // We only put interfaces in the models folder when they are reused across components
 export interface DragObject { id: number; text: string; allowMove: boolean; }
 

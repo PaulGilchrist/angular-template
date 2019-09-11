@@ -9,12 +9,6 @@ import { CKEditorModule } from 'ng2-ckeditor';
 
 import { SharedModule } from '../shared-module/shared.module';
 
-// import 'ckeditor/ckeditor.js'; // not working due to extra files needed
-
-import * as d3 from 'd3';
-import { Selection, select } from 'd3-selection';
-import { transition } from 'd3-transition';
-
 import { D3GraphComponent } from './components/d3-graph/d3-graph.component';
 import { DragDemoComponent } from './components/drag-demo/drag-demo.component';
 import { EditorDemoComponent } from './components/editor-demo/editor-demo.component';

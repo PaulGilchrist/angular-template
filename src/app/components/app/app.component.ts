@@ -3,6 +3,9 @@ import { AdalService } from 'adal-angular4';
 import { AppInsightsService } from '../../services/app-insights.service';
 
 import { environment } from '../../../environments/environment';
+
+import * as $ from 'jquery';
+
 @Component({
   selector: 'app-root',
   styleUrls: ['./app.component.css'],

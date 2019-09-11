@@ -20,7 +20,6 @@ import { AppInsightsService } from './services/app-insights.service';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { LoggingInterceptor } from './services/logging.interceptor';
 
-import * as $ from 'jquery';
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [AppComponent, HomeComponent, TokenComponent, NavTopComponent],
