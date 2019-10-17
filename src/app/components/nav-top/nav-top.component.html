@@ -12,7 +12,7 @@
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['demos/drag']">Drag</a>
       </li>
-      <li class="nav-item" routerLinkActive="active">
+      <li *ngIf='isConnected' class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['demos/editor']">Editor</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
@@ -37,6 +37,9 @@
     <div *ngIf="authenticated" class="nav navbar-right hidden-xs hidden-sm text-light">
       {{ adalService.userInfo.profile.given_name + ' ' + adalService.userInfo.profile.family_name }}
     </div>
+    &nbsp;&nbsp;
+    <span *ngIf='isConnected' class='online'>ONLINE</span>
+    <span *ngIf='!isConnected' class='offline'>OFFLINE</span>
     &nbsp;&nbsp;
     <form class="navbar-form navbar-right">
       <input *ngIf="!authenticated" (click)="login()" type="button" class="btn btn-primary" value="Login">

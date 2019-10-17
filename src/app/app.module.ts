@@ -18,7 +18,10 @@ import { NavTopComponent } from './components/nav-top/nav-top.component';
 
 import { AppInsightsService } from './services/app-insights.service';
 import { AuthInterceptor } from './services/auth.interceptor';
+import { ConnectivityService } from './services/connectivity.service';
 import { LoggingInterceptor } from './services/logging.interceptor';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -45,12 +48,14 @@ import { LoggingInterceptor } from './services/logging.interceptor';
       { preloadingStrategy: NoPreloading }
     ),
     SharedModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     AdalService,
     AdalGuard,
     AppInsightsService,
+    ConnectivityService,
     { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true }, // Time how long each http rerquests takes
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } // Add token to all API requests
   ]

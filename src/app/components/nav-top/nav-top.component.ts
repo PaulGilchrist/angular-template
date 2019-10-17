@@ -1,20 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Location } from '@angular/common';
+import { Subscription } from 'rxjs';
 
 import { AdalService } from 'adal-angular4';
 
+import { ConnectivityService } from '../../services/connectivity.service';
+
 @Component({
   selector: 'app-nav-top',
+  styleUrls: ['./nav-top.component.css'],
   templateUrl: './nav-top.component.html'
 })
-export class NavTopComponent implements OnInit {
-  public shrinkNavbar = false;
+export class NavTopComponent implements OnInit, OnDestroy {
+    shrinkNavbar = false;
+    isConnected = true;
+    subscriptions: Subscription[] = [];
 
   constructor(
-    private _location: Location,
-    private _router: Router,
-    public adalService: AdalService
+    public adalService: AdalService,
+    private connectivityService: ConnectivityService,
+    private _location: Location
   ) {}
 
   onScroll(event: any): void {
@@ -25,6 +30,12 @@ export class NavTopComponent implements OnInit {
 
   ngOnInit(): void {
     this.adalService.handleWindowCallback();
+    this.subscriptions.push(this.connectivityService.isConnected$.subscribe(isConnected => this.isConnected = isConnected));
+  }
+
+  ngOnDestroy(): void {
+    // Unsubscribe all subscriptions to avoid memory leak
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
 
   currentPage(path: string): boolean {
