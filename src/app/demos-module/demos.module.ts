@@ -7,7 +7,8 @@ import { RouterModule } from '@angular/router';
 import { DragulaModule } from 'ng2-dragula';
 import { CKEditorModule } from 'ng2-ckeditor';
 
-import { SharedModule } from '../shared-module/shared.module';
+// My NPM packages
+import { AngularPipesModuleModule } from 'angular-pipes-module';
 
 import { D3GraphComponent } from './components/d3-graph/d3-graph.component';
 import { DragDemoComponent } from './components/drag-demo/drag-demo.component';
@@ -24,9 +25,10 @@ import { BlockchainService } from './services/blockchain.service';
         D3GraphComponent,
         DragDemoComponent,
         EditorDemoComponent,
-        GraphDemoComponent,
+        GraphDemoComponent
     ], // directives, components, and pipes owned by this NgModule
     imports: [
+        AngularPipesModuleModule,
         CKEditorModule,
         CommonModule,
         DragulaModule.forRoot(),
@@ -40,8 +42,7 @@ import { BlockchainService } from './services/blockchain.service';
             // // Lazy Loading
             { path: 'floor', loadChildren: () => import('./floor-module/floor.module').then(m => m.FloorModule) },
             { path: 'pdf', loadChildren: () => import('./pdf-module/pdf.module').then(m => m.PdfModule) },
-        ]),
-        SharedModule
+        ])
     ],
     providers: [
         BlockchainService

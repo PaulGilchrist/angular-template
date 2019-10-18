@@ -4,7 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
-import { SharedModule } from '../shared-module/shared.module';
+// My NPM packages
+import { AngularPipesModuleModule } from 'angular-pipes-module';
 
 import { AddressFormComponent } from './components/address-form/address-form.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
@@ -21,13 +22,13 @@ import { UserService } from './services/user.service';
         UserShellComponent
     ], // directives, components, and pipes owned by this NgModule
     imports: [
+        AngularPipesModuleModule,
         CommonModule,
         FormsModule,
         HttpClientModule,
         RouterModule.forChild([
             { path: '', component: UserShellComponent }
-        ]),
-        SharedModule // Required to leverage table sorting and filtering
+        ])
     ],
     providers: [
         UserService

@@ -6,10 +6,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AdalService, AdalGuard } from 'adal-angular4';
 import { ToastrModule } from 'ngx-toastr';
-import { AngularConnectivityService } from 'angular-connectivity'; // My NPM Package
 
-/* Shared Modules */
-import { SharedModule } from './shared-module/shared.module';
+// My NPM packages
+import { AngularConnectivityService } from 'angular-connectivity';
 
 /* App Root */
 import { AppComponent } from './components/app/app.component';
@@ -26,7 +25,7 @@ import { environment } from '../environments/environment';
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [AppComponent, HomeComponent, TokenComponent, NavTopComponent],
-  exports: [SharedModule],
+  exports: [],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -47,7 +46,6 @@ import { environment } from '../environments/environment';
       ],
       { preloadingStrategy: NoPreloading }
     ),
-    SharedModule,
     ToastrModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
