@@ -10,14 +10,10 @@ export class ConnectivityService {
     constructor() {
         window.addEventListener('online', () => {
             this.isConnected.next(!!window.navigator.onLine);
-            console.log(`window.addEventListener('online')`);
-            console.log(`window.navigator.onLine === ${!!window.navigator.onLine}`);
             console.log('Internet connection established.  Uploading local changes and updating cached data');
         });
         window.addEventListener('offline', () => {
             this.isConnected.next(!!window.navigator.onLine);
-            console.log(`window.addEventListener('offline')`);
-            console.log(`window.navigator.onLine === ${!!window.navigator.onLine}`);
             console.log('Application is offline so all changes will be stored locally until Internet connection is established');
         });
     }

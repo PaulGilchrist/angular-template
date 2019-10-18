@@ -2,9 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Location } from '@angular/common';
 import { Subscription } from 'rxjs';
 
+import { AngularConnectivityService } from 'angular-connectivity'; // My NPM Package
 import { AdalService } from 'adal-angular4';
-
-import { ConnectivityService } from '../../services/connectivity.service';
 
 @Component({
   selector: 'app-nav-top',
@@ -18,7 +17,7 @@ export class NavTopComponent implements OnInit, OnDestroy {
 
   constructor(
     public adalService: AdalService,
-    private connectivityService: ConnectivityService,
+    private connectivityService: AngularConnectivityService,
     private _location: Location
   ) {}
 

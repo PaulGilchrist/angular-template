@@ -1,11 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
+import { AngularConnectivityService } from 'angular-connectivity'; // My NPM Package
 import { ToastrService } from 'ngx-toastr';
 
 import { Address } from '../../models/address.model';
 import { User } from '../../models/user.model';
-import { ConnectivityService } from '../../../services/connectivity.service';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -24,7 +24,7 @@ export class UserShellComponent implements OnDestroy, OnInit {
 
     userSubscription: Subscription;
 
-    constructor(private connectivityService: ConnectivityService, private toastrService: ToastrService, public _userService: UserService) { }
+    constructor(private connectivityService: AngularConnectivityService, private toastrService: ToastrService, public _userService: UserService) { }
 
     ngOnInit(): void {
         // React every time the list of users changes

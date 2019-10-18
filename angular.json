@@ -26,7 +26,8 @@
               "src/favicon.ico",
               "src/assets",
               { "glob": "*.json", "input": "src/app/user-module/data", "output": "/assets" },
-              "src/manifest.webmanifest"
+              "src/manifest.webmanifest",
+              "src/web.config"
             ],
             "styles": [
               "src/styles.scss"

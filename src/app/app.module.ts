@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AdalService, AdalGuard } from 'adal-angular4';
 import { ToastrModule } from 'ngx-toastr';
+import { AngularConnectivityService } from 'angular-connectivity'; // My NPM Package
 
 /* Shared Modules */
 import { SharedModule } from './shared-module/shared.module';
@@ -18,7 +19,6 @@ import { NavTopComponent } from './components/nav-top/nav-top.component';
 
 import { AppInsightsService } from './services/app-insights.service';
 import { AuthInterceptor } from './services/auth.interceptor';
-import { ConnectivityService } from './services/connectivity.service';
 import { LoggingInterceptor } from './services/logging.interceptor';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
@@ -55,7 +55,7 @@ import { environment } from '../environments/environment';
     AdalService,
     AdalGuard,
     AppInsightsService,
-    ConnectivityService,
+    AngularConnectivityService,
     { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true }, // Time how long each http rerquests takes
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } // Add token to all API requests
   ]
