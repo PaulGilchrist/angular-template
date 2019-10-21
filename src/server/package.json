@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "Paul Gilchrist"
+  ],
+  "name": "notification-server",
+  "description": "Test notification server",
+  "homepage": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "version": "0.0.1",
+  "scripts": {
+    "ng": "ng",
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "~4.17.1",
+    "web-push": "~3.4.0"
+  },
+  "devDependencies": {}
+}

@@ -20,5 +20,8 @@ export const environment = {
         userData: 3600000 // 10 minutes
     },
     envName: 'dev',
+    vapid: {
+        publicKey: 'BE6IqM0la0Mr7jg5w5vYwPk5gwbypKcpsJrqH-xX3nfLm9BCCrt2EDCyMZH7yZYFDGtGxtCgZqCgnGeuJehndoc'
+    },
     production: false
 };
