@@ -27,6 +27,7 @@
               "src/assets",
               { "glob": "*.json", "input": "src/app/user-module/data", "output": "/assets" },
               "src/manifest.webmanifest",
+              "src/sw-worker.js",
               "src/web.config"
             ],
             "styles": [

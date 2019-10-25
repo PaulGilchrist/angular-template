@@ -47,7 +47,7 @@ import { environment } from '../environments/environment';
       { preloadingStrategy: NoPreloading }
     ),
     ToastrModule.forRoot(),
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('sw-worker.js', { enabled: environment.production }) // Replaced ngsw-worker.js to add ability to open application from notification
   ],
   providers: [
     AdalService,

@@ -18,8 +18,6 @@
 			updated to ensure it always remains a good reference for any new project.</p>
 		<br />
 		<input (click)="router.navigate(['help']);" type="button" class="btn btn-primary animated flash" value="Getting Started">&nbsp;
-		<input *ngIf="!isSubscribed" (click)="subscribe()" type="button" class="btn btn-primary" value="Subscribe">
-		<input *ngIf="isSubscribed" (click)="unsubscribe()" type="button" class="btn btn-primary" value="Unsubscribe">
         <br />
 		<br />
 		<div class="d-flex flex-row justify-content-around align-items-center">

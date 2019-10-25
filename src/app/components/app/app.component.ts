@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { SwPush } from '@angular/service-worker';
 
 import { AdalService } from 'adal-angular4';
 import { AppInsightsService } from '../../services/app-insights.service';
@@ -13,7 +15,7 @@ import * as $ from 'jquery';
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
-  constructor(private adalService: AdalService, private appInsightsService: AppInsightsService) {
+  constructor(private adalService: AdalService, private appInsightsService: AppInsightsService, public router: Router, private swPush: SwPush) {
     // init requires object with clientId and tenant properties
     adalService.init(environment.azureAuthProvider);
   }
@@ -35,6 +37,31 @@ export class AppComponent implements OnInit {
                 });
             }
         });
+        // If the user has not already answered, ask them if they would like to receive notifications
+        this.swPush.requestSubscription({
+            serverPublicKey: environment.vapid.publicKey
+        })
+        .then(subscription => {
+            const notificationSubscription = JSON.stringify(subscription);
+            localStorage.setItem('notificationSubscription', notificationSubscription);
+            console.log('Successfully subscribed to notifications');
+            console.log(notificationSubscription);
+        })
+        .catch(error => {
+            if (Notification.permission === 'denied') {
+                console.warn('Permission for notifications was denied');
+            } else {
+                console.error('Unable to subscribe to notifications', error);
+            }
+         });
+        this.swPush.notificationClicks.subscribe(
+            ({action, notification}) => {
+                // These will only execute if the application is already open
+                // To execute when application is closed, add code to ./sw-worker.js instead of here
+                switch (action) {
+                }
+            }
+        );
     }
 
 }
