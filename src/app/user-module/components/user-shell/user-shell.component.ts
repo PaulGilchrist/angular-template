@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { AngularConnectivityService } from 'angular-connectivity'; // My NPM Package
 import { ToastrService } from 'ngx-toastr';
 
+import { AngularConnectivityService } from 'angular-connectivity'; // My NPM Package
 import { Address } from '../../models/address.model';
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
@@ -13,48 +13,63 @@ import { UserService } from '../../services/user.service';
     templateUrl: './user-shell.component.html'
 })
 export class UserShellComponent implements OnDestroy, OnInit {
-
     address: Address = null;
     addresses: Address[] = [];
     isConnected = true;
+    subscriptions: Subscription[] = [];
     user: User = null;
     users: User[] = [];
-
-    subscriptions: Subscription[] = [];
-
     userSubscription: Subscription;
 
     constructor(private connectivityService: AngularConnectivityService, private toastrService: ToastrService, public _userService: UserService) { }
 
-    ngOnInit(): void {
-        // React every time the list of users changes
-        this.subscriptions.push(this._userService.getUsers().subscribe(
-            users => this.users = users
-        ));
-        this.subscriptions.push(this.connectivityService.isConnected$.subscribe(isConnected => this.isConnected = isConnected));
-    }
-
     ngOnDestroy(): void {
-        // Make sure all the users are saved to the API before leaving this component
-        // Look for angular to release a better lifecycle hook than onDestroy for this
-        //     Doing this earlier in the lifecycle would allow for leaving the page to be canceled
-        const usersRequiringSave = this.users.filter(u => u.isDirty === true);
-        if (usersRequiringSave.length > 0) {
-            // Simulate saving the user changes
-            this._userService.updateUsers();
-        }
         // Unsubscribe all subscriptions to avoid memory leak
         this.subscriptions.forEach(subscription => subscription.unsubscribe());
     }
 
+    ngOnInit(): void {
+        // Keep track of network connectivity and update API if anything was only saved locally
+        this.subscriptions.push(this.connectivityService.isConnected$.subscribe(isConnected => {
+            this.isConnected = isConnected;
+            // See if there are any users cached locally that need to be sent to the API
+            if (isConnected) {
+                const dirtyUsersJson = localStorage.getItem('dirtyUsers');
+                if (dirtyUsersJson) {
+                    const dirtyUsers = JSON.parse(dirtyUsersJson) as User[];
+                    // Save dirty users to API
+                    dirtyUsers.forEach(u => this.onSaveUser(u));
+                    localStorage.removeItem('dirtyUsers');
+                }
+            }
+        }));
+        // React every time the list of users changes
+        this.subscriptions.push(this._userService.getUsers(true).subscribe(
+            users => this.users = users
+        ));
+    }
+
     onSaveUser(user: User): void {
-        // We have made changes to this user, so mark it as dirty
-        user.isDirty = true;
-        // We will not persist the user back to the API, but rather keep all changes in memory for later bulk update
-        if(this.isConnected) {
-            this.toastrService.success('User saved', 'Save User');
+        if (this.isConnected) {
+            // Save to API would be here
+            this._userService.updateUser(user).subscribe(
+                success => {
+                    this.toastrService.success(`User '${user.firstName} ${user.lastName}' saved to API`, `Save User`);
+                    console.log(`User '${user.firstName} ${user.lastName}' saved to API`);
+                },
+                error => {
+                    console.error(`Error saving user '${user.firstName} ${user.lastName}' to API`, `Save User`);
+                }
+            );
         } else {
-            this.toastrService.success('User changes saved locally since no Internet connection is currently available.  Once connected, changes will be uploaded', 'Save User');
+            // Find all users that are dirty and save to localStorage until connectivity is re-established
+            user.isDirty = true;
+            this.users.map(u => user.id === u.id ? user : u);
+            localStorage.setItem('users', JSON.stringify(this.users));
+            const dirtyUsers = this.users.filter(u => u.isDirty);
+            localStorage.setItem('dirtyUsers', JSON.stringify(dirtyUsers));
+            this.toastrService.success(`Offline - User '${user.firstName} ${user.lastName}' saved locally`, `Save User`);
+            console.log(`Offline - User '${user.firstName} ${user.lastName}' saved locally.  Once connected, changes will be uploaded`);
         }
     }
 
@@ -69,7 +84,12 @@ export class UserShellComponent implements OnDestroy, OnInit {
     }
 
     reset() {
+        localStorage.removeItem('users');
+        localStorage.removeItem('dirtyUsers');
+        this.user = null;
+        this.address = null;
         this._userService.getUsers(true);
+        console.log(`User list reset`);
     }
 
 }

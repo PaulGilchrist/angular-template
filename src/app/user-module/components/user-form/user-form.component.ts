@@ -20,6 +20,8 @@ export class UserFormComponent {
             this.formUser = {
                 ...user
             };
+        } else {
+            this.formUser = null;
         }
     }
 

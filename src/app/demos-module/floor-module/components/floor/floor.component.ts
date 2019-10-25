@@ -1,4 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+
+import { ToastrService } from 'ngx-toastr';
+
+import { AngularConnectivityService } from 'angular-connectivity'; // My NPM Package
+import { FlooringState } from '../../models/flooring-state.model';
+import { INITIAL_FLOORING_STATE } from '../../data/initial-flooring-state.data';
+
 
 import * as $ from 'jquery';
 
@@ -11,37 +19,35 @@ export interface Option { level: number; name: string; standardName: string; opt
     styleUrls: ['./floor.component.css'],
     templateUrl: './floor.component.html'
 })
-export class FloorComponent implements OnInit {
-    dimension = false;
-    level = 1;
-    flooringZones: FloorZone[] = [
-        { name: 'Kitchen', type: 'undecided', layers: ['s1', 's3'], active: false },
-        { name: 'Living', type: 'undecided', layers: ['s9', 's10', 's11', 's18'], active: false },
-        { name: 'Bathrooms', type: 'undecided', layers: ['s13_1', 's15', 's16', 's19', 's22', 'o2', 'o5', 'o6'], active: false },
-        { name: 'Bedrooms', type: 'undecided', layers: ['s17', 's20', 's21', 's23', 's24', 'o3', 'o7'], active: false },
-        { name: 'Foyer', type: 'undecided', layers: ['s8'], active: false },
-        { name: 'Dining', type: 'undecided', layers: ['s7'], active: false },
-        { name: 'Laundry', type: 'undecided', layers: ['s6', 's4', 's4_1'], active: false }
-    ];
-    options: Option[] = [
-        { level: 1, name: 'Garage', standardName: 'Standard', optionName: 'Extended', standardLayers: ['s14'], optionLayers: ['o4'], active: false },
-        { level: 1, name: 'Flex Room', standardName: 'Den', optionName: 'Guest Suite', standardLayers: ['s11', 's12', 's13'], optionLayers: ['o3'], active: false },
-        { level: 1, name: 'Powder Room', standardName: 'No', optionName: 'Yes', standardLayers: ['s4'], optionLayers: ['o2', 's4_1'], active: false },
-        { level: 1, name: 'Sunroom', standardName: 'No', optionName: 'Yes', standardLayers: ['s1', 's26', 's26_2'], optionLayers: ['o1', 'o8', 'o8_1'], active: false },
-        { level: 2, name: 'Owner\'s Bath Shower', standardName: 'Standard', optionName: 'Upgraded', standardLayers: ['s15'], optionLayers: ['o5'], active: false },
-        { level: 3, name: 'Basement Bed and Bath', standardName: 'No', optionName: 'Yes', standardLayers: ['s25', 's27', 's28'], optionLayers: ['o6', 'o7'], active: false }
-    ];
-    focusOption: Option = null;
+export class FloorComponent implements OnDestroy, OnInit {
+    apiUpdateNeeded = false;
+    flooringState: FlooringState = null;
+    isConnected = true;
+    subscriptions: Subscription[] = [];
+
+    constructor(private connectivityService: AngularConnectivityService, private toastrService: ToastrService) { }
+
+    ngOnDestroy(): void {
+        // Unsubscribe all subscriptions to avoid memory leak
+        this.subscriptions.forEach(subscription => subscription.unsubscribe());
+    }
 
     ngOnInit(): void {
-        this.changeDimension(this.dimension);
-        this.changeLevel(this.level);
-        // Loop through options setting their initial default visibility
-        for (const option of this.options) {
-            // The function will toggle the active value, but this one time we do not want it changed
-            option.active = !option.active;
-            this.toggleOption(option);
+        // Keep track of network connectivity and update API if anything was only saved locally
+        this.subscriptions.push(this.connectivityService.isConnected$.subscribe(isConnected => {
+            this.isConnected = isConnected;
+            if (isConnected && this.apiUpdateNeeded) {
+                this.save();
+            }
+        }));
+        // Get the last saved flooringState and initialize the SVG appropriatly
+        const flooringStateJson = localStorage.getItem('flooringState');
+        if (flooringStateJson) {
+            this.flooringState = JSON.parse(flooringStateJson) as FlooringState;
+        } else {
+            this.flooringState = { ...INITIAL_FLOORING_STATE };
         }
+        this.initSvg();
         // Add mousewheel event listner to control svg scale
         $('#floorplan').on('mousewheel', (e: any) => {
             const stepping = 20;
@@ -58,6 +64,42 @@ export class FloorComponent implements OnInit {
                 floorplan.css('height', parseInt(height, 10) + stepping + 'px');
             }
         });
+    }
+
+    initSvg() {
+        this.changeDimension(this.flooringState.dimension);
+        this.changeLevel(this.flooringState.level);
+        // Loop through flooring zones setting their initial SVG visibility
+        for (const flooringZone of this.flooringState.flooringZones) {
+            // The function will toggle the active value, but this one time we do not want it changed
+            this.toggleFlooringZones(flooringZone, flooringZone.type);
+        }
+        // Loop through options setting their initial default visibility
+        for (const option of this.flooringState.options) {
+            // The function will toggle the active value, but this one time we do not want it changed
+            option.active = !option.active;
+            this.toggleOption(option);
+        }
+    }
+
+    reset() {
+        this.flooringState = { ...INITIAL_FLOORING_STATE };
+        this.initSvg();
+        localStorage.removeItem('flooringState');
+        console.log(`Flooring state reset`);
+    }
+
+    save() {
+        localStorage.setItem('flooringState', JSON.stringify(this.flooringState));
+        if (this.isConnected) {
+            this.toastrService.success('Flooring state saved to API', 'Save Flooring');
+            this.apiUpdateNeeded = false;
+            console.log(`Flooring state saved`);
+        } else {
+            this.toastrService.success('Flooring state changes saved locally since no Internet connection is currently available.  Once connected, changes will be uploaded', 'Save Flooring');
+            this.apiUpdateNeeded = true;
+            console.log(`Offline - Flooring state changes saved locally.  Once connected, changes will be uploaded`);
+        }
     }
 
     toggleFlooringZones(zone: FloorZone, type: string): void {
@@ -111,12 +153,12 @@ export class FloorComponent implements OnInit {
     }
 
     changeDimension(dimension: boolean): void {
-        this.dimension = dimension;
+        this.flooringState.dimension = dimension;
         $('.dimension').css('opacity', dimension ? 1 : 0);
     }
 
     changeLevel(level: number): void {
-        this.level = level;
+        this.flooringState.level = level;
         $('.level1').css('opacity', level === 1 ? 1 : 0);
         $('.level2').css('opacity', level === 2 ? 1 : 0);
         $('.level3').css('opacity', level === 3 ? 1 : 0);

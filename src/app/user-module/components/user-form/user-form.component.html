@@ -66,9 +66,9 @@
             </div>
         </div>
         <div style="height:10px;"></div>
-        <button class="btn btn-success" [disabled]="userForm.pristine || userForm.invalid" (click)="saveForm()"><i
-                class="fa fa-check"></i> Save</button>
-        <button class="btn btn-success" [disabled]="userForm.pristine" (click)="cancelForm()"><i class="fa fa-check"></i>
+        <button class="btn btn-success" [disabled]="userForm.pristine || userForm.invalid" (click)="saveForm()"><i class="fa fa-check"></i> Save</button>
+        &nbsp;
+        <button class="btn btn-success" [disabled]="userForm.pristine" (click)="cancelForm()"><i class="fa fa-times"></i>
             Cancel</button>
         <div class="hidden-md-up" style="height:20px;"></div>
         <!--Only show when user and address forms are stacked vertically-->

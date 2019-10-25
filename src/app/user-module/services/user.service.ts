@@ -22,23 +22,31 @@ export class UserService {
 
     public getUsers(force: boolean = false): Observable<User[]> {
         if (force || this.users.getValue().length === 0 || Date.now() - this._lastUserDataRetreivalTime > environment.dataCaching.userData) {
-            combineLatest([
-                this.http.get<Address[]>(environment.apiUrl + 'addresses.json'),
-                this.http.get<User[]>(environment.apiUrl + 'users.json')
-            ]).pipe(
-                retry(3),
-                map(([addresses, users]) => {
-                    users.forEach(user => user.addresses = addresses.filter(a => user.addressIds.includes(a.id)));
-                    return users;
-                }),
-                tap((users: User[]) => {
-                    this._lastUserDataRetreivalTime = Date.now();
-                    // Caller can subscribe to users$ to retreive the users any time they are updated
-                    this.users.next(users);
-                    console.log(`GET users`);
-                }),
-                catchError(this.handleError)
-            ).subscribe();
+            // For the purpose of this demo not having a real backend API, we will only get from JSON file when nothing exists in localStorage
+            const usersJson = localStorage.getItem('users');
+            if (usersJson) {
+                const users = JSON.parse(usersJson) as User[];
+                this.users.next(users);
+                console.log(`GET users`);
+            } else {
+                combineLatest([
+                    this.http.get<Address[]>(environment.apiUrl + 'addresses.json'),
+                    this.http.get<User[]>(environment.apiUrl + 'users.json')
+                ]).pipe(
+                    retry(3),
+                    map(([addresses, users]) => {
+                        users.forEach(user => user.addresses = addresses.filter(a => user.addressIds.includes(a.id)));
+                        return users;
+                    }),
+                    tap((users: User[]) => {
+                        this._lastUserDataRetreivalTime = Date.now();
+                        // Caller can subscribe to users$ to retreive the users any time they are updated
+                        this.users.next(users);
+                        console.log(`GET users`);
+                    }),
+                    catchError(this.handleError)
+                ).subscribe();
+            }
         }
         return this.users$;
     }
@@ -59,14 +67,12 @@ export class UserService {
         return this.states$;
     }
 
-    public updateUsers(): Observable<boolean> {
+    public updateUser(user: User): Observable<boolean> {
+        // Since we don't have a backend API in this demo, we will use localStorage instead
         const users = this.users.getValue();
-        const modifiedUsers = users.filter(u => u.isDirty === true);
-        if (modifiedUsers.length > 0) {
-            // Simulate saving modifiedUsers back to API
-            modifiedUsers.forEach(u => u.isDirty = false);
-            this.users.next(users);
-        }
+        users.map(u => user.id === u.id ? user : u);
+        localStorage.setItem('users', JSON.stringify(users));
+        this.users.next(users);
         return of(true);
     }
 

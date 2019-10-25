@@ -24,6 +24,8 @@ export class AddressFormComponent implements OnInit, OnDestroy {
             this.formAddress = {
                 ...address
             };
+        } else {
+            this.formAddress = null;
         }
     }
 
