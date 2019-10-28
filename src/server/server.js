@@ -19,14 +19,7 @@ app.route('/api/notifications').post(sendNotification);
 
 function sendNotification(req, res) {
     var allSubscriptions = [ // This would normally come from a database and contain subscriptions from every customer
-        {
-            "endpoint":"https://fcm.googleapis.com/fcm/send/fIg349CZ4Jg:APA91bHjG2UHvgDgS7PBz_gwGpY0M49rcvDOaHx3URki80j3QeUfy8SyuvfNCPaor5dne7DfjnhVq3vVw2ovXNsG0OLBtL0pR8hCfcQlsQY0Su45qncMZij1BP7Wy64C4RgRXi4a0FOO",
-            "expirationTime":null,
-            "keys":{
-                "p256dh":"BGQ03cZz9Apc1wZT_p6ZoPdkd6JUP07XdB0JeMuZjmYwUIx0IqdU1yimyCzgGHM85-X6X3S728XtJZXv_vxumcA",
-                "auth":"PBQmWyz0rov4QqurjQE7RQ"
-            }
-        }
+        {"endpoint":"https://fcm.googleapis.com/fcm/send/fQji9CXZVcs:APA91bEkBAvmu6LvcZ15G0YEC4Oi7KDgOzhvh58efPrX5HVxI8h2Me3i-KNaGMvA3QWyP1UEQsQzEVVLfbNOKwaEpCQKi63GKWKfJ81sJVF2do079vzB7mnBuRpaY7-1Cy9_kCzIiE0E","expirationTime":null,"keys":{"p256dh":"BCbQqg_94lRR5bPVXrzfSJhc-cDWCeb80exl7I-dNj49lTZBmo67SzIMzdpyl2_r2zvzkg2EWND5aDPzn7Xg8Ws","auth":"vLBjUYkw4_YRaq2l_IrbTQ"}}
     ];
     console.log('Total Subscriptions', allSubscriptions.length);
     var notificationPayload = {

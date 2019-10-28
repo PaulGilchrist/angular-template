@@ -44,7 +44,8 @@
               "node_modules/dragula/dist/dragula.js",
               "node_modules/pdfmake/build/pdfmake.js",
               "node_modules/pdfmake/build/vfs_fonts.js"
-            ]
+            ],
+            "webWorkerTsConfig": "tsconfig.worker.json"
           },
           "configurations": {
             "qa": {
@@ -153,7 +154,8 @@
           "options": {
             "tsConfig": [
               "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
+              "src/tsconfig.spec.json",
+              "tsconfig.worker.json"
             ],
             "exclude": [
               "**/node_modules/**"

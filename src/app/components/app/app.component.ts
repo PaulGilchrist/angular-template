@@ -38,30 +38,43 @@ export class AppComponent implements OnInit {
             }
         });
         // If the user has not already answered, ask them if they would like to receive notifications
-        this.swPush.requestSubscription({
-            serverPublicKey: environment.vapid.publicKey
-        })
-        .then(subscription => {
-            const notificationSubscription = JSON.stringify(subscription);
-            localStorage.setItem('notificationSubscription', notificationSubscription);
-            console.log('Successfully subscribed to notifications');
-            console.log(notificationSubscription);
-        })
-        .catch(error => {
-            if (Notification.permission === 'denied') {
-                console.warn('Permission for notifications was denied');
-            } else {
-                console.error('Unable to subscribe to notifications', error);
-            }
-         });
-        this.swPush.notificationClicks.subscribe(
-            ({action, notification}) => {
-                // These will only execute if the application is already open
-                // To execute when application is closed, add code to ./sw-worker.js instead of here
-                switch (action) {
+        if (environment.production) {
+            this.swPush.requestSubscription({
+                serverPublicKey: environment.vapid.publicKey
+            })
+            .then(subscription => {
+                const notificationSubscription = JSON.stringify(subscription);
+                localStorage.setItem('notificationSubscription', notificationSubscription);
+                console.log('Successfully subscribed to notifications');
+                console.log(notificationSubscription);
+            })
+            .catch(error => {
+                if (Notification.permission === 'denied') {
+                    console.warn('Permission for notifications was denied');
+                } else {
+                    console.error('Unable to subscribe to notifications', error);
                 }
+            });
+            this.swPush.notificationClicks.subscribe(
+                ({action, notification}) => {
+                    // These will only execute if the application is already open
+                    // To execute when application is closed, add code to ./sw-worker.js instead of here
+                    switch (action) {
+                    }
+                }
+            );
+        }
+        // Scaffolded code to use worker
+        if (typeof Worker !== 'undefined') {
+            const worker = new Worker('./../../app.worker', { type: 'module' });
+            worker.onmessage = ({ data }) => {
+                console.log(`page got message: ${data}`);
+            };
+            worker.postMessage('hello');
+            } else {
+            // Web Workers are not supported in this environment.
+            // You should add a fallback so that your program still executes correctly.
             }
-        );
     }
 
 }
