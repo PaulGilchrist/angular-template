@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Location } from '@angular/common';
 import { Subscription } from 'rxjs';
 
-import { AngularConnectivityService } from 'angular-connectivity'; // My NPM Package
+import { ConnectivityService } from 'angular-connectivity'; // My NPM Package
 import { AdalService } from 'adal-angular4';
 
 @Component({
@@ -17,7 +17,7 @@ export class NavTopComponent implements OnInit, OnDestroy {
 
   constructor(
     public adalService: AdalService,
-    private connectivityService: AngularConnectivityService,
+    private connectivityService: ConnectivityService,
     private _location: Location
   ) {}
 

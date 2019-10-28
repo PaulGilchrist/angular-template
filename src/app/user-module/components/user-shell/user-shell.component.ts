@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 
 import { ToastrService } from 'ngx-toastr';
 
-import { AngularConnectivityService } from 'angular-connectivity'; // My NPM Package
+import { ConnectivityService } from 'angular-connectivity'; // My NPM Package
 import { Address } from '../../models/address.model';
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
@@ -21,7 +21,7 @@ export class UserShellComponent implements OnDestroy, OnInit {
     users: User[] = [];
     userSubscription: Subscription;
 
-    constructor(private connectivityService: AngularConnectivityService, private toastrService: ToastrService, public _userService: UserService) { }
+    constructor(private connectivityService: ConnectivityService, private toastrService: ToastrService, public _userService: UserService) { }
 
     ngOnDestroy(): void {
         // Unsubscribe all subscriptions to avoid memory leak

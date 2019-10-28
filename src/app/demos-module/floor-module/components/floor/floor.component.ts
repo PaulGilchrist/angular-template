@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 
 import { ToastrService } from 'ngx-toastr';
 
-import { AngularConnectivityService } from 'angular-connectivity'; // My NPM Package
+import { ConnectivityService } from 'angular-connectivity'; // My NPM Package
 import { FlooringState } from '../../models/flooring-state.model';
 import { INITIAL_FLOORING_STATE } from '../../data/initial-flooring-state.data';
 
@@ -25,7 +25,7 @@ export class FloorComponent implements OnDestroy, OnInit {
     isConnected = true;
     subscriptions: Subscription[] = [];
 
-    constructor(private connectivityService: AngularConnectivityService, private toastrService: ToastrService) { }
+    constructor(private connectivityService: ConnectivityService, private toastrService: ToastrService) { }
 
     ngOnDestroy(): void {
         // Unsubscribe all subscriptions to avoid memory leak

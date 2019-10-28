@@ -8,7 +8,7 @@ import { AdalService, AdalGuard } from 'adal-angular4';
 import { ToastrModule } from 'ngx-toastr';
 
 // My NPM packages
-import { AngularConnectivityService } from 'angular-connectivity';
+import { ConnectivityService } from 'angular-connectivity';
 
 /* App Root */
 import { AppComponent } from './components/app/app.component';
@@ -53,7 +53,7 @@ import { environment } from '../environments/environment';
     AdalService,
     AdalGuard,
     AppInsightsService,
-    AngularConnectivityService,
+    ConnectivityService,
     { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true }, // Time how long each http rerquests takes
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } // Add token to all API requests
   ]
