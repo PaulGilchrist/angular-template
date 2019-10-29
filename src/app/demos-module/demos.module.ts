@@ -41,7 +41,7 @@ import { BlockchainService } from './services/blockchain.service';
             { path: 'graph', component: GraphDemoComponent },
             // // Lazy Loading
             { path: 'floor', loadChildren: () => import('./floor-module/floor.module').then(m => m.FloorModule) },
-            { path: 'pdf', loadChildren: () => import('./pdf-module/pdf.module').then(m => m.PdfModule) },
+            { path: 'other', loadChildren: () => import('./other-module/other.module').then(m => m.OtherModule) },
         ])
     ],
     providers: [

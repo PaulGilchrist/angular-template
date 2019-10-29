@@ -1,0 +1,15 @@
+import { Component } from '@angular/core';
+@Component({
+    selector: 'app-home',
+    styleUrls: ['./home.component.css'],
+    templateUrl: './home.component.html'
+})
+export class HomeComponent {
+
+    _modalActive = false;
+
+    viewModal(): void {
+        this._modalActive = true;
+    }
+
+}

@@ -1,0 +1,12 @@
+<div>
+    This button demonstrates multi-threading support using web workers to determine all prime numbers from 0 to 1,000,000 without impacting UI responsiveness.  As this is a background CPU intesnive process, results will only be shown in the console, and work will continue even after leaving this page (until terminated).<br/><br/>
+    {{primeNumber}}
+    <br><br>
+    <input *ngIf="stateService.state.workerStatus==='paused'" (click)="resumeWorker();" type="button" class="btn btn-primary" value="Resume Worker">
+    <input *ngIf="stateService.state.workerStatus==='running'" (click)="pauseWorker();" type="button" class="btn btn-warning" value="Pause Worker">
+    <span *ngIf="stateService.state.workerStatus==='running' || stateService.state.workerStatus==='paused'">
+        &nbsp;<input (click)="terminateWorker();" type="button" class="btn btn-danger" value="Terminate Worker">
+    </span>
+    <input *ngIf="stateService.state.workerStatus==='stopped'" (click)="calculatePrimes();" type="button" class="btn btn-primary" value="Calculate Primes">
+    <span *ngIf="stateService.state.workerStatus==='running'">&nbsp;See prime calculation results in the console (F12)</span>
+</div>

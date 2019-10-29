@@ -3,9 +3,9 @@ import { browser, by, element, ExpectedConditions } from 'protractor';
 if (browser.params.runAllTests) {
     describe('PDF Page', () => {
         it('Page should load', () => {
-            browser.get('/demos/pdf').then(() => {
+            browser.get('/demos/other').then(() => {
                 // element(by.cssContainingText('a', 'PDF')).click();
-                expect(browser.getCurrentUrl()).toContain('/demos/pdf');
+                expect(browser.getCurrentUrl()).toContain('/demos/other');
             });
         });
         // it('Selecting "View PDF" button opens new window with PDF generated', () => {

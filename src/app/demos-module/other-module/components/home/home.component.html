@@ -1,0 +1,36 @@
+<div>
+    <div class='card'>
+        <div class='card-body'>
+            <h3 class="card-title">Web Worker Demo</h3>
+            <div class="card-text indent">
+                <app-web-worker-demo></app-web-worker-demo>
+            </div>
+        </div>
+    </div>
+    <div class='card'>
+        <div class='card-body'>
+            <h3 class="card-title">PDF Generation Demo</h3>
+            <div class="card-text indent">
+                <app-pdf-demo></app-pdf-demo>
+            </div>
+        </div>
+    </div>
+    <div class='card'>
+        <div class='card-body'>
+            <h3 class="card-title">Blockchain Demo</h3>
+            <div class="card-text indent">
+                <app-blockchain-demo></app-blockchain-demo>
+            </div>
+        </div>
+    </div>
+    <div class='card'>
+        <div class='card-body'>
+            <h3 class="card-title">Modal Generation Demo</h3>
+            <div class="card-text indent">
+                This button demonstrates dynamic creation of a Modal dialog box using standard Bootstrap control. Additional inputs and outputs or service connections can be used with this model as needed for form support or other more advanced usage.<br/><br/>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" (click)="viewModal()">View Modal</button>
+                <app-modal-demo [id]="'myModal'" [active]="_modalActive"></app-modal-demo>
+            </div>
+        </div>
+    </div>
+</div>

@@ -17,11 +17,6 @@ export interface DocImage {
 })
 export class PdfDemoComponent {
     overviewPdf: any = PDF_OVERVIEW; // Full docuemnt
-    _modalActive = false;
-
-    viewModal(): void {
-        this._modalActive = true;
-    }
 
     viewPdf(name: string): void {
         pdfMake.createPdf(this.overviewPdf).download('demo.pdf');
