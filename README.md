@@ -1,4 +1,4 @@
-## Angular, TypeScript, Bootstrap, and Visual Studio Code
+# Angular, TypeScript, Bootstrap, and Visual Studio Code
 
 This site was put together to demonstrate code examples for Angular, Typescript, and Bootstrap developed in a Visual Studio Code hosted IDE. This combination of tools allows for a browser and device agnostic highly responsive application. Open standard tools such as NPM (node package manager), Gulp (task runner), Jasmine (unit testing), Karma (test runner), and Git (version control) are also leveraged. This project runs equally well using .Net Core or Node for hosting and supports not just Visual Studio Code, but also Visual Studio, Sublime, Atom, and more. Tools like BrowserSync detect code changes, automatically re-compile, unit testing, and refresh all connected browsers improving development and debugging time efficiency.
 
@@ -6,21 +6,24 @@ Angular’s powerful client side JavaScript library is the key to this applicati
 
 As Angular, Typescript, Bootstrap, or Visual Studio Code changes or best practices evolve, this template will be updates to ensure it always remains a good starting point for any new project.
 
-### Architecture Diagram
+## Architecture Diagram
+
 ![Architecture Diagram](https://github.com/PaulGilchrist/AngularTemplate/blob/master/src/AngularTemplate/wwwroot/assets/architecture-diagram.png)
 
-### Module Scope: Page Example
+## Module Scope: Page Example
+
 ![Architecture Diagram](https://github.com/PaulGilchrist/AngularTemplate/blob/master/src/AngularTemplate/wwwroot/assets/module-scope.png)
 
 [Learn more about Angular 2.0 development](https://angular.io/)
 Learn more about [Typescript](http://www.typescriptlang.org/), [Bootstrap](http://getbootstrap.com/), or [Visual Studio 2015](https://www.visualstudio.com/en-us/visual-studio-homepage-vs.aspx)
 
-### Getting Started
+## Getting Started
+
 This template is designed to work primarily on Visual Studio Code and Visual Studio 2015-2017, but has been developed using all cross-platform libraries and can be hosted with either Node or .Net core.  This means code editors such as Atom, Sublime, or even something as simple as NotePad++ could be used.  Even if this template will be hosted using .Net core or another non Node server, NodeJS will still need to be installed to support package management (npm), task workflows (gulp), and their supporting tools.  You can download and install NodeJS from here…
 
 [https://nodejs.org](https://nodejs.org)
 
-After installing node, open a command prompt at the project root folder (src\AngularTemplate) and run “npm install”.  This command will read the “package.json” file and download and install all the referenced packages. At this point, the application will run using a mock service for supplying user and address data.  The template also comes with a service that gets its data from a backend API instead of mocking the data.  If you are also implementing the GitHub solution named <a href="https://github.com/PaulGilchrist/ApiTemplate">“ApiTemplate”</a>, you can follow these steps to switch from mock data to API accessed data:
+After installing node, open a command prompt at the project root folder (src\AngularTemplate) and run “npm install”.  This command will read the “package.json” file and download and install all the referenced packages. At this point, the application will run using a mock service for supplying user and address data.  The template also comes with a service that gets its data from a backend API instead of mocking the data.  If you are also implementing the GitHub solution named [ApiTemplate](https://github.com/PaulGilchrist/ApiTemplate), you can follow these steps to switch from mock data to API accessed data:
 
 1. From the folder “app/services”, rename “user.service.ts” to “mock-user.service.ts”
 2. From the folder “app/services”, rename “api-user.service.ts” to “user.service.ts”
@@ -31,7 +34,8 @@ This application also supports OAuth 2.0 implicit flow token for communication w
 
 Once you have the application running, make sure to check out the Help page for further usage details.
 
-#### Angular's Value Proposition
+### Angular's Value Proposition
+
 * Better supports stateless server design and its associated horizontal scalability
 * Better supports scalability through offloading server processing
 * Better supports SQL scalability as changes can remain on the client between pages, and only sent to the server when needing to persist beyond the session
@@ -46,54 +50,51 @@ Once you have the application running, make sure to check out the Help page for 
 * Best client framework when wanting to extend JavaScript with TypeScript
 
 #### Template Features - Angular
-* One way binding {{}}
-* Event binding ()
-* Target property binding []
-* Two way binding [()]
-* Structural directives *
-* Local template variables #
-* Components
-* Component Scoped CSS
-* Injectors
-* Lifecycle Hooks
-* Modules
-* Routers (parent and child)
-* Services
-* Custom Pipes
-* Form Validation
+
 * AJAX calls
 * Async Observables
+* Components
+* Component Scoped CSS
+* Custom Pipes
+* Event binding ()
+* Form Validation
+* Injectors
+* Lifecycle Hooks
+* Local template variables #
+* Modules (with lazy loading)
+* One way binding {{}}
+* Routers (parent and child)
+* Services
+* Service Workers - PWA - Offline use
+* Structural directives *
+* Target property binding []
+* Two way binding [()]
+* Web Workers
 
 #### Template Features - Other
+
 * Animations and Transitions
 * Auto re-compile, re-test, browser refresh on change
 * Azure/Git continuous deployment (dev\master)
 * Bootstrap grids, forms, nav, panels, tables, etc.
 * Drag and Drop
+* Form dirty checking
 * Graphs, charts, and dashboards (using D3)
-* Gulp post build automation
 * Header scroll awareness
+* Help page discussing all usage details
+* Internet connectivity checking
 * Mock data support
+* Modal component
 * OAuth bearer tokens
-* PDF Printing
+* PDF printing
 * RegEx form validation
 * Responsive sidebar
 * SVG manipulation via CSS
 * Table caching, sorting, and search filtering
-* TypeScript
-
-#### Recently Added
-* Webpack module loading with minification, mangling, bundling
-* Hot reload debugging
-* Module lazy loading
-* Karma/Jasmine unit testing
-* Help page discussing all usage details
-* Form dirty checking
-* Progress bar component
-* Modal component
-* Catch leaving page containing changed data, prompting for bulk save
+* Web Push Notifications
 
 #### To Do List
+
 * API endpoint to receive client errors.  Abstract all logging through client service.
 * API feedback endpoint and client side UI
 * Document key files and their purpose (ex: gulpfile.js, karma.conf.js, package.json, tsconfig.json, etc.)
@@ -101,25 +102,13 @@ Once you have the application running, make sure to check out the Help page for 
 * Ahead of Time compilation (when supported in webpack)
 * Service interface definitions to ensure mock data interface matches production interface
 
-#### Azure Hosting Requirements
-* Application App Settings (Project=build)
-    Required so Azure knows what folder to start node from
-
-# AngularTemplate
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
-
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.  This is required if testing the service worker capabilities.
 
 ## Running unit tests
 
