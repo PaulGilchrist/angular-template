@@ -14,6 +14,7 @@ export class NavTopComponent implements OnInit, OnDestroy {
     shrinkNavbar = false;
     isConnected = true;
     subscriptions: Subscription[] = [];
+    width =  window.innerWidth;
 
   constructor(
     public adalService: AdalService,
@@ -30,6 +31,7 @@ export class NavTopComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.adalService.handleWindowCallback();
     this.subscriptions.push(this.connectivityService.isConnected$.subscribe(isConnected => this.isConnected = isConnected));
+    window.onresize = () => this.width = window.innerWidth;
   }
 
   ngOnDestroy(): void {

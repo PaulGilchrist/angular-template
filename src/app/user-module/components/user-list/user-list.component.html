@@ -1,20 +1,20 @@
 ﻿<div class="animated slideInUp">
     <div class="card">
-        <div class="card-header bg-dark text-light d-flex">
-	        <span style="font-size: 1.5em" class="mr-auto">User List&nbsp;<span class="badge-light rounded">{{users.length}}</span></span>
+        <div class="card-header bg-dark text-light d-flex align-items-center">
+	        <h5 class="mr-auto">User List&nbsp;<span class="badge-light rounded">{{users.length}}</span></h5>
 			<form class="form-inline">
 				<div class="input-group">
 					<div class="input-group-prepend">
 						<span class="input-group-text"><i class="fa fa-search fa-fw"></i></span>
 					</div>
-					<input [(ngModel)]="searchString" name="searchString" type="text" class="form-control" placeholder="Search String" aria-label="Search String">
+					<input [(ngModel)]="searchString" name="searchString" type="text" class="form-control" [class.form-control-sm]="shrink" placeholder="Search String" aria-label="Search String">
 				</div>
 			</form>
 			&nbsp;&nbsp;<i class="fa fa-fw align-self-center" [class.fa-chevron-right]="!isOpen" [class.fa-chevron-down]="isOpen" (click)="isOpen=!isOpen"></i>
         </div>
 		<div class="card-body" [class.collapse]="!isOpen">
 			<div *ngIf='users.length > 0' class="table-responsive">
-				<table class="table table-striped table-hover" style="cursor:pointer;">
+				<table class="table table-striped table-hover" [class.table-sm]="shrink" style="cursor:pointer;">
 					<thead>
 						<tr>
 							<th scope="col" (click)="changeSort('firstName')">
@@ -36,7 +36,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr *ngFor="let user of users | filterObjects:searchString | sortObjects:sortType:sortReverse" (click)="selectUser(user)"[class.bg-secondary]="user === selectedUser" [class.text-light]="user === selectedUser" [class.bold]="user.isDirty">
+						<tr *ngFor="let user of users | filterObjects:searchString | sortObjects:sortType:sortReverse" (click)="selectUser(user)" [class.bg-secondary]="user === selectedUser" [class.text-light]="user === selectedUser" [class.bold]="user.isDirty">
 							<td>{{user.firstName}}</td>
 							<td>{{user.lastName}}</td>
 							<td>{{user.email}}</td>

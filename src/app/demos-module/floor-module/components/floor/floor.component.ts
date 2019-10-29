@@ -7,7 +7,6 @@ import { ConnectivityService } from 'angular-connectivity'; // My NPM Package
 import { FlooringState } from '../../models/flooring-state.model';
 import { INITIAL_FLOORING_STATE } from '../../data/initial-flooring-state.data';
 
-
 import * as $ from 'jquery';
 
 // We only put interfaces in the models folder when they are reused across components
@@ -23,6 +22,7 @@ export class FloorComponent implements OnDestroy, OnInit {
     apiUpdateNeeded = false;
     flooringState: FlooringState = null;
     isConnected = true;
+    shrink =  window.innerWidth < 768;
     subscriptions: Subscription[] = [];
 
     constructor(private connectivityService: ConnectivityService, private toastrService: ToastrService) { }
@@ -50,20 +50,24 @@ export class FloorComponent implements OnDestroy, OnInit {
         this.initSvg();
         // Add mousewheel event listner to control svg scale
         $('#floorplan').on('mousewheel', (e: any) => {
-            const stepping = 20;
-            const floorplan: any = $('#floorplan');
-            let width: string = floorplan.css('width');
-            width = width.substring(0, width.length - 2); // remove px
-            let height: string = floorplan.css('height');
-            height = height.substring(0, height.length - 2); // remove px
-            if (e.originalEvent.wheelDelta / 120 > 0) {
-                floorplan.css('width', parseInt(width, 10) - stepping + 'px');
-                floorplan.css('height', parseInt(height, 10) - stepping + 'px');
-            } else {
-                floorplan.css('width', parseInt(width, 10) + stepping + 'px');
-                floorplan.css('height', parseInt(height, 10) + stepping + 'px');
-            }
+            if (e.altKey === true) {
+                const stepping = 20;
+                const floorplan: any = $('#floorplan');
+                let width: string = floorplan.css('width');
+                width = width.substring(0, width.length - 2); // remove px
+                let height: string = floorplan.css('height');
+                height = height.substring(0, height.length - 2); // remove px
+                if (e.originalEvent.wheelDelta / 120 > 0) {
+                    floorplan.css('width', parseInt(width, 10) - stepping + 'px');
+                    floorplan.css('height', parseInt(height, 10) - stepping + 'px');
+                } else {
+                    floorplan.css('width', parseInt(width, 10) + stepping + 'px');
+                    floorplan.css('height', parseInt(height, 10) + stepping + 'px');
+                }
+        }
         });
+        // Track screen size  changes to adjust button size
+        window.onresize = () => this.shrink = window.innerWidth < 768;
     }
 
     initSvg() {

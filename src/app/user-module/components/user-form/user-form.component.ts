@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { User } from '../../models/user.model';
 
@@ -7,11 +7,11 @@ import { User } from '../../models/user.model';
     styleUrls: ['./user-form.component.scss'],
     templateUrl: './user-form.component.html'
 })
-export class UserFormComponent {
+export class UserFormComponent implements OnInit {
 
     inputUser: User;
     formUser: User;
-
+    shrink =  window.innerWidth < 768;
     status = 'new';
 
     @Input() set user(user: User) {
@@ -27,6 +27,11 @@ export class UserFormComponent {
 
     // Bubble up that the form was saved
     @Output() readonly save = new EventEmitter<User>();
+
+    ngOnInit(): void {
+        // Track screen size  changes to adjust button size
+        window.onresize = () => this.shrink = window.innerWidth < 768;
+    }
 
     saveForm(): void {
         Object.assign(this.inputUser, this.formUser);

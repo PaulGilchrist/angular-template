@@ -10,8 +10,11 @@
     -webkit-animation-duration: 0.5s;
     animation-duration: 0.5s;
 }
+main {
+    padding-top: 70px;
+}
 @media (min-width: 768px) {
-    main {
+    /* main {
         padding-top: 80px;
-    }
+    } */
 }

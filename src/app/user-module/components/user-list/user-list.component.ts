@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { User } from '../../models/user.model';
 
@@ -6,7 +6,7 @@ import { User } from '../../models/user.model';
     selector: 'app-user-list',
     templateUrl: './user-list.component.html'
 })
-export class UserListComponent {
+export class UserListComponent implements OnInit {
     @Output() readonly choose = new EventEmitter<User>();
     id: string;
 
@@ -16,8 +16,14 @@ export class UserListComponent {
     sortReverse = false;
     searchString = '';
     selectedUser: User = null;
+    shrink =  window.innerWidth < 768;
 
     @Input() users: User[];
+
+    ngOnInit(): void {
+        // Track screen size  changes to adjust button size
+        window.onresize = () => this.shrink = window.innerWidth < 768;
+    }
 
     changeSort(newSortType: string) {
         if (newSortType === this.sortType) {

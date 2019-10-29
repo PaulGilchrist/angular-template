@@ -1,10 +1,9 @@
 <div class="d-flex">
-    <!--Hide sidebar nav when screen size gets small-->
-    <div *ngIf='showNav' class="w-20 align-items-start">
+    <div *ngIf='showNav'>
         <i (click)='toggleNav()' class="fa fa-chevron-left"></i><br/>
         <app-help-nav></app-help-nav>
     </div>
-    <div class="w-100">
+    <div>
         <div *ngIf='!showNav'>
             <i (click)='toggleNav()' class="fa fa-chevron-right"></i>&nbsp;
         </div>

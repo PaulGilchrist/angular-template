@@ -13,6 +13,7 @@ import { Address } from '../../models/address.model';
     templateUrl: './address-form.component.html'
 })
 export class AddressFormComponent implements OnInit, OnDestroy {
+    shrink =  window.innerWidth < 768;
     stateSubscription: Subscription;
     states: State[] = [];
     formAddress: Address;
@@ -38,6 +39,8 @@ export class AddressFormComponent implements OnInit, OnDestroy {
         this.stateSubscription = this._userService.getStates().subscribe(
             states => this.states = states
         );
+        // Track screen size  changes to adjust button size
+        window.onresize = () => this.shrink = window.innerWidth < 768;
     }
 
     ngOnDestroy() {

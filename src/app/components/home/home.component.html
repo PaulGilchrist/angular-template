@@ -20,13 +20,13 @@
 		<input (click)="router.navigate(['help']);" type="button" class="btn btn-primary animated flash" value="Getting Started">&nbsp;
         <br />
 		<br />
-		<div class="d-flex flex-row justify-content-around align-items-center">
-			<div class="w-60">
-				<h4>Module Architecture</h4>
+		<div class="d-flex flex-wrap justify-content-around align-items-center">
+			<div class="mb-3">
+				<h4 class="justify-content-center">Module Architecture</h4>
 				<img class="img-fluid rounded animated slideInLeft" src="./assets/architecture-diagram.png" />
 				<br />
 			</div>
-			<div class="w-30">
+			<div class="mb-2">
 				<h4>Module Scope: Page Example</h4>
 				<img class="img-fluid rounded animated slideInRight" src="./assets/module-scope.png" />
 				<br />
@@ -43,32 +43,32 @@
 			</div>
 		</div>
 		<br>
-		<div class="row">
-			<div class="card mb-4">
-				<div class="card-body">
-					<h4 class="card-title">Angular's Value Proposition</h4>
-					<ul>
-						<li>Better supports stateless server design and its associated horizontal scalability</li>
-						<li>Better supports scalability through offloading server processing</li>
-						<li>Better supports SQL scalability as changes can remain on the client between pages, and only sent to the
-							server when needing to persist beyond the session</li>
-						<li>Built in validation and dirty checking ensure data is not passed back to the server that did not change or
-							that did not meet quality requirements</li>
-						<li>Better supports a more rapidly responding and interactive client experience</li>
-						<li>Better supports separation of concerns where front-end is for presentation, and backend is for data access</li>
-						<li>Extremely readable HTML, and complete separation of model, view and controller functionality</li>
-						<li>Allows natural syntax for building a page from components, and even nesting components inside other
-							components</li>
-						<li>Built in support for client side unit testing</li>
-						<li>Components isolation model lends itself nicely to unit testing</li>
-						<li>CSS scoping at the component level and not just the page level</li>
-						<li>Best client framework when wanting to extend JavaScript with TypeScript</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="card col mr-4 mb-4">
+        <div class="d-flex flex-wrap justify-content-center mb-2">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Angular's Value Proposition</h4>
+                    <ul>
+                        <li>Better supports stateless server design and its associated horizontal scalability</li>
+                        <li>Better supports scalability through offloading server processing</li>
+                        <li>Better supports SQL scalability as changes can remain on the client between pages, and only sent to the
+                            server when needing to persist beyond the session</li>
+                        <li>Built in validation and dirty checking ensure data is not passed back to the server that did not change or
+                            that did not meet quality requirements</li>
+                        <li>Better supports a more rapidly responding and interactive client experience</li>
+                        <li>Better supports separation of concerns where front-end is for presentation, and backend is for data access</li>
+                        <li>Extremely readable HTML, and complete separation of model, view and controller functionality</li>
+                        <li>Allows natural syntax for building a page from components, and even nesting components inside other
+                            components</li>
+                        <li>Built in support for client side unit testing</li>
+                        <li>Components isolation model lends itself nicely to unit testing</li>
+                        <li>CSS scoping at the component level and not just the page level</li>
+                        <li>Best client framework when wanting to extend JavaScript with TypeScript</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+		<div class="d-flex flex-wrap justify-content-center justify-content-lg-around">
+			<div class="card mr-2 mb-2">
 				<div class="card-body">
 					<h4 class="card-title">Template Features - Angular</h4>
 					<ul>
@@ -95,7 +95,7 @@
 					</ul>
 				</div>
 			</div>
-			<div class="card col mb-4">
+			<div class="card">
 				<div class="card-body">
 					<h4 class="card-title">Template Features - Other</h4>
 					<ul>
