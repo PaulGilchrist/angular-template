@@ -1,0 +1,8 @@
+ol {
+    word-break: break-all;
+    word-wrap: break-word;
+}
+ul {
+    word-break: break-all;
+    word-wrap: break-word;
+}
