@@ -4,13 +4,13 @@
   ],
   "name": "angular-template",
   "description": "Angular Template using npm for packages, gulp as the task runner",
-  "homepage": "https://angular2template.azurewebsites.net",
+  "homepage": "https://angulartemplate.azurewebsites.net",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/PaulGilchrist/AngularTemplate.git"
+    "url": "https://github.com/PaulGilchrist/angular-template.git"
   },
-  "version": "0.0.0",
+  "version": "2.1.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
