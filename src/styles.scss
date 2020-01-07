@@ -23,6 +23,32 @@ h6 { font-size: 1.0em; }
 .w-60 { width: 60%!important; }
 .w-70 { width: 70%!important; }
 
+// Below .element shows how --, var, and calc can be used in standard css reducing the need for scss
+.element {
+  --top: 20%;
+  --bottom: 80%;
+  --gap: 1rem;
+  --offset: calc(var(--gap) / 2);
+}
+
+.element::before {
+  clip-path: polygon(
+    calc(var(--top) + var(--offset)) 0,
+    100% 0,
+    100% 100%,
+    calc(var(--bottom) + var(--offset)) 100%
+  );
+}
+
+.element::after {
+  clip-path: polygon(
+    calc(var(--top) - var(--offset)) 0,
+    calc(var(--bottom) - var(--offset)) 100%,
+    0 100%,
+    0 0
+  );
+}
+
 // Small devices (landscape phones, 576px and up)
 @media only screen and (min-width: 576px) {
     body { font-size: 14px; }

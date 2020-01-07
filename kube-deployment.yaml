@@ -1,14 +1,19 @@
+#Documentation at https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/
 #kubectl version
 #kubectl cluster-info
 #kubectl apply -f kube-deployment.yaml
-#kubectl get deployments angular-deployment
-#kubectl describe deployments angular-deployment
+#Pods are load balanced nodes. Replicasets are the load balanced cluster. Deployments are the combination of all replicasets making up and application
+#Some useful commands include <delete, describe, or get> <deployments, pods, replicasets, or services> [name]
+#Examples
+#   kubectl get deployments angular-deployment
+#   kubectl describe replicasets
 apiVersion: v1
 kind: Service
 metadata:
   name: angular-service
   labels:
     app: angular-service
+    tier: frontend
 spec:
   type: LoadBalancer
   ports:
@@ -31,12 +36,13 @@ spec:
     metadata:
       labels:
         app: angular-pod
+        tier: frontend
     spec:
       containers:
         - name: front-end
           image: paulgilchrist/angular-template
           ports:
-            - containerPort: 80
+            - containerPort: 80 # Must match what the Docker container exposes
           livenessProbe: # Defines the health checking
             tcpSocket: # TCP probe
               port: 80
