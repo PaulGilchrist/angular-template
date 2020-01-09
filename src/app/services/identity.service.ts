@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { AdalService } from 'adal-angular4';
 
 @Injectable()
 export class IdentityService {
     // Adds some minor functionality to the AdalService
-    constructor(private adalService: AdalService) {}
+    constructor(private adalService: AdalService, public router: Router) {}
 
     public getRoles(): string {
         if (this.adalService.userInfo.authenticated) {

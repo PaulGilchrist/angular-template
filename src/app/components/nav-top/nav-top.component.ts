@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Location } from '@angular/common';
+// import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { ConnectivityService } from 'angular-connectivity'; // My NPM Package
@@ -19,7 +20,8 @@ export class NavTopComponent implements OnInit, OnDestroy {
   constructor(
     public adalService: AdalService,
     private connectivityService: ConnectivityService,
-    private _location: Location
+    // private _location: Location,
+    private router: Router
   ) {}
 
   onScroll(event: any): void {
@@ -30,6 +32,11 @@ export class NavTopComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.adalService.handleWindowCallback();
+    const url = localStorage.getItem('url');
+    if (url != null) {
+        localStorage.removeItem('url');
+        this.router.navigateByUrl(url);
+    }
     this.subscriptions.push(this.connectivityService.isConnected$.subscribe(isConnected => this.isConnected = isConnected));
     window.onresize = () => this.width = window.innerWidth;
   }
@@ -39,20 +46,8 @@ export class NavTopComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
 
-  currentPage(path: string): boolean {
-    let result = false;
-    const locationPath = this._location.path();
-    if (path.length === 0) {
-      // Root
-      result = locationPath.length === 0;
-    } else {
-      // Does the current path start with "path"?
-      result = locationPath.indexOf(path) === 0;
-    }
-    return result;
-  }
-
   login(): void {
+    localStorage.setItem('url', this.router.url);
     this.adalService.login();
   }
 
