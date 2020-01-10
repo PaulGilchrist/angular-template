@@ -8,7 +8,7 @@ import { AdalService } from 'adal-angular4';
 
 @Component({
   selector: 'app-nav-top',
-  styleUrls: ['./nav-top.component.css'],
+  styleUrls: ['./nav-top.component.scss'],
   templateUrl: './nav-top.component.html'
 })
 export class NavTopComponent implements OnInit, OnDestroy {

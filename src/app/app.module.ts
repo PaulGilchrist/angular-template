@@ -17,8 +17,6 @@ import { LoggingInterceptor } from './services/logging.interceptor';
 
 // Declarations
 import { AppComponent } from './components/app/app.component';
-import { HomeComponent } from './components/home/home.component';
-import { TokenComponent } from './components/token/token.component';
 import { NavTopComponent } from './components/nav-top/nav-top.component';
 
 // Other
@@ -28,8 +26,6 @@ import { environment } from '../environments/environment';
     bootstrap: [AppComponent],
     declarations: [
         AppComponent,
-        HomeComponent,
-        TokenComponent,
         NavTopComponent
     ],
     exports: [],

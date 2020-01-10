@@ -1,13 +1,11 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AppInsightsService } from '../../services/app-insights.service';
-
-import { environment } from '../../../environments/environment';
+import { AppInsightsService } from '../../../services/app-insights.service';
 
 @Component({
   selector: 'app-home',
-  styleUrls: ['./home.component.css'],
+  styleUrls: ['./home.component.scss'],
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {

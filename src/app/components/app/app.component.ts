@@ -15,10 +15,10 @@ import * as $ from 'jquery';
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
-  constructor(private adalService: AdalService, private appInsightsService: AppInsightsService, public router: Router, private swPush: SwPush) {
-    // init requires object with clientId and tenant properties
-    adalService.init(environment.azureAuthProvider);
-  }
+    constructor(private adalService: AdalService, private appInsightsService: AppInsightsService, public router: Router, private swPush: SwPush) {
+        // init requires object with clientId and tenant properties
+        adalService.init(environment.azureAuthProvider);
+    }
 
     ngOnInit(): void {
         this.appInsightsService.logPageView('app.component', '/');

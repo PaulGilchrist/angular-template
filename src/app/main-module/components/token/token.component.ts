@@ -1,19 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Location } from '@angular/common';
 
 import { AdalService } from 'adal-angular4';
-import { AppInsightsService } from '../../services/app-insights.service';
+import { AppInsightsService } from '../../../services/app-insights.service';
 
 @Component({
   selector: 'app-token',
-  styleUrls: ['./token.component.css'],
+  styleUrls: ['./token.component.scss'],
   templateUrl: './token.component.html'
 })
 export class TokenComponent implements OnInit {
   constructor(
-    private _location: Location,
-    private _router: Router,
     public adalService: AdalService,
     private appInsightsService: AppInsightsService
   ) {}
