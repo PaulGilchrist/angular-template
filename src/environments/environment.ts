@@ -10,10 +10,8 @@ export const environment = {
     },
     azureAuthProvider: {
         aadInstance: 'https://login.microsoftonline.com/{0}',
-        cacheLocation: 'localStorage',
         clientId: 'bd065891-b008-4968-9b26-5f2bcb9c1b66',
         domainHint: 'pulte.com',
-        navigateToLoginRequestUrl: false,
         tenant: 'pulte.onmicrosoft.com'
     },
     dataCaching: { // milliseconds data is allowed to remain cached before next request for that data re-retrieves it from the remote data source

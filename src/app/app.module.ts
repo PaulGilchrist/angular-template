@@ -1,53 +1,45 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, NoPreloading } from '@angular/router';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AdalService, AdalGuard } from 'adal-angular4';
+// Imports
+import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ServiceWorkerModule } from '@angular/service-worker';
 import { ToastrModule } from 'ngx-toastr';
 
-// My NPM packages
+// Providers
+import { AdalService, AdalGuard } from 'adal-angular4';
+import { AppInsightsService } from './services/app-insights.service';
+import { AuthInterceptor } from './services/auth.interceptor';
 import { ConnectivityService } from 'angular-connectivity';
+import { LoggingInterceptor } from './services/logging.interceptor';
 
-/* App Root */
+// Declarations
 import { AppComponent } from './components/app/app.component';
 import { HomeComponent } from './components/home/home.component';
 import { TokenComponent } from './components/token/token.component';
 import { NavTopComponent } from './components/nav-top/nav-top.component';
 
-import { AppInsightsService } from './services/app-insights.service';
-import { AuthInterceptor } from './services/auth.interceptor';
-import { LoggingInterceptor } from './services/logging.interceptor';
-import { ServiceWorkerModule } from '@angular/service-worker';
+// Other
 import { environment } from '../environments/environment';
 
 @NgModule({
-  bootstrap: [AppComponent],
-  declarations: [AppComponent, HomeComponent, TokenComponent, NavTopComponent],
-  exports: [],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    RouterModule.forRoot(
-      [
-        // Static Loading
-        { path: '', redirectTo: '/home', pathMatch: 'full' },
-        { path: 'home', component: HomeComponent },
-        { path: 'token', component: TokenComponent, canActivate: [AdalGuard] },
-        // Lazy Loading
-        {
-          path: 'demos',
-          loadChildren: () => import('./demos-module/demos.module').then(m => m.DemosModule)
-        },
-        { path: 'user', loadChildren: () => import('./user-module/user.module').then(m => m.UserModule) },
-        { path: 'help', loadChildren: () => import('./help-module/help.module').then(m => m.HelpModule) }
-      ],
-      { preloadingStrategy: NoPreloading }
-    ),
-    ToastrModule.forRoot(),
-    ServiceWorkerModule.register('sw-worker.js', { enabled: environment.production }) // Replaced ngsw-worker.js to add ability to open application from notification
+    bootstrap: [AppComponent],
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        TokenComponent,
+        NavTopComponent
+    ],
+    exports: [],
+    imports: [
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        BrowserModule,
+        HttpClientModule,
+        ToastrModule.forRoot(),
+        ServiceWorkerModule.register('sw-worker.js', { enabled: environment.production }) // Replaced ngsw-worker.js to add ability to open application from notification
   ],
   providers: [
     AdalService,
