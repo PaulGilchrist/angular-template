@@ -26,7 +26,11 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              { "glob": "*.json", "input": "src/app/user-module/data", "output": "/assets" },
+              {
+                "glob": "*.json",
+                "input": "src/app/user-module/data",
+                "output": "/assets"
+              },
               "src/manifest.webmanifest",
               "src/sw-worker.js",
               "src/web.config"
@@ -34,12 +38,12 @@
             "styles": [
               "src/styles.scss"
             ],
-			"stylePreprocessorOptions": {
-				"includePaths": [
-					"src"
-				]
-			},
-			"scripts": [
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src"
+              ]
+            },
+            "scripts": [
               "node_modules/jquery/dist/jquery.js",
               "node_modules/bootstrap/dist/js/bootstrap.js",
               "node_modules/dragula/dist/dragula.js",
@@ -160,7 +164,11 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              { "glob": "*.json", "input": "src/app/user-module/data", "output": "/assets" },
+              {
+                "glob": "*.json",
+                "input": "src/app/user-module/data",
+                "output": "/assets"
+              },
               "src/manifest.webmanifest"
             ]
           }
@@ -179,18 +187,22 @@
           }
         },
         "e2e": {
-            "builder": "@angular-devkit/build-angular:protractor",
-            "options": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
             "protractorConfig": "e2e/protractor.conf.js",
             "devServerTarget": "angular-template:serve"
-            },
-            "configurations": {
+          },
+          "configurations": {
             "production": {
-                "devServerTarget": "angular-template:serve:production"
+              "devServerTarget": "angular-template:serve:production"
             }
+          }
         }
       }
     }
-  }},
-  "defaultProject": "angular-template"
+  },
+  "defaultProject": "angular-template",
+  "cli": {
+    "analytics": "3f391998-22bd-4dac-9047-82dbdae0049e"
+  }
 }
