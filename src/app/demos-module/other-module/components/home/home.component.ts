@@ -15,9 +15,14 @@ export class HomeComponent implements AfterViewInit , OnDestroy {
 
     _modalActive = false;
 
+    props = {
+        message: 'React knows all data passed in from Angular',
+        logGameWinner: this.logGameWinner
+    };
+
     ngAfterViewInit() {
         // Render the React component and pass data to it from Angular
-        ReactDOM.render(React.createElement(Game, {message: 'React knows all data passed in from Angular', logGameWinner: this.logGameWinner}), this.reactContainerRef.nativeElement);
+        ReactDOM.render(React.createElement(Game, this.props), this.reactContainerRef.nativeElement);
     }
 
     ngOnDestroy() {
