@@ -11,17 +11,17 @@ import Game from './../../react/tic-tac-toe/game'
 })
 export class HomeComponent implements AfterViewInit , OnDestroy {
 
-    @ViewChild('reactContainer') containerRef: ElementRef;
+    @ViewChild('reactContainer') reactContainerRef: ElementRef;
 
     _modalActive = false;
 
     ngAfterViewInit() {
         // Render the React component and pass data to it from Angular
-        ReactDOM.render(React.createElement(Game, {message: 'React knows all data passed in from Angular', logGameWinner: this.logGameWinner}), this.containerRef.nativeElement);
+        ReactDOM.render(React.createElement(Game, {message: 'React knows all data passed in from Angular', logGameWinner: this.logGameWinner}), this.reactContainerRef.nativeElement);
     }
 
     ngOnDestroy() {
-        ReactDOM.unmountComponentAtNode(this.containerRef.nativeElement);
+        ReactDOM.unmountComponentAtNode(this.reactContainerRef.nativeElement);
     }
 
     logGameWinner(winner) {
