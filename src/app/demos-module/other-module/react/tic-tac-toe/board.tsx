@@ -1,5 +1,8 @@
+/* tslint:disable */
+// @ts-nocheck
 import React from 'react';
-import './board.css';
+import Radium from 'radium';
+import styles from './board-styles';
 
 import Square from './square';
 
@@ -15,17 +18,17 @@ const Board  = props => {
     // UI
     return (
         <div>
-            <div className="board-row">
+            <div style={styles.boardRow}>
                 {renderSquare(0)}
                 {renderSquare(1)}
                 {renderSquare(2)}
             </div>
-            <div className="board-row">
+            <div style={styles.boardRow}>
                 {renderSquare(3)}
                 {renderSquare(4)}
                 {renderSquare(5)}
             </div>
-            <div className="board-row">
+            <div style={styles.boardRow}>
                 {renderSquare(6)}
                 {renderSquare(7)}
                 {renderSquare(8)}
@@ -34,4 +37,4 @@ const Board  = props => {
     );
 }
 
-export default Board;
+export default Radium(Board);

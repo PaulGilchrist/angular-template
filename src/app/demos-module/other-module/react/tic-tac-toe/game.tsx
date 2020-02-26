@@ -1,7 +1,11 @@
+/* tslint:disable */
+// @ts-nocheck
 import React, {useState} from 'react';
-import './game.css';
+import Radium from 'radium';
+import styles from './game-styles';
 
 import Board from './board';
+import { style } from 'd3';
 
 const Game = (props) => {
     // Access environment variables
@@ -74,19 +78,18 @@ const Game = (props) => {
     }
     // UI
     return (
-        <div className="game">
+        <div style={styles.game}>
             <div>
                 <Board
                     squareValues={current.squareValues}
                     onClick={(i) => handleClick(i)}
                 />
             </div>
-            <div className="game-info">
+            <div style={styles.gameInfo}>
                 <div>{status}</div>
-                <ol>{moves}</ol>
+                <ol style={styles.ol}>{moves}</ol>
             </div>
         </div>
     );
 }
-
-export default Game;
+export default Radium(Game);
