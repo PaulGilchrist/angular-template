@@ -65,7 +65,7 @@ const Game = (props) => {
             'Go to game start';
         return (
             <li key={index}>
-                <button onClick={() => jumpTo(index)}>{desc}</button>
+                <button className="btn btn-sm btn-info" style={{width: '100%'}} onClick={() => jumpTo(index)}>{desc}</button>
             </li>
         );
     });
@@ -84,10 +84,10 @@ const Game = (props) => {
                     squareValues={current.squareValues}
                     onClick={(i) => handleClick(i)}
                 />
+                <div>{status}</div>
             </div>
             <div style={styles.gameInfo}>
-                <div>{status}</div>
-                <ol style={styles.ol}>{moves}</ol>
+                <ul style={styles.ul}>{moves}</ul>
             </div>
         </div>
     );

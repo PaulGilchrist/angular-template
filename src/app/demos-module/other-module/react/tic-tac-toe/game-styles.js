@@ -1,5 +1,6 @@
 export default {
-    ol: {
+    ul: {
+        listStyleType: 'none',
         paddingLeft: '30px'
     },
     game: {
