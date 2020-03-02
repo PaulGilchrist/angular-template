@@ -1,15 +1,10 @@
-/* tslint:disable */
-// @ts-nocheck
 import React, {useState} from 'react';
-import Radium from 'radium';
-import styles from './game-styles';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+import './game.css';
 
-import Board from './board';
-import { style } from 'd3';
+import Board from './Board';
 
-const Game = (props) => {
-    // Access environment variables
-    console.log(props.message);
+const Game = () => {
     // State
     const [history, setHistory] = useState([{
         squareValues: Array(9).fill(null),
@@ -71,14 +66,13 @@ const Game = (props) => {
     });
     let status;
     if (winner) {
-        status = `Winner: ${winner}`;
-        props.logGameWinner(winner);
+        status = 'Winner: ' + winner;
     } else {
         status = 'Next player: ' + (xIsNext ? 'X' : 'O');
     }
     // UI
     return (
-        <div style={styles.game}>
+        <div className='ttt-game'>
             <div>
                 <Board
                     squareValues={current.squareValues}
@@ -86,10 +80,11 @@ const Game = (props) => {
                 />
                 <div>{status}</div>
             </div>
-            <div style={styles.gameInfo}>
-                <ul style={styles.ul}>{moves}</ul>
+            <div className='ttt-game-info'>
+                <ul>{moves}</ul>
             </div>
         </div>
     );
 }
-export default Radium(Game);
+
+export default Game;

@@ -1,10 +1,7 @@
-/* tslint:disable */
-// @ts-nocheck
 import React from 'react';
-import Radium from 'radium';
-import styles from './board-styles';
+import './board.css';
 
-import Square from './square';
+import Square from './Square';
 
 // Requires parent to pass in squares and click handler function reference
 const Board  = props => {
@@ -17,18 +14,18 @@ const Board  = props => {
     );
     // UI
     return (
-        <div>
-            <div style={styles.boardRow}>
+        <div className='ttt-board'>
+            <div className='boardRow'>
                 {renderSquare(0)}
                 {renderSquare(1)}
                 {renderSquare(2)}
             </div>
-            <div style={styles.boardRow}>
+            <div className='boardRow'>
                 {renderSquare(3)}
                 {renderSquare(4)}
                 {renderSquare(5)}
             </div>
-            <div style={styles.boardRow}>
+            <div className='boardRow'>
                 {renderSquare(6)}
                 {renderSquare(7)}
                 {renderSquare(8)}
@@ -37,4 +34,4 @@ const Board  = props => {
     );
 }
 
-export default Radium(Board);
+export default Board;

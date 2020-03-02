@@ -4,6 +4,9 @@
 @import '~font-awesome/css/font-awesome.css';
 @import '~ngx-toastr/toastr-bs4-alert';
 @import './variables';
+@import './app/demos-module/other-module/react/tic-tac-toe/game.css';
+@import './app/demos-module/other-module/react/tic-tac-toe/board.css';
+@import './app/demos-module/other-module/react/tic-tac-toe/square.css';
 
 /*
 Try and keep global SCSS and CSS to a minimum and mainly to global variables.  This prevents components from breaking when used in other projects

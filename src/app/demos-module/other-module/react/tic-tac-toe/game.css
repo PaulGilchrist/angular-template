@@ -1,0 +1,12 @@
+.ttt-game {
+  display: flex;
+  flex-direction: row;
+}
+.ttt-game-info {
+  margin-left: 20px;
+}
+.ttt-game-info ul {
+  list-style-type: none;
+  padding-left: 30px;
+}
+
