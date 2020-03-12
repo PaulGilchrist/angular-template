@@ -4,7 +4,7 @@
   ],
   "name": "angular-template",
   "description": "Angular Template using npm for packages, gulp as the task runner",
-  "homepage": "https://PaulGilchrist.github.io/angular-template",
+  "homepage": "https://PaulGilchrist.github.io/angular-template/main",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -12,7 +12,7 @@
   },
   "version": "2.1.1",
   "scripts": {
-    "build": "ng build --prod",
+    "build": "ng build --prod --base-href /angular-template/",
     "deploy": "ngh",
     "e2e": "ng e2e",
     "lint": "ng lint",
