@@ -13,7 +13,7 @@
   "version": "2.1.1",
   "scripts": {
     "build": "ng build --prod",
-    "deploy": "gh-pages -d dist",
+    "deploy": "ngh",
     "e2e": "ng e2e",
     "lint": "ng lint",
     "ng": "ng",

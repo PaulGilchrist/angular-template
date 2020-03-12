@@ -26,3 +26,6 @@
     font-size: 80%;
     margin-bottom: 10px;
 }
+svg {
+    max-height: 90vh;
+}
