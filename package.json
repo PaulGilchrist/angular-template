@@ -13,7 +13,7 @@
   "version": "2.1.1",
   "scripts": {
     "build": "ng build --prod",
-    "deploy": "gh-pages -d dist",    
+    "deploy": "gh-pages -d dist",
     "e2e": "ng e2e",
     "lint": "ng lint",
     "ng": "ng",
@@ -72,6 +72,7 @@
     "@types/jasminewd2": "~2.0.8",
     "@types/jquery": "~3.3.32",
     "@types/node": "^13.7.2",
+    "angular-cli-ghpages": "^0.6.2",
     "codelyzer": "^5.2.1",
     "gh-pages": "^2.2.0",
     "jasmine-core": "~3.5.0",
