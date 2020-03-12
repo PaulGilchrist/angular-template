@@ -4,7 +4,7 @@
   ],
   "name": "angular-template",
   "description": "Angular Template using npm for packages, gulp as the task runner",
-  "homepage": "https://angulartemplate.azurewebsites.net",
+  "homepage": "https://PaulGilchrist.github.io/angular-template",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -12,12 +12,14 @@
   },
   "version": "2.1.1",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
     "build": "ng build --prod",
-    "test": "ng test",
+    "deploy": "gh-pages -d dist",    
+    "e2e": "ng e2e",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "ng": "ng",
+    "predeploy": "npm run build",
+    "start": "ng serve",
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {
@@ -71,6 +73,7 @@
     "@types/jquery": "~3.3.32",
     "@types/node": "^13.7.2",
     "codelyzer": "^5.2.1",
+    "gh-pages": "^2.2.0",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.4.1",
