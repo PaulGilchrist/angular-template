@@ -33,13 +33,13 @@ export class GraphDemoComponent implements OnInit, OnDestroy {
 
     private sub: any;
 
-    constructor(private _route: ActivatedRoute, private _router: Router) { }
+    constructor(private route: ActivatedRoute) { }
 
     ngOnInit(): void {
         // window['appInsights'].trackPageView('demos-module/graph-demo.component');
         // Pass as params (graph;warningLevel=25) or as queryString (graph?warningLevel=25)
         // this.sub = this._router.routerState.queryParams.subscribe(params => {
-        this.sub = this._route.params.subscribe(params => {
+        this.sub = this.route.params.subscribe(params => {
             // Allow the user to pass a querystring that overrides the default graph options
             const height: number = +params.height; // (+) converts string 'id' to a number
             if (height) {

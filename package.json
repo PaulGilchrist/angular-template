@@ -48,7 +48,7 @@
     "ng2-dragula": "~2.1.1",
     "ngx-toastr": "~12.0.1",
     "pdfmake": "~0.1.65",
-    "pg-d3-utils": "^1.0.9",
+    "pg-d3-utils": "^1.0.12",
     "radium": "^0.26.0",
     "react": "~16.13.1",
     "react-dom": "~16.13.1",
