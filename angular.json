@@ -18,18 +18,6 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "aot": true,
-            "allowedCommonJsDependencies": [
-                "adal-angular8",
-                "contra/emitter",
-                "crossvent",
-                "dragula",
-                "jquery",
-                "applicationinsights-js",
-                "react",
-                "react-dom",
-                "rxjs/internal/observable/bindCallback",
-                "rxjs/internal/observable/timer"
-            ],
             "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
