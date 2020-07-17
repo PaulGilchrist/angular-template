@@ -20,14 +20,15 @@
             "aot": true,
             "allowedCommonJsDependencies": [
                 "adal-angular8",
+                "contra/emitter",
+                "crossvent",
+                "dragula",
                 "jquery",
                 "applicationinsights-js",
-                "rxjs/internal/observable/bindCallback",
-                "rxjs/internal/observable/timer",
+                "react",
                 "react-dom",
-                "dragula",
-                "contra/emitter",
-                "crossvent"
+                "rxjs/internal/observable/bindCallback",
+                "rxjs/internal/observable/timer"
             ],
             "outputPath": "dist",
             "index": "src/index.html",
