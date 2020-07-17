@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { ConnectivityService } from 'angular-connectivity'; // My NPM Package
-import { AdalService } from 'adal-angular4';
+import { Adal8Service } from 'adal-angular8';
 
 @Component({
   selector: 'app-nav-top',
@@ -18,7 +18,7 @@ export class NavTopComponent implements OnInit, OnDestroy {
     width =  window.innerWidth;
 
   constructor(
-    public adalService: AdalService,
+    public adalService: Adal8Service,
     private connectivityService: ConnectivityService,
     // private _location: Location,
     private router: Router

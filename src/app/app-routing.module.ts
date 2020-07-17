@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, NoPreloading } from '@angular/router';
 
 // Providers
-import { AdalGuard } from 'adal-angular4';
+import { Adal8Guard } from 'adal-angular8';
 
 const routes: Routes = [
     // Static Loading

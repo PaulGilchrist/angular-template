@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AppInsights } from 'applicationinsights-js';
 
 import { environment } from '../../environments/environment';
-import { AdalService } from 'adal-angular4';
+import { Adal8Service } from 'adal-angular8';
 
 @Injectable()
 export class AppInsightsService {
@@ -11,7 +11,7 @@ export class AppInsightsService {
         instrumentationKey: environment.appInsights.instrumentationKey
     };
 
-    constructor(public adalService: AdalService) {
+    constructor(public adalService: Adal8Service) {
         if (!AppInsights.config) {
             AppInsights.downloadAndSetup(this.config);
         }

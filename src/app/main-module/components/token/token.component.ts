@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AdalService } from 'adal-angular4';
+import { Adal8Service } from 'adal-angular8';
 import { AppInsightsService } from '../../../services/app-insights.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { AppInsightsService } from '../../../services/app-insights.service';
 })
 export class TokenComponent implements OnInit {
   constructor(
-    public adalService: AdalService,
+    public adalService: Adal8Service,
     private appInsightsService: AppInsightsService
   ) {}
 
