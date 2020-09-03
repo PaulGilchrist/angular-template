@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1599147356675,
+  "timestamp": 1599148841228,
   "index": "/angular-template/index.html",
   "assetGroups": [
     {
@@ -11,19 +11,20 @@
         "ignoreVary": true
       },
       "urls": [
+        "/angular-template/0.78c1b4853765fa8cdda0.worker.js",
         "/angular-template/1.0d3fbb63f5dc62abe9da.js",
         "/angular-template/10.40aa4235ce757ff9801d.js",
-        "/angular-template/5.a2cad8121bc34ad68efb.js",
-        "/angular-template/6.5e288cbd38c792f61a15.js",
+        "/angular-template/5.3599c83d7524a5fee96f.js",
+        "/angular-template/6.41703a3366c0d8af7f85.js",
         "/angular-template/7.2bddccdb05d21513fd5e.js",
         "/angular-template/8.83fcdf531d86c688c31c.js",
         "/angular-template/9.d931ef1bc22d1ecdce1a.js",
         "/angular-template/favicon.ico",
         "/angular-template/index.html",
-        "/angular-template/main.42da65aa2a94084cd457.js",
+        "/angular-template/main.ee0c87753cd984dea7b3.js",
         "/angular-template/manifest.webmanifest",
         "/angular-template/polyfills.a8890004ed305b54ddab.js",
-        "/angular-template/runtime.0c03a11d93d99908fd07.js",
+        "/angular-template/runtime.4cb65c1e4a0b37a16e60.js",
         "/angular-template/scripts.2d05fe00abacde2f3a00.js",
         "/angular-template/styles.40444719986f5f55aea4.css",
         "/angular-template/sw-worker.js"
@@ -63,10 +64,11 @@
   ],
   "dataGroups": [],
   "hashTable": {
+    "/angular-template/0.78c1b4853765fa8cdda0.worker.js": "51366f332e363e68f4cf5b03e7e235d51fff0539",
     "/angular-template/1.0d3fbb63f5dc62abe9da.js": "b5dbcfa78ed3695292445663d4d09087f57151a9",
     "/angular-template/10.40aa4235ce757ff9801d.js": "9368bb797710092d37a413b5991d1f31ca802f90",
-    "/angular-template/5.a2cad8121bc34ad68efb.js": "23e656b40da9026c5b3d9386b7cc1d86368675e6",
-    "/angular-template/6.5e288cbd38c792f61a15.js": "2b24ad02dc52837a31dd49e751992631224c097e",
+    "/angular-template/5.3599c83d7524a5fee96f.js": "d652dcf8f7e8a6b374a551f992fbbd7b440b9ff5",
+    "/angular-template/6.41703a3366c0d8af7f85.js": "b242d595a859d63fa5f24250f826d0b17553dc2a",
     "/angular-template/7.2bddccdb05d21513fd5e.js": "a0731101d43988f2f3f09e653c68c89dfa9d87f3",
     "/angular-template/8.83fcdf531d86c688c31c.js": "51643fc3d9e1ff2727f931124504e72a8aa59346",
     "/angular-template/9.d931ef1bc22d1ecdce1a.js": "40f7590b3e969bb8636f5a43af032c23d0cc5655",
@@ -90,11 +92,11 @@
     "/angular-template/fontawesome-webfont.8b43027f47b20503057d.eot": "d980c2ce873dc43af460d4d572d441304499f400",
     "/angular-template/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg": "98a8aa5cf7d62c2eff5f07ede8d844b874ef06ed",
     "/angular-template/fontawesome-webfont.f691f37e57f04c152e23.woff": "28b782240b3e76db824e12c02754a9731a167527",
-    "/angular-template/index.html": "8b1ffed02dffa398a4306a76a8938587ea5c34cb",
-    "/angular-template/main.42da65aa2a94084cd457.js": "45194d0ceaa44fe72d02ab3123c01eba05ead29d",
+    "/angular-template/index.html": "20104df5f7aca94c625ca1a30878a90b3008c675",
+    "/angular-template/main.ee0c87753cd984dea7b3.js": "8091ca37980556b95b59fb5d98285cd71fdcf4c1",
     "/angular-template/manifest.webmanifest": "f5ecebede33bff3d79b5a7483405a37740e2a13d",
     "/angular-template/polyfills.a8890004ed305b54ddab.js": "5e624d93e26ef0f150716d931680b9b522f2d94d",
-    "/angular-template/runtime.0c03a11d93d99908fd07.js": "23e4a92ef5bf812441f502c1e9af4b1c7a2fd4b1",
+    "/angular-template/runtime.4cb65c1e4a0b37a16e60.js": "553e06cbb00953b093e8b48eb42823339fd2f77b",
     "/angular-template/scripts.2d05fe00abacde2f3a00.js": "d98ca70a4822478ae9c123a32e0a0788062df06f",
     "/angular-template/styles.40444719986f5f55aea4.css": "f4c3bbe17e2d8f073843c19020e20ca3e791e5f3",
     "/angular-template/sw-worker.js": "b8a5735f555e11a1bf297d09bac65cc186ca0223"
