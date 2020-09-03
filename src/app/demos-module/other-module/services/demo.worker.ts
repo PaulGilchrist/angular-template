@@ -40,7 +40,7 @@ function PromiseTimeout(delay) {
 }
 
 addEventListener('message', ({ data }) => {
-    const response = `Starting to process primes`;
+    console.log(`Starting web worker`);
     switch (data.action) {
         case 'start':
             max = data.max;
