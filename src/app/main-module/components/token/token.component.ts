@@ -22,7 +22,6 @@ export class TokenComponent implements OnInit {
 
     ngOnInit(): void {
         this.appInsightsService.logPageView('token.component', '/token');
-
         this.authService.acquireTokenSilent({ scopes: ['user.read'] }).then(accessTokenResponse => {
             this.accessToken = accessTokenResponse.accessToken;
         });
@@ -33,7 +32,7 @@ export class TokenComponent implements OnInit {
         // });
     }
 
-    getDateString(num: number): string {
+    getDateString(num: any): string {
         let returnString = '';
         if (num) {
             returnString = num + ' (' + new Date(num * 1000) + ')';

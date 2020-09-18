@@ -22,7 +22,7 @@ export class NavTopComponent implements OnInit, OnDestroy {
         // private _location: Location,
         private router: Router,
         private broadcastService: BroadcastService,
-        private authService: MsalService
+        public authService: MsalService
     ) { }
 
     onScroll(event: any): void {
