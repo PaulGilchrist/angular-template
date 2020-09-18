@@ -1,37 +1,48 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Adal8Service } from 'adal-angular8';
 import { AppInsightsService } from '../../../services/app-insights.service';
+import { BroadcastService, MsalService } from '@azure/msal-angular';
+
 
 @Component({
-  selector: 'app-token',
-  styleUrls: ['./token.component.scss'],
-  templateUrl: './token.component.html'
+    selector: 'app-token',
+    styleUrls: ['./token.component.scss'],
+    templateUrl: './token.component.html'
 })
 export class TokenComponent implements OnInit {
-  constructor(
-    public adalService: Adal8Service,
-    private appInsightsService: AppInsightsService
-  ) {}
 
-  ngOnInit(): void {
-    this.appInsightsService.logPageView('token.component', '/token');
-    // // Initialize tooltips just for this component
-    // $(function() {
-    // 	// No typings for bootstrap's tooltip
-    // 	$('my-token [data-toggle="tooltip"]')).tooltip({ container: 'body' });
-    // });
-  }
+    token = this.authService.getAccount().idToken;
+    accessToken = null;
 
-  getDateString(num: number): string {
-    let returnString = '';
-    if (num) {
-      returnString = num + ' (' + new Date(num * 1000) + ')';
+    constructor(
+        private appInsightsService: AppInsightsService,
+        private broadcastService: BroadcastService,
+        private authService: MsalService
+    ) { }
+
+    ngOnInit(): void {
+        this.appInsightsService.logPageView('token.component', '/token');
+
+        this.authService.acquireTokenSilent({ scopes: ['user.read'] }).then(accessTokenResponse => {
+            this.accessToken = accessTokenResponse.accessToken;
+        });
+        // // Initialize tooltips just for this component
+        // $(function() {
+        // 	// No typings for bootstrap's tooltip
+        // 	$('my-token [data-toggle="tooltip"]')).tooltip({ container: 'body' });
+        // });
     }
-    return returnString;
-  }
 
-  logout(): void {
-    this.adalService.logOut();
-  }
+    getDateString(num: number): string {
+        let returnString = '';
+        if (num) {
+            returnString = num + ' (' + new Date(num * 1000) + ')';
+        }
+        return returnString;
+    }
+
+    logout(): void {
+        this.authService.logout();
+        // this.adalService.logOut();
+    }
 }

@@ -14,6 +14,8 @@ import { AppInsightsService } from './services/app-insights.service';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { ConnectivityService } from 'angular-connectivity';
 import { LoggingInterceptor } from './services/logging.interceptor';
+import { MsalModule, MsalInterceptor } from '@azure/msal-angular';
+
 
 // Declarations
 import { AppComponent } from './components/app/app.component';
@@ -34,16 +36,38 @@ import { environment } from '../environments/environment';
         BrowserAnimationsModule,
         BrowserModule,
         HttpClientModule,
+        MsalModule.forRoot({
+            auth: {
+                clientId: environment.azureAuthProvider.clientId,
+                authority: `https://login.microsoftonline.com/${environment.azureAuthProvider.tenant}`,
+                redirectUri: 'http://localhost:4200',
+            },
+            cache: {
+                cacheLocation: 'localStorage',
+                storeAuthStateInCookie: false, // set to true for IE 11
+            }
+        },
+        {
+            popUp: true,
+            consentScopes: [
+                'user.read',
+                'openid',
+                'profile',
+            ],
+            unprotectedResources: [],
+            protectedResourceMap: [],
+            extraQueryParameters: {}
+        }),
         ToastrModule.forRoot(),
         ServiceWorkerModule.register('sw-worker.js', { enabled: environment.production }) // Replaced ngsw-worker.js to add ability to open application from notification
-  ],
-  providers: [
-    Adal8Service,
-    Adal8Guard,
-    AppInsightsService,
-    ConnectivityService,
-    { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true }, // Time how long each http rerquests takes
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } // Add token to all API requests
-  ]
+    ],
+    providers: [
+        Adal8Service,
+        Adal8Guard,
+        AppInsightsService,
+        ConnectivityService,
+        { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true }, // Time how long each http rerquests takes
+        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } // Add token to all API requests
+    ]
 })
-export class AppModule {}
+export class AppModule { }

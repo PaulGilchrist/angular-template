@@ -4,58 +4,58 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { ConnectivityService } from 'angular-connectivity'; // My NPM Package
-import { Adal8Service } from 'adal-angular8';
+import { BroadcastService, MsalService } from '@azure/msal-angular';
 
 @Component({
-  selector: 'app-nav-top',
-  styleUrls: ['./nav-top.component.scss'],
-  templateUrl: './nav-top.component.html'
+    selector: 'app-nav-top',
+    styleUrls: ['./nav-top.component.scss'],
+    templateUrl: './nav-top.component.html'
 })
 export class NavTopComponent implements OnInit, OnDestroy {
     shrinkNavbar = false;
     isConnected = true;
     subscriptions: Subscription[] = [];
-    width =  window.innerWidth;
+    width = window.innerWidth;
 
-  constructor(
-    public adalService: Adal8Service,
-    private connectivityService: ConnectivityService,
-    // private _location: Location,
-    private router: Router
-  ) {}
+    constructor(
+        private connectivityService: ConnectivityService,
+        // private _location: Location,
+        private router: Router,
+        private broadcastService: BroadcastService,
+        private authService: MsalService
+    ) { }
 
-  onScroll(event: any): void {
-    // Shrink the header top and bottom padding when scrolling beyond 300px
-    this.shrinkNavbar =
-      (window.pageYOffset || document.documentElement.scrollTop) > 300;
-  }
-
-  ngOnInit(): void {
-    this.adalService.handleWindowCallback();
-    const url = localStorage.getItem('url');
-    if (url != null) {
-        localStorage.removeItem('url');
-        this.router.navigateByUrl(url);
+    onScroll(event: any): void {
+        // Shrink the header top and bottom padding when scrolling beyond 300px
+        this.shrinkNavbar =
+            (window.pageYOffset || document.documentElement.scrollTop) > 300;
     }
-    this.subscriptions.push(this.connectivityService.isConnected$.subscribe(isConnected => this.isConnected = isConnected));
-    window.onresize = () => this.width = window.innerWidth;
-  }
 
-  ngOnDestroy(): void {
-    // Unsubscribe all subscriptions to avoid memory leak
-    this.subscriptions.forEach(subscription => subscription.unsubscribe());
-  }
+    ngOnInit(): void {
+        const url = localStorage.getItem('url');
+        if (url != null) {
+            localStorage.removeItem('url');
+            this.router.navigateByUrl(url);
+        }
+        this.subscriptions.push(this.connectivityService.isConnected$.subscribe(isConnected => this.isConnected = isConnected));
+        window.onresize = () => this.width = window.innerWidth;
+    }
 
-  login(): void {
-    localStorage.setItem('url', this.router.url);
-    this.adalService.login();
-  }
+    ngOnDestroy(): void {
+        // Unsubscribe all subscriptions to avoid memory leak
+        this.subscriptions.forEach(subscription => subscription.unsubscribe());
+    }
 
-  logout(): void {
-    this.adalService.logOut();
-  }
+    login(): void {
+        localStorage.setItem('url', this.router.url);
+        this.authService.loginPopup();
+    }
 
-  get authenticated(): boolean {
-    return this.adalService.userInfo.authenticated;
-  }
+    logout(): void {
+        this.authService.logout();
+    }
+
+    get authenticated(): boolean {
+        return !!this.authService.getAccount();
+    }
 }

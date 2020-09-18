@@ -35,7 +35,7 @@
       </li>
     </ul>
     <div *ngIf="authenticated" class="nav navbar-right hidden-xs hidden-sm text-light">
-      {{ adalService.userInfo.profile.given_name + ' ' + adalService.userInfo.profile.family_name }}
+      {{ this.authService.getAccount().name }}
     </div>
     &nbsp;&nbsp;
     <span *ngIf='isConnected' class='online'>ONLINE</span>
