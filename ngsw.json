@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1600715160178,
+  "timestamp": 1600715366605,
   "index": "/angular-template/index.html",
   "assetGroups": [
     {
@@ -21,7 +21,7 @@
         "/angular-template/9.af023fbec624ea9e59cb.js",
         "/angular-template/favicon.ico",
         "/angular-template/index.html",
-        "/angular-template/main.f2b480d526fe8e7f724b.js",
+        "/angular-template/main.28e416398985d93667e1.js",
         "/angular-template/manifest.webmanifest",
         "/angular-template/polyfills.a8890004ed305b54ddab.js",
         "/angular-template/runtime.c80307671afa814993fe.js",
@@ -92,8 +92,8 @@
     "/angular-template/fontawesome-webfont.8b43027f47b20503057d.eot": "d980c2ce873dc43af460d4d572d441304499f400",
     "/angular-template/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg": "98a8aa5cf7d62c2eff5f07ede8d844b874ef06ed",
     "/angular-template/fontawesome-webfont.f691f37e57f04c152e23.woff": "28b782240b3e76db824e12c02754a9731a167527",
-    "/angular-template/index.html": "c3f0a49957848938403da2e95d15a05ac6515106",
-    "/angular-template/main.f2b480d526fe8e7f724b.js": "fa064528d50b79e1c60b67d69b256f21aa8a1be3",
+    "/angular-template/index.html": "6252444f27263d0249922f67342181794c2dde8b",
+    "/angular-template/main.28e416398985d93667e1.js": "12148333dbd90c41d2b1124b7975049904a94b56",
     "/angular-template/manifest.webmanifest": "bb7bdab13443c9ca730ccc2f44dffbb71062d71a",
     "/angular-template/polyfills.a8890004ed305b54ddab.js": "5e624d93e26ef0f150716d931680b9b522f2d94d",
     "/angular-template/runtime.c80307671afa814993fe.js": "030244bc0be3d5d89a22b67b34c335281996ddc9",
