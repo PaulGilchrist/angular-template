@@ -39,7 +39,7 @@ import { environment } from '../environments/environment';
             auth: {
                 clientId: environment.azureAuthProvider.clientId,
                 authority: `https://login.microsoftonline.com/${environment.azureAuthProvider.tenant}`,
-                redirectUri: 'http://localhost:4200'
+                redirectUri:  environment.azureAuthProvider.redirectUri
             },
             cache: {
                 cacheLocation: 'localStorage',
