@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SwPush } from '@angular/service-worker';
 
-import { Adal8Service } from 'adal-angular8';
 import { AppInsightsService } from '../../services/app-insights.service';
 
 import { environment } from '../../../environments/environment';
@@ -15,10 +14,7 @@ import * as $ from 'jquery';
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
-    constructor(private adalService: Adal8Service, private appInsightsService: AppInsightsService, public router: Router, private swPush: SwPush) {
-        // init requires object with clientId and tenant properties
-        adalService.init(environment.azureAuthProvider);
-    }
+    constructor(private appInsightsService: AppInsightsService, public router: Router, private swPush: SwPush) {}
 
     ngOnInit(): void {
         this.appInsightsService.logPageView('app.component', '/');

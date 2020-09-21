@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { ConnectivityService } from 'angular-connectivity'; // My NPM Package
-import { BroadcastService, MsalService } from '@azure/msal-angular';
+import { MsalService } from '@azure/msal-angular';
 
 @Component({
     selector: 'app-nav-top',
@@ -21,7 +21,6 @@ export class NavTopComponent implements OnInit, OnDestroy {
         private connectivityService: ConnectivityService,
         // private _location: Location,
         private router: Router,
-        private broadcastService: BroadcastService,
         public authService: MsalService
     ) { }
 
@@ -39,6 +38,10 @@ export class NavTopComponent implements OnInit, OnDestroy {
         }
         this.subscriptions.push(this.connectivityService.isConnected$.subscribe(isConnected => this.isConnected = isConnected));
         window.onresize = () => this.width = window.innerWidth;
+        // Keep the raw ID token in local storage
+        this.authService.acquireTokenSilent({ scopes: ['User.Read'] }).then(response => {
+            localStorage.setItem('rawIdToken', response.idToken.rawIdToken);
+        });
     }
 
     ngOnDestroy(): void {
@@ -52,6 +55,7 @@ export class NavTopComponent implements OnInit, OnDestroy {
     }
 
     logout(): void {
+        localStorage.removeItem('rawIdToken');
         this.authService.logout();
     }
 

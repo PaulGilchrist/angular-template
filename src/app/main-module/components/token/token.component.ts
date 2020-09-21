@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AppInsightsService } from '../../../services/app-insights.service';
-import { BroadcastService, MsalService } from '@azure/msal-angular';
+import { MsalService } from '@azure/msal-angular';
 
 
 @Component({
@@ -16,7 +16,6 @@ export class TokenComponent implements OnInit {
 
     constructor(
         private appInsightsService: AppInsightsService,
-        private broadcastService: BroadcastService,
         private authService: MsalService
     ) { }
 

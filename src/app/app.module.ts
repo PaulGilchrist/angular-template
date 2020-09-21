@@ -9,7 +9,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { ToastrModule } from 'ngx-toastr';
 
 // Providers
-import { Adal8Service, Adal8Guard } from 'adal-angular8';
 import { AppInsightsService } from './services/app-insights.service';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { ConnectivityService } from 'angular-connectivity';
@@ -40,7 +39,7 @@ import { environment } from '../environments/environment';
             auth: {
                 clientId: environment.azureAuthProvider.clientId,
                 authority: `https://login.microsoftonline.com/${environment.azureAuthProvider.tenant}`,
-                redirectUri: 'http://localhost:4200',
+                redirectUri: 'http://localhost:4200'
             },
             cache: {
                 cacheLocation: 'localStorage',
@@ -58,8 +57,6 @@ import { environment } from '../environments/environment';
         ServiceWorkerModule.register('sw-worker.js', { enabled: environment.production }) // Replaced ngsw-worker.js to add ability to open application from notification
     ],
     providers: [
-        Adal8Service,
-        Adal8Guard,
         AppInsightsService,
         ConnectivityService,
         { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true }, // Time how long each http rerquests takes

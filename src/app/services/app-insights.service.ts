@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AppInsights } from 'applicationinsights-js';
+import { MsalService } from '@azure/msal-angular';
 
 import { environment } from '../../environments/environment';
-import { Adal8Service } from 'adal-angular8';
 
 @Injectable()
 export class AppInsightsService {
@@ -11,7 +11,7 @@ export class AppInsightsService {
         instrumentationKey: environment.appInsights.instrumentationKey
     };
 
-    constructor(public adalService: Adal8Service) {
+    constructor(private authService: MsalService) {
         if (!AppInsights.config) {
             AppInsights.downloadAndSetup(this.config);
         }
@@ -38,8 +38,8 @@ export class AppInsightsService {
     }
 
     setUser() {
-        if (this.adalService.userInfo.authenticated) {
-            AppInsights.setAuthenticatedUserContext(this.adalService.userInfo.profile.upn);
+        if (!!this.authService.getAccount()) {
+            AppInsights.setAuthenticatedUserContext(this.authService.getAccount().idToken.preferred_username);
         } else {
             AppInsights.clearAuthenticatedUserContext();
         }
