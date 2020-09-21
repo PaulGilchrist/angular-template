@@ -12,7 +12,7 @@ import { BroadcastService, MsalService } from '@azure/msal-angular';
 export class TokenComponent implements OnInit {
 
     token = this.authService.getAccount().idToken;
-    accessToken = null;
+    rawIdToken = null;
 
     constructor(
         private appInsightsService: AppInsightsService,
@@ -22,8 +22,8 @@ export class TokenComponent implements OnInit {
 
     ngOnInit(): void {
         this.appInsightsService.logPageView('token.component', '/token');
-        this.authService.acquireTokenSilent({ scopes: ['user.read'] }).then(accessTokenResponse => {
-            this.accessToken = accessTokenResponse.accessToken;
+        this.authService.acquireTokenSilent({ scopes: ['User.Read'] }).then(response => {
+            this.rawIdToken = response.idToken.rawIdToken;
         });
         // // Initialize tooltips just for this component
         // $(function() {

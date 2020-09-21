@@ -49,11 +49,7 @@ import { environment } from '../environments/environment';
         },
         {
             popUp: true,
-            consentScopes: [
-                'user.read',
-                'openid',
-                'profile',
-            ],
+            consentScopes: ['User.Read'], // 'user.read'
             unprotectedResources: [],
             protectedResourceMap: [],
             extraQueryParameters: {}
