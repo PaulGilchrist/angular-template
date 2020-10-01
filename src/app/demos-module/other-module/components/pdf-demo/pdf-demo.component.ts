@@ -19,7 +19,9 @@ export class PdfDemoComponent {
     overviewPdf: any = PDF_OVERVIEW; // Full docuemnt
 
     viewPdf(name: string): void {
-        pdfMake.createPdf(this.overviewPdf).download('demo.pdf');
+        const win = window.open('', '_blank');
+        pdfMake.createPdf(this.overviewPdf).open({}, win);
+        // .download('demo.pdf');
     }
 
 }

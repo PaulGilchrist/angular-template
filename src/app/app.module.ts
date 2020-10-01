@@ -13,7 +13,7 @@ import { AppInsightsService } from './services/app-insights.service';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { ConnectivityService } from 'angular-connectivity';
 import { LoggingInterceptor } from './services/logging.interceptor';
-import { MsalModule, MsalInterceptor } from '@azure/msal-angular';
+import { MsalModule } from '@azure/msal-angular';
 
 
 // Declarations
@@ -48,7 +48,7 @@ import { environment } from '../environments/environment';
         },
         {
             popUp: true,
-            consentScopes: ['User.Read'], // 'user.read'
+            consentScopes: ['User.Read'],
             unprotectedResources: [],
             protectedResourceMap: [],
             extraQueryParameters: {}

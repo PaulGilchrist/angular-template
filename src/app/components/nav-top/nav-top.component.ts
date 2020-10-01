@@ -38,10 +38,6 @@ export class NavTopComponent implements OnInit, OnDestroy {
         }
         this.subscriptions.push(this.connectivityService.isConnected$.subscribe(isConnected => this.isConnected = isConnected));
         window.onresize = () => this.width = window.innerWidth;
-        // Keep the raw ID token in local storage
-        this.authService.acquireTokenSilent({ scopes: ['User.Read'] }).then(response => {
-            localStorage.setItem('rawIdToken', response.idToken.rawIdToken);
-        });
     }
 
     ngOnDestroy(): void {
@@ -55,7 +51,6 @@ export class NavTopComponent implements OnInit, OnDestroy {
     }
 
     logout(): void {
-        localStorage.removeItem('rawIdToken');
         this.authService.logout();
     }
 
