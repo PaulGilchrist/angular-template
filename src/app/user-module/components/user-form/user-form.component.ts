@@ -9,7 +9,7 @@ import { User } from '../../models/user.model';
 })
 export class UserFormComponent implements OnInit, OnChanges {
 
-    @Input() user: User = null
+    @Input() user: User = null;
     @Output() readonly save = new EventEmitter<User>(); // Bubble up that the form was saved
 
     formUser: User;
@@ -23,16 +23,18 @@ export class UserFormComponent implements OnInit, OnChanges {
 
     ngOnChanges(changes: SimpleChanges) {
         for (const propName in changes) {
-            switch (propName) {
-                case 'user':
-                    if (changes[propName].currentValue) {
-                        this.formUser = {
-                            ...changes[propName].currentValue
-                        };
-                    } else {
-                        this.formUser = null;
-                    }
-                    break;
+            if ({}.hasOwnProperty.call(changes, propName)) {
+                switch (propName) {
+                    case 'user':
+                        if (changes[propName].currentValue) {
+                            this.formUser = {
+                                ...changes[propName].currentValue
+                            };
+                        } else {
+                            this.formUser = null;
+                        }
+                        break;
+                }
             }
         }
     }

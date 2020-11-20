@@ -8,11 +8,11 @@ import { Location } from '@angular/common' ;
     templateUrl: './help-nav.component.html'
 })
 export class HelpNavComponent {
-    constructor(private _location: Location, private _router: Router) {}
+    constructor(private location: Location, private _router: Router) {}
 
     currentPage(path: string): boolean {
         let result = false;
-        const locationPath = this._location.path();
+        const locationPath = this.location.path();
         if (path.length === 0) {
             // Root
             result = (locationPath.length === 0);

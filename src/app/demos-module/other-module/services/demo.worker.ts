@@ -1,11 +1,11 @@
 /// <reference lib="webworker" />
 
-let currentPrime;
-let min;
-let max;
-let pause;
+let currentPrime: number;
+let min: number;
+let max: number;
+let pause: boolean;
 
-function isPrime(num) {
+const isPrime = (num: number) => {
     if (num < 2) {
         return false;
     }
@@ -15,11 +15,11 @@ function isPrime(num) {
         }
     }
     return true;
-}
+};
 
-async function calculatePrimes(min, max) {
+const calculatePrimes = async (start: number, end: number) => {
     pause = false;
-    for (let i = min; i < max; i++) {
+    for (let i = start; i < end; i++) {
         if (pause) {
             break;
         }
@@ -27,17 +27,16 @@ async function calculatePrimes(min, max) {
             currentPrime = i; // In case we pause, we know where to resume
             postMessage({primeNumber: i});
             // Every time we find a prime, wait just long enough to allow reacting to post messages
-            await PromiseTimeout(0);
+            await promiseTimeout(0);
         }
     }
-}
+};
 
-function PromiseTimeout(delay) {
+const promiseTimeout = (delay) =>
     // Promisification of setTimeout
-    return new Promise((resolve, reject) => {
+    new Promise((resolve, reject) => {
         setTimeout(resolve, delay);
     });
-}
 
 addEventListener('message', ({ data }) => {
     console.log(`Starting web worker`);

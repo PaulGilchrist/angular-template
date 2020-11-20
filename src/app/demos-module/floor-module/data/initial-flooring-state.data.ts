@@ -1,6 +1,6 @@
 import { FlooringState } from '../models/flooring-state.model';
 
-export let INITIAL_FLOORING_STATE: FlooringState = {
+export const INITIAL_FLOORING_STATE: FlooringState = {
     dimension: false,
     flooringZones: [
         { name: 'Kitchen', type: 'undecided', layers: ['s1', 's3'], active: false },

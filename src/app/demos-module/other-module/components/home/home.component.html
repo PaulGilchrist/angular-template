@@ -38,16 +38,8 @@
                 <div class="card-text indent">
                     This button demonstrates dynamic creation of a Modal dialog box using standard Bootstrap control. Additional inputs and outputs or service connections can be used with this model as needed for form support or other more advanced usage.<br/><br/>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" (click)="viewModal()">View Modal</button>
-                    <app-modal-demo [id]="'myModal'" [active]="_modalActive"></app-modal-demo>
+                    <app-modal-demo [id]="'myModal'" [active]="modalActive"></app-modal-demo>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div style='margin-left: 15px;'>
-        <div class='card'>
-            <div class='card-body' style='height: 85vh;'>
-                <h3 class="card-title">Chat Bot Demo</h3>
-                <iframe src='https://webchat.botframework.com/embed/pg-bot-test?s=4glMv3hoVEE.CmERQBL7SU5fnnLgT2p_oOQRC_wAq0KRZEML0gbYtLI' style='min-width: 400px; width: 100%; height: 95%;'></iframe>
             </div>
         </div>
     </div>

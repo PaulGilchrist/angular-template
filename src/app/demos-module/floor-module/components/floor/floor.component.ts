@@ -10,8 +10,8 @@ import { INITIAL_FLOORING_STATE } from '../../data/initial-flooring-state.data';
 import * as $ from 'jquery';
 
 // We only put interfaces in the models folder when they are reused across components
-export interface FloorZone { name: string; type: string; layers: string[]; active: boolean; } // Valid types are undecided, carpet, tile, or wood
-export interface Option { level: number; name: string; standardName: string; optionName: string; standardLayers: string[]; optionLayers: string[]; active: boolean; }
+export interface FloorZone { name: string; type: string; layers: string[]; active: boolean } // Valid types are undecided, carpet, tile, or wood
+export interface Option { level: number; name: string; standardName: string; optionName: string; standardLayers: string[]; optionLayers: string[]; active: boolean }
 
 @Component({
     selector: 'app-floor',
@@ -136,7 +136,6 @@ export class FloorComponent implements OnDestroy, OnInit {
     }
 
     toggleOption(option: Option): void {
-        const _this = this;
         option.active = !option.active;
         // console.log(option.active);
         for (const standardLayer of option.standardLayers) {

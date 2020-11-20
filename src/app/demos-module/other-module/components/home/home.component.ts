@@ -1,7 +1,7 @@
 import { Component, ElementRef, AfterViewInit, OnDestroy, ViewChild, ViewEncapsulation } from '@angular/core';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Game from './../../react/tic-tac-toe/game'
+import Game from './../../react/tic-tac-toe/game';
 
 @Component({
     encapsulation: ViewEncapsulation.None,
@@ -13,7 +13,7 @@ export class HomeComponent implements AfterViewInit , OnDestroy {
 
     @ViewChild('reactContainer') reactContainerRef: ElementRef;
 
-    _modalActive = false;
+    modalActive = false;
 
     props = {
         message: 'React knows all data passed in from Angular',
@@ -35,7 +35,7 @@ export class HomeComponent implements AfterViewInit , OnDestroy {
     }
 
     viewModal(): void {
-        this._modalActive = true;
+        this.modalActive = true;
     }
 
 }

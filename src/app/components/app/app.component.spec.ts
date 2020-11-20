@@ -1,6 +1,6 @@
-/* tslint:disable:no-unused-variable */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { HttpClientModule } from '@angular/common/http';
-import { async, TestBed } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import {} from 'jasmine';
 
@@ -30,7 +30,7 @@ describe('AppComponent', () => {
       }
     });
   });
-  it('Should instantiate component', async(() => {
+  it('Should instantiate component', waitForAsync(() => {
     TestBed.compileComponents().then(() => {
       const fixture = TestBed.createComponent(AppComponent);
       expect(fixture.componentInstance instanceof AppComponent).toBe(

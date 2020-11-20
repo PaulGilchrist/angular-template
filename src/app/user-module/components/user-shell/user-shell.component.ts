@@ -10,7 +10,7 @@ import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
 
 @Component({
-    selector: './app-user-shell',
+    selector: 'app-user-shell',
     templateUrl: './user-shell.component.html'
 })
 export class UserShellComponent implements OnDestroy, OnInit {
@@ -23,7 +23,7 @@ export class UserShellComponent implements OnDestroy, OnInit {
     users: User[] = [];
     userSubscription: Subscription;
 
-    constructor(private connectivityService: ConnectivityService, private toastrService: ToastrService, public _userService: UserService) { }
+    constructor(private connectivityService: ConnectivityService, private toastrService: ToastrService, public userService: UserService) { }
 
     ngOnInit(): void {
         // Keep track of network connectivity and update API if anything was only saved locally
@@ -40,10 +40,10 @@ export class UserShellComponent implements OnDestroy, OnInit {
                 }
             }
         }));
-        this.subscriptions.push(this._userService.getStates().subscribe(
+        this.subscriptions.push(this.userService.getStates().subscribe(
             states => this.states = states
         ));
-        this.subscriptions.push(this._userService.getUsers(true).subscribe(
+        this.subscriptions.push(this.userService.getUsers(true).subscribe(
             users => this.users = users
         ));
     }
@@ -56,7 +56,7 @@ export class UserShellComponent implements OnDestroy, OnInit {
     onSaveUser(user: User): void {
         if (this.isConnected) {
             // Save to API would be here
-            this._userService.updateUser(user).subscribe(
+            this.userService.updateUser(user).subscribe(
                 success => {
                     this.toastrService.success(`User '${user.firstName} ${user.lastName}' saved to API`, `Save User`);
                     console.log(`User '${user.firstName} ${user.lastName}' saved to API`);
@@ -92,7 +92,7 @@ export class UserShellComponent implements OnDestroy, OnInit {
         localStorage.removeItem('dirtyUsers');
         this.user = null;
         this.address = null;
-        this._userService.getUsers(true);
+        this.userService.getUsers(true);
         console.log(`User list reset`);
     }
 

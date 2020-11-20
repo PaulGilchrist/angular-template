@@ -1,6 +1,6 @@
 const indent = 25;
-export let PDF_OVERVIEW: any = {
-    // tslint:disable-next-line: indent
+export const PDF_OVERVIEW: any = {
+    // eslint-disable-next-line @typescript-eslint/indent
 	defaultStyle: {
         fontSize: 11
     },
@@ -35,23 +35,25 @@ export let PDF_OVERVIEW: any = {
         },
 
     },
-    header(currentPage: number, pageCount: number) {
-        return {
+    header: (currentPage: number, pageCount: number) => {
+        const header =  {
             alignment: 'right',
             fontSize: 8,
             italics: true,
             margin: [0, 20, 20, 0],
-            text: 'Angular Template',
-    };
+            text: 'Angular Template'
+        };
+        return header;
     },
-    footer(currentPage: number, pageCount: number) {
-        return {
-        alignment: 'right',
+    footer: (currentPage: number, pageCount: number) => {
+        const footer = {
+            alignment: 'right',
             fontSize: 8,
             italics: true,
             marginRight: 20,
             text: currentPage.toString(),
         };
+        return footer;
     },
     content: [
         {

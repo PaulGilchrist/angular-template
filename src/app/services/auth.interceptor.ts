@@ -17,7 +17,7 @@ export class AuthInterceptor implements HttpInterceptor {
             // Token is cached so safe to refresh it on every request
             this.refreshToken();
             // Clone the request to add the new header.
-            const authReq = req.clone({setHeaders: { Authorization: 'Bearer ' + this.rawIdToken }});
+            const authReq = req.clone({setHeaders: { authorization: 'Bearer ' + this.rawIdToken }});
             // Pass on the cloned request instead of the original request.
             return next.handle(authReq);
         } else {

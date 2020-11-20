@@ -27,20 +27,22 @@ export class AddressFormComponent implements OnInit, OnChanges {
 
     ngOnChanges(changes: SimpleChanges) {
         for (const propName in changes) {
-            switch (propName) {
-                case 'address':
-                    if (changes[propName].currentValue) {
-                        this.formAddress = {
-                            ...changes[propName].currentValue
-                        };
-                    } else {
-                        this.formAddress = null;
-                    }
-                    break;
+            if ({}.hasOwnProperty.call(changes, propName)) {
+                switch (propName) {
+                    case 'address':
+                        if (changes[propName].currentValue) {
+                            this.formAddress = {
+                                ...changes[propName].currentValue
+                            };
+                        } else {
+                            this.formAddress = null;
+                        }
+                        break;
+                }
             }
         }
     }
-    
+
     onUpdateState(event: any): void {
         // Only the value roles up to the parent select.  To get the label you have to go to the selected option
         this.toastrService.success(event.target.selectedOptions[0].text, 'State Changed');

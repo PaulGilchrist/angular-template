@@ -6,7 +6,7 @@ import { DragulaService } from 'ng2-dragula';
 import * as $ from 'jquery';
 
 // We only put interfaces in the models folder when they are reused across components
-export interface DragObject { id: number; text: string; allowMove: boolean; }
+export interface DragObject { id: number; text: string; allowMove: boolean }
 
 @Component({
     selector: 'app-drag-demo',
@@ -32,24 +32,24 @@ export class DragDemoComponent implements OnInit {
     constructor(private dragulaService: DragulaService) { }
 
     ngOnInit(): void {
-        const _self = this;
+        const self = this;
         this.dragulaService.createGroup('dragContainer', {
-            isContainer(el: any) { return false; }, // only elements in drake.containers will be taken into account
-            moves(el: any, source: any, handle: any, sibling: any) {
+            isContainer: (el: any) => false, // only elements in drake.containers will be taken into account
+            moves: (el: any, source: any, handle: any, sibling: any) =>
                 // Elements are always draggable by default
-                return true;
-            },
-            accepts(el: any, target: any, source: any, sibling: any) {
+                true
+            ,
+            accepts: (el: any, target: any, source: any, sibling: any) => {
                 // Elements can be dropped in any of the `containers` by default
                 const itemId: number = parseInt($(el).attr('id'), 10);
-                const item = _self.list1.find(d => d.id === itemId) || _self.list2.find(d => d.id === itemId);
+                const item = self.list1.find(d => d.id === itemId) || self.list2.find(d => d.id === itemId);
                 if (!item.allowMove) {
                     return false;
                 } else {
                     return true;
                 }
             },
-            invalid(el: any, handle: any) { return false; }, // don't prevent any drags from initiating by default
+            invalid: (el: any, handle: any) => false, // don't prevent any drags from initiating by default
             direction: 'vertical', // Y axis is considered when determining where an element would be dropped
             copy: false, // Elements are moved by default, not copied
             copySortSource: true, // Elements in copy-source containers can be reordered

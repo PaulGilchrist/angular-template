@@ -36,9 +36,9 @@ export class EditorDemoComponent implements OnInit {
 
     updateMergedContent() {
         // Find and replace any variables with their respective values
-        const _self = this;
+        const self = this;
         this.mergedContent = this.content;
-        this.data.forEach((item: any, index: number) => _self.mergedContent = _self.mergedContent.split(item.name).join(item.value));
+        this.data.forEach((item: any, index: number) => self.mergedContent = self.mergedContent.split(item.name).join(item.value));
     }
 
 }

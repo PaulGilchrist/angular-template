@@ -21,8 +21,10 @@ export class TokenComponent implements OnInit {
 
     ngOnInit(): void {
         this.appInsightsService.logPageView('token.component', '/token');
-        this.authService.acquireTokenSilent({ scopes: ['User.Read'] }).then(response => {
-            this.rawIdToken = response.idToken.rawIdToken;
+        this.authService.acquireTokenPopup({ scopes: ['User.Read'] }).then(response => {
+            if(response.idToken) {
+                this.rawIdToken = response.idToken.rawIdToken;
+            }
         });
         // // Initialize tooltips just for this component
         // $(function() {

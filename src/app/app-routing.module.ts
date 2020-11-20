@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, NoPreloading } from '@angular/router';
 
-// Providers
-import { Adal8Guard } from 'adal-angular8';
-
 const routes: Routes = [
     // Static Loading
     { path: '', redirectTo: '/main', pathMatch: 'full' },
@@ -15,7 +12,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { preloadingStrategy: NoPreloading })
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: NoPreloading, relativeLinkResolution: 'legacy' })
 ],
   exports: [RouterModule]
 })

@@ -6,14 +6,14 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable()
 export class BlockchainService {
-    _tickerUrl = 'https://blockchain.info/ticker?cors=true';
-    _exchangeRates: any;
+    tickerUrl = 'https://blockchain.info/ticker?cors=true';
+    exchangeRates: any;
 
     // Assumes HTTP_PROVIDERS was added as a provider at a higher level
-    constructor(private _http: HttpClient) { }
+    constructor(private http: HttpClient) { }
 
     public getUsdExchangeRate(): Observable<number> {
-        return this._http.get(this._tickerUrl).pipe(
+        return this.http.get(this.tickerUrl).pipe(
             map(res => (res as any).USD.last),
             catchError(this.handleError)
         );
