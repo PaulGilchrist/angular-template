@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 
 import { User } from '../../models/user.model';
 
@@ -7,42 +7,46 @@ import { User } from '../../models/user.model';
     styleUrls: ['./user-form.component.scss'],
     templateUrl: './user-form.component.html'
 })
-export class UserFormComponent implements OnInit {
+export class UserFormComponent implements OnInit, OnChanges {
 
-    inputUser: User;
+    @Input() user: User = null
+    @Output() readonly save = new EventEmitter<User>(); // Bubble up that the form was saved
+
     formUser: User;
     shrink =  window.innerWidth < 768;
     status = 'new';
-
-    @Input() set user(user: User) {
-        this.inputUser = user;
-        if (user) {
-            this.formUser = {
-                ...user
-            };
-        } else {
-            this.formUser = null;
-        }
-    }
-
-    // Bubble up that the form was saved
-    @Output() readonly save = new EventEmitter<User>();
 
     ngOnInit(): void {
         // Track screen size  changes to adjust button size
         window.onresize = () => this.shrink = window.innerWidth < 768;
     }
 
+    ngOnChanges(changes: SimpleChanges) {
+        for (const propName in changes) {
+            switch (propName) {
+                case 'user':
+                    if (changes[propName].currentValue) {
+                        this.formUser = {
+                            ...changes[propName].currentValue
+                        };
+                    } else {
+                        this.formUser = null;
+                    }
+                    break;
+            }
+        }
+    }
+
     saveForm(): void {
-        Object.assign(this.inputUser, this.formUser);
+        Object.assign(this.user, this.formUser);
         // Bubble up that this user has been saved in case the parent is interested
-        this.save.emit(this.inputUser);
+        this.save.emit(this.user);
         this.status = 'saved';
     }
 
     cancelForm(): void {
         // Reset the form back to the original user details
-        Object.assign(this.formUser, this.inputUser);
+        Object.assign(this.formUser, this.user);
         this.status = 'canceled';
     }
 

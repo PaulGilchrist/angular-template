@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 
 import { ConnectivityService } from 'angular-connectivity'; // My NPM Package
 import { Address } from '../../models/address.model';
+import { State } from '../../models/state.model';
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
 
@@ -16,17 +17,13 @@ export class UserShellComponent implements OnDestroy, OnInit {
     address: Address = null;
     addresses: Address[] = [];
     isConnected = true;
+    states: State[] = [];
     subscriptions: Subscription[] = [];
     user: User = null;
     users: User[] = [];
     userSubscription: Subscription;
 
     constructor(private connectivityService: ConnectivityService, private toastrService: ToastrService, public _userService: UserService) { }
-
-    ngOnDestroy(): void {
-        // Unsubscribe all subscriptions to avoid memory leak
-        this.subscriptions.forEach(subscription => subscription.unsubscribe());
-    }
 
     ngOnInit(): void {
         // Keep track of network connectivity and update API if anything was only saved locally
@@ -43,10 +40,17 @@ export class UserShellComponent implements OnDestroy, OnInit {
                 }
             }
         }));
-        // React every time the list of users changes
+        this.subscriptions.push(this._userService.getStates().subscribe(
+            states => this.states = states
+        ));
         this.subscriptions.push(this._userService.getUsers(true).subscribe(
             users => this.users = users
         ));
+    }
+
+    ngOnDestroy(): void {
+        // Unsubscribe all subscriptions to avoid memory leak
+        this.subscriptions.forEach(subscription => subscription.unsubscribe());
     }
 
     onSaveUser(user: User): void {

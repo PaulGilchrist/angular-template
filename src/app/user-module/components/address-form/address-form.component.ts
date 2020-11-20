@@ -1,9 +1,8 @@
-import { Component, EventEmitter, Input, OnInit, Output, OnDestroy } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { ToastrService } from 'ngx-toastr';
 
-import { UserService } from '../../services/user.service';
 import { State } from '../../models/state.model';
 import { Address } from '../../models/address.model';
 
@@ -12,55 +11,50 @@ import { Address } from '../../models/address.model';
     styleUrls: ['./address-form.component.scss'],
     templateUrl: './address-form.component.html'
 })
-export class AddressFormComponent implements OnInit, OnDestroy {
+export class AddressFormComponent implements OnInit, OnChanges {
+    @Input() address: Address = null;
+    @Input() states: State[] = [];
+    @Output() readonly save = new EventEmitter<Address>(); // Bubble up that the form was saved
+
     shrink =  window.innerWidth < 768;
-    stateSubscription: Subscription;
-    states: State[] = [];
     formAddress: Address;
-    inputAddress: Address;
 
-    @Input() set address(address: Address) {
-        this.inputAddress = address;
-        if (address) {
-            this.formAddress = {
-                ...address
-            };
-        } else {
-            this.formAddress = null;
-        }
-    }
-
-    // Bubble up that the form was saved
-    @Output() readonly save = new EventEmitter<Address>();
-
-    constructor(private toastrService: ToastrService, public _userService: UserService) { }
+    constructor(private toastrService: ToastrService) { }
 
     ngOnInit(): void {
-        this.stateSubscription = this._userService.getStates().subscribe(
-            states => this.states = states
-        );
-        // Track screen size  changes to adjust button size
         window.onresize = () => this.shrink = window.innerWidth < 768;
     }
 
-    ngOnDestroy() {
-        this.stateSubscription.unsubscribe();
+    ngOnChanges(changes: SimpleChanges) {
+        for (const propName in changes) {
+            switch (propName) {
+                case 'address':
+                    if (changes[propName].currentValue) {
+                        this.formAddress = {
+                            ...changes[propName].currentValue
+                        };
+                    } else {
+                        this.formAddress = null;
+                    }
+                    break;
+            }
+        }
     }
-
+    
     onUpdateState(event: any): void {
         // Only the value roles up to the parent select.  To get the label you have to go to the selected option
         this.toastrService.success(event.target.selectedOptions[0].text, 'State Changed');
     }
 
     saveForm(): void {
-        Object.assign(this.inputAddress, this.formAddress);
+        Object.assign(this.address, this.formAddress);
         // Bubble up that this user has been saved in case the parent is interested
-        this.save.emit(this.inputAddress);
+        this.save.emit(this.address);
     }
 
     cancelForm(): void {
         // Reset the form back to the original user details
-        Object.assign(this.formAddress, this.inputAddress);
+        Object.assign(this.formAddress, this.address);
     }
 
 }

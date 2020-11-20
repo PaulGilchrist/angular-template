@@ -7,6 +7,7 @@ import { User } from '../../models/user.model';
     templateUrl: './user-list.component.html'
 })
 export class UserListComponent implements OnInit {
+    @Input() users: User[];
     @Output() readonly choose = new EventEmitter<User>();
     id: string;
 
@@ -17,8 +18,6 @@ export class UserListComponent implements OnInit {
     searchString = '';
     selectedUser: User = null;
     shrink =  window.innerWidth < 768;
-
-    @Input() users: User[];
 
     ngOnInit(): void {
         // Track screen size  changes to adjust button size
