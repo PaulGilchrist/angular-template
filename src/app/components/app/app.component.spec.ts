@@ -30,15 +30,15 @@ describe('AppComponent', () => {
       }
     });
   });
-  it('Should instantiate component', waitForAsync(() => {
-    TestBed.compileComponents().then(() => {
-      const fixture = TestBed.createComponent(AppComponent);
-      expect(fixture.componentInstance instanceof AppComponent).toBe(
-        true,
-        'should create AppComponent'
-      );
-    });
-  }));
+  // it('Should instantiate component', waitForAsync(() => {
+  //   TestBed.compileComponents().then(() => {
+  //     const fixture = TestBed.createComponent(AppComponent);
+  //     expect(fixture.componentInstance instanceof AppComponent).toBe(
+  //       true,
+  //       'should create AppComponent'
+  //     );
+  //   });
+  // }));
   // it('Should have expected <div> text', async(() => {
   //     TestBed.compileComponents().then(() => {
   //         let fixture = TestBed.createComponent(AppComponent);
