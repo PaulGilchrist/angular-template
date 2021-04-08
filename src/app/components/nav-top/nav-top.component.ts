@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { ConnectivityService } from 'angular-connectivity'; // My NPM Package
-import { MsalService } from '@azure/msal-angular';
+import {OAuthService} from 'angular-oauth2-oidc';
 
 @Component({
     selector: 'app-nav-top',
@@ -12,6 +12,7 @@ import { MsalService } from '@azure/msal-angular';
     templateUrl: './nav-top.component.html'
 })
 export class NavTopComponent implements OnInit, OnDestroy {
+    claims: any = this.authService.getIdentityClaims();
     shrinkNavbar = false;
     isConnected = true;
     subscriptions: Subscription[] = [];
@@ -21,7 +22,7 @@ export class NavTopComponent implements OnInit, OnDestroy {
         private connectivityService: ConnectivityService,
         // private _location: Location,
         private router: Router,
-        public authService: MsalService
+        public authService: OAuthService
     ) { }
 
     onScroll(event: any): void {
@@ -45,16 +46,22 @@ export class NavTopComponent implements OnInit, OnDestroy {
         this.subscriptions.forEach(subscription => subscription.unsubscribe());
     }
 
-    login(): void {
-        localStorage.setItem('url', this.router.url);
-        this.authService.loginPopup();
+    login(){
+        this.authService.initLoginFlow();
+        return false;   //prevent default
     }
 
-    logout(): void {
-        this.authService.logout();
+    logout(){
+        this.authService.logOut();
+        return false;   //prevent default
     }
 
     get authenticated(): boolean {
-        return !!this.authService.getAccount();
+        return !!this.authService.hasValidIdToken();
+    }
+
+    get username(): string {
+        this.claims = this.authService.getIdentityClaims();
+        return this.claims.preferred_username;
     }
 }

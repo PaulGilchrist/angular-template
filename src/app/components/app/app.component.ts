@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SwPush } from '@angular/service-worker';
-
+import {OAuthService} from 'angular-oauth2-oidc';
+import {config} from './../../authConfig';
 import { AppInsightsService } from '../../services/app-insights.service';
 
 import { environment } from '../../../environments/environment';
@@ -14,9 +15,13 @@ import * as $ from 'jquery';
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
-    constructor(private appInsightsService: AppInsightsService, public router: Router, private swPush: SwPush) {}
+    constructor(private appInsightsService: AppInsightsService, public router: Router, private swPush: SwPush, private authService: OAuthService) {}
 
     ngOnInit(): void {
+        this.authService.configure(config);
+        this.authService.timeoutFactor=0.3;
+        this.authService.setupAutomaticSilentRefresh();
+        this.authService.loadDiscoveryDocumentAndTryLogin();
         this.appInsightsService.logPageView('app.component', '/');
         // Extend jQuery to allow for simpler animations
         $.fn.extend({

@@ -17,6 +17,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "applicationinsights-js", "dragula", "jquery", "react", "react-dom"
+            ],
             "aot": true,
             "outputPath": "dist",
             "index": "src/index.html",

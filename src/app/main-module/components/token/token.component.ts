@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AppInsightsService } from '../../../services/app-insights.service';
-import { MsalService } from '@azure/msal-angular';
-
+import {OAuthService} from 'angular-oauth2-oidc';
 
 @Component({
     selector: 'app-token',
@@ -11,21 +10,16 @@ import { MsalService } from '@azure/msal-angular';
 })
 export class TokenComponent implements OnInit {
 
-    token = this.authService.getAccount().idToken;
-    rawIdToken = null;
+    token: any = this.authService.getIdentityClaims();
+    rawIdToken = this.authService.getIdToken();
 
     constructor(
         private appInsightsService: AppInsightsService,
-        private authService: MsalService
+        private authService: OAuthService
     ) { }
 
     ngOnInit(): void {
         this.appInsightsService.logPageView('token.component', '/token');
-        this.authService.acquireTokenPopup({ scopes: ['User.Read'] }).then(response => {
-            if(response.idToken) {
-                this.rawIdToken = response.idToken.rawIdToken;
-            }
-        });
         // // Initialize tooltips just for this component
         // $(function() {
         // 	// No typings for bootstrap's tooltip
@@ -42,7 +36,6 @@ export class TokenComponent implements OnInit {
     }
 
     logout(): void {
-        this.authService.logout();
-        // this.adalService.logOut();
+        this.authService.logOut();
     }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AppInsights } from 'applicationinsights-js';
-import { MsalService } from '@azure/msal-angular';
+import {OAuthService} from 'angular-oauth2-oidc';
 
 import { environment } from '../../environments/environment';
 
@@ -11,7 +11,7 @@ export class AppInsightsService {
         instrumentationKey: environment.appInsights.instrumentationKey
     };
 
-    constructor(private authService: MsalService) {
+    constructor(private authService: OAuthService) {
         if (!AppInsights.config) {
             AppInsights.downloadAndSetup(this.config);
         }
@@ -38,8 +38,9 @@ export class AppInsightsService {
     }
 
     setUser() {
-        if (!!this.authService.getAccount()) {
-            AppInsights.setAuthenticatedUserContext(this.authService.getAccount().idToken.preferred_username);
+        if (!!this.authService.getIdToken()) {
+            const claims: any = this.authService.getIdentityClaims();
+            AppInsights.setAuthenticatedUserContext(claims.preferred_username);
         } else {
             AppInsights.clearAuthenticatedUserContext();
         }
