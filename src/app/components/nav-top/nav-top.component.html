@@ -35,7 +35,7 @@
       </li>
     </ul>
     <div *ngIf="authenticated" class="nav navbar-right hidden-xs hidden-sm text-light">
-      {{ claims.name }}
+      {{ username() }}
     </div>
     &nbsp;&nbsp;
     <span *ngIf='isConnected' class='online'>ONLINE</span>

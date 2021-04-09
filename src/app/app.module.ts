@@ -12,9 +12,9 @@ import { ToastrModule } from 'ngx-toastr';
 
 // Providers
 import { AppInsightsService } from './services/app-insights.service';
-//import { AuthInterceptor } from './services/auth.interceptor';
 import { ConnectivityService } from 'angular-connectivity';
-import { LoggingInterceptor } from './services/logging.interceptor';
+//import { AuthInterceptor } from './services/auth.interceptor';
+//import { LoggingInterceptor } from './services/logging.interceptor';
 
 
 
@@ -50,7 +50,7 @@ import { environment } from '../environments/environment';
         AppInsightsService,
         AuthGuard,
         ConnectivityService,
-        { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true }, // Time how long each http rerquests takes
+        //{ provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true }, // Time how long each http rerquests takes
         //{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } // Add token to all API requests
     ]
 })

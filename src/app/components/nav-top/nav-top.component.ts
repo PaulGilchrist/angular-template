@@ -56,12 +56,12 @@ export class NavTopComponent implements OnInit, OnDestroy {
         return false;   //prevent default
     }
 
-    get authenticated(): boolean {
+    authenticated(): boolean {
         return !!this.authService.hasValidIdToken();
     }
 
-    get username(): string {
+    username(): string {
         this.claims = this.authService.getIdentityClaims();
-        return this.claims.preferred_username;
+        return this.claims.name;
     }
 }
