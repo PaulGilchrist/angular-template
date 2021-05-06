@@ -34,7 +34,7 @@
         <a class="nav-link" [routerLink]="['main/token']">Token</a>
       </li>
     </ul>
-    <div *ngIf="authenticated" class="nav navbar-right hidden-xs hidden-sm text-light">
+    <div *ngIf="authenticated()" class="nav navbar-right hidden-xs hidden-sm text-light">
       {{ username() }}
     </div>
     &nbsp;&nbsp;
@@ -42,8 +42,8 @@
     <span *ngIf='!isConnected' class='offline'>OFFLINE</span>
     &nbsp;&nbsp;
     <form class="navbar-form navbar-right">
-      <input *ngIf="!authenticated" (click)="login()" type="button" class="btn btn-primary" value="Login">
-      <input *ngIf="authenticated" (click)="logout()" type="button" class="btn sm btn-secondary" value="Logout">
+      <input *ngIf="!authenticated()" (click)="login()" type="button" class="btn btn-primary" value="Login">
+      <input *ngIf="authenticated()" (click)="logout()" type="button" class="btn sm btn-secondary" value="Logout">
     </form>
   </div>
 </nav>
