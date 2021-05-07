@@ -12,7 +12,7 @@ import {OAuthService} from 'angular-oauth2-oidc';
     templateUrl: './nav-top.component.html'
 })
 export class NavTopComponent implements OnInit, OnDestroy {
-    claims: any = this.authService.getIdentityClaims();
+   claims: any = this.authService.getIdentityClaims();
     shrinkNavbar = false;
     isConnected = true;
     subscriptions: Subscription[] = [];
@@ -31,7 +31,7 @@ export class NavTopComponent implements OnInit, OnDestroy {
             (window.pageYOffset || document.documentElement.scrollTop) > 300;
     }
 
-    ngOnInit(): void {
+   ngOnInit(): void {
         const url = localStorage.getItem('url');
         if (url != null) {
             localStorage.removeItem('url');
@@ -39,25 +39,23 @@ export class NavTopComponent implements OnInit, OnDestroy {
         }
         this.subscriptions.push(this.connectivityService.isConnected$.subscribe(isConnected => this.isConnected = isConnected));
         window.onresize = () => this.width = window.innerWidth;
-    }
+   }
 
     ngOnDestroy(): void {
         // Unsubscribe all subscriptions to avoid memory leak
         this.subscriptions.forEach(subscription => subscription.unsubscribe());
     }
 
+    isAuthenticated() {
+        return !!this.authService.hasValidIdToken();
+    }
+
     login(){
         this.authService.initLoginFlow();
-        return false;   //prevent default
     }
 
     logout(){
         this.authService.logOut();
-        return false;   //prevent default
-    }
-
-    authenticated(): boolean {
-        return !!this.authService.hasValidIdToken();
     }
 
     username(): string {
