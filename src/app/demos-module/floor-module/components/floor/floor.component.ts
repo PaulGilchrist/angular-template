@@ -1,8 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { ToastrService } from 'ngx-toastr';
-
 import { ConnectivityService } from 'angular-connectivity'; // My NPM Package
 import { FlooringState } from '../../models/flooring-state.model';
 import { INITIAL_FLOORING_STATE } from '../../data/initial-flooring-state.data';
@@ -25,7 +23,7 @@ export class FloorComponent implements OnDestroy, OnInit {
     shrink =  window.innerWidth < 768;
     subscriptions: Subscription[] = [];
 
-    constructor(private connectivityService: ConnectivityService, private toastrService: ToastrService) { }
+    constructor(private connectivityService: ConnectivityService) { }
 
     ngOnDestroy(): void {
         // Unsubscribe all subscriptions to avoid memory leak
@@ -96,11 +94,11 @@ export class FloorComponent implements OnDestroy, OnInit {
     save() {
         localStorage.setItem('flooringState', JSON.stringify(this.flooringState));
         if (this.isConnected) {
-            this.toastrService.success('Flooring state saved to API', 'Save Flooring');
+            // this.toastrService.success('Flooring state saved to API', 'Save Flooring');
             this.apiUpdateNeeded = false;
             console.log(`Flooring state saved`);
         } else {
-            this.toastrService.success('Flooring state changes saved locally since no Internet connection is currently available.  Once connected, changes will be uploaded', 'Save Flooring');
+            // this.toastrService.success('Flooring state changes saved locally since no Internet connection is currently available.  Once connected, changes will be uploaded', 'Save Flooring');
             this.apiUpdateNeeded = true;
             console.log(`Offline - Flooring state changes saved locally.  Once connected, changes will be uploaded`);
         }

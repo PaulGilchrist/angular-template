@@ -8,3 +8,15 @@
 </div>
 <button class="btn btn-warning mb-3" (click)="reset()">Reset List</button><br/>
 <app-user-list [users]="users" (choose)="onSelect($event)"></app-user-list>
+<!-- User Shell Toast Message -->
+<div class="toast-container position-absolute top-0 start-0" style="z-index: 5">
+    <div id="userShellToast" class="toast hide" role="alert" data-bs-animation=true data-bs-delay=2000 aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+        <strong class="me-auto">{{toastHeader}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+        {{toastBody}}
+        </div>
+    </div>
+</div>

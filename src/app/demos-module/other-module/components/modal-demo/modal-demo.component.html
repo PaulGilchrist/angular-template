@@ -1,15 +1,15 @@
-<div [id]="id" class="modal fade" role="dialog">
-    <div class="modal-dialog modal-lg" *ngIf="active">
+<div [id]="id" class="modal fade" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Modal Title</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam et sodales risus. Nullam ultrices, justo quis fringilla bibendum, turpis velit lobortis quam, eget interdum eros nisi vitae elit. Fusce lobortis sodales varius. Cras eget mauris nisi. Ut in magna id tortor imperdiet lobortis.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam et sodales risus. Nullam ultrices, justo quis fringilla bibendum, turpis velit lobortis quam, eget interdum eros nisi vitae elit. Fusce lobortis sodales varius. Cras eget mauris nisi. Ut in magna id tortor imperdiet lobortis.<br/>
             </div>
             <div class="modal-footer">
-                <input type="button" class="btn btn-default" value="Close" data-dismiss="modal">
+                <input type="button" class="btn btn-default" value="Close" data-bs-dismiss="modal" aria-label="Close">
             </div>
         </div>
     </div>

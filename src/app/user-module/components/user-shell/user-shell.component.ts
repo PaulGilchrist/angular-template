@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-
-import { ToastrService } from 'ngx-toastr';
+import { Toast } from 'bootstrap';
 
 import { ConnectivityService } from 'angular-connectivity'; // My NPM Package
 import { Address } from '../../models/address.model';
@@ -22,8 +21,10 @@ export class UserShellComponent implements OnDestroy, OnInit {
     user: User = null;
     users: User[] = [];
     userSubscription: Subscription;
+    toastBody = '';
+    toastHeader = '';
 
-    constructor(private connectivityService: ConnectivityService, private toastrService: ToastrService, public userService: UserService) { }
+    constructor(private connectivityService: ConnectivityService, public userService: UserService) { }
 
     ngOnInit(): void {
         // Keep track of network connectivity and update API if anything was only saved locally
@@ -43,9 +44,9 @@ export class UserShellComponent implements OnDestroy, OnInit {
         this.subscriptions.push(this.userService.getStates().subscribe(
             states => this.states = states
         ));
-        this.subscriptions.push(this.userService.getUsers(true).subscribe(
-            users => this.users = users
-        ));
+        this.subscriptions.push(this.userService.getUsers(true).subscribe(users => {
+            this.users = users;
+        }));
     }
 
     ngOnDestroy(): void {
@@ -58,7 +59,10 @@ export class UserShellComponent implements OnDestroy, OnInit {
             // Save to API would be here
             this.userService.updateUser(user).subscribe(
                 success => {
-                    this.toastrService.success(`User '${user.firstName} ${user.lastName}' saved to API`, `Save User`);
+                    this.toastHeader = 'Save User';
+                    this.toastBody = `User '${user.firstName} ${user.lastName}' saved to API`;
+                    const toast = new Toast(document.getElementById('userShellToast'));
+                    toast.show();
                     console.log(`User '${user.firstName} ${user.lastName}' saved to API`);
                 },
                 error => {
@@ -72,7 +76,10 @@ export class UserShellComponent implements OnDestroy, OnInit {
             localStorage.setItem('users', JSON.stringify(this.users));
             const dirtyUsers = this.users.filter(u => u.isDirty);
             localStorage.setItem('dirtyUsers', JSON.stringify(dirtyUsers));
-            this.toastrService.success(`Offline - User '${user.firstName} ${user.lastName}' saved locally`, `Save User`);
+            this.toastHeader = 'Save User';
+            this.toastBody = `Offline - User '${user.firstName} ${user.lastName}' saved locally.  Once connected, changes will be uploaded`;
+            const toast = new Toast(document.getElementById('userShellToast'));
+            toast.show();
             console.log(`Offline - User '${user.firstName} ${user.lastName}' saved locally.  Once connected, changes will be uploaded`);
         }
     }

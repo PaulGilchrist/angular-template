@@ -8,7 +8,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { ToastrModule } from 'ngx-toastr';
 
 // Providers
 import { AppInsightsService } from './services/app-insights.service';
@@ -43,7 +42,6 @@ import { environment } from '../environments/environment';
                 sendAccessToken: true
             }
         }),
-        ToastrModule.forRoot(),
         ServiceWorkerModule.register('sw-worker.js', { enabled: environment.production }) // Replaced ngsw-worker.js to add ability to open application from notification
     ],
     providers: [

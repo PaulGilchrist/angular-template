@@ -1,50 +1,30 @@
 <div *ngIf="formAddress" class="animated slideInRight">
     <h3>Address</h3>
     <form #addressForm="ngForm" novalidate>
-        <div class="form-group" [class.has-error]="nameControl.invalid && nameControl.dirty">
-            <label class="control-label">Name</label>
-            <div class="input-group margin-bottom-sm">
-                <div class="input-group-prepend"><div class="input-group-text"><i class="fa fa-thumb-tack fa-fw"></i></div></div>
-	            <input type="text" name="name" [(ngModel)]="formAddress.name" #nameControl="ngModel" class="form-control" [class.form-control-sm]="shrink" placeholder="Enter name (optional)" pattern="[A-Z]{1}[a-z]+(?:[\s-][a-zA-Z]+)*">
+        <div [class.has-error]="streetControl.invalid && streetControl.dirty">
+            <label class="control-label">Street</label>
+            <div class="input-group mb-2">
+                <span class="input-group-text"><i class="fa fa-map-marker fa-fw"></i></span>
+	            <input type="text" name="street" [(ngModel)]="formAddress.street" #streetControl="ngModel" class="form-control" [class.form-control-sm]="shrink" required placeholder="Enter street">
             </div>
-            <div [hidden]="nameControl.valid || nameControl.pristine" class="alert alert-danger">
-                Name only allows for alpha characters.  First word must be capatalized.
-            </div>
-        </div>
-        <div class="form-group" [class.has-error]="streetNumberControl.invalid && streetNumberControl.dirty">
-            <label class="control-label">Street Number</label>
-            <div class="input-group margin-bottom-sm">
-                <div class="input-group-prepend"><div class="input-group-text"><i class="fa fa-location-arrow fa-fw"></i></div></div>
-	            <input type="number" name="streetNumber" [(ngModel)]="formAddress.streetNumber" #streetNumberControl="ngModel" class="form-control" [class.form-control-sm]="shrink" placeholder="Enter street house #" required min="1" max="99999">
-            </div>
-            <div [hidden]="streetNumberControl.valid || streetNumberControl.pristine" class="alert alert-danger">
-                Street number is invalid and must be between 1 and 99999
+	        <div [hidden]="streetControl.valid || streetControl.pristine" class="alert alert-danger">
+                No pattern matching currently enforced
             </div>
         </div>
-        <div class="form-group" [class.has-error]="streetNameControl.invalid && streetNameControl.dirty">
-            <label class="control-label">Street Name</label>
-            <div class="input-group margin-bottom-sm">
-                <div class="input-group-prepend"><div class="input-group-text"><i class="fa fa-map-marker fa-fw"></i></div></div>
-	            <input type="text" name="streetName" [(ngModel)]="formAddress.streetName" #streetNameControl="ngModel" class="form-control" [class.form-control-sm]="shrink" required placeholder="Enter street name" pattern="[A-Z]{1}[a-z]+(?:[\s-][a-zA-Z]+)*">
-            </div>
-	        <div [hidden]="streetNameControl.valid || streetNameControl.pristine" class="alert alert-danger">
-                Street name only allows for alpha characters.  First word must be capatalized.
-            </div>
-        </div>
-        <div class="form-group" [class.has-error]="cityControl.invalid && cityControl.dirty">
+        <div [class.has-error]="cityControl.invalid && cityControl.dirty">
             <label class="control-label">City</label>
-            <div class="input-group margin-bottom-sm">
-                <div class="input-group-prepend"><div class="input-group-text"><i class="fa fa-compass fa-fw"></i></div></div>
+            <div class="input-group mb-2">
+                <span class="input-group-text"><i class="fa fa-compass fa-fw"></i></span>
 	            <input type="text" name="city" [(ngModel)]="formAddress.city" #cityControl="ngModel" class="form-control" [class.form-control-sm]="shrink" required placeholder="Enter city name" pattern="[A-Z]{1}[a-z]+(?:[\s-][a-zA-Z]+)*">
             </div>
 			<div [hidden]="cityControl.valid || cityControl.pristine" class="alert alert-danger">
                 City is invalid.  First word must be capatalized.
             </div>
         </div>
-        <div class="form-group" [class.has-error]="stateControl.invalid && stateControl.dirty">
+        <div [class.has-error]="stateControl.invalid && stateControl.dirty">
             <label class="control-label">State</label>
-            <div class="input-group margin-bottom-sm">
-                <div class="input-group-prepend"><div class="input-group-text"><i class="fa fa-plane fa-fw"></i></div></div>
+            <div class="input-group mb-2">
+                <span class="input-group-text"><i class="fa fa-plane fa-fw"></i></span>
 				<select name="state" [ngModel]="formAddress.state" (change)="onUpdateState($event)" #stateControl="ngModel" class="form-control" [class.form-control-sm]="shrink">
 					<option *ngFor="let s of states" [value]='s.abbreviation'>{{s.name}}</option>
 				</select>
@@ -53,15 +33,27 @@
                 State is required
             </div>
         </div>
-        <div class="form-group" [class.has-error]="zipCodeControl.invalid && zipCodeControl.dirty">
+        <div [class.has-error]="zipControl.invalid && zipControl.dirty">
             <label class="control-label">Zip Code</label>
-            <div class="input-group margin-bottom-sm">
-                <div class="input-group-prepend"><div class="input-group-text"><i class="fa fa-globe fa-fw"></i></div></div>
-	            <input type="text" name="zipCode" [(ngModel)]="formAddress.zipCode" #zipCodeControl="ngModel" class="form-control" [class.form-control-sm]="shrink" required placeholder="Enter zip code" pattern="[0-9]{5}(?:-[0-9]{4})?">
+            <div class="input-group mb-2">
+                <span class="input-group-text"><i class="fa fa-globe fa-fw"></i></span>
+	            <input type="text" name="zip" [(ngModel)]="formAddress.zip" #zipControl="ngModel" class="form-control" [class.form-control-sm]="shrink" required placeholder="Enter zip code" pattern="[0-9]{5}(?:-[0-9]{4})?">
             </div>
-	        <div [hidden]="zipCodeControl.valid || zipCodeControl.pristine" class="alert alert-danger">
+	        <div [hidden]="zipControl.valid || zipControl.pristine" class="alert alert-danger">
                 Zip code must be in the format ##### or #####-####
             </div>
         </div>
     </form>
+    <!-- State Change Toast Message -->
+    <div class="toast-container position-absolute top-0 end-0" style="z-index: 5">
+        <div id="addressFormToast" class="toast hide" role="alert" data-bs-animation=true data-bs-delay=1000 aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <strong class="me-auto">{{toastHeader}}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body">
+            {{toastBody}}
+          </div>
+        </div>
+    </div>
 </div>

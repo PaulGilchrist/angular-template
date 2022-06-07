@@ -1,11 +1,11 @@
 <nav class="navbar navbar-dark bg-dark navbar-expand-md fixed-top">
-  <a class="navbar-brand" [routerLink]="['/']">Angular Template</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+  <a class="navbar-brand ms-2" [routerLink]="['/']">Angular Template</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav">
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['main']">Home</a>
       </li>
@@ -34,14 +34,14 @@
         <a class="nav-link" [routerLink]="['main/token']">Token</a>
       </li>
     </ul>
-    <div *ngIf="isAuthenticated()" class="nav navbar-right hidden-xs hidden-sm text-light">
+    <div *ngIf="isAuthenticated()" class="nav ms-auto hidden-xs hidden-sm text-light">
       {{ username() }}
     </div>
     &nbsp;&nbsp;
     <span *ngIf='isConnected' class='online'>ONLINE</span>
     <span *ngIf='!isConnected' class='offline'>OFFLINE</span>
     &nbsp;&nbsp;
-    <form class="navbar-form navbar-right">
+    <form class="navbar-form me-2">
       <input *ngIf="!isAuthenticated()" (click)="login()" type="button" class="btn btn-primary" value="Login">
       <input *ngIf="isAuthenticated()" (click)="logout()" type="button" class="btn sm btn-secondary" value="Logout">
     </form>

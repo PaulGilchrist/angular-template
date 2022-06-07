@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Subscription } from 'rxjs';
-
-import { ToastrService } from 'ngx-toastr';
+import { Toast } from 'bootstrap';
 
 import { State } from '../../models/state.model';
 import { Address } from '../../models/address.model';
+
 
 @Component({
     selector: 'app-address-form',
@@ -18,8 +18,10 @@ export class AddressFormComponent implements OnInit, OnChanges {
 
     shrink =  window.innerWidth < 768;
     formAddress: Address;
+    toastHeader = '';
+    toastBody = '';
 
-    constructor(private toastrService: ToastrService) { }
+    constructor() { }
 
     ngOnInit(): void {
         window.onresize = () => this.shrink = window.innerWidth < 768;
@@ -45,7 +47,10 @@ export class AddressFormComponent implements OnInit, OnChanges {
 
     onUpdateState(event: any): void {
         // Only the value roles up to the parent select.  To get the label you have to go to the selected option
-        this.toastrService.success(event.target.selectedOptions[0].text, 'State Changed');
+        this.toastHeader = `State Changed`;
+        this.toastBody = event.target.selectedOptions[0].text;
+        const toast = new Toast(document.getElementById('addressFormToast'));
+        toast.show();
     }
 
     saveForm(): void {

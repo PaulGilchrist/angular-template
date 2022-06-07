@@ -2,7 +2,6 @@
 @import '~bootstrap/scss/bootstrap.scss';
 @import '~dragula/dist/dragula.css';
 @import '~font-awesome/css/font-awesome.css';
-@import '~ngx-toastr/toastr-bs4-alert';
 @import '~pg-d3-utils/d3-utils.css';
 @import './variables';
 @import './app/demos-module/other-module/react/tic-tac-toe/game.css';
@@ -12,6 +11,11 @@
 /*
 Try and keep global SCSS and CSS to a minimum and mainly to global variables.  This prevents components from breaking when used in other projects
 */
+
+:root {
+    --nav-padding-top: 61px;
+}
+
 body { font-size: 13px; }
 h1 { font-size: 2.5em; }
 h2 { font-size: 2.0em; }
@@ -26,6 +30,16 @@ h6 { font-size: 1.0em; }
 .w-45 { width: 45%!important; }
 .w-60 { width: 60%!important; }
 .w-70 { width: 70%!important; }
+
+.toast-container {
+    padding-top: var(--nav-padding-top);
+    padding-left: 3px;
+    padding-right: 3px;
+}
+.toast-header {
+    background-color: cadetblue;
+    color: white;
+}
 
 // Small devices (landscape phones, 576px and up)
 @media only screen and (min-width: 576px) {

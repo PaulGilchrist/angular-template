@@ -1,4 +1,10 @@
 /* set class and add a tooltip attribute to show tooltip popup */
+.form-horizontal {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 200px auto;
+  margin-bottom: 6px;
+}
 .label-tooltip:hover:after {
   color: white;
   content: attr(tooltip);
