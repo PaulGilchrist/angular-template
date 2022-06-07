@@ -16,7 +16,7 @@ export class WebWorkerDemoComponent {
     calculatePrimes() {
         // Demo showing calculating primes without blocking UI
         if (typeof Worker !== 'undefined') {
-            this.stateService.state.worker = new Worker('../../services/demo.worker', { type: 'module' });
+            this.stateService.state.worker = new Worker(new URL('../../services/demo.worker', import.meta.url), { type: 'module' });
             this.stateService.state.workerStatus = 'running';
             this.stateService.state.worker.onmessage = ({ data }) => {
                 if (data.primeNumber) {
