@@ -203,7 +203,6 @@
       }
     }
   },
-  "defaultProject": "angular-template",
   "cli": {
     "analytics": "3f391998-22bd-4dac-9047-82dbdae0049e"
   }
