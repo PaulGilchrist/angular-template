@@ -1,13 +1,23 @@
 <div *ngIf="formAddress" class="animated slideInRight">
     <h3>Address</h3>
     <form #addressForm="ngForm" novalidate>
-        <div [class.has-error]="streetControl.invalid && streetControl.dirty">
-            <label class="control-label">Street</label>
+        <div [class.has-error]="streetNumberControl.invalid && streetNumberControl.dirty">
+            <label class="control-label">Street Number</label>
             <div class="input-group mb-2">
                 <span class="input-group-text"><i class="fa fa-map-marker fa-fw"></i></span>
-	            <input type="text" name="street" [(ngModel)]="formAddress.street" #streetControl="ngModel" class="form-control" [class.form-control-sm]="shrink" required placeholder="Enter street">
+	            <input type="text" name="streetNumber" [(ngModel)]="formAddress.streetNumber" #streetNumberControl="ngModel" class="form-control" [class.form-control-sm]="shrink" required placeholder="Enter street number">
             </div>
-	        <div [hidden]="streetControl.valid || streetControl.pristine" class="alert alert-danger">
+	        <div [hidden]="streetNumberControl.valid || streetNumberControl.pristine" class="alert alert-danger">
+                No pattern matching currently enforced
+            </div>
+        </div>
+        <div [class.has-error]="streetNameControl.invalid && streetNameControl.dirty">
+            <label class="control-label">Street Name</label>
+            <div class="input-group mb-2">
+                <span class="input-group-text"><i class="fa fa-map-marker fa-fw"></i></span>
+	            <input type="text" name="streetName" [(ngModel)]="formAddress.streetName" #streetNameControl="ngModel" class="form-control" [class.form-control-sm]="shrink" required placeholder="Enter street name">
+            </div>
+	        <div [hidden]="streetNameControl.valid || streetNameControl.pristine" class="alert alert-danger">
                 No pattern matching currently enforced
             </div>
         </div>
@@ -33,13 +43,13 @@
                 State is required
             </div>
         </div>
-        <div [class.has-error]="zipControl.invalid && zipControl.dirty">
+        <div [class.has-error]="zipCodeControl.invalid && zipCodeControl.dirty">
             <label class="control-label">Zip Code</label>
             <div class="input-group mb-2">
                 <span class="input-group-text"><i class="fa fa-globe fa-fw"></i></span>
-	            <input type="text" name="zip" [(ngModel)]="formAddress.zip" #zipControl="ngModel" class="form-control" [class.form-control-sm]="shrink" required placeholder="Enter zip code" pattern="[0-9]{5}(?:-[0-9]{4})?">
+	            <input type="text" name="zip" [(ngModel)]="formAddress.zipCode" #zipCodeControl="ngModel" class="form-control" [class.form-control-sm]="shrink" required placeholder="Enter zip code" pattern="[0-9]{5}(?:-[0-9]{4})?">
             </div>
-	        <div [hidden]="zipControl.valid || zipControl.pristine" class="alert alert-danger">
+	        <div [hidden]="zipCodeControl.valid || zipCodeControl.pristine" class="alert alert-danger">
                 Zip code must be in the format ##### or #####-####
             </div>
         </div>

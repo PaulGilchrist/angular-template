@@ -37,8 +37,8 @@
 						<tr *ngFor="let user of users | filterObjects:searchString | sortObjects:sortType:sortReverse" (click)="selectUser(user)" [class.bg-secondary]="user === selectedUser" [class.text-light]="user === selectedUser" [class.bold]="user.isDirty">
 							<td>{{user.firstName}}</td>
 							<td>{{user.lastName}}</td>
-							<td>{{user.emails[0].email}}</td>
-							<td>{{user.phones[0].phoneNumber}}</td>
+							<td>{{user.email}}</td>
+							<td>{{user.phone}}</td>
 						</tr>
 					</tbody>
 				</table>

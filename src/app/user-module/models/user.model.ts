@@ -13,8 +13,8 @@ export interface User {
     id: number;
     firstName: string;
     lastName: string;
-    emails: Email[];
-    phone: Phone[];
+    email: Email;
+    phone: Phone;
     addressIds?: number[];
     addresses?: Address[];
     isDirty?: boolean;

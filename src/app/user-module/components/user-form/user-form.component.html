@@ -27,7 +27,7 @@
             <label class="control-label">Email Address</label>
             <div class="input-group mb-2">
                 <span class="input-group-text"><i class="fa fa-envelope-o fa-fw"></i></span>
-                <input type="email" name="email" required [(ngModel)]="formUser.emails[0].email" #emailControl="ngModel" class="form-control" [class.form-control-sm]="shrink"
+                <input type="email" name="email" required [(ngModel)]="formUser.email" #emailControl="ngModel" class="form-control" [class.form-control-sm]="shrink"
                     placeholder="Email address" pattern="[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}">
             </div>
             <div [hidden]="emailControl.valid || emailControl.pristine" class="alert alert-danger">
@@ -38,21 +38,11 @@
             <label class="control-label">Phone Number</label>
             <div class="input-group mb-2">
                 <span class="input-group-text"><i class="fa fa-phone fa-fw"></i></span>
-                <input type="tel" name="phone" [(ngModel)]="formUser.phones[0].phoneNumber" #phoneControl="ngModel" class="form-control" [class.form-control-sm]="shrink"
+                <input type="tel" name="phone" [(ngModel)]="formUser.phone" #phoneControl="ngModel" class="form-control" [class.form-control-sm]="shrink"
                     placeholder="(###) ###-####" pattern='[\(]\d{3}[\)][\s]\d{3}[\-]\d{4}' required>
             </div>
             <div [hidden]="phoneControl.valid || phoneControl.pristine" class="alert alert-danger">
                 Phone is not in the required format (###) ###-####
-            </div>
-        </div>
-        <div class="form-group" [class.has-error]="dobControl.invalid && dobControl.dirty">
-            <label class="control-label">Date of Birth</label>
-            <div class="input-group mb-2">
-                <span class="input-group-text"><i class="fa fa-calendar fa-fw"></i></span>
-                <input type="date" name="dob" [(ngModel)]="formUser.dob" #dobControl="ngModel" class="form-control" [class.form-control-sm]="shrink" placeholder="MM/DD/YYYY">
-            </div>
-            <div [hidden]="dobControl.valid" class="alert alert-danger">
-                Date of birth is invalid
             </div>
         </div>
         <div style="height:10px;"></div>
