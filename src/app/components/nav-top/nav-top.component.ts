@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { ConnectivityService } from 'angular-connectivity'; // My NPM Package
-import {OAuthService} from 'angular-oauth2-oidc';
+import { OAuthService } from 'angular-oauth2-oidc';
 
 @Component({
     selector: 'app-nav-top',
@@ -12,7 +12,7 @@ import {OAuthService} from 'angular-oauth2-oidc';
     templateUrl: './nav-top.component.html'
 })
 export class NavTopComponent implements OnInit, OnDestroy {
-   claims: any = this.authService.getIdentityClaims();
+    claims: any = this.authService.getIdentityClaims();
     shrinkNavbar = false;
     isConnected = true;
     subscriptions: Subscription[] = [];
@@ -31,7 +31,13 @@ export class NavTopComponent implements OnInit, OnDestroy {
             (window.pageYOffset || document.documentElement.scrollTop) > 300;
     }
 
-   ngOnInit(): void {
+    ngOnInit(): void {
+        this.authService.loadDiscoveryDocumentAndTryLogin({ customHashFragment: location.hash }).then(() => {
+            if (this.authService.hasValidAccessToken()) {
+                // Load UserProfile to get the additional claims
+                this.authService.loadUserProfile();
+            }
+        });
         const url = localStorage.getItem('url');
         if (url != null) {
             localStorage.removeItem('url');
@@ -39,7 +45,7 @@ export class NavTopComponent implements OnInit, OnDestroy {
         }
         this.subscriptions.push(this.connectivityService.isConnected$.subscribe(isConnected => this.isConnected = isConnected));
         window.onresize = () => this.width = window.innerWidth;
-   }
+    }
 
     ngOnDestroy(): void {
         // Unsubscribe all subscriptions to avoid memory leak
@@ -47,14 +53,15 @@ export class NavTopComponent implements OnInit, OnDestroy {
     }
 
     isAuthenticated() {
-        return !!this.authService.hasValidIdToken();
+        //console.log(this.authService);
+        return this.authService.hasValidIdToken();
     }
 
-    login(){
+    login() {
         this.authService.initLoginFlow();
     }
 
-    logout(){
+    logout() {
         this.authService.logOut();
     }
 

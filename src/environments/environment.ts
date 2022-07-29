@@ -9,15 +9,15 @@ export const environment = {
         instrumentationKey: null
     },
     authConfig: {
-        clientId: 'bd065891-b008-4968-9b26-5f2bcb9c1b66',
         issuer: 'https://login.microsoftonline.com/1a9277a3-ef66-41f6-96b5-c5390ee468a7/v2.0',
+        clientId: 'bd065891-b008-4968-9b26-5f2bcb9c1b66',
         redirectUri: window.location.origin,
         responseType: 'code',
-        scope: 'api://bd065891-b008-4968-9b26-5f2bcb9c1b66/user_impersonation profile openid',
+        scope: 'openid profile offline_access', // 'api://bd065891-b008-4968-9b26-5f2bcb9c1b66/user_impersonation profile openid'
         showDebugInformation: true,
-        clearHashAfterLogin: true,
-        requestAccessToken: true,
-        skipIssuerCheck: false,
+        //clearHashAfterLogin: true,
+        //requestAccessToken: true,
+        //skipIssuerCheck: false,
         strictDiscoveryDocumentValidation: false
     },
     dataCaching: { // milliseconds data is allowed to remain cached before next request for that data re-retrieves it from the remote data source

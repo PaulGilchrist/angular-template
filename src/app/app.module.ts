@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { OAuthModule } from 'angular-oauth2-oidc';
-import { AuthGuard } from './authGuard';
 
 // Imports
 import { AppRoutingModule } from './app-routing.module';
@@ -46,7 +45,6 @@ import { environment } from '../environments/environment';
     ],
     providers: [
         AppInsightsService,
-        AuthGuard,
         ConnectivityService,
         //{ provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true }, // Time how long each http rerquests takes
         //{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } // Add token to all API requests
