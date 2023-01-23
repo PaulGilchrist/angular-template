@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Toast } from 'bootstrap';
 
-import { ConnectivityService } from 'angular-connectivity'; // My NPM Package
+import { ConnectivityService } from './../../../shared-module/services/connectivity.service';
 import { Address } from '../../models/address.model';
 import { State } from '../../models/state.model';
 import { User } from '../../models/user.model';

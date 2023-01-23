@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { ConnectivityService } from 'angular-connectivity'; // My NPM Package
+import { ConnectivityService } from './../../../../shared-module/services/connectivity.service'; // My NPM Package
 import { FlooringState } from '../../models/flooring-state.model';
 import { INITIAL_FLOORING_STATE } from '../../data/initial-flooring-state.data';
 

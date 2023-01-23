@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
+import { SharedModule } from './../../shared-module/shared.module';
+
 import { FloorComponent } from './components/floor/floor.component';
 
 @NgModule({
@@ -13,7 +15,8 @@ import { FloorComponent } from './components/floor/floor.component';
         CommonModule,
         RouterModule.forChild([
             { path: '', component: FloorComponent },
-        ])
+        ]),
+        SharedModule
     ],
 })
 export class FloorModule {}

@@ -3,7 +3,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
-import { ConnectivityService } from 'angular-connectivity'; // My NPM Package
+import { ConnectivityService } from './../../shared-module/services/connectivity.service';
+
 import { OAuthService } from 'angular-oauth2-oidc';
 
 @Component({

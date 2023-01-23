@@ -14,7 +14,6 @@
   "scripts": {
     "build": "ng build --configuration production --base-href /angular-template/",
     "deploy": "ngh",
-    "e2e": "ng e2e",
     "lint": "npx ng lint angular-template",
     "ng": "ng",
     "predeploy": "npm run build",
@@ -35,9 +34,7 @@
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4",
     "@angular/service-worker": "^14.0.0",
-    "angular-connectivity": "~1.0.2",
     "angular-oauth2-oidc": "^13.0.1",
-    "angular-pipes-module": "~1.0.2",
     "animate.css": "~4.1.1",
     "applicationinsights-js": "~1.0.21",
     "bootstrap": "~5.1.3",
@@ -52,8 +49,8 @@
     "pdfmake": "~0.2.5",
     "pg-d3-utils": "^1.0.14",
     "radium": "^0.26.2",
-    "react": "~18.1.0",
-    "react-dom": "~18.1.0"
+    "react": "~17.0.2",
+    "react-dom": "~17.0.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.0.0",
