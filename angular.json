@@ -38,7 +38,6 @@
               "src/web.config"
             ],
             "styles": [
-              "node_modules/pg-d3-utils/d3-utils.css",
               "src/app/demos-module/other-module/react/tic-tac-toe/game.css",
               "src/app/demos-module/other-module/react/tic-tac-toe/board.css",
               "src/app/demos-module/other-module/react/tic-tac-toe/square.css",

@@ -1,12 +1,11 @@
 import { Component, Input, OnInit, OnChanges, ElementRef, ViewEncapsulation } from '@angular/core';
 
 import * as d3 from 'd3';
-
-import d3Utils from 'pg-d3-utils';
+import d3Utils from './../../js/d3-utils';
 
 @Component({
     selector: 'app-d3-graph',
-    styleUrls: ['./d3-graph.component.css'],
+    styleUrls: ['./d3-graph.component.css', './../../js/d3-utils.css'],
     templateUrl: './d3-graph.component.html'
 })
 export class D3GraphComponent implements OnInit, OnChanges {
